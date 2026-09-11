@@ -1,61 +1,66 @@
-# نَسَق AI — دليل المشروع
+# نَسَق — منصة ذكاء اصطناعي تتكيف معك
 
-> **الحالة:** Frontend workspace prototype مكتمل، متحقق تقنيًا، ومنشور  
-> **المرحلة الحالية:** Backend-ready contracts and interaction handoff  
-> **الجمهور الأول:** محترفون وفرق عربية صغيرة
+> **الحالة:** Universal Experience U1 — واجهة جديدة متكيفة ومتحققة تقنيًا
+>
+> **المنتج:** منصة عربية/إنجليزية للتعلّم والبحث والصناعة والبرمجة والتحليل والاستكشاف
+>
+> **النطاق الحالي:** Frontend تفاعلي بمحاكاة صريحة؛ Backend والمزودون مؤجلون
 
-نَسَق مساحة عمل عربية أولًا تجمع **المحادثة → الوكيل → التدفق** مع سياق مشترك، موافقات ظاهرة، وتكلفة قابلة للتفسير.
+نَسَق لا يبدأ من نموذج أو وكيل أو قائمة إعدادات. يبدأ من سؤال بسيط:
+
+> **ماذا تريد أن تنجز اليوم؟**
+
+ثم يفتح للمستخدم المساحة المناسبة ويحافظ على السياق الذي يختار الاحتفاظ به. يمكن لأي شخص استخدام المنصة، بينما تبقى إمكانات الوكلاء والتدفقات والنماذج متاحة تدريجيًا للمستخدم المتقدم.
 
 ## الروابط
 
 - **الإنتاج:** <https://nasaq-ai.vercel.app>
-- **GitHub:** <https://github.com/zoih6/nasaq-ai> (مستودع خاص)
+- **العربية:** <https://nasaq-ai.vercel.app/ar>
+- **الإنجليزية:** <https://nasaq-ai.vercel.app/en>
+- **المساحة المتكيفة:** <https://nasaq-ai.vercel.app/ar/app/home>
+- **GitHub:** <https://github.com/zoih6/nasaq-ai> — مستودع خاص
+- **قرار إعادة التأسيس:** [NASAQ Universal Reset](docs/00-vision/NASAQ-UNIVERSAL-RESET.md)
 - **عقد النشر:** [GitHub and Vercel deployment](docs/04-delivery/DEPLOYMENT.md)
 
-## شغّل النموذج
+## بوابات نَسَق
 
-المتطلبات: Node.js `>=20.9.0` وnpm `11.6.4` المعلن في `packageManager`.
+| الخدمة | المسار العربي | ما تقدمه الواجهة الحالية |
+|---|---|---|
+| اسأل وتحدث | `/ar/app/chat` | مساحة تفكير ومحادثة مرنة |
+| تعلّم بعمق | `/ar/app/learn` | شرح وخطة واختبارات فهم |
+| ابحث ووثّق | `/ar/app/research` | بحث موجه ومخرجات بمصادر |
+| اكتب وصمّم | `/ar/app/create` | مستندات وصور ولوحة إبداع |
+| برمج وابنِ | `/ar/app/code` | خطة وملفات ومعاينة |
+| حلّل وافهم | `/ar/app/analyze` | جداول ورسوم وتحقق بيانات |
+| استكشف واكتشف | `/ar/app/explore` | رحلات معرفية وخرائط أفكار |
+| مكتبتي | `/ar/app/library` | دروس وتقارير ومستندات ومشاريع |
+
+استبدل `ar` بـ`en` لكل تجربة إنجليزية/LTR.
+
+## ما تغير في Universal Experience U1
+
+- Landing مضيئة ومستقبلية جديدة بدل الهوية المؤسسية السابقة.
+- Home يسأل عن الهدف ويكيّف ترتيب الخدمات والبدايات المقترحة.
+- تخصيص بالأهداف لا بالمهنة، مع حفظ محلي وتحكم مباشر وشرح «لماذا أرى هذا؟».
+- سبع بوابات واضحة بدل وضع Projects / Agents / Flows في مقدمة التجربة.
+- كل بوابة لها مساحة تفاعلية ونمط موجه/سريع ومخرج مناسب لطبيعتها.
+- مكتبة بصرية للمخرجات بدل تاريخ محادثات طويل فقط.
+- App Shell جديد مضيء ومتجاوب مع تنقل هاتف مستقل.
+- الإمكانات المتقدمة محفوظة خلف progressive disclosure.
+- رسم hero أصلي بلا روبوتات أو أدمغة أو AI clichés.
+- العربية RTL والإنجليزية LTR تعملان من نفس البنية.
+- كل المحاكاة موسومة بوضوح؛ لا ادعاء بوجود مزود أو بحث أو تنفيذ حقيقي.
+
+## التشغيل المحلي
+
+المتطلبات: Node.js `>=20.9.0` وnpm `11.6.4`.
 
 ```bash
 npx -y npm@11.6.4 ci
 npx -y npm@11.6.4 run dev
 ```
 
-ثم افتح:
-
-- `/ar` — Marketing بالعربية وRTL.
-- `/en` — Marketing بالإنجليزية وLTR.
-- `/ar/preview` — معاينة المنتج الاحترافية والتفاعلية.
-- `/ar/app/home` — مركز القيادة.
-- `/ar/app/chat` — محادثة تجريبية تفاعلية.
-- `/ar/app/projects` → `/agents` → `/flows` → `/runs` — المسار التشغيلي الكامل.
-- `/ar/app/knowledge` — مجموعات ومصادر واختبار استرجاع.
-- `/ar/app/models`، `/tools`، `/skills` — كتالوج القدرات والمخاطر والمصدر.
-- `/ar/app/usage`، `/billing`، `/team`، `/settings` — الإدارة والتكلفة والسياسات.
-
-استبدل `ar` بـ`en` لكل مسار إنجليزي/LTR.
-
-> استخدم npm 11.6.4 في هذه البيئة؛ npm 10.8.2 أصاب خطأ Arborist أثناء peer resolution.
-
-## ما يعمل الآن
-
-- Marketing ثنائي اللغة يشرح مسار Chat → Agent → Flow ويربط إلى جولة المنتج.
-- معاينة احترافية مستقلة بثلاثة سيناريوهات، تنقل مرحلي، وكيل مضبوط، تدفق حي، بوابة موافقة وإيصال تكلفة.
-- App Shell متجاوب: sidebar، bottom navigation، لوحة أوامر، إشعارات، مساحة عمل، تبديل لغة وحفظ deep link.
-- Home Command Center: تشغيلات نشطة، موافقة، رصيد هجين، مشاريع، ونماذج مقترحة.
-- Chat محلي تفاعلي: starter prompts، model menu، compare، attachment، streaming، stop/reset، وإيصال تكلفة تجريبي.
-- Projects عملية: بحث وفلاتر وإنشاء وسياق يربط الوكلاء والتدفقات والتشغيلات.
-- Agent builder متعدد الخطوات: تعليمات، نموذج، أدوات، حدود، حماية واختبار حتمي.
-- Flow editor بعقد قابلة للاختيار والسحب واختبار يتوقف عند بوابة موافقة.
-- Runs وApprovals: timeline وأحداث ومخرج وتكلفة ودافع وapprove/reject وإيصال JSON.
-- Knowledge: collections ومصادر وحالات معالجة وretrieval test يعرض المقاطع المطابقة.
-- Models/Tools/Skills: مقارنة، تفاصيل، routing، مخاطر، صلاحيات، provenance وترخيص.
-- Usage/Billing: estimate/reserved/actual، ledger، breakdown، رصيد، ميزانيات وتعبئة تجريبية.
-- Team/Settings: دعوات وأدوار وBYOK وتكاملات وخصوصية وسجل تدقيق.
-- Zod contracts وtyped mock API وdata boundaries وواجهة UI مشتركة وخطوط محلية.
-- لا مفاتيح حقيقية، لا دفع، ولا تنفيذ أدوات أو اتصالات مزودين.
-
-## تحقق الجودة
+## بوابات الجودة
 
 ```bash
 npx -y npm@11.6.4 run check
@@ -64,74 +69,39 @@ npx -y npm@11.6.4 run test:e2e
 npx -y npm@11.6.4 audit --audit-level=moderate
 ```
 
-آخر إيصال موثق: [Frontend Prototype Verification](docs/04-delivery/FRONTEND-PROTOTYPE-VERIFICATION.md).
-
-النتيجة الحالية:
+نتيجة U1 الحالية:
 
 - ESLint: ناجح دون warnings.
 - TypeScript strict عبر workspaces: ناجح.
-- Vitest: 4/4.
-- Playwright: **22/22** عبر المعاينة، الانحدار، المسار التشغيلي، ووحدات الإدارة.
-- Axe: بلا مخالفات serious/critical على الأسطح والحالات الحرجة المختبرة.
-- Mobile 390×844: بلا document-level horizontal overflow في المصفوفة المختبرة.
-- Production build: ناجح؛ 43 static pages بالإضافة إلى detail routes الديناميكية.
+- Vitest: **4/4**.
+- Playwright: **23/23** تشمل التجربة العامة والقدرات المتقدمة.
+- Production build: ناجح؛ **57 static pages** مع detail routes الديناميكية.
+- فحص المتصفح الأساسي: بلا أخطاء console أو page errors.
+- Desktop وMobile: بلا document-level horizontal overflow في الأسطح الجديدة المختبرة.
 - npm audit: 0 vulnerabilities.
 
-## الوثائق الأساسية
-
-### الرؤية والمنتج
-
-- [رؤية المنتج — HTML](docs/00-vision/nasaq-ai-product-vision-ar.html)
-- [رؤية المنتج — Markdown](docs/00-vision/nasaq-ai-product-vision-ar.md)
-- [PRD التنفيذية — HTML](docs/01-product/PRD.html)
-- [PRD التنفيذية — Markdown](docs/01-product/PRD.md)
-- [Sitemap](docs/01-product/SITEMAP.md)
-- [Screen Inventory](docs/01-product/SCREEN-INVENTORY.md)
-- [State Machines](docs/01-product/STATE-MACHINES.md)
-
-### التصميم والمعمارية
-
-- [Design System](docs/02-design/DESIGN.md)
-- [Frontend Architecture](docs/03-architecture/FRONTEND-ARCHITECTURE.md)
-- [Contracts](docs/03-architecture/CONTRACTS.md)
-- [Permissions](docs/03-architecture/PERMISSIONS.md)
-
-### التسليم
-
-- [Wave 1 Verification](docs/04-delivery/WAVE-1-VERIFICATION.md)
-- [Professional Preview Verification](docs/04-delivery/PROFESSIONAL-PREVIEW-VERIFICATION.md)
-- [Frontend Prototype Verification](docs/04-delivery/FRONTEND-PROTOTYPE-VERIFICATION.md)
-- [الأدلة البصرية](docs/04-delivery/evidence/)
-
-## القرارات المحسومة
-
-- عربي أولًا مع إنجليزية كاملة وRTL/LTR من route منذ البداية.
-- تجربة متكاملة لـChat وProjects وAgents وFlows وKnowledge وModels/Usage.
-- Frontend وعقود وmock scenarios قبل Backend وربط المزودين.
-- نموذج وصول هجين: مفاتيح المستخدم `BYOK` + رصيد موحد من المنصة.
-- هوية **Precision Workspace**: أسطح حجرية دافئة، حبر أخضر، teal للأفعال، amber للموافقات؛ بلا gradients أو glassmorphism أو AI clichés.
-
-## هيكلة المشروع
+## الهيكلة
 
 ```text
 nasaq-ai/
-├── apps/web/               ← Next.js application وE2E
+├── apps/web/
+│   ├── components/universal/       ← Universal Experience U1
+│   ├── components/app-shell/       ← التنقل المتكيف الجديد
+│   ├── lib/universal-content.ts    ← خدمات ومحتوى عربي/إنجليزي
+│   └── app/universal.css           ← Luminous Adaptive System
 ├── packages/
-│   ├── contracts/          ← Zod schemas وDTOs
-│   ├── i18n/               ← locale/direction/dictionaries
-│   ├── mock-api/           ← fixtures متحققة بالعقود
-│   ├── ui/                 ← primitives مشتركة
-│   └── config/             ← إعدادات مشتركة
-├── docs/
-│   ├── 00-vision/
-│   ├── 01-product/
-│   ├── 02-design/
-│   ├── 03-architecture/
-│   └── 04-delivery/
-├── assets/
-└── tools/
+│   ├── contracts/
+│   ├── i18n/
+│   ├── mock-api/
+│   └── ui/
+└── docs/
+    ├── 00-vision/
+    ├── 01-product/
+    ├── 02-design/
+    ├── 03-architecture/
+    └── 04-delivery/
 ```
 
 ## المرحلة التالية
 
-الواجهة المتكاملة وعقودها أصبحت جاهزة لتسليم Backend. الخطوة التالية هي تنفيذ **session/auth، persistence، event ledger، idempotent approvals، provider router، secrets boundary، وbilling integration** خلف حدود البيانات الحالية، مع إبقاء كل أثر حساس متوقفًا حتى مراجعة أمنية واختبارات عقد مستقلة.
+الموجة U2 تعمّق كل خدمة بدل إضافة بطاقات سطحية: تشخيص ومستويات للتعلّم، خطة ومصادر للبحث، محرر للصناعة، ملفات ومعاينة للبرمجة، جداول ورسوم للتحليل، وخرائط معرفة للاستكشاف. يلي ذلك Auth والحفظ والذاكرة الصريحة ورفع الملفات، ثم ربط المزودين وBYOK والرصيد والأدوات خلف حدود أمنية واضحة.

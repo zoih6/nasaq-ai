@@ -9,6 +9,7 @@ import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "../globals.css";
+import "../universal.css";
 import { getDictionary, getDirection, isLocale, locales } from "@nasaq/i18n";
 
 export function generateStaticParams() {
@@ -30,7 +31,7 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale} dir={getDirection(locale)} suppressHydrationWarning>
+    <html lang={locale} dir={getDirection(locale)} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

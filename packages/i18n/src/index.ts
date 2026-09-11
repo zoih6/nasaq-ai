@@ -48,13 +48,13 @@ export type Dictionary = {
 
 const ar: Dictionary = {
   meta: {
-    title: "نَسَق AI — مساحة عمل النماذج والوكلاء والتدفقات",
-    description: "مساحة عمل عربية تجمع المحادثة متعددة النماذج والوكلاء والتدفقات في سياق واحد.",
+    title: "نَسَق — تعلّم، ابحث، اصنع واكتشف",
+    description: "منصة ذكاء اصطناعي عربية متكيفة للجميع: للتعلّم والبحث والكتابة والبرمجة والتحليل والاستكشاف.",
   },
   brand: {
     name: "نَسَق",
-    promise: "كل نماذجك ووكلائك وتدفقاتك، في مساحة عمل واحدة.",
-    demo: "بيانات تجريبية",
+    promise: "كل ما تريد أن تتعلّمه، تصنعه، أو تكتشفه — في مساحة تتكيف معك.",
+    demo: "تجربة تفاعلية",
   },
   nav: {
     home: "الرئيسية",
@@ -137,13 +137,13 @@ const ar: Dictionary = {
 
 const en: Dictionary = {
   meta: {
-    title: "Nasaq AI — Models, agents, and flows in one workspace",
-    description: "An Arabic-first workspace connecting multi-model chat, controlled agents, and reusable flows.",
+    title: "Nasaq — Learn, research, create, and discover",
+    description: "An adaptive AI platform for everyone: learning, research, writing, coding, analysis, and exploration.",
   },
   brand: {
     name: "Nasaq",
-    promise: "Your models, agents, and flows — in one workspace.",
-    demo: "Demo data",
+    promise: "Everything you want to learn, create, or discover — in a space that adapts to you.",
+    demo: "Interactive preview",
   },
   nav: {
     home: "Home",

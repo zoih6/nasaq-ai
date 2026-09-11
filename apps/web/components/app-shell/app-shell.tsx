@@ -1,233 +1,246 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState, type ReactNode } from "react";
 import {
-  Activity,
   Bell,
   BookOpen,
   Bot,
   Boxes,
   ChartNoAxesCombined,
-  Check,
+  CheckCircle2,
   ChevronDown,
-  ChevronRight,
+  Code2,
   Command,
+  Compass,
   FolderKanban,
+  GraduationCap,
   House,
+  Library,
   Menu,
-  MessageSquareText,
+  MessageCircle,
+  Palette,
   PanelLeftClose,
-  PackageCheck,
   Plus,
   Search,
+  SearchCheck,
   Settings,
-  Users,
+  Sparkles,
   Workflow,
-  Wrench,
   X,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { NasaqMark } from "@nasaq/ui";
 import { switchLocaleInPath, type Dictionary } from "@nasaq/i18n";
 import type { Locale } from "@nasaq/contracts";
 
-type NavItem = {
-  key: keyof Dictionary["nav"];
-  href: string;
-  icon: typeof House;
-  badge?: number;
-};
+type ShellNavItem = { id: string; label: string; href: string; icon: LucideIcon };
 
-export function AppShell({ children, locale, dictionary, workspaceName }: { children: ReactNode; locale: Locale; dictionary: Dictionary; workspaceName: string }) {
+function ShellNavLink({ item, active, collapsed, onNavigate }: { item: ShellNavItem; active: boolean; collapsed: boolean; onNavigate: () => void }) {
+  const Icon = item.icon;
+  return <Link href={item.href} className={`universal-shell-link${active ? " is-active" : ""}`} title={collapsed ? item.label : undefined} onClick={onNavigate}><span><Icon size={18} strokeWidth={1.8} /></span><b>{item.label}</b>{item.id === "learn" ? <i /> : null}</Link>;
+}
+
+export function AppShell({ children, locale }: { children: ReactNode; locale: Locale; dictionary: Dictionary; workspaceName?: string }) {
   const pathname = usePathname();
+  const isArabic = locale === "ar";
+  const base = `/${locale}/app`;
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
-  const [commandQuery, setCommandQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const [advancedOpen, setAdvancedOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [workspaceOpen, setWorkspaceOpen] = useState(false);
 
-  const base = `/${locale}/app`;
-  const mainNav: NavItem[] = [
-    { key: "home", href: `${base}/home`, icon: House },
-    { key: "chat", href: `${base}/chat`, icon: MessageSquareText },
-    { key: "projects", href: `${base}/projects`, icon: FolderKanban },
-    { key: "agents", href: `${base}/agents`, icon: Bot },
-    { key: "flows", href: `${base}/flows`, icon: Workflow },
-    { key: "knowledge", href: `${base}/knowledge`, icon: BookOpen },
-  ];
-  const operationNav: NavItem[] = [
-    { key: "runs", href: `${base}/runs`, icon: Activity, badge: 1 },
-  ];
-  const manageNav: NavItem[] = [
-    { key: "models", href: `${base}/models`, icon: Boxes },
-    { key: "tools", href: `${base}/tools`, icon: Wrench },
-    { key: "skills", href: `${base}/skills`, icon: PackageCheck },
-    { key: "usage", href: `${base}/usage`, icon: ChartNoAxesCombined },
-    { key: "team", href: `${base}/team`, icon: Users },
-    { key: "settings", href: `${base}/settings`, icon: Settings },
-  ];
-  const allNav = [...mainNav, ...operationNav, ...manageNav];
+  const labels = isArabic
+    ? {
+        forYou: "لك",
+        ask: "اسأل",
+        learn: "تعلّم",
+        research: "ابحث",
+        create: "أنشئ",
+        code: "برمج",
+        analyze: "حلّل",
+        explore: "استكشف",
+        library: "مكتبتي",
+        advanced: "أدوات متقدمة",
+        projects: "المشاريع",
+        agents: "الوكلاء",
+        flows: "التدفقات",
+        knowledge: "مصادر المعرفة",
+        models: "النماذج",
+        settings: "الإعدادات",
+        start: "ابدأ شيئًا جديدًا",
+        search: "ابحث في نَسَق…",
+        searchHint: "انتقل إلى خدمة، عمل، أو إعداد",
+        noResult: "لا توجد نتيجة مطابقة",
+        personal: "مساحتي",
+        adaptive: "متكيفة مع أهدافك",
+        demo: "نموذج تفاعلي",
+        noticeTitle: "مسار تعلّمك ينتظرك",
+        noticeBody: "أكملت 34% من أساسيات علم البيانات.",
+        savedTitle: "تم حفظ البحث",
+        savedBody: "أضيف تقرير الطاقة المتجددة إلى مكتبتك.",
+        notifications: "الإشعارات",
+        languageLabel: "التبديل إلى الإنجليزية",
+        close: "إغلاق",
+        collapse: "طي القائمة",
+        expand: "توسيع القائمة",
+        more: "فتح القائمة",
+      }
+    : {
+        forYou: "For you",
+        ask: "Ask",
+        learn: "Learn",
+        research: "Research",
+        create: "Create",
+        code: "Code",
+        analyze: "Analyze",
+        explore: "Explore",
+        library: "My library",
+        advanced: "Advanced tools",
+        projects: "Projects",
+        agents: "Agents",
+        flows: "Flows",
+        knowledge: "Knowledge sources",
+        models: "Models",
+        settings: "Settings",
+        start: "Start something new",
+        search: "Search Nasaq…",
+        searchHint: "Go to a service, item, or setting",
+        noResult: "No matching result",
+        personal: "My space",
+        adaptive: "Adaptive to your goals",
+        demo: "Interactive prototype",
+        noticeTitle: "Your learning path is waiting",
+        noticeBody: "You are 34% through data science foundations.",
+        savedTitle: "Research saved",
+        savedBody: "The renewable energy report is now in your library.",
+        notifications: "Notifications",
+        languageLabel: "Switch to Arabic",
+        close: "Close",
+        collapse: "Collapse navigation",
+        expand: "Expand navigation",
+        more: "Open menu",
+      };
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
-  const current = allNav.find((item) => isActive(item.href));
-  const alternateLocale: Locale = locale === "ar" ? "en" : "ar";
-  const alternatePath = switchLocaleInPath(pathname, alternateLocale);
-  const groupLabel = locale === "ar" ? { work: "مساحة العمل", operations: "التشغيل", manage: "الإدارة" } : { work: "Workspace", operations: "Operations", manage: "Manage" };
-
-  const normalizedCommandQuery = commandQuery.trim().toLocaleLowerCase(locale);
-  const filteredCommands = normalizedCommandQuery
-    ? allNav.filter((item) => dictionary.nav[item.key].toLocaleLowerCase(locale).includes(normalizedCommandQuery))
-    : allNav;
+  const primaryItems = [
+    { id: "home", label: labels.forYou, href: `${base}/home`, icon: House },
+    { id: "chat", label: labels.ask, href: `${base}/chat`, icon: MessageCircle },
+    { id: "learn", label: labels.learn, href: `${base}/learn`, icon: GraduationCap },
+    { id: "research", label: labels.research, href: `${base}/research`, icon: SearchCheck },
+    { id: "create", label: labels.create, href: `${base}/create`, icon: Palette },
+    { id: "code", label: labels.code, href: `${base}/code`, icon: Code2 },
+    { id: "analyze", label: labels.analyze, href: `${base}/analyze`, icon: ChartNoAxesCombined },
+    { id: "explore", label: labels.explore, href: `${base}/explore`, icon: Compass },
+  ] as const;
+  const advancedItems = [
+    { id: "projects", label: labels.projects, href: `${base}/projects`, icon: FolderKanban },
+    { id: "agents", label: labels.agents, href: `${base}/agents`, icon: Bot },
+    { id: "flows", label: labels.flows, href: `${base}/flows`, icon: Workflow },
+    { id: "knowledge", label: labels.knowledge, href: `${base}/knowledge`, icon: BookOpen },
+    { id: "models", label: labels.models, href: `${base}/models`, icon: Boxes },
+  ] as const;
+  const utilityItems = [
+    { id: "library", label: labels.library, href: `${base}/library`, icon: Library },
+    { id: "settings", label: labels.settings, href: `${base}/settings`, icon: Settings },
+  ] as const;
+  const allItems = [...primaryItems, ...utilityItems, ...advancedItems];
+  const normalized = query.trim().toLocaleLowerCase(locale);
+  const filtered = normalized ? allItems.filter((item) => item.label.toLocaleLowerCase(locale).includes(normalized)) : allItems;
+  const activeItem = allItems.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
+  const alternateLocale: Locale = isArabic ? "en" : "ar";
 
   useEffect(() => {
+    const stored = window.localStorage.getItem("nasaq.universal.sidebar");
+    const restoreFrame = stored === "collapsed" ? window.requestAnimationFrame(() => setCollapsed(true)) : null;
     function onKeyDown(event: KeyboardEvent) {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         setCommandOpen((value) => !value);
       }
       if (event.key === "Escape") {
-        setCommandOpen(false);
-        setNotificationsOpen(false);
-        setWorkspaceOpen(false);
         setMobileOpen(false);
+        setNotificationsOpen(false);
       }
     }
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      if (restoreFrame !== null) window.cancelAnimationFrame(restoreFrame);
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
-  function toggleCollapsed() {
-    setCollapsed((value) => {
-      const next = !value;
-      window.localStorage.setItem("nasaq.sidebar.collapsed", String(next));
-      return next;
-    });
+  function isActive(href: string) {
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   function closeTransient() {
     setMobileOpen(false);
     setCommandOpen(false);
     setNotificationsOpen(false);
-    setWorkspaceOpen(false);
   }
 
-  function NavLink({ item }: { item: NavItem }) {
-    const Icon = item.icon;
-    return (
-      <Link href={item.href} className={`nav-item${isActive(item.href) ? " is-active" : ""}`} onClick={closeTransient} title={collapsed ? dictionary.nav[item.key] : undefined}>
-        <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
-        <span className="nav-text">{dictionary.nav[item.key]}</span>
-        {item.badge ? <span className="nav-badge" aria-label={`${item.badge}`}>{item.badge}</span> : null}
-      </Link>
-    );
+  function toggleCollapsed() {
+    setCollapsed((value) => {
+      const next = !value;
+      window.localStorage.setItem("nasaq.universal.sidebar", next ? "collapsed" : "expanded");
+      return next;
+    });
   }
 
   return (
     <Dialog.Root open={commandOpen} onOpenChange={setCommandOpen}>
-      <div className="app-root" data-collapsed={collapsed} data-mobile-open={mobileOpen}>
-      <a className="skip-link" href="#main-content">{locale === "ar" ? "انتقل إلى المحتوى" : "Skip to content"}</a>
-      {mobileOpen ? <button className="mobile-backdrop" aria-label={locale === "ar" ? "إغلاق القائمة" : "Close menu"} onClick={() => setMobileOpen(false)} /> : null}
-      <aside className="app-sidebar" aria-label={locale === "ar" ? "التنقل الرئيسي" : "Primary navigation"}>
-        <div className="app-sidebar__brand">
-          <NasaqMark size={35} />
-          <strong className="brand-word">{dictionary.brand.name}</strong>
-          <button className="mobile-sidebar-close" type="button" onClick={() => setMobileOpen(false)} aria-label={locale === "ar" ? "إغلاق التنقل" : "Close navigation"}><X size={18} /></button>
+      <div className="universal-app-shell" data-collapsed={collapsed} data-mobile-open={mobileOpen}>
+        <a className="skip-link" href="#main-content">{isArabic ? "انتقل إلى المحتوى" : "Skip to content"}</a>
+        {mobileOpen ? <button type="button" className="universal-shell-backdrop" onClick={() => setMobileOpen(false)} aria-label={labels.close} /> : null}
+        <aside className="universal-shell-sidebar" aria-label={isArabic ? "التنقل الرئيسي" : "Primary navigation"}>
+          <div className="universal-shell-brand-row">
+            <Link href={`/${locale}/app/home`} className="universal-shell-brand"><span><NasaqMark size={34} /></span><b>{isArabic ? "نَسَق" : "Nasaq"}</b><Sparkles size={11} /></Link>
+            <button type="button" className="universal-shell-close" onClick={() => setMobileOpen(false)} aria-label={labels.close}><X size={19} /></button>
+          </div>
+
+          <Link href={`${base}/home`} className="universal-shell-new" onClick={closeTransient}><span><Plus size={18} /></span><b>{labels.start}</b></Link>
+
+          <nav className="universal-shell-nav">
+            <div className="universal-shell-nav__main">{primaryItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} collapsed={collapsed} onNavigate={closeTransient} key={item.id} />)}</div>
+            <div className="universal-shell-nav__utility"><ShellNavLink item={utilityItems[0]} active={isActive(utilityItems[0].href)} collapsed={collapsed} onNavigate={closeTransient} />
+              <button type="button" className={`universal-shell-advanced${advancedOpen ? " is-open" : ""}`} onClick={() => setAdvancedOpen((value) => !value)} aria-expanded={advancedOpen}><span><Sparkles size={17} /></span><b>{labels.advanced}</b><ChevronDown size={14} /></button>
+              {advancedOpen ? <div className="universal-shell-advanced-list">{advancedItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} collapsed={collapsed} onNavigate={closeTransient} key={item.id} />)}</div> : null}
+            </div>
+          </nav>
+
+          <div className="universal-shell-profile">
+            <Link href={`${base}/settings`} onClick={closeTransient}><span className="universal-shell-avatar">ن</span><span><strong>{labels.personal}</strong><small>{labels.adaptive}</small></span><Settings size={15} /></Link>
+            <button type="button" onClick={toggleCollapsed} aria-label={collapsed ? labels.expand : labels.collapse}><PanelLeftClose size={17} /><span>{collapsed ? labels.expand : labels.collapse}</span></button>
+          </div>
+        </aside>
+
+        <div className="universal-shell-main">
+          <header className="universal-shell-topbar">
+            <div className="universal-shell-context"><button type="button" onClick={() => setMobileOpen(true)} aria-label={labels.more}><Menu size={20} /></button><span>{activeItem?.label ?? labels.forYou}</span>{activeItem?.id === "home" ? <small><Sparkles size={12} />{labels.adaptive}</small> : null}</div>
+            <Dialog.Trigger asChild><button type="button" className="universal-shell-search"><Search size={16} /><span>{labels.search}</span><kbd>⌘K</kbd></button></Dialog.Trigger>
+            <div className="universal-shell-actions"><span className="universal-shell-demo"><i />{labels.demo}</span><Link href={switchLocaleInPath(pathname, alternateLocale)} aria-label={labels.languageLabel}>{alternateLocale.toUpperCase()}</Link><button type="button" onClick={() => setNotificationsOpen((value) => !value)} aria-expanded={notificationsOpen} aria-label={labels.notifications}><Bell size={18} /><i /></button><Link href={`${base}/settings`} className="universal-top-avatar">ن</Link></div>
+          </header>
+
+          {notificationsOpen ? <aside className="universal-notifications"><header><div><span>{labels.notifications}</span><small>2</small></div><button type="button" onClick={() => setNotificationsOpen(false)} aria-label={labels.close}><X size={17} /></button></header><Link href={`${base}/learn`} onClick={closeTransient}><span><GraduationCap size={17} /></span><div><strong>{labels.noticeTitle}</strong><p>{labels.noticeBody}</p></div></Link><Link href={`${base}/library`} onClick={closeTransient}><span><CheckCircle2 size={17} /></span><div><strong>{labels.savedTitle}</strong><p>{labels.savedBody}</p></div></Link></aside> : null}
+
+          <main id="main-content" className="universal-shell-content">{children}</main>
         </div>
 
-        <button className="app-sidebar__workspace" type="button" onClick={() => setWorkspaceOpen((value) => !value)} aria-expanded={workspaceOpen}>
-          <span className="workspace-avatar">أ</span>
-          <span className="workspace-copy">
-            <span>{dictionary.common.workspace}</span>
-            <strong>{workspaceName}</strong>
-          </span>
-          <ChevronDown className="workspace-chevron" size={14} aria-hidden="true" />
-        </button>
-        {workspaceOpen ? (
-          <div className="sidebar-popover workspace-popover">
-            <p>{locale === "ar" ? "مساحاتك" : "Your workspaces"}</p>
-            <button type="button" className="workspace-option" onClick={() => setWorkspaceOpen(false)}><span className="workspace-avatar">أ</span><span>{workspaceName}</span><Check size={14} /></button>
-            <button type="button" className="workspace-option" onClick={() => setWorkspaceOpen(false)}><span className="workspace-avatar workspace-avatar--muted">ش</span><span>{locale === "ar" ? "مساحتي الشخصية" : "Personal workspace"}</span></button>
-            <Link href={`${base}/settings`} onClick={closeTransient}><Plus size={14} />{locale === "ar" ? "إدارة المساحات" : "Manage workspaces"}</Link>
-          </div>
-        ) : null}
-
-        <nav className="app-nav">
-          <div className="nav-group">
-            <p className="nav-label">{groupLabel.work}</p>
-            {mainNav.map((item) => <NavLink item={item} key={item.key} />)}
-          </div>
-          <div className="nav-group">
-            <p className="nav-label">{groupLabel.operations}</p>
-            {operationNav.map((item) => <NavLink item={item} key={item.key} />)}
-          </div>
-          <div className="nav-group">
-            <p className="nav-label">{groupLabel.manage}</p>
-            {manageNav.map((item) => <NavLink item={item} key={item.key} />)}
-          </div>
+        <nav className="universal-shell-mobile-nav" aria-label={isArabic ? "التنقل على الهاتف" : "Mobile navigation"}>
+          {[primaryItems[0], primaryItems[1], primaryItems[4], primaryItems[7], utilityItems[0]].map((item) => { const Icon = item.icon; return <Link href={item.href} className={isActive(item.href) ? "is-active" : ""} key={item.id}><Icon size={19} /><span>{item.label}</span></Link>; })}
         </nav>
-        <div className="app-sidebar__bottom">
-          <button type="button" className="collapse-button" onClick={toggleCollapsed} aria-label={collapsed ? dictionary.common.expand : dictionary.common.collapse}>
-            <PanelLeftClose size={17} />
-            <span className="collapse-text">{collapsed ? dictionary.common.expand : dictionary.common.collapse}</span>
-          </button>
-        </div>
-      </aside>
-
-      <div className="app-main">
-        <header className="app-topbar">
-          <div className="topbar-context">
-            <button className="icon-button mobile-menu-button" type="button" onClick={() => setMobileOpen(true)} aria-label={dictionary.common.openMenu}><Menu size={19} /></button>
-            <span>{workspaceName}</span><ChevronRight size={13} aria-hidden="true" /><strong>{current ? dictionary.nav[current.key] : dictionary.nav.home}</strong>
-          </div>
-          <Dialog.Trigger asChild>
-            <button className="command-trigger" type="button">
-              <Search size={15} aria-hidden="true" /><span>{dictionary.common.search}</span><kbd>⌘ K</kbd>
-            </button>
-          </Dialog.Trigger>
-          <div className="topbar-actions">
-            <span className="demo-indicator">{dictionary.brand.demo}</span>
-            <Link className="locale-link" href={alternatePath} aria-label={locale === "ar" ? "التبديل إلى الإنجليزية" : "Switch to Arabic"}>{alternateLocale.toUpperCase()}</Link>
-            <button className="icon-button" type="button" onClick={() => setNotificationsOpen((value) => !value)} aria-label={dictionary.common.notifications} aria-expanded={notificationsOpen}><Bell size={17} /><span className="notification-dot" /></button>
-            <button className="profile-button" type="button" aria-label={locale === "ar" ? "حساب سارة" : "Sarah’s account"}>س</button>
-          </div>
-        </header>
-
-        {notificationsOpen ? (
-          <aside className="topbar-popover notifications-panel" aria-label={dictionary.common.notifications}>
-            <div className="popover-heading"><strong>{dictionary.common.notifications}</strong><button className="icon-button" type="button" onClick={() => setNotificationsOpen(false)} aria-label={locale === "ar" ? "إغلاق الإشعارات" : "Close notifications"}><X size={16} /></button></div>
-            <Link href={`${base}/runs`} onClick={closeTransient} className="notification-item notification-item--attention"><span className="notification-symbol"><Bell size={15} /></span><span><strong>{locale === "ar" ? "موافقة مطلوبة" : "Approval required"}</strong><small>{locale === "ar" ? "إرسال ملخص الرصد إلى فريق المشروع" : "Send the monitoring digest to the project team"}</small></span></Link>
-            <Link href={`${base}/runs`} onClick={closeTransient} className="notification-item"><span className="notification-symbol"><Check size={15} /></span><span><strong>{locale === "ar" ? "اكتمل تقرير" : "Report completed"}</strong><small>{locale === "ar" ? "مراجعة مصادر تقرير الإطلاق" : "Launch report source review"}</small></span></Link>
-          </aside>
-        ) : null}
-
-        <main id="main-content" className="app-content">{children}</main>
       </div>
 
-      <nav className="mobile-nav" aria-label={locale === "ar" ? "التنقل على الهاتف" : "Mobile navigation"}>
-        {mainNav.slice(0, 3).map((item) => { const Icon = item.icon; return <Link key={item.key} href={item.href} className={isActive(item.href) ? "is-active" : ""}><Icon size={18} /><span>{dictionary.nav[item.key]}</span></Link>; })}
-        <Link href={`${base}/runs`} className={isActive(`${base}/runs`) ? "is-active" : ""}><Activity size={18} /><span>{dictionary.nav.runs}</span></Link>
-        <button type="button" onClick={() => setMobileOpen(true)}><Menu size={18} /><span>{locale === "ar" ? "المزيد" : "More"}</span></button>
-      </nav>
-
-      </div>
       <Dialog.Portal>
-        <Dialog.Overlay className="command-overlay" />
-        <Dialog.Content className="command-dialog" aria-describedby={undefined}>
-          <Dialog.Title className="sr-only">{dictionary.common.search}</Dialog.Title>
-          <div className="command-input-wrap">
-            <Search size={18} aria-hidden="true" />
-            <input autoFocus value={commandQuery} onChange={(event) => setCommandQuery(event.target.value)} placeholder={dictionary.common.search} aria-label={dictionary.common.search} />
-            <Dialog.Close asChild>
-              <button className="icon-button" type="button" aria-label={locale === "ar" ? "إغلاق لوحة الأوامر" : "Close command palette"}><X size={17} /></button>
-            </Dialog.Close>
-          </div>
-          <div className="command-results">
-            <p>{locale === "ar" ? "انتقل إلى" : "Go to"}</p>
-            {filteredCommands.length ? filteredCommands.map((item) => { const Icon = item.icon; return <Link key={item.key} href={item.href} onClick={closeTransient}><Icon size={16} /><span>{dictionary.nav[item.key]}</span><Command size={12} /></Link>; }) : <div className="command-empty">{locale === "ar" ? "لا توجد نتيجة مطابقة" : "No matching result"}</div>}
-          </div>
+        <Dialog.Overlay className="universal-command-overlay" />
+        <Dialog.Content className="universal-command" aria-describedby={undefined}>
+          <Dialog.Title className="sr-only">{labels.search}</Dialog.Title>
+          <div className="universal-command__input"><Search size={20} /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder={labels.searchHint} aria-label={labels.searchHint} /><Dialog.Close asChild><button type="button" aria-label={labels.close}><X size={18} /></button></Dialog.Close></div>
+          <div className="universal-command__results"><span>{isArabic ? "الخدمات والوجهات" : "Services and destinations"}</span>{filtered.length ? filtered.map((item) => { const Icon = item.icon; return <Link href={item.href} onClick={closeTransient} key={item.id}><span><Icon size={17} /></span><b>{item.label}</b><Command size={13} /></Link>; }) : <p>{labels.noResult}</p>}</div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
