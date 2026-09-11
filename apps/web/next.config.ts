@@ -1,0 +1,23 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  allowedDevOrigins: ["127.0.0.1", "localhost", "*.e2b.app"],
+  transpilePackages: [
+    "@nasaq/contracts",
+    "@nasaq/i18n",
+    "@nasaq/mock-api",
+    "@nasaq/ui",
+  ],
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/ar",
+        permanent: false,
+      },
+    ];
+  },
+};
+
+export default nextConfig;

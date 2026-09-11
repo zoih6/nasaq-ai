@@ -1,0 +1,29 @@
+# Dependencies and generated output
+node_modules/
+.next/
+dist/
+build/
+out/
+coverage/
+.turbo/
+.cache/
+
+# Local environment, deployment links, and secrets
+.vercel/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and OS/editor state
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Test artifacts
+playwright-report/
+test-results/

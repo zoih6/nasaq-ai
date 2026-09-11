@@ -1,0 +1,2947 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="وثيقة متطلبات المنتج التنفيذية لمنصة نَسَق AI."><title>نَسَق AI — وثيقة متطلبات المنتج PRD</title><style>
+:root{--bg:#f2f0e9;--paper:#fffdf8;--ink:#18211c;--muted:#68726c;--line:#d9ddd8;--forest:#123b2f;--teal:#08765a;--mint:#a7dbc8;--amber:#d58b43;--rust:#ad4a32;--navy:#243f51;--code:#10231c;--shadow:0 20px 70px rgba(18,59,47,.09);color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;background:linear-gradient(135deg,rgba(8,118,90,.06),transparent 38rem),var(--bg);color:var(--ink);font-family:Tahoma,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.87;direction:rtl;text-align:right}a{color:var(--teal);text-underline-offset:.2em}a:hover{color:var(--rust)}a:focus-visible,button:focus-visible{outline:3px solid #ffb000;outline-offset:3px}.skip{position:fixed;top:.5rem;right:.5rem;transform:translateY(-180%);z-index:100;background:white;color:black;padding:.6rem 1rem;border-radius:.4rem}.skip:focus{transform:none}.progress{position:fixed;z-index:90;top:0;right:0;height:4px;width:0;background:var(--amber)}.hero{position:relative;overflow:hidden;background:var(--forest);color:white;border-bottom:8px solid var(--amber);padding:3.5rem clamp(1rem,5vw,5rem) 2.8rem}.hero:after{content:"PRD";position:absolute;left:4vw;bottom:-.25em;font:900 clamp(7rem,20vw,18rem)/.8 Arial,sans-serif;color:rgba(255,255,255,.035);letter-spacing:-.07em}.hero-inner{position:relative;z-index:1;max-width:1450px;margin:auto}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.11em;color:#b9e6d6;margin:0 0 .5rem}.hero h1{font-size:clamp(2.4rem,5.6vw,5.2rem);line-height:1.08;margin:0;max-width:1050px}.hero h1 span{display:block;font-size:.31em;color:#b9e6d6;letter-spacing:.08em;margin-top:.45rem}.hero .lead{max-width:900px;color:#dcebe5;font-size:clamp(1rem,2vw,1.22rem);line-height:1.7;margin:1rem 0}.pills{display:flex;gap:.55rem;flex-wrap:wrap}.pill{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.27rem .68rem;font-size:.8rem;color:#f4faf7}.actions{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.15rem}.actions button,.actions a{font:inherit;font-size:.83rem;border:1px solid #b9cec4;background:#fff;color:#173c31;padding:.48rem .74rem;border-radius:.38rem;text-decoration:none;cursor:pointer}.layout{max-width:1580px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:2rem;padding:2rem clamp(.7rem,3vw,3rem) 5rem}.content{min-width:0;background:var(--paper);padding:clamp(1.1rem,4vw,4rem);border:1px solid var(--line);box-shadow:var(--shadow)}.side{grid-column:2;grid-row:1;min-width:0}.tocbox{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;background:rgba(255,253,248,.97);border:1px solid var(--line);padding:1rem 1.1rem}.tocbox>strong{display:block;color:var(--forest);margin-bottom:.5rem}.tocbox .hint{display:block;color:var(--muted);font-size:.74rem;margin-bottom:.65rem}.toc ul{list-style:none;padding:0;margin:0}.toc li{margin:.15rem 0}.toc a{display:block;text-decoration:none;color:#48564f;padding:.18rem 0;font-size:.79rem;line-height:1.46}.toc a:hover{color:var(--teal)}h2,h3,h4{scroll-margin-top:1rem;line-height:1.38}h2{font-size:1.72rem;color:var(--forest);margin-top:3.5rem;border-bottom:2px solid #cfd9d3;padding-bottom:.55rem}h2:first-child{margin-top:0}h3{font-size:1.27rem;color:#285044;margin-top:2.35rem}h4{font-size:1.06rem;margin-top:1.8rem}p{margin:.72rem 0 1rem}strong{color:#123227}blockquote{margin:1.35rem 0;background:#edf7f2;border-inline-start:5px solid var(--teal);padding:.82rem 1.05rem;color:#254138}blockquote p{margin:.15rem 0}hr{border:0;border-top:1px solid var(--line);margin:3rem 0}ul,ol{padding-inline-start:1.5rem}li{margin:.31rem 0}li::marker{color:var(--teal)}code{direction:ltr;unicode-bidi:embed;background:#edf1ee;border:1px solid #dde4df;border-radius:.25rem;padding:.07em .35em;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;color:#214b3e}pre{direction:ltr;text-align:left;overflow:auto;background:var(--code);color:#dff7ed;border-radius:.5rem;padding:1rem 1.15rem;border-inline-start:5px solid #3db58a;line-height:1.58}pre code{background:transparent;color:inherit;border:0;padding:0;unicode-bidi:normal}table{border-collapse:separate;border-spacing:0;width:100%;display:block;overflow-x:auto;margin:1.15rem 0 1.8rem;font-size:.88rem;border:1px solid var(--line);border-radius:.35rem}thead{background:#e7f0eb}th,td{border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);padding:.64rem .72rem;vertical-align:top;min-width:8.5rem}th:last-child,td:last-child{border-inline-end:0}tr:last-child td{border-bottom:0}th{text-align:right;color:#173d31;font-weight:800}tr:nth-child(even) td{background:#faf9f5}td:first-child code{white-space:nowrap;color:#7c3b28;background:#f8eee9;border-color:#ead8cf;font-weight:700}.footer{max-width:1580px;margin:auto;padding:0 2rem 3rem;color:var(--muted);font-size:.82rem}.top{position:fixed;left:1rem;bottom:1rem;width:2.8rem;height:2.8rem;border-radius:50%;border:0;background:var(--forest);color:white;box-shadow:0 8px 25px rgba(0,0,0,.2);cursor:pointer;font-size:1.1rem}
+@media(max-width:1080px){.layout{grid-template-columns:1fr}.side{grid-column:1;grid-row:1}.tocbox{position:static;max-height:25rem}.content{grid-row:2}.toc>ul{columns:2;column-gap:1.4rem}.toc li{break-inside:avoid}}
+@media(max-width:650px){body{font-size:15px}.hero{padding:2.3rem 1rem 1.8rem}.hero h1{font-size:2.5rem}.layout{padding:1rem .55rem 4rem;gap:1rem}.content{padding:1rem;border-inline:0}.toc>ul{columns:1}h2{font-size:1.43rem;margin-top:2.7rem}th,td{min-width:10rem}.top{display:none}.hero:after{display:none}}
+@media print{body{background:#fff;font-size:9.5pt}.progress,.side,.top,.skip,.actions,.pills,.hero .lead,.hero .eyebrow,.hero:after{display:none}.hero{background:#fff;color:#000;border:0;padding:0 0 1rem}.hero h1{font-size:24pt}.hero h1 span{color:#333}.layout{display:block;max-width:none;padding:0}.content{border:0;box-shadow:none;padding:0}h2{break-before:page;margin-top:0}h3{break-after:avoid}table,pre,blockquote{break-inside:avoid}table{font-size:8.2pt}pre{white-space:pre-wrap;background:#f4f4f4;color:#000;border:1px solid #aaa}a{color:#000;text-decoration:none}.footer{padding:1rem 0}}
+</style></head><body><div id="progress" class="progress" aria-hidden="true"></div><a class="skip" href="#prd">تجاوز الفهرس إلى الوثيقة</a><header class="hero"><div class="hero-inner"><p class="eyebrow">PRODUCT REQUIREMENTS DOCUMENT · الإصدار 0.1</p><h1>وثيقة متطلبات نَسَق <span>NASAQ AI · PRD</span></h1><p class="lead">تحويل الرؤية إلى نطاق وإصدارات ومتطلبات قابلة للتتبّع والاختبار — من Frontend prototype شامل إلى Backend MVP مضبوط.</p><div class="pills"><span class="pill">49 قسمًا</span><span class="pill">229 معرف متطلب وقرار</span><span class="pill">Frontend → Alpha → Beta</span><span class="pill">Arabic-first · RTL/LTR</span></div><div class="actions"><button id="print" type="button">طباعة / حفظ PDF</button><a href="PRD.md">نسخة Markdown</a></div></div></header><div class="layout"><aside class="side"><nav class="tocbox" aria-label="فهرس الوثيقة"><strong>فهرس PRD</strong><span class="hint">انقر للانتقال إلى القسم</span><div class="toc">
+<ul>
+<li><a href="#1">1. غرض هذه الوثيقة</a></li>
+<li><a href="#2">2. الملخص التنفيذي</a></li>
+<li><a href="#3">3. المشكلة والسياق</a></li>
+<li><a href="#4">4. الرؤية والوعد والتموضع</a></li>
+<li><a href="#5">5. أهداف المنتج</a></li>
+<li><a href="#6">6. ما ليس هدفًا في المرحلة الحالية</a></li>
+<li><a href="#7">7. المستخدمون المستهدفون</a></li>
+<li><a href="#8-jobs-to-be-done">8. Jobs To Be Done</a></li>
+<li><a href="#9">9. مبادئ المنتج الحاكمة</a></li>
+<li><a href="#10">10. قاموس المنتج</a></li>
+<li><a href="#11_1">11. مراحل المنتج ونطاق الإصدارات</a></li>
+<li><a href="#12_1">12. البنية المعلوماتية والأسطح</a></li>
+<li><a href="#13_1">13. المتطلبات المشتركة للمنتج</a></li>
+<li><a href="#14">14. التسجيل والتهيئة ومساحات العمل</a></li>
+<li><a href="#15-home-command-center">15. Home / Command Center</a></li>
+<li><a href="#16">16. المشاريع والسياق</a></li>
+<li><a href="#17-nasaq-chat">17. Nasaq Chat</a></li>
+<li><a href="#18-nasaq-agents">18. Nasaq Agents</a></li>
+<li><a href="#19-nasaq-flow">19. Nasaq Flow</a></li>
+<li><a href="#20-nasaq-knowledge">20. Nasaq Knowledge</a></li>
+<li><a href="#21-models-providers-routing">21. Models, Providers &amp; Routing</a></li>
+<li><a href="#22-byok">22. BYOK وإدارة بيانات الاعتماد</a></li>
+<li><a href="#23-usage-credits-billing">23. Usage, Credits &amp; Billing</a></li>
+<li><a href="#24-tools-skills">24. Tools &amp; Skills</a></li>
+<li><a href="#25-team-roles-administration">25. Team, Roles &amp; Administration</a></li>
+<li><a href="#26">26. الإشعارات والموافقات</a></li>
+<li><a href="#27">27. الصفحة التسويقية والتسعير العام</a></li>
+<li><a href="#28">28. الرحلات الحرجة</a></li>
+<li><a href="#29">29. حالات النظام القياسية</a></li>
+<li><a href="#30">30. متطلبات المحتوى واللغة</a></li>
+<li><a href="#31_1">31. الوصولية والتصميم المتجاوب</a></li>
+<li><a href="#32_1">32. متطلبات الأداء والموثوقية</a></li>
+<li><a href="#33_1">33. الأمان والخصوصية والثقة</a></li>
+<li><a href="#34-ai">34. جودة AI والتقييم</a></li>
+<li><a href="#35">35. التحليلات ومؤشرات النجاح</a></li>
+<li><a href="#36-frontend-prototype">36. متطلبات الـFrontend Prototype</a></li>
+<li><a href="#37-prototype">37. معايير قبول الـPrototype</a></li>
+<li><a href="#38-backend-mvp-private-alpha">38. معايير قبول Backend MVP / Private Alpha</a></li>
+<li><a href="#39">39. التوافق والمنصات</a></li>
+<li><a href="#40">40. الاعتماديات</a></li>
+<li><a href="#41_1">41. المخاطر وخطط التقليل</a></li>
+<li><a href="#42_1">42. القرارات المفتوحة</a></li>
+<li><a href="#43_1">43. خطة التحقق البحثي</a></li>
+<li><a href="#44-definition-of-ready">44. Definition of Ready للتطوير</a></li>
+<li><a href="#45-definition-of-done">45. Definition of Done لكل ميزة</a></li>
+<li><a href="#46">46. ترتيب التنفيذ المقترح</a></li>
+<li><a href="#47">47. مصفوفة التتبع العليا</a></li>
+<li><a href="#48">48. الاعتماد</a></li>
+<li><a href="#49">49. الخلاصة التنفيذية</a></li>
+</ul>
+</div>
+</nav></aside><main id="prd" class="content"><table>
+<thead>
+<tr>
+<th>الحقل</th>
+<th>القيمة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>المنتج</td>
+<td><strong>نَسَق AI — Nasaq AI</strong></td>
+</tr>
+<tr>
+<td>الإصدار</td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td>الحالة</td>
+<td>مسودة تنفيذية للمراجعة والاعتماد</td>
+</tr>
+<tr>
+<td>آخر تحديث</td>
+<td>11 سبتمبر 2026</td>
+</tr>
+<tr>
+<td>الجمهور الأول</td>
+<td>المحترفون وفرق العمل العربية الصغيرة</td>
+</tr>
+<tr>
+<td>اتجاه المنتج</td>
+<td>عربي أولًا، مع إنجليزية كاملة وRTL/LTR أصليين</td>
+</tr>
+<tr>
+<td>استراتيجية البناء</td>
+<td>Frontend prototype شامل، ثم Backend MVP تدريجي</td>
+</tr>
+<tr>
+<td>نموذج الوصول</td>
+<td>مفاتيح المستخدم <code>BYOK</code> + رصيد منصة مُدار</td>
+</tr>
+<tr>
+<td>الوثيقة المرجعية</td>
+<td><a href="../00-vision/nasaq-ai-product-vision-ar.md">Product Vision + UX Blueprint + Technical Direction</a></td>
+</tr>
+<tr>
+<td>المرجع البحثي</td>
+<td><a href="../../../../research/agent-skills-web-uiux/report/current/agent-skills-web-uiux-report-ar.md">تقرير Agent Skills وUI/UX والويب</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>حالة الاسم:</strong> «نَسَق AI» اسم عمل حتى انتهاء فحص النطاق والعلامة التجارية.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. غرض هذه الوثيقة</h2>
+<p>تحوّل هذه الوثيقة رؤية نَسَق إلى متطلبات منتج قابلة للتصميم والتنفيذ والاختبار. وهي تجيب عن:</p>
+<ul>
+<li>ما المشكلة التي نحلها، ولمن؟</li>
+<li>ما الذي يدخل في المنتج وما الذي يُؤجل؟</li>
+<li>ما السلوك المتوقع من كل وحدة؟</li>
+<li>ما الفرق بين النموذج التفاعلي والمنتج المتصل فعليًا؟</li>
+<li>كيف نعرف أن التجربة أو الإصدار جاهز؟</li>
+<li>ما القياسات والضوابط المطلوبة للثقة والأمان والتكلفة؟</li>
+</ul>
+<h3 id="11">1.1 ما لا تفعله هذه الوثيقة</h3>
+<p>لا تحدد هذه الوثيقة التفاصيل النهائية للألوان والمكونات، ولا مخططات قاعدة البيانات التفصيلية، ولا عقود API النهائية. توضع هذه في:</p>
+<ul>
+<li><code>docs/02-design/DESIGN.md</code></li>
+<li><code>docs/03-architecture/FRONTEND-ARCHITECTURE.md</code></li>
+<li><code>docs/03-architecture/CONTRACTS.md</code></li>
+<li><code>docs/03-architecture/PERMISSIONS.md</code></li>
+<li><code>docs/03-architecture/SECURITY.md</code></li>
+</ul>
+<h3 id="12">1.2 دلالات الأولوية</h3>
+<table>
+<thead>
+<tr>
+<th>المصطلح</th>
+<th>المعنى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MUST / P0</strong></td>
+<td>شرط إطلاق للإصدار المحدد؛ لا يُعد الإصدار مكتملًا بدونه</td>
+</tr>
+<tr>
+<td><strong>SHOULD / P1</strong></td>
+<td>مهم جدًا ويأتي مباشرة بعد P0؛ يمكن تأجيله بقرار موثق</td>
+</tr>
+<tr>
+<td><strong>COULD / P2</strong></td>
+<td>تحسين لاحق لا يمنع الإطلاق</td>
+</tr>
+<tr>
+<td><strong>لن يُنفذ الآن</strong></td>
+<td>خارج النطاق الحالي عمدًا</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13">1.3 مبدأ التتبّع</h3>
+<p>لكل متطلب معرف ثابت مثل <code>CHAT-004</code>. يجب استخدام هذه المعرفات في التصميم، عقود البيانات، قصص التطوير، الاختبارات، وتقارير التسليم.</p>
+<hr />
+<h2 id="2">2. الملخص التنفيذي</h2>
+<p>نَسَق AI مساحة عمل عربية للمحترفين والفرق الصغيرة تجمع:</p>
+<ol>
+<li><strong>محادثة متعددة النماذج</strong> مع اختيار ومقارنة وتوجيه شفاف.</li>
+<li><strong>مشاريع ذات سياق موحد</strong> تضم المحادثات والملفات والمعرفة والوكلاء والتدفقات.</li>
+<li><strong>وكلاء ينفذون مهامًا</strong> عبر خطة وأدوات وموافقات ومخرجات قابلة للتسليم.</li>
+<li><strong>تدفقات مرئية</strong> تحول العمل المتكرر إلى عملية قابلة لإعادة التشغيل والمراقبة.</li>
+<li><strong>معرفة ومصادر</strong> مرتبطة بالمشروع مع إسناد واضح.</li>
+<li><strong>إدارة نماذج وتكلفة</strong> عبر BYOK أو رصيد المنصة مع سجل استهلاك قابل للمراجعة.</li>
+</ol>
+<p>المنتج ليس واجهة تغليف بسيطة لعدة APIs. القيمة الجوهرية هي استمرار السياق والانتقال الطبيعي:</p>
+<blockquote>
+<p><strong>Chat → Agent → Flow</strong></p>
+</blockquote>
+<p>يستطيع المستخدم أن يبدأ بسؤال، ثم يفوض مهمة مركبة لوكيل، ثم يحول الطريقة الناجحة إلى تدفق متكرر للفريق.</p>
+<hr />
+<h2 id="3">3. المشكلة والسياق</h2>
+<h3 id="31">3.1 مشكلات المستخدم الحالية</h3>
+<p>المحترف أو الفريق الصغير الذي يستخدم أدوات AI متعددة يواجه عادةً:</p>
+<ul>
+<li>حسابات وواجهات وسجلات منفصلة لكل مزود.</li>
+<li>تكرار رفع الملفات وشرح السياق من جديد.</li>
+<li>صعوبة معرفة النموذج الأنسب لمهمة معينة.</li>
+<li>عدم وضوح التكلفة قبل التنفيذ وبعده.</li>
+<li>عدم وجود انتقال من «إجابة» إلى «مهمة منفذة» ثم إلى «عملية متكررة».</li>
+<li>وكلاء يعملون كصندوق أسود دون خطة واضحة أو حدود أو إيصالات تنفيذ.</li>
+<li>أتمتة مرئية منفصلة عن المحادثة والمعرفة والنماذج.</li>
+<li>دعم عربي وRTL سطحي أو ملحق متأخرًا.</li>
+<li>صعوبة مشاركة العمل والحوكمة داخل فريق صغير دون أدوات enterprise ثقيلة.</li>
+</ul>
+<h3 id="32">3.2 الفرصة</h3>
+<p>يمكن لنَسَق أن يصبح طبقة العمل اليومية التي توحد النموذج والسياق والتنفيذ والتكلفة، مع تجربة عربية أصلية وضوابط ثقة ظاهرة للمستخدم بدل إخفائها في الإعدادات أو الوثائق القانونية.</p>
+<h3 id="33">3.3 فرضية المنتج</h3>
+<p>إذا وفّرنا للمحترفين والفرق الصغيرة مساحة واحدة تسمح لهم باختيار أو مقارنة النماذج، حفظ سياق المشروع، تفويض المهام لوكلاء مضبوطين، وتحويل النتائج الناجحة إلى تدفقات قابلة للتكرار، فسوف يقل تشتت الأدوات ووقت إعادة الشرح، ويزداد عدد النتائج القابلة للتسليم والعمليات المتكررة بثقة وتكلفة أوضح.</p>
+<hr />
+<h2 id="4">4. الرؤية والوعد والتموضع</h2>
+<h3 id="41">4.1 الرؤية</h3>
+<p>أن تصبح نَسَق مساحة العمل العربية الموثوقة التي تنظم العلاقة بين الإنسان والنماذج والوكلاء والأتمتة.</p>
+<h3 id="42">4.2 الوعد</h3>
+<blockquote>
+<p><strong>كل نماذجك ووكلائك وتدفقاتك، في مساحة عمل واحدة.</strong></p>
+</blockquote>
+<h3 id="43">4.3 التموضع</h3>
+<p>نَسَق هو <strong>AI Work Operating Layer</strong> للمحترفين والفرق الصغيرة، وليس:</p>
+<ul>
+<li>مجرد دردشة متعددة النماذج.</li>
+<li>مجرد منشئ وكلاء.</li>
+<li>مجرد لوحة أتمتة.</li>
+<li>مجرد سوق prompts أو skills.</li>
+</ul>
+<h3 id="44">4.4 عوامل التميز المطلوبة</h3>
+<ol>
+<li>سياق مشروع مشترك بين Chat وAgents وFlow وKnowledge.</li>
+<li>انتقال مباشر من المحادثة إلى الوكيل، ومن التشغيل الناجح إلى التدفق.</li>
+<li>مقارنة نماذج قابلة للفعل، لا عرض إجابات جنبًا إلى جنب فقط.</li>
+<li>توجيه شفاف يوضح النموذج والمزود ومصدر الدفع والسبب والتكلفة.</li>
+<li>موافقات وصلاحيات وحدود وإيصالات تنفيذ للوكلاء.</li>
+<li>تجربة عربية أصلية مع إنجليزية مكافئة.</li>
+<li>تكلفة مفهومة على مستوى الرسالة والتشغيل والمشروع والفريق.</li>
+</ol>
+<hr />
+<h2 id="5">5. أهداف المنتج</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الهدف</th>
+<th>القياس الأولي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GOAL-01</code></td>
+<td>إيصال المستخدم إلى قيمة أولى بسرعة</td>
+<td>إكمال أول نتيجة مفيدة خلال خمس دقائق في اختبارات الاستخدام</td>
+</tr>
+<tr>
+<td><code>GOAL-02</code></td>
+<td>تقليل تشتت النماذج والسياق</td>
+<td>نسبة المستخدمين الذين يستخدمون مشروعًا واحدًا عبر وحدتين أو أكثر</td>
+</tr>
+<tr>
+<td><code>GOAL-03</code></td>
+<td>جعل اختيار النموذج مفهومًا</td>
+<td>قدرة المستخدم على شرح لماذا اختار نموذجًا أو وضع توجيه معينًا</td>
+</tr>
+<tr>
+<td><code>GOAL-04</code></td>
+<td>تحويل الإجابات إلى نتائج قابلة للتسليم</td>
+<td>عدد المخرجات المحفوظة أو المصدرة أو المشتركة لكل مستخدم نشط</td>
+</tr>
+<tr>
+<td><code>GOAL-05</code></td>
+<td>تمكين تنفيذ آمن للمهام المركبة</td>
+<td>نسبة تشغيلات الوكلاء المكتملة ضمن الميزانية ودون تجاوز صلاحيات</td>
+</tr>
+<tr>
+<td><code>GOAL-06</code></td>
+<td>تحويل العمل الناجح إلى عملية متكررة</td>
+<td>نسبة التشغيلات التي تتحول إلى Agent preset أو Flow</td>
+</tr>
+<tr>
+<td><code>GOAL-07</code></td>
+<td>بناء ثقة بالتكلفة والبيانات والتنفيذ</td>
+<td>وضوح التكلفة والمزود والموافقات في اختبارات الفهم؛ وانعدام التسرب بين المستأجرين</td>
+</tr>
+<tr>
+<td><code>GOAL-08</code></td>
+<td>تقديم تجربة عربية من الدرجة الأولى</td>
+<td>تكافؤ وظيفي كامل بين العربية والإنجليزية وعدم وجود أعطال RTL حرجة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. ما ليس هدفًا في المرحلة الحالية</h2>
+<p>العناصر التالية خارج نطاق الـPrototype والـBackend MVP، ولا تُضاف دون قرار تغيير نطاق:</p>
+<ol>
+<li>وكيل استخدام حاسوب عام وغير محدود.</li>
+<li>تشغيل أوامر shell أو كود غير موثوق خارج sandbox مضبوط.</li>
+<li>multi-agent swarms مستقلة طويلة العمر.</li>
+<li>سوق عام للوكلاء والمهارات والتدفقات.</li>
+<li>دعم عشرات المزودين عند الإطلاق الأول.</li>
+<li>استضافة داخلية <code>on-premise</code> أو بنية enterprise كاملة.</li>
+<li>SSO/SAML وSCIM وسياسات مؤسسات متقدمة.</li>
+<li>تطبيقات هاتف أصلية؛ الويب المتجاوب أولًا.</li>
+<li>منافسة أدوات IDE والوكلاء البرمجية الكاملة في الإصدار الأول.</li>
+<li>إنشاء أو تحرير فيديو وموسيقى كمسار منتج أساسي.</li>
+<li>منح Flow قدرة كتابة خارجية خطرة دون موافقة وسياسة واضحة.</li>
+<li>وعود قانونية أو تنظيمية غير مثبتة مثل «امتثال كامل» قبل التدقيق الرسمي.</li>
+</ol>
+<hr />
+<h2 id="7">7. المستخدمون المستهدفون</h2>
+<h3 id="71-a">7.1 الشخصية الأساسية A — المحترف المعرفي المستقل</h3>
+<p><strong>أمثلة:</strong> باحث، مستشار، محلل، مسوّق، كاتب، مدير منتج، مصمم، رائد أعمال.</p>
+<p><strong>احتياجاته:</strong></p>
+<ul>
+<li>الحصول على إجابة أو مسودة أو تحليل بسرعة.</li>
+<li>مقارنة النتائج عندما تكون الجودة أو الدقة مهمة.</li>
+<li>حفظ الملفات والسياق حسب العميل أو المشروع.</li>
+<li>تفويض بحث أو تحليل طويل دون متابعة كل خطوة.</li>
+<li>معرفة التكلفة وعدم الاشتراك في عدة خدمات منفصلة.</li>
+</ul>
+<p><strong>أسباب الفشل المحتملة:</strong> واجهة معقدة، مصطلحات تقنية مفرطة، نتائج بلا مصادر، تكلفة غامضة، أو وكيل يحتاج مراقبة مستمرة.</p>
+<h3 id="72-b">7.2 الشخصية الأساسية B — قائد فريق عربي صغير</h3>
+<p><strong>أمثلة:</strong> قائد فريق محتوى، وكالة، استوديو تصميم، فريق عمليات، شركة ناشئة من 3–20 عضوًا.</p>
+<p><strong>احتياجاته:</strong></p>
+<ul>
+<li>مشاركة سياق وملفات وأدوات دون مشاركة مفاتيح سرية.</li>
+<li>توحيد طريقة تنفيذ المهام المتكررة.</li>
+<li>معرفة من شغّل ماذا وكم كلف.</li>
+<li>وضع ميزانيات وموافقات وصلاحيات بسيطة.</li>
+<li>تحويل أفضل طريقة عمل إلى قالب وكيل أو Flow للفريق.</li>
+</ul>
+<p><strong>أسباب الفشل المحتملة:</strong> صلاحيات ضعيفة، خلط مساحات العملاء، عدم وجود سجل تدقيق، أو صعوبة إدارة التكلفة.</p>
+<h3 id="73-c">7.3 الشخصية الثانوية C — المنشئ التقني</h3>
+<p><strong>أمثلة:</strong> مطور full-stack، مهندس أتمتة، مشغل تقني داخل فريق صغير.</p>
+<p><strong>احتياجاته:</strong></p>
+<ul>
+<li>BYOK، اختيار المزود، routing واضح، webhooks وAPIs.</li>
+<li>بناء وكلاء وتدفقات قابلة للنسخ والإصدار والاختبار.</li>
+<li>رؤية logs وpayloads المنقحة ونتائج كل خطوة.</li>
+<li>عقود واضحة وقابلية تصدير لاحقة.</li>
+</ul>
+<h3 id="74">7.4 غير المستهدف أولًا</h3>
+<ul>
+<li>المؤسسات التي تشترط on-premise أو سيادة بيانات خاصة قبل التجربة.</li>
+<li>المستخدم الذي يريد chatbot مجانيًا بسيطًا فقط.</li>
+<li>المستخدم الذي يريد وكيلاً مستقلاً بصلاحيات حاسوب كاملة دون إشراف.</li>
+</ul>
+<hr />
+<h2 id="8-jobs-to-be-done">8. Jobs To Be Done</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>عندما…</th>
+<th>أريد أن…</th>
+<th>حتى أستطيع…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JTBD-01</code></td>
+<td>أبدأ مهمة جديدة</td>
+<td>اختيار نموذج مناسب دون حفظ خصائص كل نموذج</td>
+<td>الوصول إلى نتيجة جيدة بسرعة وتكلفة مفهومة</td>
+</tr>
+<tr>
+<td><code>JTBD-02</code></td>
+<td>تكون الإجابة حساسة أو عالية القيمة</td>
+<td>مقارنة أكثر من نموذج على المدخل نفسه</td>
+<td>اتخاذ قرار قائم على اختلافات واضحة</td>
+</tr>
+<tr>
+<td><code>JTBD-03</code></td>
+<td>أعمل مع ملفات ومعلومات متكررة</td>
+<td>ربطها بمشروع ومعرفة مشتركة</td>
+<td>عدم إعادة شرح السياق ورفعه كل مرة</td>
+</tr>
+<tr>
+<td><code>JTBD-04</code></td>
+<td>تتطلب المهمة عدة خطوات</td>
+<td>تفويضها لوكيل بخطة وحدود</td>
+<td>الحصول على نتيجة دون فقد السيطرة</td>
+</tr>
+<tr>
+<td><code>JTBD-05</code></td>
+<td>يحتاج الوكيل إلى إجراء خارجي</td>
+<td>مراجعة الإجراء والموافقة عليه</td>
+<td>منع أثر غير مقصود أو تكلفة غير متوقعة</td>
+</tr>
+<tr>
+<td><code>JTBD-06</code></td>
+<td>تنجح طريقة عمل معيّنة</td>
+<td>حفظها كوكيل أو تحويلها إلى Flow</td>
+<td>إعادة استخدامها ومشاركتها مع الفريق</td>
+</tr>
+<tr>
+<td><code>JTBD-07</code></td>
+<td>أستخدم مفتاحي أو رصيد المنصة</td>
+<td>معرفة مصدر الدفع والتكلفة الفعلية</td>
+<td>التحكم في الإنفاق وتجنب المفاجآت</td>
+</tr>
+<tr>
+<td><code>JTBD-08</code></td>
+<td>أدير فريقًا</td>
+<td>تحديد الأدوار والميزانيات ومراجعة السجل</td>
+<td>توسيع الاستخدام بثقة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9">9. مبادئ المنتج الحاكمة</h2>
+<ol>
+<li><strong>المهمة قبل النموذج:</strong> يبدأ المنتج مما يريد المستخدم إنجازه، لا من قائمة مزودين.</li>
+<li><strong>الشفافية قبل الذكاء الخفي:</strong> نعرض النموذج والمزود ومصدر الدفع والتكلفة وسبب التوجيه.</li>
+<li><strong>الخطة ليست Chain of Thought:</strong> نعرض خطوات عملية وقرارات وأدلة، لا سردًا داخليًا مزعومًا.</li>
+<li><strong>لا أثر خارجي بلا سياسة:</strong> القراءة والكتابة والحذف والشراء والنشر مستويات مختلفة.</li>
+<li><strong>الموافقة في اللحظة المناسبة:</strong> لا نغرق المستخدم بتأكيدات منخفضة المخاطر، ولا نخفي التأثيرات العالية.</li>
+<li><strong>السياق أصل مشترك:</strong> الملفات والمعرفة والقرارات تتبع المشروع، لا نافذة المحادثة فقط.</li>
+<li><strong>التكلفة جزء من UX:</strong> تقدير قبل التشغيل، تحديث أثناءه، وتسوية فعلية بعده.</li>
+<li><strong>العربية ليست ترجمة:</strong> IA والمصطلحات والتخطيط والاختبار تبدأ بالعربية.</li>
+<li><strong>النتائج قابلة للتسليم:</strong> كل تشغيل مهم يجب أن ينتج artifact أو receipt أو قرارًا محفوظًا.</li>
+<li><strong>تدرج التعقيد:</strong> يبدأ المستخدم بمحادثة بسيطة ويكشف النظام القدرات الأعمق عند الحاجة.</li>
+</ol>
+<hr />
+<h2 id="10">10. قاموس المنتج</h2>
+<table>
+<thead>
+<tr>
+<th>المصطلح</th>
+<th>التعريف المعتمد</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مساحة العمل <code>Workspace</code></td>
+<td>حاوية الفريق والأعضاء والمشاريع والمفاتيح والميزانيات والسياسات</td>
+</tr>
+<tr>
+<td>المشروع <code>Project</code></td>
+<td>سياق عمل يجمع المحادثات والملفات والمعرفة والوكلاء والتدفقات</td>
+</tr>
+<tr>
+<td>المحادثة <code>Conversation</code></td>
+<td>سلسلة رسائل ضمن مشروع أو مساحة شخصية</td>
+</tr>
+<tr>
+<td>النموذج <code>Model</code></td>
+<td>نموذج AI قابل للاستدعاء عبر مزود معين وبقدرات وتسعير محددين</td>
+</tr>
+<tr>
+<td>سياسة التوجيه <code>Routing Policy</code></td>
+<td>قواعد اختيار النموذج ومصدر الدفع والتراجع عند الفشل</td>
+</tr>
+<tr>
+<td>الوكيل <code>Agent</code></td>
+<td>تعريف قابل لإعادة الاستخدام يضم هدفًا وتعليمات ونماذج ومعرفة وأدوات وحدودًا</td>
+</tr>
+<tr>
+<td>تشغيل الوكيل <code>Agent Run</code></td>
+<td>تنفيذ محدد لإصدار معين من الوكيل مع خطوات وأحداث وتكلفة ومخرجات</td>
+</tr>
+<tr>
+<td>الأداة <code>Tool</code></td>
+<td>قدرة تنفيذية مثل البحث أو قراءة ملف أو طلب API أو كتابة خارجية</td>
+</tr>
+<tr>
+<td>المهارة <code>Skill</code></td>
+<td>تعليمات أو معرفة إجرائية تساعد الوكيل على أداء نوع عمل معين</td>
+</tr>
+<tr>
+<td>الموافقة <code>Approval</code></td>
+<td>قرار بشري مطلوب قبل إجراء أو تكلفة أو انتقال عالي المخاطر</td>
+</tr>
+<tr>
+<td>المخرج <code>Artifact</code></td>
+<td>ملف أو تقرير أو جدول أو رابط أو نتيجة قابلة للحفظ والمشاركة</td>
+</tr>
+<tr>
+<td>إيصال التنفيذ <code>Receipt</code></td>
+<td>سجل مختصر يوضح ما نُفذ، بأي نموذج وأداة، وبتكلفة ونتيجة وأدلة</td>
+</tr>
+<tr>
+<td>التدفق <code>Flow</code></td>
+<td>رسم موجه من عقد تربط مدخلات ونماذج ووكلاء وشروطًا وأدوات ومخرجات</td>
+</tr>
+<tr>
+<td>تشغيل التدفق <code>Flow Run</code></td>
+<td>تنفيذ نسخة منشورة أو مسودة من Flow على مدخلات معينة</td>
+</tr>
+<tr>
+<td>مصدر المعرفة <code>Knowledge Source</code></td>
+<td>ملف أو URL أو نص مفهرس يمكن استرجاعه مع إسناد</td>
+</tr>
+<tr>
+<td>رصيد المنصة <code>Managed Credits</code></td>
+<td>رصيد يدفع استدعاءات مزودين تديرهم المنصة</td>
+</tr>
+<tr>
+<td>BYOK</td>
+<td>مفتاح API يضيفه المستخدم ويُستخدم وفق نطاق وسياسة واضحة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11_1">11. مراحل المنتج ونطاق الإصدارات</h2>
+<h3 id="111-a-frontend-interactive-prototype">11.1 الإصدار A — Frontend Interactive Prototype</h3>
+<p><strong>الغرض:</strong> اعتماد IA والتجربة والعقود المرئية قبل الاستثمار في الخدمات الخلفية.</p>
+<p><strong>يشمل:</strong></p>
+<ul>
+<li>كل الوحدات الرئيسية قابلة للتنقل والتفاعل.</li>
+<li>بيانات واقعية وهمية وMock API موحد.</li>
+<li>العربية والإنجليزية وRTL/LTR.</li>
+<li>سيناريوهات Chat وCompare وAgent Run وFlow Run كاملة بصريًا.</li>
+<li>حالات loading وempty وerror وsuccess وpermission وquota.</li>
+<li>تصميم متجاوب ووصولية أساسية واختبارات متصفح.</li>
+<li>نماذج شاشات BYOK والفوترة دون قبول أسرار أو مدفوعات حقيقية.</li>
+</ul>
+<p><strong>لا يشمل:</strong></p>
+<ul>
+<li>استدعاء مزود AI حقيقي.</li>
+<li>تخزين مفتاح حقيقي.</li>
+<li>دفع أو تعبئة رصيد حقيقية.</li>
+<li>تنفيذ أداة أو webhook أو بريد أو كتابة خارجية.</li>
+<li>مصادقة production أو فصل مستأجرين فعلي.</li>
+</ul>
+<h3 id="112-b-backend-mvp-private-alpha">11.2 الإصدار B — Backend MVP / Private Alpha</h3>
+<p><strong>الغرض:</strong> تمكين مجموعة صغيرة مدعوة من إنجاز مهام حقيقية بأقل سطح آمن مفيد.</p>
+<p><strong>يشمل P0:</strong></p>
+<ul>
+<li>Auth ومساحات عمل ومشاريع.</li>
+<li>Chat streaming مع ثلاثة مزودين/عائلات نماذج على الأقل، حسب العقود والتوفر.</li>
+<li>اختيار يدوي ومقارنة نموذجين أو ثلاثة.</li>
+<li>رفع ملفات محدود ومعالجة آمنة.</li>
+<li>BYOK + Managed Credits.</li>
+<li>Model registry وusage ledger وbudgets أساسية.</li>
+<li>وكيل بحث واحد مع مصادر وخطة وموافقات ومخرجات.</li>
+<li>سجل تشغيل وإيصالات تنفيذ وإيقاف/إلغاء.</li>
+<li>Flow محدود: تشغيل يدوي، عقد خطية/شرط بسيط، دون كود حر أو دورات.</li>
+<li>Audit log للأحداث الحساسة.</li>
+</ul>
+<h3 id="113-c-private-beta">11.3 الإصدار C — Private Beta</h3>
+<p><strong>يشمل P1:</strong></p>
+<ul>
+<li>Knowledge collections وRAG أوسع.</li>
+<li>وكلاء إضافيون للملفات والتحليل والمحتوى.</li>
+<li>أدوات واتصالات منتقاة.</li>
+<li>Flow versions وwebhooks وschedule وضوابط retry.</li>
+<li>أدوار فريق أدق ومشاركة artifacts.</li>
+<li>تقارير استخدام وفواتير وتنبيهات أكثر نضجًا.</li>
+<li>Smart routing بعد توفر بيانات تقييم وتكلفة كافية.</li>
+</ul>
+<h3 id="114-beta">11.4 ما بعد Beta</h3>
+<ul>
+<li>Marketplace منسق بعد بناء provenance وتوقيع ومراجعة أمان.</li>
+<li>code agent داخل sandbox قوي.</li>
+<li>enterprise controls وSSO وdata residency إضافية.</li>
+<li>API عامة وSDK.</li>
+<li>تطبيق هاتف أصلي إذا أثبت الويب حاجة واضحة.</li>
+</ul>
+<hr />
+<h2 id="12_1">12. البنية المعلوماتية والأسطح</h2>
+<h3 id="121">12.1 الأسطح العامة</h3>
+<ul>
+<li>الصفحة الرئيسية.</li>
+<li>المنتج/الميزات.</li>
+<li>النماذج المدعومة.</li>
+<li>الأسعار.</li>
+<li>الأمان والخصوصية.</li>
+<li>تسجيل الدخول وإنشاء الحساب.</li>
+<li>مركز المساعدة والحالة لاحقًا.</li>
+</ul>
+<h3 id="122">12.2 أسطح التطبيق</h3>
+<ul>
+<li>Home / Command Center.</li>
+<li>Chat.</li>
+<li>Projects.</li>
+<li>Agents.</li>
+<li>Runs &amp; Approvals.</li>
+<li>Flow.</li>
+<li>Knowledge.</li>
+<li>Models.</li>
+<li>Tools &amp; Skills.</li>
+<li>Usage &amp; Billing.</li>
+<li>Team.</li>
+<li>Settings.</li>
+</ul>
+<h3 id="123">12.3 التنقل الأساسي</h3>
+<ul>
+<li>شريط جانبي ثابت على سطح المكتب، قابل للطي.</li>
+<li>شريط علوي للسياق الحالي، البحث/الأوامر، التنبيهات، والملف الشخصي.</li>
+<li>تنقل سفلي مختصر على الهاتف لأكثر المهام استخدامًا.</li>
+<li>يجب أن يبقى اسم مساحة العمل والمشروع الحاليان ظاهرين دون استهلاك مساحة مفرطة.</li>
+<li>Runs وApprovals سطح عابر للوحدات، لأن التشغيل قد يبدأ من Chat أو Agent أو Flow.</li>
+</ul>
+<hr />
+<h2 id="13_1">13. المتطلبات المشتركة للمنتج</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CORE-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كل شاشة أساسية تعمل بالعربية والإنجليزية مع تبديل فوري صحيح للاتجاه؛ لا توجد سلاسل أساسية hard-coded خارج نظام i18n.</td>
+</tr>
+<tr>
+<td><code>CORE-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يغيّر النظام <code>dir</code> على مستوى الوثيقة ويستخدم logical properties؛ تنجح الشاشات الحرجة عند RTL وLTR ونص مختلط.</td>
+</tr>
+<tr>
+<td><code>CORE-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كل إجراء رئيسي يعطي استجابة مرئية خلال 100ms، ولو كانت حالة pending أو optimistic واضحة.</td>
+</tr>
+<tr>
+<td><code>CORE-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>لكل وحدة حالات فارغة وتحميل وخطأ ونجاح وصلاحية ناقصة وحصة منتهية حيث تنطبق.</td>
+</tr>
+<tr>
+<td><code>CORE-005</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>لا يوجد زر أساسي ميت؛ كل control يؤدي إلى انتقال أو تغيير حالة أو dialog أو شرح «غير متاح في النسخة التجريبية».</td>
+</tr>
+<tr>
+<td><code>CORE-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يحتفظ الـprototype بحالة الجلسة التوضيحية محليًا ويمكن إعادة ضبط بيانات العرض من الإعدادات.</td>
+</tr>
+<tr>
+<td><code>CORE-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>كل كيان وطلب حساس مقيد بـworkspace ويُتحقق من الصلاحية في الخادم، لا الواجهة فقط.</td>
+</tr>
+<tr>
+<td><code>CORE-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يظهر مصدر الدفع <code>BYOK</code> أو <code>Platform credits</code> قبل التشغيل وفي تفاصيل الاستهلاك بعده.</td>
+</tr>
+<tr>
+<td><code>CORE-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>تعرض حالة المزود والنموذج بوضوح، وتمنع البدء عند عدم التوفر بدل الفشل الصامت.</td>
+</tr>
+<tr>
+<td><code>CORE-010</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>بحث عام يصل إلى المشاريع والمحادثات والوكلاء والتدفقات والمخرجات وفق الصلاحيات.</td>
+</tr>
+<tr>
+<td><code>CORE-011</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>Command palette للتنقل وبدء Chat أو Agent أو Flow من لوحة المفاتيح.</td>
+</tr>
+<tr>
+<td><code>CORE-012</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>كل حذف أو نشر أو إجراء خارجي عالي الأثر يتطلب تأكيدًا مناسبًا ويسجل في audit log.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14">14. التسجيل والتهيئة ومساحات العمل</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ONB-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يقدم onboarding قصيرًا يحدد اللغة، نوع الاستخدام، الدور، وطريقة الوصول للنماذج دون إجبار المستخدم على إعداد كل شيء.</td>
+</tr>
+<tr>
+<td><code>ONB-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن للمستخدم اختيار «ابدأ برصيد تجريبي» أو «سأضيف مفاتيحي لاحقًا» في سيناريو العرض.</td>
+</tr>
+<tr>
+<td><code>ONB-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>ينتهي onboarding إلى أول Chat أو قالب مشروع، لا إلى صفحة إعدادات فارغة.</td>
+</tr>
+<tr>
+<td><code>ONB-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يدعم إنشاء حساب وتسجيل دخول واستعادة وصول بطريقة آمنة، مع تحقق بريد عند الحاجة.</td>
+</tr>
+<tr>
+<td><code>ONB-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>ينشئ المستخدم مساحة شخصية أو فريقًا، ويستطيع التبديل بين المساحات التي يملك حق الوصول إليها.</td>
+</tr>
+<tr>
+<td><code>ONB-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>دعوة عضو بالبريد لها صلاحية ومدة انتهاء وحالة pending/accepted/revoked.</td>
+</tr>
+<tr>
+<td><code>ONB-007</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>يقترح onboarding قالبًا حسب الدور: بحث، محتوى، عمليات، تحليل، أو تطوير.</td>
+</tr>
+<tr>
+<td><code>ONB-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا يطلب النظام مفتاح API داخل onboarding قبل شرح مكان تخزينه ونطاق استخدامه وطريقة حذفه.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-home-command-center">15. Home / Command Center</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HOME-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض الصفحة إجراءات البدء الرئيسية: Chat جديد، تشغيل وكيل، إنشاء Flow، وفتح مشروع.</td>
+</tr>
+<tr>
+<td><code>HOME-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض الأعمال الحديثة والتشغيلات النشطة والموافقات المعلقة دون تحويل كل عنصر إلى بطاقة متضخمة.</td>
+</tr>
+<tr>
+<td><code>HOME-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يظهر ملخص تكلفة/رصيد مناسب للدور مع رابط إلى التفاصيل.</td>
+</tr>
+<tr>
+<td><code>HOME-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>تتحدث حالات runs والموافقات لحظيًا أو بتحديث مفهوم، ولا تتطلب زيارة وحدة الوكيل لمعرفة ما ينتظر المستخدم.</td>
+</tr>
+<tr>
+<td><code>HOME-005</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>يقترح النظام استكمال عمل سابق أو تحويل تكرار ملحوظ إلى Agent/Flow دون تنفيذ تلقائي.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="16">16. المشاريع والسياق</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PROJ-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يستطيع المستخدم إنشاء مشروع وتسميته واختيار لون/رمز وظيفي وإضافة وصف مختصر.</td>
+</tr>
+<tr>
+<td><code>PROJ-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض صفحة المشروع overview ومحادثاته وملفاته ومعرفته ووكلاءه وتدفقاته وتشغيلاته.</td>
+</tr>
+<tr>
+<td><code>PROJ-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن تثبيت تعليمات المشروع وسياسة نموذج افتراضية ومصدر دفع توضيحي.</td>
+</tr>
+<tr>
+<td><code>PROJ-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>كل محادثة وملف وAgent/Flow يمكن ربطه بالمشروع مع وراثة صلاحيات صحيحة.</td>
+</tr>
+<tr>
+<td><code>PROJ-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يستطيع المستخدم نقل محادثة إلى مشروع أو بدء محادثة من داخل المشروع دون فقد الرسائل.</td>
+</tr>
+<tr>
+<td><code>PROJ-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يدعم المشروع archive/restore؛ الحذف النهائي منفصل ومؤكد وفق سياسة الاحتفاظ.</td>
+</tr>
+<tr>
+<td><code>PROJ-007</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>قوالب مشروع تنشئ بنية أولية من تعليمات ومعرفة ووكلاء وتدفقات دون بيانات مزيفة.</td>
+</tr>
+<tr>
+<td><code>PROJ-008</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>حالات المشروع الفارغ والكثيف والمقيّد الصلاحية ممثلة في fixtures واختبارات الواجهة.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="17-nasaq-chat">17. Nasaq Chat</h2>
+<h3 id="171">17.1 هدف الوحدة</h3>
+<p>تقديم تجربة محادثة مألوفة وسريعة، مع إبراز القيمة الإضافية لنَسَق: اختيار النموذج، المقارنة، سياق المشروع، التكلفة، والتحويل إلى Agent أو Flow.</p>
+<h3 id="172">17.2 المتطلبات</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CHAT-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>بدء محادثة من Home أو Chat أو Project مع composer واضح ودون إعداد إلزامي طويل.</td>
+</tr>
+<tr>
+<td><code>CHAT-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>model picker يعرض الاسم والمزود والقدرات والمدخلات والسرعة/التكلفة النسبية والحالة ومصدر الدفع.</td>
+</tr>
+<tr>
+<td><code>CHAT-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يدعم composer النص والملفات والصور حسب النموذج المختار، ويشرح عدم التوافق قبل الإرسال.</td>
+</tr>
+<tr>
+<td><code>CHAT-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يحاكي streaming وstop وretry وregenerate وcopy وfeedback دون قفز تخطيط مزعج.</td>
+</tr>
+<tr>
+<td><code>CHAT-005</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يستطيع المستخدم تعديل رسالة وإعادة الإرسال في branch واضح دون إخفاء المسار السابق.</td>
+</tr>
+<tr>
+<td><code>CHAT-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض المقارنة إجابة نموذجين أو ثلاثة على المدخل نفسه، جنبًا إلى جنب على desktop وتبويبات/تتابعًا على الهاتف.</td>
+</tr>
+<tr>
+<td><code>CHAT-007</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن اختيار نتيجة مقارنة للمتابعة أو دمج نقاط مختارة في مسودة جديدة مع بيان أنها عملية جديدة.</td>
+</tr>
+<tr>
+<td><code>CHAT-008</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>الرسائل ذات المصادر تعرض citations يمكن فتحها وفهم مصدر الادعاء منها.</td>
+</tr>
+<tr>
+<td><code>CHAT-009</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يظهر تقدير التكلفة قبل الطلب عندما يكون ذا معنى، والتكلفة الفعلية/الوحدات بعد اكتماله في التفاصيل.</td>
+</tr>
+<tr>
+<td><code>CHAT-010</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن تحويل محادثة أو جزء محدد إلى مهمة Agent مع نقل الهدف والمرفقات والسياق ومعاينتها قبل التشغيل.</td>
+</tr>
+<tr>
+<td><code>CHAT-011</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>يمكن حفظ سلسلة ناجحة كقالب prompt أو بداية Flow مع منع تحويل بيانات حساسة دون تنبيه.</td>
+</tr>
+<tr>
+<td><code>CHAT-012</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يدعم streaming حقيقي وإعادة الاتصال وإلغاء الطلب؛ ولا تستمر الفوترة بعد إلغاء مؤكد إلا لما استهلكه المزود فعليًا.</td>
+</tr>
+<tr>
+<td><code>CHAT-013</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يسجل كل response النموذج وإصدار السعر وtokens/units ومصدر الدفع وحالة الاكتمال.</td>
+</tr>
+<tr>
+<td><code>CHAT-014</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا ينتقل تلقائيًا إلى مزود آخر عند الفشل إلا إذا سمحت سياسة fallback بذلك، ويُخبر المستخدم بالتغيير قبل/عند حدوثه.</td>
+</tr>
+<tr>
+<td><code>CHAT-015</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>الملفات تمر بتحقق النوع والحجم والفحص، ولا تُضمّن في prompt لنموذج لا يدعمها دون تحويل موضح.</td>
+</tr>
+<tr>
+<td><code>CHAT-016</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>Smart mode يقترح أو يختار نموذجًا وفق الجودة/السرعة/الكلفة/الخصوصية ويعرض receipt موجزًا للقرار.</td>
+</tr>
+<tr>
+<td><code>CHAT-017</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تظهر حالات context limit وquota وprovider error وcontent restriction وoffline مع recovery action مناسب.</td>
+</tr>
+<tr>
+<td><code>CHAT-018</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>المحادثة الطويلة تستخدم virtualization/تقنيات تمنع انهيار الأداء وتحافظ على الوصول للرسائل والمصادر.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="173">17.3 قواعد المقارنة</h3>
+<ul>
+<li>يجب أن يكون المدخل والسياق الأساسيان متماثلين بين النماذج، ويُظهر النظام أي اختلاف قسري في دعم الملفات أو الأدوات.</li>
+<li>لا تُعلن الواجهة «فائزًا» موضوعيًا دون معيار أو تقييم محدد.</li>
+<li>يستطيع المستخدم تقييم الدقة، الوضوح، الأسلوب، المصادر، والاختيار العام.</li>
+<li>تحسب تكلفة كل إجابة منفصلة.</li>
+</ul>
+<hr />
+<h2 id="18-nasaq-agents">18. Nasaq Agents</h2>
+<h3 id="181">18.1 هدف الوحدة</h3>
+<p>تمكين المستخدم من تفويض مهمة مركبة لوكيل يخطط ويستخدم أدوات ضمن حدود ظاهرة، مع إمكانية التدخل والموافقة والحصول على مخرجات وإيصال تنفيذ.</p>
+<h3 id="182">18.2 المتطلبات</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AGENT-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض المكتبة وكلاء جاهزين حسب المهمة، مع وصف المدخلات والمخرجات والأدوات والمخاطر المتوقعة.</td>
+</tr>
+<tr>
+<td><code>AGENT-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>Agent Builder يعرّف الاسم والهدف والتعليمات وسياسة النموذج والمعرفة والأدوات والحدود والموافقات.</td>
+</tr>
+<tr>
+<td><code>AGENT-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن إنشاء وكيل من الصفر أو من قالب أو من محادثة، مع مراجعة الحقول المستنتجة قبل الحفظ.</td>
+</tr>
+<tr>
+<td><code>AGENT-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>شاشة التشغيل تعرض الهدف والخطة وحالة كل خطوة والزمن والتكلفة والأداة والمخرجات دون عرض chain-of-thought.</td>
+</tr>
+<tr>
+<td><code>AGENT-005</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن pause/cancel/retry في السيناريوهات المناسبة، وتوضح الواجهة الفرق بين الإلغاء وطلب الإيقاف.</td>
+</tr>
+<tr>
+<td><code>AGENT-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>طلب الموافقة يوضح الفعل والهدف والبيانات المتأثرة والتكلفة/المخاطر وخيارات approve/deny/edit.</td>
+</tr>
+<tr>
+<td><code>AGENT-007</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>ينتج التشغيل الناجح artifact واحدًا على الأقل أو خلاصة موثقة، إضافة إلى receipt قابل للفتح.</td>
+</tr>
+<tr>
+<td><code>AGENT-008</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض شاشة run حالات planning/running/waiting for user/waiting for approval/completed/failed/cancelled/expired.</td>
+</tr>
+<tr>
+<td><code>AGENT-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>أول وكيل حقيقي هو Research Agent: يخطط، يبحث ضمن مصادر مسموحة، يجمع citations، وينتج تقريرًا مع حدود الثقة.</td>
+</tr>
+<tr>
+<td><code>AGENT-010</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لكل تشغيل حدود cost/time/steps ويمكن للنظام إيقافه بأمان عند الحد مع حفظ ما تم.</td>
+</tr>
+<tr>
+<td><code>AGENT-011</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>تُصنف الأدوات إلى read وwrite وexternal side effect وdestructive وsecret access، وتطبق سياسة الموافقة.</td>
+</tr>
+<tr>
+<td><code>AGENT-012</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>كل tool call له معرف idempotency حيث يلزم، input منقح، نتيجة، توقيت وحالة، مع حجب الأسرار من السجل.</td>
+</tr>
+<tr>
+<td><code>AGENT-013</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يمكن للوكيل طرح سؤال توضيحي والتوقف بدل اختلاق قرار أو توسيع الصلاحية.</td>
+</tr>
+<tr>
+<td><code>AGENT-014</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>إصدار Agent definition المستخدم في run ثابت وقابل للمراجعة حتى إذا عدّل الوكيل لاحقًا.</td>
+</tr>
+<tr>
+<td><code>AGENT-015</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>يدعم clone/version/compare بين إصدارات الوكيل واسترجاع إصدار سابق.</td>
+</tr>
+<tr>
+<td><code>AGENT-016</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>يمكن جدولة وكيل أو استدعائه من Flow بعد وجود ضوابط durability وbudget وapproval.</td>
+</tr>
+<tr>
+<td><code>AGENT-017</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>لا توحي محاكاة الـprototype بأن أداة حقيقية نُفذت؛ تحمل التشغيلات الوهمية علامة Demo واضحة غير مزعجة.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="183-alpha">18.3 قيود الوكلاء في Alpha</h3>
+<ul>
+<li>لا browser/computer use عام.</li>
+<li>لا shell غير مقيد.</li>
+<li>لا وصول افتراضي إلى أسرار المستخدم أو كل ملفات المشروع.</li>
+<li>لا نشر أو حذف أو شراء تلقائي.</li>
+<li>لا execution غير محدود أو loop بلا سقف.</li>
+<li>لا تعامل محتوى الويب أو الملف كتعليمات نظام موثوقة.</li>
+</ul>
+<hr />
+<h2 id="19-nasaq-flow">19. Nasaq Flow</h2>
+<h3 id="191">19.1 هدف الوحدة</h3>
+<p>تحويل الخطوات المتكررة إلى تدفق مرئي مفهوم، قابل للاختبار والمراقبة، ويعيد استخدام النماذج والوكلاء والمعرفة والأدوات نفسها.</p>
+<h3 id="192">19.2 أنواع العقد المستهدفة</h3>
+<ul>
+<li>Trigger / Start.</li>
+<li>Input.</li>
+<li>Prompt / Model.</li>
+<li>Agent.</li>
+<li>Knowledge retrieve.</li>
+<li>Condition.</li>
+<li>Transform محدود وآمن.</li>
+<li>Tool / API connector.</li>
+<li>Human approval.</li>
+<li>Output / Artifact.</li>
+</ul>
+<h3 id="193">19.3 المتطلبات</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FLOW-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يستطيع المستخدم إنشاء Flow فارغ أو من قالب وإضافة عقد وربطها وتحريكها وحذفها.</td>
+</tr>
+<tr>
+<td><code>FLOW-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كل عقدة تعرض المدخلات والمخرجات والحالة والتكوين المطلوب، وتمنع النشر عند خطأ عقدي واضح.</td>
+</tr>
+<tr>
+<td><code>FLOW-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يوجد inspector جانبي للتحرير دون إغراق canvas بنماذج كاملة.</td>
+</tr>
+<tr>
+<td><code>FLOW-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن تشغيل Mock run ومشاهدة المسار النشط ونتيجة كل عقدة والتكلفة والمدة.</td>
+</tr>
+<tr>
+<td><code>FLOW-005</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يدعم canvas zoom/pan/fit/minimap واختصارات أساسية ووصولًا بديلًا عبر لوحة المفاتيح/قائمة بنيوية.</td>
+</tr>
+<tr>
+<td><code>FLOW-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>على الهاتف يُعرض Flow كقائمة خطوات قابلة للفحص والمتابعة والموافقة؛ التحرير الكامل ليس شرطًا.</td>
+</tr>
+<tr>
+<td><code>FLOW-007</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن إنشاء Flow من تشغيل Agent ناجح مع معاينة العقد المقترحة قبل الحفظ.</td>
+</tr>
+<tr>
+<td><code>FLOW-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>النطاق الحقيقي الأول يدعم start يدويًا، Model، Research Agent، Condition بسيط، Approval وOutput.</td>
+</tr>
+<tr>
+<td><code>FLOW-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا يسمح الإصدار الأول بدورات graph أو كود JavaScript حر أو connector غير مراجع.</td>
+</tr>
+<tr>
+<td><code>FLOW-010</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لكل run نسخة Flow ثابتة ومدخلات وحالات عقد وأحداث وتكلفة وإمكانية cancel.</td>
+</tr>
+<tr>
+<td><code>FLOW-011</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>retry لا يكرر side effect دون idempotency أو موافقة جديدة عند الحاجة.</td>
+</tr>
+<tr>
+<td><code>FLOW-012</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>draft وpublished منفصلان؛ تعديل المسودة لا يغيّر تشغيلات النسخة المنشورة.</td>
+</tr>
+<tr>
+<td><code>FLOW-013</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>webhooks وschedule مع secrets منفصلة وتوقيع وreplay protection ومراقبة الفشل.</td>
+</tr>
+<tr>
+<td><code>FLOW-014</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>test node بمدخلات fixture مع منع تنفيذ write tool حقيقي افتراضيًا.</td>
+</tr>
+<tr>
+<td><code>FLOW-015</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>run history وfilter وreplay من خطوة آمنة مع توضيح الأجزاء التي ستعاد فوترتها.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-nasaq-knowledge">20. Nasaq Knowledge</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KNOW-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يمكن عرض إضافة ملف وURL ونص وإنشاء collection وربطها بمشروع أو وكيل.</td>
+</tr>
+<tr>
+<td><code>KNOW-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>لكل مصدر حالات uploaded/processing/ready/failed/stale مع تفاصيل وإجراء إصلاح.</td>
+</tr>
+<tr>
+<td><code>KNOW-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض معاينة المصدر والبيانات الوصفية والنطاق والأماكن التي تستخدمه.</td>
+</tr>
+<tr>
+<td><code>KNOW-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>توجد تجربة retrieval test تعرض المقاطع المسترجعة والدرجة والمصدر دون ادعاء بحث حقيقي في الـprototype.</td>
+</tr>
+<tr>
+<td><code>KNOW-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يدعم MVP ملفات PDF وTXT وMarkdown على الأقل، مع حدود نوع وحجم موثقة.</td>
+</tr>
+<tr>
+<td><code>KNOW-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>كل إجابة مبنية على المعرفة تستطيع إظهار source/page/section أو أقرب locator متاح.</td>
+</tr>
+<tr>
+<td><code>KNOW-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>صلاحية الاسترجاع لا تتجاوز صلاحية المصدر والمشروع والمستخدم.</td>
+</tr>
+<tr>
+<td><code>KNOW-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>حذف المصدر يوقف استخدامه ويبدأ حذف المشتقات والفهارس وفق سياسة الاحتفاظ المعلنة.</td>
+</tr>
+<tr>
+<td><code>KNOW-009</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>دعم sync دوري لمواقع أو موصلات مختارة مع diff وstaleness.</td>
+</tr>
+<tr>
+<td><code>KNOW-010</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>controls للchunking/embedding/retrieval profile للمستخدم التقني، مع إعداد افتراضي آمن للبقية.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="21-models-providers-routing">21. Models, Providers &amp; Routing</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MODEL-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كتالوج النماذج يعرض المزود والقدرات والمدخلات والسياق والتكلفة النسبية والسرعة والحالة.</td>
+</tr>
+<tr>
+<td><code>MODEL-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>فلاتر حسب المهمة والوسائط والسعر والسرعة والمزود ومصدر الوصول.</td>
+</tr>
+<tr>
+<td><code>MODEL-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>صفحة النموذج تشرح ملاءمته وقيوده بطريقة عملية دون نص تسويقي من المزود فقط.</td>
+</tr>
+<tr>
+<td><code>MODEL-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>model registry يستخدم معرفات داخلية ثابتة ويربطها بإصدارات المزود والأسعار والقدرات.</td>
+</tr>
+<tr>
+<td><code>MODEL-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>أي تغيير سعر أو context أو availability مؤرخ ولا يعيد تفسير سجلات الاستهلاك القديمة.</td>
+</tr>
+<tr>
+<td><code>MODEL-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يستطيع المستخدم تعيين نموذج افتراضي للمساحة أو المشروع أو Agent، مع ترتيب وراثة واضح.</td>
+</tr>
+<tr>
+<td><code>MODEL-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>Manual routing متاح دائمًا؛ لا يُجبر المستخدم على Smart routing.</td>
+</tr>
+<tr>
+<td><code>MODEL-008</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>أوضاع Smart/Quality/Speed/Cost/Privacy تعرض سبب الاختيار وخيارات override.</td>
+</tr>
+<tr>
+<td><code>MODEL-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>fallback بين المزودين disabled افتراضيًا أو يحتاج سياسة صريحة، بسبب اختلاف الخصوصية والتكلفة والسلوك.</td>
+</tr>
+<tr>
+<td><code>MODEL-010</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>حالة degraded/outage/retiring ظاهرة في model picker مع بدائل موضحة.</td>
+</tr>
+<tr>
+<td><code>MODEL-011</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يرفض gateway خاصية غير مدعومة قبل إرسال الطلب أو يطبق تحويلًا موثقًا يوافق عليه المستخدم.</td>
+</tr>
+<tr>
+<td><code>MODEL-012</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>routing quality يعتمد evals وبيانات نجاح فعلية، لا ادعاء أن نموذجًا «أفضل» لكل المهام.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="22-byok">22. BYOK وإدارة بيانات الاعتماد</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KEY-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>شاشات إضافة المفتاح واختباره وإلغائه تستخدم قيمة وهمية ولا تقبل أو ترسل أسرارًا حقيقية.</td>
+</tr>
+<tr>
+<td><code>KEY-002</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>المفتاح الحقيقي يرسل مباشرة إلى خدمة أسرار آمنة عبر TLS ولا يمر في analytics أو logs أو client persistence.</td>
+</tr>
+<tr>
+<td><code>KEY-003</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يخزن المفتاح مشفرًا envelope encryption/KMS ولا يمكن استعادته نصيًا بعد الحفظ.</td>
+</tr>
+<tr>
+<td><code>KEY-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يستطيع المستخدم تسمية المفتاح وتحديد مزوده ونطاقه: شخصي أو مساحة/مشروع وفق الصلاحية.</td>
+</tr>
+<tr>
+<td><code>KEY-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>test connection يعيد حالة منقحة؛ لا يكشف response أو headers تحمل أسرارًا.</td>
+</tr>
+<tr>
+<td><code>KEY-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يمكن revoke/replace، ويتوقف استخدام المفتاح الملغى فورًا في التشغيلات الجديدة.</td>
+</tr>
+<tr>
+<td><code>KEY-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا يستخدم النظام Managed Credits بدل BYOK عند فشله إلا إذا فعّل المستخدم fallback وفهم أثر التكلفة.</td>
+</tr>
+<tr>
+<td><code>KEY-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>تعرض الواجهة آخر استخدام وحالة المفتاح، لا قيمته.</td>
+</tr>
+<tr>
+<td><code>KEY-009</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>تنبيه قبل انتهاء/فشل credential وتحديد rotation owner للفريق.</td>
+</tr>
+<tr>
+<td><code>KEY-010</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>أعضاء الفريق غير المخولين لا يرون المفتاح ولا يختبرونه بطلب اعتباطي ولا يغيّرون نطاقه.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="23-usage-credits-billing">23. Usage, Credits &amp; Billing</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BILL-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض لوحة الاستخدام ملخصًا حسب الزمن والمشروع والنموذج والوحدة ومصدر الدفع ببيانات fixture متسقة.</td>
+</tr>
+<tr>
+<td><code>BILL-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تفاصيل أي عملية تربط usage event بالمحادثة أو Agent/Flow run دون كشف محتوى حساس.</td>
+</tr>
+<tr>
+<td><code>BILL-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض الميزانية الاستهلاك الحالي والحد والتنبيه والحالة المتوقعة بصريًا ونصيًا.</td>
+</tr>
+<tr>
+<td><code>BILL-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>usage ledger append-only وقابل للتسوية، مع idempotency لمنع الخصم المكرر.</td>
+</tr>
+<tr>
+<td><code>BILL-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يفرق السجل بين estimate وreserved وactual وadjustment/refund عند الحاجة.</td>
+</tr>
+<tr>
+<td><code>BILL-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يوقف أو يمنع عملية جديدة عند نفاد الرصيد/تجاوز hard limit، ويحفظ أي عمل مكتمل بوضوح.</td>
+</tr>
+<tr>
+<td><code>BILL-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يستطيع Owner/Admin وضع حد للمساحة والمشروع؛ تنبيهات النسب قابلة للضبط ضمن حدود آمنة.</td>
+</tr>
+<tr>
+<td><code>BILL-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>BYOK usage يظهر استهلاك الوحدات حتى إذا لم تدفع المنصة تكلفة المزود، مع فصل رسوم المنصة إن وجدت.</td>
+</tr>
+<tr>
+<td><code>BILL-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>أي تكلفة معروضة تذكر العملة وحالة الضرائب/التقدير؛ لا تستخدم كلمة «نهائي» قبل التسوية.</td>
+</tr>
+<tr>
+<td><code>BILL-010</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>تنزيل CSV وفاتورة/إيصال حسب المنطقة ونموذج الدفع بعد حسم الجوانب القانونية والضريبية.</td>
+</tr>
+<tr>
+<td><code>BILL-011</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>توقع نهاية الشهر وتنبيه anomaly مبنيان على منهج واضح ويمكن تعطيلهما.</td>
+</tr>
+<tr>
+<td><code>BILL-012</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>تعبئة الرصيد والمدفوعات لا تطلق قبل webhook reconciliation واختبارات التكرار/الاسترداد.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="24-tools-skills">24. Tools &amp; Skills</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TOOL-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كتالوج الأدوات يوضح الناشر والمصدر والقدرات والصلاحيات والنطاق والحالة.</td>
+</tr>
+<tr>
+<td><code>TOOL-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>صفحة الأداة تعرض عملياتها مصنفة read/write/destructive/external/secret access.</td>
+</tr>
+<tr>
+<td><code>TOOL-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كتالوج skills يفرق بوضوح بين Skill تعليمية وأداة تنفيذية وconnector.</td>
+</tr>
+<tr>
+<td><code>TOOL-004</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>أي Skill خارجية تحفظ source/ref/SHA/license/review status ومالك مراجعة داخلي.</td>
+</tr>
+<tr>
+<td><code>TOOL-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا يستطيع Agent استخدام أداة لم تُمنح له أو تجاوز scope أثناء التشغيل.</td>
+</tr>
+<tr>
+<td><code>TOOL-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>إدخال أداة ناتج من ويب أو ملف يعامل بيانات غير موثوقة ويخضع لحماية prompt injection.</td>
+</tr>
+<tr>
+<td><code>TOOL-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>connector secrets منفصلة عن تعريف Agent/Flow ولا تظهر عند التصدير أو النسخ.</td>
+</tr>
+<tr>
+<td><code>TOOL-008</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>تثبيت/تفعيل skill أو connector عالي الصلاحيات يتطلب preview وموافقة وسجل تدقيق.</td>
+</tr>
+<tr>
+<td><code>TOOL-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا يوجد marketplace أو تنفيذ package arbitrary في Alpha.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="25-team-roles-administration">25. Team, Roles &amp; Administration</h2>
+<h3 id="251">25.1 الأدوار الأولية</h3>
+<table>
+<thead>
+<tr>
+<th>الدور</th>
+<th>النطاق الأولي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner</td>
+<td>الملكية، الفوترة، السياسات، حذف المساحة، نقل الملكية</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>الأعضاء والمشاريع والإعدادات والميزانيات والوكلاء والتدفقات</td>
+</tr>
+<tr>
+<td>Builder</td>
+<td>إنشاء وتعديل Agents وFlows ضمن الأدوات المسموحة</td>
+</tr>
+<tr>
+<td>Member</td>
+<td>Chat والمشاريع والتشغيل والإنشاء العادي</td>
+</tr>
+<tr>
+<td>Viewer</td>
+<td>قراءة الموارد والمخرجات المسموحة دون تشغيل مكلف أو تعديل</td>
+</tr>
+<tr>
+<td>Billing</td>
+<td>عرض الفواتير والاستخدام وإدارة الدفع دون قراءة محتوى المشاريع افتراضيًا</td>
+</tr>
+</tbody>
+</table>
+<p>يدعم Alpha على الأقل Owner وAdmin وMember. تظهر بقية الأدوار في الـPrototype وتدخل تدريجيًا قبل Beta.</p>
+<h3 id="252">25.2 المتطلبات</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TEAM-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض إدارة الفريق الأعضاء والدعوات والأدوار والحالات وسجلًا مختصرًا.</td>
+</tr>
+<tr>
+<td><code>TEAM-002</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>كل تغيير دور أو إزالة عضو أو نقل ملكية يتطلب صلاحية ويسجل.</td>
+</tr>
+<tr>
+<td><code>TEAM-003</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>إزالة عضو تلغي جلساته ووصوله الجديد دون حذف artifacts المشتركة التي يملكها workspace.</td>
+</tr>
+<tr>
+<td><code>TEAM-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا يمنح دور Member تلقائيًا إدارة مفاتيح الفريق أو الفوترة أو أدوات عالية الخطر.</td>
+</tr>
+<tr>
+<td><code>TEAM-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>approval policy يمكن ربطها بالدور ونوع الأداة والميزانية.</td>
+</tr>
+<tr>
+<td><code>TEAM-006</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>مشاركة مورد داخليًا بمستوى view/run/edit بدل role عام فقط.</td>
+</tr>
+<tr>
+<td><code>TEAM-007</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>Billing role لا يستطيع قراءة prompts والملفات ما لم يُمنح دورًا آخر صريحًا.</td>
+</tr>
+<tr>
+<td><code>TEAM-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يمنع النظام حذف آخر Owner قبل نقل الملكية أو إغلاق المساحة بإجراء منفصل.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="26">26. الإشعارات والموافقات</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NOTIF-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>مركز موحد للموافقات والتشغيلات المكتملة والفاشلة وتنبيهات الميزانية.</td>
+</tr>
+<tr>
+<td><code>NOTIF-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يستطيع المستخدم الوصول من الإشعار إلى run/step/approval ذات الصلة مباشرة.</td>
+</tr>
+<tr>
+<td><code>NOTIF-003</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>approval له حالة ووقت انتهاء وموافق/رافض وتعليق؛ ويمنع القرار المكرر أو المتأخر.</td>
+</tr>
+<tr>
+<td><code>NOTIF-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا تكشف إشعارات البريد أو push المحتوى الحساس افتراضيًا.</td>
+</tr>
+<tr>
+<td><code>NOTIF-005</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>إعدادات granular للقناة والنوع مع بقاء تنبيهات الأمان الحرجة غير قابلة للإخفاء الكامل.</td>
+</tr>
+<tr>
+<td><code>NOTIF-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>انتهاء الموافقة يضع run في حالة مفهومة ولا يحول الصمت إلى موافقة.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="27">27. الصفحة التسويقية والتسعير العام</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MKT-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تشرح الصفحة خلال أول شاشة أن نَسَق يجمع Chat وAgents وFlows، لا «ذكاء اصطناعي لكل شيء».</td>
+</tr>
+<tr>
+<td><code>MKT-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>تعرض سيناريو Chat → Agent → Flow بمنتج حقيقي أو mock صادق، لا dashboard مختلق بلا معنى.</td>
+</tr>
+<tr>
+<td><code>MKT-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>توضح BYOK + Credits دون إخفاء فروق التكلفة والمسؤولية.</td>
+</tr>
+<tr>
+<td><code>MKT-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>صفحة الأسعار تعرض بنية الخطط والمقارنة دون أرقام نهائية مختلقة؛ تستخدم <code>سيحدد</code> حيث القرار مفتوح.</td>
+</tr>
+<tr>
+<td><code>MKT-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>قبل البيع العام، ترتبط الأسعار بحدود واستعمال وفوترة وسياسة استرداد معلنة ومتسقة مع النظام.</td>
+</tr>
+<tr>
+<td><code>MKT-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>صفحة الأمان تفرق بين الضوابط المنفذة والمخططة ولا تستخدم badges امتثال غير مكتسبة.</td>
+</tr>
+<tr>
+<td><code>MKT-007</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>صفحات use cases عربية ذات محتوى فعلي للبحث والمحتوى والعمليات والتحليل.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="28">28. الرحلات الحرجة</h2>
+<h3 id="281">28.1 من التسجيل إلى أول نتيجة</h3>
+<ol>
+<li>يختار المستخدم العربية/الإنجليزية ونوع استخدامه.</li>
+<li>ينشئ مساحة أو يستخدم الشخصية.</li>
+<li>يختار البدء برصيد/عرض تجريبي أو تأجيل BYOK.</li>
+<li>يرى prompt starters مرتبطة بدوره، لا gallery عامة فقط.</li>
+<li>يرسل رسالة ويشاهد النموذج ومصدر الدفع.</li>
+<li>يحصل على إجابة ويمكنه حفظها في مشروع أو مقارنتها.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> ينجز مستخدم جديد المسار دون شرح خارجي، ويفهم أين يرى النموذج والتكلفة.</p>
+<h3 id="282">28.2 مقارنة نموذجين</h3>
+<ol>
+<li>يفتح Compare من composer أو response.</li>
+<li>يختار نموذجين/ثلاثة ويرى توافق الملفات والتكلفة التقديرية.</li>
+<li>يرسل المدخل مرة واحدة.</li>
+<li>يشاهد outputs مستقلة مع progress/cost/source.</li>
+<li>يختار واحدة للمتابعة أو يطلب synthesis جديدًا.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> لا يظن المستخدم أن synthesis مجاني أو أن أحد النموذجين فائز موضوعيًا.</p>
+<h3 id="283-chat-agent">28.3 Chat إلى Agent</h3>
+<ol>
+<li>يختار جزءًا من المحادثة أو المحادثة كلها.</li>
+<li>يضغط «حوّل إلى مهمة».</li>
+<li>تعرض صفحة مراجعة الهدف والمدخلات والسياق والأداة والميزانية.</li>
+<li>يبدأ التشغيل وتظهر الخطة.</li>
+<li>يتوقف عند موافقة إن لزم.</li>
+<li>يكتمل بمخرج وإيصال تنفيذ.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> يعرف المستخدم ما نُقل وما لم يُنقل، ويستطيع العودة إلى أصل المحادثة.</p>
+<h3 id="284">28.4 إنشاء وكيل بحث وتشغيله</h3>
+<ol>
+<li>يختار Research Agent.</li>
+<li>يحدد السؤال والنطاق والمصادر المقبولة وشكل التقرير.</li>
+<li>يراجع خطة وميزانية أولية.</li>
+<li>يبدأ التشغيل، يتابع المصادر والخطوات العملية.</li>
+<li>يجيب عن سؤال توضيحي أو موافقة إن ظهرت.</li>
+<li>يستلم تقريرًا ومصادر وحدود ثقة وتكلفة.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> لا توجد اقتباسات بلا مصدر أو ادعاء اكتمال عندما فشل جزء من البحث.</p>
+<h3 id="285-flow">28.5 تشغيل ناجح إلى Flow</h3>
+<ol>
+<li>يفتح run مكتملًا.</li>
+<li>يختار «حوّل إلى تدفق».</li>
+<li>يستخرج النظام المدخلات والخطوات والمخرجات المقترحة.</li>
+<li>يراجع المستخدم العقد والبيانات الحساسة والحدود.</li>
+<li>يحفظ كمسودة ويختبر بfixture.</li>
+<li>ينشر النسخة عندما تكون صالحة.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> لا تُنقل أسرار أو نتائج خاصة كقيم ثابتة دون تحذير.</p>
+<h3 id="286-byok">28.6 إضافة BYOK</h3>
+<ol>
+<li>يختار المزود ويقرأ شرح التخزين والنطاق.</li>
+<li>يدخل المفتاح في واجهة آمنة.</li>
+<li>يختبر الاتصال.</li>
+<li>يحدد النطاق وfallback.</li>
+<li>يحفظ ويرى آخر استخدام والحالة دون رؤية المفتاح.</li>
+<li>يستخدمه في Chat مع badge واضح.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> يفهم المستخدم أن تكلفة المزود قد تكون خارج رصيد نَسَق وأن fallback قد يغيّر مصدر الدفع.</p>
+<h3 id="287">28.7 موافقة عالية الأثر</h3>
+<ol>
+<li>يصل run إلى خطوة كتابة/نشر/إرسال.</li>
+<li>يرى الموافق action preview والهدف والبيانات والتكلفة والمخاطر.</li>
+<li>يوافق أو يعدل أو يرفض.</li>
+<li>يسجل القرار ويستأنف أو ينهي run.</li>
+</ol>
+<p><strong>معيار النجاح:</strong> لا يستطيع المستخدم الموافقة دون فهم الإجراء، ولا ينفذ الإجراء مرتين عند إعادة التحميل.</p>
+<hr />
+<h2 id="29">29. حالات النظام القياسية</h2>
+<h3 id="291-run">29.1 حالة Run موحدة</h3>
+<pre><code class="language-text">draft
+  → queued
+  → planning
+  → running
+  → waiting_for_input
+  → waiting_for_approval
+  → running
+  → completed | completed_with_warnings | failed | cancelled | expired
+</code></pre>
+<h3 id="292-approval">29.2 حالة Approval</h3>
+<pre><code class="language-text">pending → approved | denied | edited | expired | revoked
+</code></pre>
+<h3 id="293-knowledge-source">29.3 حالة Knowledge Source</h3>
+<pre><code class="language-text">uploaded → scanning → processing → ready
+                         ↘ failed
+ready → stale → reprocessing → ready
+ready | failed | stale → deleting → deleted
+</code></pre>
+<h3 id="294-flow">29.4 حالة Flow</h3>
+<pre><code class="language-text">draft → validated → published → deprecated → archived
+</code></pre>
+<h3 id="295">29.5 قواعد الحالة</h3>
+<ul>
+<li>لا تستخدم الواجهة كلمة «فشل» فقط؛ تعرض المرحلة والسبب وما يمكن استعادته.</li>
+<li><code>completed_with_warnings</code> لا يظهر كنجاح كامل.</li>
+<li>cancel request وcancelled حالتان مختلفتان عند وجود عملية upstream.</li>
+<li>تحديث الصفحة لا يفقد run state أو يكرر الإجراء.</li>
+<li>الحالات النصية لا تعتمد على اللون وحده.</li>
+</ul>
+<hr />
+<h2 id="30">30. متطلبات المحتوى واللغة</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LANG-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>العربية هي اللغة الافتراضية للنسخة العربية، والإنجليزية مكافئة وظيفيًا لا مختصرة.</td>
+</tr>
+<tr>
+<td><code>LANG-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>قاموس مصطلحات موحد؛ لا يتغير ترجمة Agent بين «وكيل» و«مساعد» بلا سبب.</td>
+</tr>
+<tr>
+<td><code>LANG-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>رسائل الخطأ تشرح ما حدث وما يمكن فعله، وتتجنب رموز المزود الخام إلا في details.</td>
+</tr>
+<tr>
+<td><code>LANG-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يدعم النص المختلط، URLs، code، البريد، الأرقام والعملات دون انعكاس bidi مربك.</td>
+</tr>
+<tr>
+<td><code>LANG-005</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>التواريخ والأرقام والعملات تتبع locale مع خيار مفهوم للأرقام العربية/اللاتينية إذا لزم.</td>
+</tr>
+<tr>
+<td><code>LANG-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>labels قصيرة ودقيقة؛ المصطلح الإنجليزي يظهر عند فائدته التقنية لا كزينة.</td>
+</tr>
+<tr>
+<td><code>LANG-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>رسائل المزود لا تُعرض مباشرة إذا احتوت معلومات حساسة؛ تُترجم إلى خطأ منتج مع معرف تتبع.</td>
+</tr>
+<tr>
+<td><code>LANG-008</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>glossary/help contextual للمصطلحات التقنية مثل context وtokens وrouting وBYOK.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="31_1">31. الوصولية والتصميم المتجاوب</h2>
+<h3 id="311">31.1 معيار الوصولية</h3>
+<p>الهدف <strong>WCAG 2.2 AA</strong> للمسارات الأساسية.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A11Y-001</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>كل الوظائف الأساسية قابلة بلوحة المفاتيح مع ترتيب focus منطقي ومؤشر مرئي.</td>
+</tr>
+<tr>
+<td><code>A11Y-002</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>dialogs وmenus وcomboboxes وtabs تطبق semantics وfocus trap/restore الصحيحة.</td>
+</tr>
+<tr>
+<td><code>A11Y-003</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>contrast للنصوص والعناصر التفاعلية يطابق AA، والحالة لا تعتمد على اللون فقط.</td>
+</tr>
+<tr>
+<td><code>A11Y-004</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>live updates للstreaming وrun progress لا تغمر قارئ الشاشة؛ يوجد ملخص وحالة قابلة للاستعلام.</td>
+</tr>
+<tr>
+<td><code>A11Y-005</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>zoom حتى 200% وإعادة تدفق النص لا تخفي الإجراءات الأساسية.</td>
+</tr>
+<tr>
+<td><code>A11Y-006</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>يدعم <code>prefers-reduced-motion</code>، ولا تكون الحركة شرطًا لفهم الحالة.</td>
+</tr>
+<tr>
+<td><code>A11Y-007</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>canvas له بديل بنيوي قابل للوحة المفاتيح، خاصة لقراءة العقد وترتيبها واتصالاتها.</td>
+</tr>
+<tr>
+<td><code>A11Y-008</code></td>
+<td>MUST</td>
+<td>Prototype</td>
+<td>automated scan بلا critical/serious violations مع فحص يدوي للمسارات الحرجة.</td>
+</tr>
+<tr>
+<td><code>A11Y-009</code></td>
+<td>SHOULD</td>
+<td>Alpha</td>
+<td>اختبار قارئ شاشة بالعربية والإنجليزية على Chat وApproval وAgent Run.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="312">31.2 الاستجابة</h3>
+<ul>
+<li>Desktop: التجربة الكاملة، خاصة Compare وAgent timeline وFlow canvas.</li>
+<li>Tablet: لوحات قابلة للطي وCompare متتابع عند ضيق المساحة.</li>
+<li>Mobile: Chat ومتابعة runs والموافقات والاستخدام؛ Flow كعرض خطوات وليس محرر canvas كاملًا.</li>
+<li>نقاط اختبار مرجعية: <code>360</code>, <code>390</code>, <code>768</code>, <code>1280</code>, <code>1440</code> بكسل، دون ربط النظام بها فقط.</li>
+<li>أهداف اللمس على الهاتف لا تقل عمليًا عن 44×44 بكسل للإجراءات الأساسية عندما يسمح السياق.</li>
+</ul>
+<hr />
+<h2 id="32_1">32. متطلبات الأداء والموثوقية</h2>
+<h3 id="321-frontend-prototype">32.1 Frontend Prototype</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الهدف الأولي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PERF-001</code></td>
+<td>استجابة مرئية للتفاعل خلال 100ms في الحالة المحلية</td>
+</tr>
+<tr>
+<td><code>PERF-002</code></td>
+<td>لا توجد long tasks ملحوظة أثناء streaming أو تحريك Flow على dataset العرض</td>
+</tr>
+<tr>
+<td><code>PERF-003</code></td>
+<td>المحادثات والسجلات الطويلة تستخدم virtualization أو pagination مناسبًا</td>
+</tr>
+<tr>
+<td><code>PERF-004</code></td>
+<td>LCP مستهدف ≤2.5s في build محسّن وعلى profile اختبار متفق عليه، لا dev server</td>
+</tr>
+<tr>
+<td><code>PERF-005</code></td>
+<td>لا console errors أو hydration warnings في المسارات المقبولة</td>
+</tr>
+</tbody>
+</table>
+<h3 id="322-backend-mvp">32.2 Backend MVP</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الهدف الأولي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REL-001</code></td>
+<td>gateway-added latency p95 أقل من 300ms باستثناء زمن المزود والشبكة الخارجية</td>
+</tr>
+<tr>
+<td><code>REL-002</code></td>
+<td>availability مستهدف 99.5% أثناء Private Alpha مع صفحة حالة داخلية</td>
+</tr>
+<tr>
+<td><code>REL-003</code></td>
+<td>streaming reconnect لا يكرر رسالة أو usage event</td>
+</tr>
+<tr>
+<td><code>REL-004</code></td>
+<td>agent/flow events قابلة للاستئناف بعد worker restart حيث يدعي المنتج الاستئناف</td>
+</tr>
+<tr>
+<td><code>REL-005</code></td>
+<td>side effects وledger تستخدم idempotency keys وتسوية قابلة للمراجعة</td>
+</tr>
+<tr>
+<td><code>REL-006</code></td>
+<td>timeout وretry وcircuit breaker محددة لكل adapter ولا تطبق retry أعمى على كل خطأ</td>
+</tr>
+<tr>
+<td><code>REL-007</code></td>
+<td>kill switch على مستوى provider/model/tool/agent/flow متاح للمشغل</td>
+</tr>
+</tbody>
+</table>
+<p>هذه أهداف أولية يجب اختبارها وإعادة ضبطها بعد قياس workloads فعلية.</p>
+<hr />
+<h2 id="33_1">33. الأمان والخصوصية والثقة</h2>
+<h3 id="331">33.1 متطلبات إطلاق غير قابلة للتفاوض</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SEC-001</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>عزل tenant واختبارات تمنع الوصول العرضي أو المقصود بين مساحات العمل.</td>
+</tr>
+<tr>
+<td><code>SEC-002</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>authorization في الخادم لكل مورد وفعل؛ إخفاء الزر ليس تحكمًا أمنيًا.</td>
+</tr>
+<tr>
+<td><code>SEC-003</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>تشفير النقل والتخزين وإدارة أسرار منفصلة ومبدأ أقل صلاحية.</td>
+</tr>
+<tr>
+<td><code>SEC-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا prompt أو response أو filename أو secret في analytics العامة افتراضيًا.</td>
+</tr>
+<tr>
+<td><code>SEC-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>logs منقحة، مع correlation IDs وسياسة وصول واحتفاظ.</td>
+</tr>
+<tr>
+<td><code>SEC-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>فحص الملفات وتقييد النوع والحجم، ومنع path traversal وarchive bombs والمحتوى التنفيذي غير المطلوب.</td>
+</tr>
+<tr>
+<td><code>SEC-007</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>أدوات جلب URL تمنع SSRF والوصول إلى private/local/link-local/cloud metadata.</td>
+</tr>
+<tr>
+<td><code>SEC-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>محتوى الويب والملفات ونتائج الأدوات غير موثوق؛ لا يستطيع إعادة تعريف تعليمات النظام أو الصلاحيات.</td>
+</tr>
+<tr>
+<td><code>SEC-009</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>sandbox وnetwork egress allowlist لأي تنفيذ كود/متصفح قبل طرحه؛ وإلا يبقى خارج النطاق.</td>
+</tr>
+<tr>
+<td><code>SEC-010</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>audit trail للأعضاء والأدوار والمفاتيح والميزانيات والموافقات والنشر والحذف.</td>
+</tr>
+<tr>
+<td><code>SEC-011</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>rate limits وabuse controls على التسجيل والاستدعاءات والملفات والتشغيلات المكلفة.</td>
+</tr>
+<tr>
+<td><code>SEC-012</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا تعرض الواجهة اعتمادًا أو امتثالًا غير موثق؛ الضوابط المخططة موسومة بوضوح.</td>
+</tr>
+<tr>
+<td><code>SEC-013</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>export/delete account/workspace وretention policy يحددان قبل فتح Alpha لمستخدمين خارجيين.</td>
+</tr>
+<tr>
+<td><code>SEC-014</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>مراجعة threat model واختبار أمني مستقل للمفاتيح والفوترة والأدوات قبل تفعيلها.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="332-ai">33.2 مبادئ خصوصية AI</h3>
+<ul>
+<li>يوضح المستخدم أي مزود ستصل إليه بياناته.</li>
+<li>لا تغير المنصة المزود لأسباب fallback دون سياسة واضحة.</li>
+<li>تُوثق سياسات احتفاظ المزودين واستخدام البيانات في مكان مفهوم.</li>
+<li>لا تستخدم المنصة محتوى العميل لتدريب نماذج عامة دون opt-in صريح وعقد منفصل.</li>
+<li>يجب حسم DPA وsubprocessors وطلبات التصدير/الحذف ومتطلبات GDPR قبل الإطلاق التجاري في أسواق تنطبق عليها.</li>
+</ul>
+<hr />
+<h2 id="34-ai">34. جودة AI والتقييم</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>الأولوية</th>
+<th>الإصدار</th>
+<th>المتطلب ومعيار القبول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AIQ-001</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>Research Agent لديه مجموعة evals تشمل دقة الإسناد وعدم اختلاق المصادر والالتزام بالنطاق.</td>
+</tr>
+<tr>
+<td><code>AIQ-002</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>يقاس النجاح النهائي لا جودة النص فقط: اكتمال artifact، صحة الروابط، وتغطية المطلوب.</td>
+</tr>
+<tr>
+<td><code>AIQ-003</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>evals منفصلة للعربية والإنجليزية ونص مختلط.</td>
+</tr>
+<tr>
+<td><code>AIQ-004</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>أي تغيير model/prompt/tool يمر regression suite قبل الترقية.</td>
+</tr>
+<tr>
+<td><code>AIQ-005</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>عينات فشل حقيقية تضاف إلى eval set بعد إزالة البيانات الحساسة.</td>
+</tr>
+<tr>
+<td><code>AIQ-006</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>لا تعرض المنصة confidence رقميًا زائفًا؛ تستخدم أدلة وحدودًا وفئات واضحة.</td>
+</tr>
+<tr>
+<td><code>AIQ-007</code></td>
+<td>SHOULD</td>
+<td>Beta</td>
+<td>Smart routing يقارن الجودة والتكلفة والlatency على tasks مصنفة، لا leaderboard عام فقط.</td>
+</tr>
+<tr>
+<td><code>AIQ-008</code></td>
+<td>MUST</td>
+<td>Alpha</td>
+<td>safety refusal أو provider restriction تظهر كحالة مستقلة، لا كعطل تقني غامض.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="35">35. التحليلات ومؤشرات النجاح</h2>
+<h3 id="351-north-star-metric">35.1 North Star Metric</h3>
+<p><strong>Weekly Successful Outcomes — النتائج الناجحة الأسبوعية</strong></p>
+<p>تُحسب النتيجة عندما يكتمل Chat/Agent/Flow ويقوم المستخدم بواحد أو أكثر من:</p>
+<ul>
+<li>حفظ أو تصدير artifact.</li>
+<li>متابعة النتيجة في رسالة لاحقة ذات معنى.</li>
+<li>مشاركتها أو إضافتها إلى مشروع.</li>
+<li>تعليمها كمفيدة.</li>
+<li>تحويلها إلى Agent أو Flow.</li>
+</ul>
+<p>لا تُحسب retries الآلية أو الرسائل الفارغة أو تشغيلات العرض.</p>
+<h3 id="352">35.2 مؤشرات المنتج</h3>
+<table>
+<thead>
+<tr>
+<th>الفئة</th>
+<th>المؤشر</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activation</td>
+<td>إكمال أول Chat ناجح، ثم حفظ/مقارنة/إنشاء مشروع خلال 24 ساعة</td>
+</tr>
+<tr>
+<td>Time to Value</td>
+<td>الزمن من اكتمال التسجيل إلى أول successful outcome</td>
+</tr>
+<tr>
+<td>Adoption</td>
+<td>مستخدمون يستعملون وحدتين أو أكثر خلال أسبوع</td>
+</tr>
+<tr>
+<td>Compare Value</td>
+<td>نسبة المقارنات التي تنتهي باختيار/متابعة أو synthesis</td>
+</tr>
+<tr>
+<td>Agent Success</td>
+<td>تشغيلات مكتملة أو مكتملة بتحذير ضمن budget مقابل الفشل/الإلغاء</td>
+</tr>
+<tr>
+<td>Reuse</td>
+<td>تحويل Chat إلى Agent، وتحويل Run إلى Flow، وإعادة تشغيل قالب</td>
+</tr>
+<tr>
+<td>Trust</td>
+<td>نسبة موافقات مفهومة، نزاعات التكلفة، fallback surprises، وشكاوى المصدر</td>
+</tr>
+<tr>
+<td>Retention</td>
+<td>WAU/MAU واحتفاظ الأسبوع الرابع حسب persona</td>
+</tr>
+<tr>
+<td>Business</td>
+<td>استهلاك credits، نسبة BYOK، gross margin لكل فئة، وتحويل الخطة</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>provider errors، timeout، duplicate ledger، stuck runs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="353-usability-prototype">35.3 أهداف usability للـPrototype</h3>
+<ul>
+<li>ينجز غالبية المشاركين المسارات الخمسة الحرجة دون مساعدة مباشرة.</li>
+<li>يميز المشاركون بين Chat وAgent وFlow بلغتهم.</li>
+<li>يستطيع المستخدم تحديد النموذج ومصدر الدفع والتكلفة من الواجهة.</li>
+<li>يفهم الموافق ما سيحدث قبل اعتماد فعل عالي الأثر.</li>
+<li>لا توجد مشكلة RTL أو وصولية تمنع إكمال مسار حرج.</li>
+</ul>
+<p>الأرقام النهائية للنجاح تعتمد بعد أول جولة baseline؛ لا نختلق نسبة قبل الاختبار.</p>
+<h3 id="354">35.4 أحداث التحليلات الأساسية</h3>
+<pre><code class="language-text">account_created
+onboarding_completed
+workspace_created
+project_created
+conversation_started
+message_sent
+model_response_started
+model_response_completed
+model_response_failed
+comparison_started
+comparison_result_selected
+chat_converted_to_agent
+agent_created
+agent_run_started
+agent_run_waiting_for_input
+approval_requested
+approval_resolved
+agent_run_completed
+artifact_saved
+flow_created
+flow_validated
+flow_run_started
+flow_run_completed
+run_converted_to_flow
+knowledge_source_added
+provider_key_added
+provider_key_revoked
+budget_threshold_reached
+credit_balance_low
+</code></pre>
+<p><strong>قاعدة الخصوصية:</strong> الأحداث تحمل IDs وفئات وحالات ومقاييس تشغيل، لا نص prompt/response أو محتوى الملفات افتراضيًا.</p>
+<hr />
+<h2 id="36-frontend-prototype">36. متطلبات الـFrontend Prototype</h2>
+<h3 id="361">36.1 بنية البيانات الوهمية</h3>
+<p>يجب أن تأتي الشاشات من contracts وfixtures وMock Service Worker أو طبقة مماثلة، لا من كائنات مختلفة داخل كل صفحة.</p>
+<p>كل سيناريو مهم يجب أن يملك fixture محددًا وقابلًا لإعادة التشغيل:</p>
+<ol>
+<li>مستخدم جديد بلا مشاريع.</li>
+<li>محترف لديه مشروع ومحادثات وملفات.</li>
+<li>فريق صغير متعدد الأدوار.</li>
+<li>مقارنة نموذجين ناجحة.</li>
+<li>نموذج غير متاح وfallback غير مفعّل.</li>
+<li>رصيد منخفض وحد ميزانية متجاوز.</li>
+<li>Agent run ينتظر سؤالًا.</li>
+<li>Agent run ينتظر موافقة عالية الأثر.</li>
+<li>Agent run مكتمل بمصادر وartifact.</li>
+<li>Agent run فاشل جزئيًا مع recovery.</li>
+<li>Flow صالح وتشغيل ناجح.</li>
+<li>Flow بعقدة ناقصة تمنع النشر.</li>
+<li>Knowledge source processing/failed/stale.</li>
+<li>مفتاح BYOK صالح/فاشل/ملغى — كلها بيانات وهمية.</li>
+<li>مستخدم viewer يحاول فعلًا غير مسموح.</li>
+</ol>
+<h3 id="362">36.2 بيانات العرض الموحدة</h3>
+<p>لمنع lorem ipsum والواجهات المختلقة، يستخدم الـprototype قصة عرض متماسكة، مثل:</p>
+<ul>
+<li>مساحة العمل: <strong>فريق أفق</strong>.</li>
+<li>المشروع: <strong>دراسة إطلاق خدمة في السوق السعودي</strong>.</li>
+<li>المحادثة: مقارنة نماذج لتحليل السوق.</li>
+<li>الوكيل: <strong>باحث السوق</strong>.</li>
+<li>المخرج: تقرير فرص ومخاطر مع مصادر.</li>
+<li>التدفق: <strong>رصد المنافسين الأسبوعي</strong>.</li>
+</ul>
+<p>تُراجع هذه الأسماء والمحتويات في <code>CONTENT.md</code> قبل اعتمادها النهائي.</p>
+<h3 id="363">36.3 متطلبات العقود</h3>
+<ul>
+<li>TypeScript strict.</li>
+<li>مخططات runtime validation للحدود المهمة.</li>
+<li>IDs وتواريخ وحالات ثابتة بين الوحدات.</li>
+<li>money/usage كأنواع لا أرقام عائمة عشوائية.</li>
+<li>الأخطاء لها code ورسالة آمنة وrecovery hint وcorrelation ID عند الحاجة.</li>
+<li>الـmock يحاكي latency وstreaming والفشل والإلغاء والصلاحيات.</li>
+</ul>
+<hr />
+<h2 id="37-prototype">37. معايير قبول الـPrototype</h2>
+<p>لا يعتبر الإصدار A مكتملًا حتى تتحقق البنود التالية:</p>
+<h3 id="371">37.1 التغطية</h3>
+<ul>
+<li>[ ] Landing وPricing وSecurity وAuth/Onboarding موجودة.</li>
+<li>[ ] App Shell وHome موجودان.</li>
+<li>[ ] Projects موجودة بحالات فارغة وممتلئة.</li>
+<li>[ ] Chat وModel picker وCompare مكتملة تفاعليًا.</li>
+<li>[ ] Agent library وBuilder وRun timeline وApprovals وArtifacts مكتملة تفاعليًا.</li>
+<li>[ ] Flow library وBuilder وRun inspector موجودة.</li>
+<li>[ ] Knowledge وModels وTools/Skills وUsage/Billing وTeam/Settings موجودة.</li>
+</ul>
+<h3 id="372">37.2 عمق التفاعل</h3>
+<ul>
+<li>[ ] كل primary CTA يعمل عبر mock، لا dead ends صامتة.</li>
+<li>[ ] التنقل، back/forward، deep links، dialogs وdrawers تعمل كما هو متوقع.</li>
+<li>[ ] streaming وcancel وretry والموافقة وتغيير الحالة محاكاة واقعية.</li>
+<li>[ ] إعادة تحميل الصفحة تحافظ على الحالة المتفق عليها أو تعيد fixture بوضوح.</li>
+<li>[ ] لا يقبل الـprototype API keys أو payments حقيقية.</li>
+</ul>
+<h3 id="373">37.3 الحالات</h3>
+<ul>
+<li>[ ] loading/empty/error/success لكل وحدة رئيسية.</li>
+<li>[ ] permission denied وquota/credit exhausted.</li>
+<li>[ ] provider/model unavailable.</li>
+<li>[ ] partial completion وcompleted with warnings.</li>
+<li>[ ] offline/reconnect للمسارات التي تدعي دعمها.</li>
+</ul>
+<h3 id="374">37.4 الجودة</h3>
+<ul>
+<li>[ ] العربية والإنجليزية متكافئتان.</li>
+<li>[ ] RTL/LTR يعملان على كل المسارات الحرجة.</li>
+<li>[ ] responsive عند نقاط الاختبار المرجعية.</li>
+<li>[ ] لا critical/serious automated accessibility violations.</li>
+<li>[ ] keyboard path كامل لـChat وCompare وApproval وAgent Run.</li>
+<li>[ ] reduced motion و200% zoom لا يكسران المهمة.</li>
+<li>[ ] لا console errors أو broken local links أو missing assets.</li>
+<li>[ ] Playwright smoke tests للمسارات الحرجة.</li>
+<li>[ ] Storybook أو catalog مماثل للمكونات والحالات الأساسية.</li>
+</ul>
+<h3 id="375">37.5 اعتماد تجربة الاستخدام</h3>
+<ul>
+<li>[ ] إجراء جولة اختبار مع مستخدمين يمثلون المحترف المستقل والفريق الصغير.</li>
+<li>[ ] توثيق blockers ونتائج IA والمصطلحات والثقة.</li>
+<li>[ ] إصلاح المشكلات الحرجة وعالية الأثر.</li>
+<li>[ ] توقيع Product وDesign وEngineering على contracts المرئية قبل Backend.</li>
+</ul>
+<hr />
+<h2 id="38-backend-mvp-private-alpha">38. معايير قبول Backend MVP / Private Alpha</h2>
+<h3 id="381">38.1 الوظائف</h3>
+<ul>
+<li>[ ] Auth/workspace/project isolation مثبت باختبارات.</li>
+<li>[ ] Chat streaming يعمل مع ثلاثة provider adapters على الأقل.</li>
+<li>[ ] model selection وCompare والتوقف وإعادة المحاولة تعمل فعليًا.</li>
+<li>[ ] BYOK وManaged Credits يعملان دون خلط أو fallback صامت.</li>
+<li>[ ] usage ledger يتطابق مع عينات فواتير/تقارير المزود ضمن سياسة التسوية.</li>
+<li>[ ] Research Agent ينتج تقريرًا بمصادر وartifact وreceipt.</li>
+<li>[ ] approvals تمنع side effect حتى قرار صالح.</li>
+<li>[ ] Flow المحدود يعمل end-to-end مع حفظ run state.</li>
+</ul>
+<h3 id="382">38.2 الأمان والتشغيل</h3>
+<ul>
+<li>[ ] threat model معتمد.</li>
+<li>[ ] security review للمفاتيح والعزل والملفات والأدوات والفوترة.</li>
+<li>[ ] secrets غير موجودة في client bundle أو logs أو analytics.</li>
+<li>[ ] SSRF/file upload/rate-limit/authorization tests تمر.</li>
+<li>[ ] kill switches وprovider disable وmodel disable مجربة.</li>
+<li>[ ] stuck run detection وrecovery runbook موجودان.</li>
+<li>[ ] backup/restore واختبار حذف/تصدير البيانات متوفران حسب نطاق Alpha.</li>
+<li>[ ] incident response contacts وstatus communication محددان.</li>
+</ul>
+<h3 id="383-ai">38.3 جودة AI</h3>
+<ul>
+<li>[ ] eval baseline بالعربية والإنجليزية.</li>
+<li>[ ] citation validity واختبار المصادر الوهمية/المحظورة.</li>
+<li>[ ] prompt injection test corpus للمحتوى الخارجي.</li>
+<li>[ ] عدم تنفيذ تعليمات مصدر غير موثوق خارج الهدف.</li>
+<li>[ ] limits وtimeouts وbudget exhaustion مجربة.</li>
+</ul>
+<h3 id="384">38.4 المنتج والدعم</h3>
+<ul>
+<li>[ ] onboarding يوضح حالة Alpha وحدود البيانات والمزودين.</li>
+<li>[ ] قناة feedback ودعم وتشخيص دون طلب أسرار.</li>
+<li>[ ] pricing/credits/retention/subprocessors موثقة قبل قبول دفع أو بيانات حقيقية.</li>
+<li>[ ] cohort صغير مدعو وحدود إنفاق منخفضة أولًا.</li>
+</ul>
+<hr />
+<h2 id="39">39. التوافق والمنصات</h2>
+<h3 id="391">39.1 المتصفحات</h3>
+<p>دعم آخر إصدارين رئيسيين من:</p>
+<ul>
+<li>Chrome.</li>
+<li>Edge.</li>
+<li>Firefox.</li>
+<li>Safari.</li>
+<li>Safari على iOS وChrome على Android للمسارات الهاتفية المستهدفة.</li>
+</ul>
+<h3 id="392">39.2 ما لا نضمنه أولًا</h3>
+<ul>
+<li>متصفحات قديمة أو WebViews غير قياسية.</li>
+<li>تحرير Flow الكامل على شاشة هاتف صغيرة.</li>
+<li>عمل offline كامل.</li>
+<li>تجربة terminal أو IDE داخل المتصفح في MVP.</li>
+</ul>
+<hr />
+<h2 id="40">40. الاعتماديات</h2>
+<table>
+<thead>
+<tr>
+<th>الاعتمادية</th>
+<th>الأثر</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>عقود وشروط مزودي النماذج</td>
+<td>تحدد النماذج والمناطق والتخزين وfallback</td>
+</tr>
+<tr>
+<td>بوابة الدفع والضرائب</td>
+<td>تمنع إطلاق credits مدفوعة قبل التسوية والامتثال</td>
+</tr>
+<tr>
+<td>خدمة الأسرار/KMS</td>
+<td>شرط BYOK الحقيقي</td>
+</tr>
+<tr>
+<td>تخزين الملفات والفحص</td>
+<td>شرط Knowledge والمرفقات</td>
+</tr>
+<tr>
+<td>durable jobs/events</td>
+<td>شرط Agent/Flow resume والثقة في الحالة</td>
+</tr>
+<tr>
+<td>sandbox/egress policy</td>
+<td>شرط الأدوات التنفيذية والمتصفح والكود</td>
+</tr>
+<tr>
+<td>observability</td>
+<td>شرط تشخيص streaming والرصد والتكلفة</td>
+</tr>
+<tr>
+<td>ترجمة ومراجعة عربية بشرية</td>
+<td>شرط جودة المصطلحات والمحتوى</td>
+</tr>
+<tr>
+<td>مراجعة قانونية/خصوصية</td>
+<td>شرط الأسواق وسياسات البيانات والفوترة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="41_1">41. المخاطر وخطط التقليل</h2>
+<table>
+<thead>
+<tr>
+<th>الخطر</th>
+<th>الاحتمال/الأثر</th>
+<th>خطة التقليل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>المنتج يبدو كمجموعة أدوات معقدة</td>
+<td>مرتفع/مرتفع</td>
+<td>progressive disclosure، Chat نقطة بداية، اختبارات IA ومهام لا demo تقني</td>
+</tr>
+<tr>
+<td>واجهة جميلة بلا قيمة متصلة</td>
+<td>متوسط/مرتفع</td>
+<td>prototype بعقود وسيناريوهات end-to-end ومعايير نجاح مهمة</td>
+</tr>
+<tr>
+<td>تفاوت جودة المزودين</td>
+<td>مرتفع/مرتفع</td>
+<td>model registry، evals، manual override، receipts، وعدم ادعاء نموذج أفضل مطلقًا</td>
+</tr>
+<tr>
+<td>تكلفة غير متوقعة</td>
+<td>مرتفع/مرتفع</td>
+<td>estimate/reservation/actual، budgets، hard limits، مصدر دفع ظاهر</td>
+</tr>
+<tr>
+<td>فشل agent أو توقفه</td>
+<td>مرتفع/متوسط</td>
+<td>durable events، حدود، pause/retry، partial artifacts وrecovery</td>
+</tr>
+<tr>
+<td>prompt injection عبر ويب/ملف</td>
+<td>مرتفع/مرتفع</td>
+<td>فصل التعليمات عن البيانات، tool policies، egress، approvals وred-team</td>
+</tr>
+<tr>
+<td>تسرب مفاتيح BYOK</td>
+<td>منخفض/كارثي</td>
+<td>vault/KMS، عدم الإرجاع أو logging، least privilege، rotation وsecurity review</td>
+</tr>
+<tr>
+<td>side effect مكرر</td>
+<td>متوسط/مرتفع</td>
+<td>idempotency، approval tokens، ledger/run receipts واختبارات replay</td>
+</tr>
+<tr>
+<td>RTL يعمل شكليًا فقط</td>
+<td>متوسط/مرتفع</td>
+<td>Arabic-first content، logical CSS، screenshots واختبارات قارئ شاشة</td>
+</tr>
+<tr>
+<td>scope creep قبل إثبات الأساس</td>
+<td>مرتفع/مرتفع</td>
+<td>P0/P1 واضح، launch gates، لا marketplace/swarms/computer use مبكرًا</td>
+</tr>
+<tr>
+<td>الاعتماد على مزود واحد</td>
+<td>متوسط/مرتفع</td>
+<td>adapters وعقود داخلية، لكن دون fallback صامت</td>
+</tr>
+<tr>
+<td>هامش ربح سلبي مع credits</td>
+<td>متوسط/مرتفع</td>
+<td>قياس تكلفة فعلية لكل حدث، limits وتسعير قبل التوسع</td>
+</tr>
+<tr>
+<td>ادعاءات أمان أو امتثال مبكرة</td>
+<td>متوسط/مرتفع</td>
+<td>صفحة ضوابط فعلية ومخططة، مراجعة قانونية وأمنية قبل الشارات</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="42_1">42. القرارات المفتوحة</h2>
+<p>يجب حسم هذه القرارات قبل المراحل المحددة، لكنها لا تمنع بناء الـPrototype ما لم يُذكر غير ذلك:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>القرار</th>
+<th>موعد الحسم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OPEN-001</code></td>
+<td>اعتماد اسم نَسَق والنطاق والعلامة</td>
+<td>قبل الإطلاق العام</td>
+</tr>
+<tr>
+<td><code>OPEN-002</code></td>
+<td>المزودون والنماذج الثلاثة الأوائل</td>
+<td>قبل Contracts النهائية للBackend</td>
+</tr>
+<tr>
+<td><code>OPEN-003</code></td>
+<td>العملة الأساسية وأسعار الخطط وهامش Managed Credits</td>
+<td>قبل بناء الدفع</td>
+</tr>
+<tr>
+<td><code>OPEN-004</code></td>
+<td>هل تنتهي صلاحية credits؟ وما سياسة الاسترداد؟</td>
+<td>قبل الدفع</td>
+</tr>
+<tr>
+<td><code>OPEN-005</code></td>
+<td>مناطق استضافة البيانات واحتفاظ prompts/files/logs</td>
+<td>قبل Alpha الخارجي</td>
+</tr>
+<tr>
+<td><code>OPEN-006</code></td>
+<td>مزود الدفع والضرائب والفواتير حسب الأسواق</td>
+<td>قبل البيع</td>
+</tr>
+<tr>
+<td><code>OPEN-007</code></td>
+<td>حدود الملفات وأنواعها وخدمة الفحص</td>
+<td>قبل Knowledge الحقيقي</td>
+</tr>
+<tr>
+<td><code>OPEN-008</code></td>
+<td>أدوات Research Agent ومصادر الويب المسموحة</td>
+<td>قبل Alpha</td>
+</tr>
+<tr>
+<td><code>OPEN-009</code></td>
+<td>مستوى Flow write actions المسموح في Beta</td>
+<td>قبل connectors</td>
+</tr>
+<tr>
+<td><code>OPEN-010</code></td>
+<td>تفاصيل الأدوار: Builder وBilling وإتاحة المشاركة الدقيقة</td>
+<td>قبل Beta</td>
+</tr>
+<tr>
+<td><code>OPEN-011</code></td>
+<td>سياسة رسوم المنصة عند BYOK</td>
+<td>قبل التسعير العام</td>
+</tr>
+<tr>
+<td><code>OPEN-012</code></td>
+<td>هل Smart routing opt-in أم default بعد Beta؟</td>
+<td>بعد evals وتجارب الثقة</td>
+</tr>
+<tr>
+<td><code>OPEN-013</code></td>
+<td>حدود التصدير وقابلية نقل Agents/Flows</td>
+<td>قبل API/Marketplace</td>
+</tr>
+<tr>
+<td><code>OPEN-014</code></td>
+<td>سياسة provider data retention وzero-retention options</td>
+<td>قبل Alpha الخارجي</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="43_1">43. خطة التحقق البحثي</h2>
+<h3 id="431-prototype">43.1 أسئلة يجب اختبارها في الـPrototype</h3>
+<ol>
+<li>هل يفهم المستخدم الفرق بين Chat وAgent وFlow دون شرح طويل؟</li>
+<li>هل يبدأ من المهمة أم يضيع في model picker؟</li>
+<li>هل مقارنة النماذج تساعد القرار أم تزيد العبء؟</li>
+<li>هل يفهم مصدر الدفع وBYOK/fallback؟</li>
+<li>هل timeline الوكيل يحقق الثقة أم يصبح ضوضاء تقنية؟</li>
+<li>ما المعلومات اللازمة للموافقة على فعل خارجي؟</li>
+<li>هل يمكن تحويل run إلى Flow دون معرفة automation مسبقة؟</li>
+<li>هل يجد الفريق الصغير المشاريع والميزانية والصلاحيات كافية؟</li>
+<li>هل المصطلحات العربية طبيعية للمحترف وغير مربكة؟</li>
+<li>ما الذي يجب أن يبقى متاحًا على الهاتف؟</li>
+</ol>
+<h3 id="432">43.2 المشاركون</h3>
+<p>جولة أولى صغيرة لكن متنوعة تشمل:</p>
+<ul>
+<li>محترفين مستقلين يستخدمون أكثر من نموذج.</li>
+<li>قادة فرق صغيرة يديرون ملفات وتكلفة.</li>
+<li>مستخدمين تقنيين جربوا agents أو automation.</li>
+<li>مستخدمًا واحدًا على الأقل يعتمد لوحة المفاتيح أو تقنية مساعدة إن أمكن.</li>
+</ul>
+<p>لا تُختلق personas أو اقتباسات أو نسب؛ تحفظ الملاحظات والأدلة مع consent وخصوصية مناسبة.</p>
+<hr />
+<h2 id="44-definition-of-ready">44. Definition of Ready للتطوير</h2>
+<p>لا تبدأ أي epic كبيرة قبل توفر:</p>
+<ul>
+<li>المتطلبات المرتبطة ومعرفاتها.</li>
+<li>flow أو wireframe مع الحالات الأساسية.</li>
+<li>copy عربي وإنجليزي مبدئي.</li>
+<li>contracts وfixture واضحان.</li>
+<li>permission assumptions.</li>
+<li>analytics events المطلوبة.</li>
+<li>متطلبات a11y وresponsive.</li>
+<li>acceptance tests وحدود out-of-scope.</li>
+<li>قرار حول البيانات الحساسة والأثر الخارجي إن وجدا.</li>
+</ul>
+<hr />
+<h2 id="45-definition-of-done">45. Definition of Done لكل ميزة</h2>
+<ul>
+<li>[ ] تحقق معيار القبول المرتبط بالـPRD.</li>
+<li>[ ] تستخدم contract مشتركًا ولا تنشئ shape محليًا بلا سبب.</li>
+<li>[ ] loading/empty/error/success والقيود اللازمة منفذة.</li>
+<li>[ ] العربية والإنجليزية وRTL/LTR مختبرة.</li>
+<li>[ ] keyboard وfocus وscreen reader semantics مناسبة.</li>
+<li>[ ] responsive على النطاق المستهدف.</li>
+<li>[ ] analytics بلا محتوى حساس.</li>
+<li>[ ] unit/component/integration/e2e بحسب الخطر.</li>
+<li>[ ] لا console errors أو network failures غير المعالجة.</li>
+<li>[ ] security/privacy review عند أسرار أو ملفات أو network أو side effects.</li>
+<li>[ ] receipt يتضمن الأوامر والاختبارات والنتائج والمخاطر المفتوحة.</li>
+</ul>
+<hr />
+<h2 id="46">46. ترتيب التنفيذ المقترح</h2>
+<h3 id="0">المرحلة 0 — تثبيت العقود</h3>
+<ol>
+<li>اعتماد هذه الوثيقة.</li>
+<li>إنشاء <code>SITEMAP.md</code>.</li>
+<li>إنشاء <code>SCREEN-INVENTORY.md</code>.</li>
+<li>تفصيل state machines.</li>
+<li>إنشاء permission matrix.</li>
+<li>تحديد entities وZod contracts وerror model.</li>
+</ol>
+<h3 id="1_1">المرحلة 1 — الأساس البصري والتطبيقي</h3>
+<ol>
+<li><code>DESIGN.md</code> والتوكنز.</li>
+<li>RTL/LTR وi18n shell.</li>
+<li>App Shell والتنقل.</li>
+<li>primitives والمكونات الأساسية.</li>
+<li>Mock API وfixtures.</li>
+</ol>
+<h3 id="2_1">المرحلة 2 — قيمة المنتج الأساسية</h3>
+<ol>
+<li>Landing/Onboarding.</li>
+<li>Home/Projects.</li>
+<li>Chat + Model Picker.</li>
+<li>Compare.</li>
+<li>Usage surfaces الأساسية.</li>
+</ol>
+<h3 id="3_1">المرحلة 3 — التنفيذ المتقدم</h3>
+<ol>
+<li>Agent Library/Builder.</li>
+<li>Agent Run/Timeline/Approvals/Artifacts.</li>
+<li>Flow Builder/Inspector/Run.</li>
+<li>Knowledge.</li>
+<li>Tools/Skills وTeam/Admin.</li>
+</ol>
+<h3 id="4_1">المرحلة 4 — التحقق والاعتماد</h3>
+<ol>
+<li>responsive وRTL visual regression.</li>
+<li>accessibility.</li>
+<li>Playwright journeys.</li>
+<li>performance.</li>
+<li>usability testing.</li>
+<li>إصلاح blockers واعتماد contracts.</li>
+</ol>
+<h3 id="5-backend-mvp">المرحلة 5 — Backend MVP</h3>
+<p>يبدأ فقط بعد اعتماد prototype والعقود، وفق النطاق المحدد في القسم 11.2 ومعايير القسم 38.</p>
+<hr />
+<h2 id="47">47. مصفوفة التتبع العليا</h2>
+<table>
+<thead>
+<tr>
+<th>هدف</th>
+<th>الوحدات/المتطلبات الداعمة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>قيمة أولى سريعة</td>
+<td><code>ONB-*</code>, <code>HOME-*</code>, <code>CHAT-001..005</code></td>
+</tr>
+<tr>
+<td>اختيار نموذج مفهوم</td>
+<td><code>CHAT-002</code>, <code>CHAT-006..009</code>, <code>MODEL-*</code></td>
+</tr>
+<tr>
+<td>سياق موحد</td>
+<td><code>PROJ-*</code>, <code>KNOW-*</code></td>
+</tr>
+<tr>
+<td>تنفيذ آمن</td>
+<td><code>AGENT-*</code>, <code>NOTIF-*</code>, <code>SEC-*</code></td>
+</tr>
+<tr>
+<td>قابلية التكرار</td>
+<td><code>AGENT-015..016</code>, <code>FLOW-*</code></td>
+</tr>
+<tr>
+<td>شفافية التكلفة</td>
+<td><code>CORE-008</code>, <code>CHAT-009</code>, <code>BILL-*</code>, <code>KEY-*</code></td>
+</tr>
+<tr>
+<td>فرق صغيرة</td>
+<td><code>TEAM-*</code>, <code>PROJ-*</code>, <code>BILL-007</code></td>
+</tr>
+<tr>
+<td>عربية أصلية</td>
+<td><code>CORE-001..002</code>, <code>LANG-*</code>, <code>A11Y-*</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="48">48. الاعتماد</h2>
+<p>هذه الوثيقة تصبح baseline المنتج بعد اعتماد أصحاب الأدوار التالية:</p>
+<table>
+<thead>
+<tr>
+<th>الدور</th>
+<th>الحالة</th>
+<th>الملاحظات</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>صاحب المنتج</td>
+<td>بانتظار الاعتماد</td>
+<td></td>
+</tr>
+<tr>
+<td>التصميم/UX</td>
+<td>بانتظار الاعتماد</td>
+<td></td>
+</tr>
+<tr>
+<td>Frontend Engineering</td>
+<td>بانتظار الاعتماد</td>
+<td></td>
+</tr>
+<tr>
+<td>Backend/AI Platform</td>
+<td>بانتظار المراجعة قبل المرحلة الخامسة</td>
+<td></td>
+</tr>
+<tr>
+<td>Security/Privacy</td>
+<td>بانتظار المراجعة قبل Alpha</td>
+<td></td>
+</tr>
+<tr>
+<td>Finance/Legal</td>
+<td>بانتظار المراجعة قبل الدفع والإطلاق العام</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>أي تغيير يمس P0 أو الخصوصية أو الفوترة أو صلاحيات الأدوات يجب أن يسجل في <code>docs/04-delivery/DECISIONS.md</code> مع السبب والأثر والإصدار.</p>
+<hr />
+<h2 id="49">49. الخلاصة التنفيذية</h2>
+<p>الإصدار الأول من نَسَق يجب أن يثبت ثلاث حقائق فقط قبل توسيع النطاق:</p>
+<ol>
+<li>يستطيع المستخدم العربي إنجاز عمل مفيد عبر نماذج متعددة دون تعقيد أو غموض تكلفة.</li>
+<li>يستطيع تحويل محادثة إلى وكيل مضبوط ينتج نتيجة موثقة مع بقاء السيطرة البشرية.</li>
+<li>يستطيع تحويل العمل الناجح إلى تدفق قابل للتكرار دون أن يصبح خبير أتمتة.</li>
+</ol>
+<p>كل ميزة لا تدعم واحدة من هذه الحقائق، أو الأمان والثقة اللازمين لها، تُؤجل حتى يثبت الأساس.</p></main></div><footer class="footer">PRD 0.1 · مسودة تنفيذية. المبالغ والمزودون والسياسات القانونية المفتوحة لا تُعامل كوعود إطلاق حتى اعتمادها.</footer><button id="top" class="top" type="button" aria-label="العودة إلى أعلى">↑</button><script>document.getElementById('print').onclick=()=>window.print();document.getElementById('top').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});const p=document.getElementById('progress');addEventListener('scroll',()=>{const d=document.documentElement;p.style.width=((d.scrollTop/(d.scrollHeight-d.clientHeight||1))*100)+'%'});</script></body></html>
