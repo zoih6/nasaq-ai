@@ -1,10 +1,16 @@
 # نَسَق AI — دليل المشروع
 
-> **الحالة:** Frontend workspace prototype مكتمل ومتحقق تقنيًا  
+> **الحالة:** Frontend workspace prototype مكتمل، متحقق تقنيًا، ومنشور  
 > **المرحلة الحالية:** Backend-ready contracts and interaction handoff  
 > **الجمهور الأول:** محترفون وفرق عربية صغيرة
 
 نَسَق مساحة عمل عربية أولًا تجمع **المحادثة → الوكيل → التدفق** مع سياق مشترك، موافقات ظاهرة، وتكلفة قابلة للتفسير.
+
+## الروابط
+
+- **الإنتاج:** <https://nasaq-ai.vercel.app>
+- **GitHub:** <https://github.com/zoih6/nasaq-ai> (مستودع خاص)
+- **عقد النشر:** [GitHub and Vercel deployment](docs/04-delivery/DEPLOYMENT.md)
 
 ## شغّل النموذج
 

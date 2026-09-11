@@ -6,9 +6,10 @@
 - Branch: `main`
 - Vercel scope: personal account
 - Vercel project: `nasaq-ai`
+- Production URL: <https://nasaq-ai.vercel.app>
 - Framework: Next.js
 - Monorepo root directory: `apps/web`
-- Node.js: `20.x`
+- Node.js: `24.x` (Vercel production runtime; selected ahead of the 2026-10-01 Node 20 deployment cutoff)
 - Package manager: npm `11.6.4`
 
 ## Build contract
