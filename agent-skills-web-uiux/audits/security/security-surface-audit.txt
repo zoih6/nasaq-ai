@@ -1,0 +1,179 @@
+=== pbakaus__impeccable ===
+skill_files=24 script_bin_hook_mcp_files=281 lockfiles=1 license_files=2
+.agent/skills/impeccable/scripts/VERSION
+.agent/skills/impeccable/scripts/command-metadata.json
+.agent/skills/impeccable/scripts/data/font-index-failures.json
+.agent/skills/impeccable/scripts/data/font-index.json
+.agent/skills/impeccable/scripts/impeccable
+.agent/skills/impeccable/scripts/impeccable.cmd
+.agent/skills/impeccable/scripts/live-browser-dom.js
+.agent/skills/impeccable/scripts/live-browser-ignores.js
+.agent/skills/impeccable/scripts/live-browser-session.js
+.agent/skills/impeccable/scripts/live-browser.js
+.agent/skills/impeccable/scripts/modern-screenshot.umd.js
+.agents/skills/impeccable/scripts/VERSION
+.agents/skills/impeccable/scripts/command-metadata.json
+.agents/skills/impeccable/scripts/data/font-index-failures.json
+.agents/skills/impeccable/scripts/data/font-index.json
+.agents/skills/impeccable/scripts/impeccable
+.agents/skills/impeccable/scripts/impeccable.cmd
+.agents/skills/impeccable/scripts/live-browser-dom.js
+.agents/skills/impeccable/scripts/live-browser-ignores.js
+.agents/skills/impeccable/scripts/live-browser-session.js
+=== Nutlope__hallmark ===
+skill_files=1 script_bin_hook_mcp_files=0 lockfiles=0 license_files=1
+=== Leonxlnx__taste-skill ===
+skill_files=13 script_bin_hook_mcp_files=4 lockfiles=0 license_files=1
+scripts/build-emil-sponsor-row.mjs
+scripts/convert-readme-assets-webp.mjs
+scripts/process-readme-buttons.mjs
+scripts/process-sponsor-badge.mjs
+=== nextlevelbuilder__ui-ux-pro-max-skill ===
+skill_files=13 script_bin_hook_mcp_files=171 lockfiles=6 license_files=3
+.claude/skills/brand/scripts/extract-colors.cjs
+.claude/skills/brand/scripts/inject-brand-context.cjs
+.claude/skills/brand/scripts/sync-brand-to-tokens.cjs
+.claude/skills/brand/scripts/tests/test_sync_brand_to_tokens.py
+.claude/skills/brand/scripts/validate-asset.cjs
+.claude/skills/design-system/scripts/embed-tokens.cjs
+.claude/skills/design-system/scripts/fetch-background.py
+.claude/skills/design-system/scripts/generate-slide.py
+.claude/skills/design-system/scripts/generate-tokens.cjs
+.claude/skills/design-system/scripts/html-token-validator.py
+.claude/skills/design-system/scripts/search-slides.py
+.claude/skills/design-system/scripts/slide-token-validator.py
+.claude/skills/design-system/scripts/slide_search_core.py
+.claude/skills/design-system/scripts/tests/test_validate_tokens.py
+.claude/skills/design-system/scripts/validate-tokens.cjs
+.claude/skills/design/scripts/cip/core.py
+.claude/skills/design/scripts/cip/generate.py
+.claude/skills/design/scripts/cip/render-html.py
+.claude/skills/design/scripts/cip/search.py
+.claude/skills/design/scripts/icon/generate.py
+=== educlopez__ui-craft ===
+skill_files=217 script_bin_hook_mcp_files=71 lockfiles=2 license_files=1
+evals/build/craft-portfolio-001/recorded/workspace/src/hooks/useReveal.js
+mcp/README.md
+mcp/esbuild.config.mjs
+mcp/package-lock.json
+mcp/package.json
+mcp/src/acceptance-data.mjs
+mcp/src/coverage-data.mjs
+mcp/src/route-data.mjs
+mcp/src/server.mjs
+mcp/src/server.smoke.test.mjs
+mcp/src/server.test.mjs
+mcp/src/tokens-rules.mjs
+mcp/src/tools/acceptance-bar.mjs
+mcp/src/tools/acceptance-bar.test.mjs
+mcp/src/tools/check-anti-slop.mjs
+mcp/src/tools/check-anti-slop.test.mjs
+mcp/src/tools/fold.mjs
+mcp/src/tools/fold.test.mjs
+mcp/src/tools/route-task.mjs
+mcp/src/tools/route-task.test.mjs
+=== plugin87__ux-ui-agent-skills ===
+skill_files=17 script_bin_hook_mcp_files=29 lockfiles=0 license_files=0
+bin/cli.js
+scripts/accuracy_report.mjs
+scripts/axe_audit.mjs
+scripts/build_tokens.mjs
+scripts/check_no_emoji.py
+scripts/contrast.py
+scripts/design_systems.py
+scripts/lint_hardcodes.py
+scripts/lint_intent.mjs
+scripts/lint_taste.py
+scripts/measure_render.mjs
+scripts/scaffold_component.py
+scripts/slop_tells.mjs
+scripts/taste_audit.mjs
+scripts/validate_component_spec.py
+scripts/validate_contrast.py
+scripts/validate_instruction_surface.py
+scripts/validate_template.py
+scripts/validate_theme_refs.py
+scripts/validate_tokens.py
+=== google-labs-code__stitch-skills ===
+skill_files=16 script_bin_hook_mcp_files=10 lockfiles=2 license_files=1
+plugins/stitch-build/skills/react-components/scripts/fetch-stitch.sh
+plugins/stitch-build/skills/react-components/scripts/validate.js
+plugins/stitch-build/skills/react-native/scripts/fetch-stitch.sh
+plugins/stitch-build/skills/react-native/scripts/validate.js
+plugins/stitch-build/skills/remotion/scripts/download-stitch-asset.sh
+plugins/stitch-build/skills/shadcn-ui/scripts/verify-setup.sh
+plugins/stitch-design/skills/extract-static-html/scripts/extract_inline_html.ts
+plugins/stitch-design/skills/extract-static-html/scripts/post_process.ts
+plugins/stitch-design/skills/extract-static-html/scripts/snapshot.ts
+plugins/stitch-design/skills/upload-to-stitch/scripts/upload_to_stitch.py
+=== addyosmani__web-quality-skills ===
+skill_files=6 script_bin_hook_mcp_files=1 lockfiles=0 license_files=1
+skills/web-quality-audit/scripts/analyze.sh
+=== AccessLint__skills ===
+skill_files=5 script_bin_hook_mcp_files=0 lockfiles=0 license_files=0
+=== anthropics__skills ===
+skill_files=20 script_bin_hook_mcp_files=189 lockfiles=2 license_files=18
+skills/docx/scripts/__init__.py
+skills/docx/scripts/accept_changes.py
+skills/docx/scripts/comment.py
+skills/docx/scripts/merge_runs.py
+skills/docx/scripts/office/helpers/__init__.py
+skills/docx/scripts/office/helpers/pptx_chart.py
+skills/docx/scripts/office/helpers/pptx_slide.py
+skills/docx/scripts/office/helpers/pptx_theme.py
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd
+skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd
+=== anthropics__knowledge-work-plugins ===
+skill_files=212 script_bin_hook_mcp_files=31 lockfiles=1 license_files=24
+.github/scripts/external-pr-scope.js
+bio-research/skills/instrument-data-to-allotrope/scripts/convert_to_asm.py
+bio-research/skills/instrument-data-to-allotrope/scripts/export_parser.py
+bio-research/skills/instrument-data-to-allotrope/scripts/flatten_asm.py
+bio-research/skills/instrument-data-to-allotrope/scripts/validate_asm.py
+bio-research/skills/nextflow-development/scripts/check_environment.py
+bio-research/skills/nextflow-development/scripts/config/genomes.yaml
+bio-research/skills/nextflow-development/scripts/config/pipelines/atacseq.yaml
+bio-research/skills/nextflow-development/scripts/config/pipelines/rnaseq.yaml
+bio-research/skills/nextflow-development/scripts/config/pipelines/sarek.yaml
+bio-research/skills/nextflow-development/scripts/detect_data_type.py
+bio-research/skills/nextflow-development/scripts/generate_samplesheet.py
+bio-research/skills/nextflow-development/scripts/manage_genomes.py
+bio-research/skills/nextflow-development/scripts/sra_geo_fetch.py
+bio-research/skills/nextflow-development/scripts/utils/__init__.py
+bio-research/skills/nextflow-development/scripts/utils/file_discovery.py
+bio-research/skills/nextflow-development/scripts/utils/ncbi_utils.py
+bio-research/skills/nextflow-development/scripts/utils/sample_inference.py
+bio-research/skills/nextflow-development/scripts/utils/validators.py
+bio-research/skills/scvi-tools/scripts/cluster_embed.py
+=== figma__mcp-server-guide ===
+skill_files=30 script_bin_hook_mcp_files=21 lockfiles=0 license_files=0
+skills-figquery/figma-generate-library/scripts/bindVariablesToComponent.js
+skills-figquery/figma-generate-library/scripts/cleanupOrphans.js
+skills-figquery/figma-generate-library/scripts/createComponentWithVariants.js
+skills-figquery/figma-generate-library/scripts/createDocumentationPage.js
+skills-figquery/figma-generate-library/scripts/createSemanticTokens.js
+skills-figquery/figma-generate-library/scripts/createVariableCollection.js
+skills-figquery/figma-generate-library/scripts/inspectFileStructure.js
+skills-figquery/figma-generate-library/scripts/validateCreation.js
+skills/figma-generate-library/scripts/bindVariablesToComponent.js
+skills/figma-generate-library/scripts/cleanupOrphans.js
+skills/figma-generate-library/scripts/createComponentWithVariants.js
+skills/figma-generate-library/scripts/createDocumentationPage.js
+skills/figma-generate-library/scripts/createSemanticTokens.js
+skills/figma-generate-library/scripts/createVariableCollection.js
+skills/figma-generate-library/scripts/inspectFileStructure.js
+skills/figma-generate-library/scripts/validateCreation.js
+workflow-skills/video-interaction-mapper/scripts/extract_key_frames.py
+workflow-skills/video-interaction-mapper/scripts/generate_figma_calls.py
+workflow-skills/video-interaction-mapper/scripts/prepare_upload_frames.py
+workflow-skills/video-interaction-mapper/scripts/resolve_moment_frames.py

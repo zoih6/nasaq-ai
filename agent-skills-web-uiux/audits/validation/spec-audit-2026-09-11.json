@@ -1,0 +1,535 @@
+[
+  {
+    "file": "anthropic-frontend-design.md",
+    "parent": "frontend-design",
+    "name": "frontend-design",
+    "lines": 72,
+    "chars": 9363,
+    "license": "Complete terms in LICENSE.txt",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "anthropic-webapp-testing.md",
+    "parent": "webapp-testing",
+    "name": "webapp-testing",
+    "lines": 96,
+    "chars": 3861,
+    "license": "Complete terms in LICENSE.txt",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "anthropic-web-artifacts-builder.md",
+    "parent": "web-artifacts-builder",
+    "name": "web-artifacts-builder",
+    "lines": 74,
+    "chars": 3073,
+    "license": "Complete terms in LICENSE.txt",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "vercel-web-design-guidelines.md",
+    "parent": "web-design-guidelines",
+    "name": "web-design-guidelines",
+    "lines": 40,
+    "chars": 1231,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "vercel-react-best-practices.md",
+    "parent": "react-best-practices",
+    "name": "vercel-react-best-practices",
+    "lines": 150,
+    "chars": 7251,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": [
+      "name!=dir"
+    ]
+  },
+  {
+    "file": "vercel-composition-patterns.md",
+    "parent": "composition-patterns",
+    "name": "vercel-composition-patterns",
+    "lines": 90,
+    "chars": 2882,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": [
+      "name!=dir"
+    ]
+  },
+  {
+    "file": "impeccable.md",
+    "parent": "impeccable",
+    "name": "impeccable",
+    "lines": 84,
+    "chars": 11648,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "hallmark.md",
+    "parent": "hallmark",
+    "name": "hallmark",
+    "lines": 559,
+    "chars": 66585,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": [
+      ">500-lines-recommended"
+    ]
+  },
+  {
+    "file": "taste-skill-v2.md",
+    "parent": "taste-skill",
+    "name": "design-taste-frontend",
+    "lines": 1207,
+    "chars": 87126,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": [
+      "name!=dir",
+      ">500-lines-recommended"
+    ]
+  },
+  {
+    "file": "taste-skill-v1.md",
+    "parent": "taste-skill-v1",
+    "name": "design-taste-frontend-v1",
+    "lines": 227,
+    "chars": 21190,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": [
+      "name!=dir"
+    ]
+  },
+  {
+    "file": "ui-ux-pro-max.md",
+    "parent": "ui-ux-pro-max",
+    "name": "ui-ux-pro-max",
+    "lines": 215,
+    "chars": 15922,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "ui-craft.md",
+    "parent": "ui-craft",
+    "name": "ui-craft",
+    "lines": 394,
+    "chars": 38049,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "interface-design.md",
+    "parent": "interface-design",
+    "name": "interface-design",
+    "lines": 321,
+    "chars": 29304,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "plugin87-design-review.md",
+    "parent": "design-review",
+    "name": "design-review",
+    "lines": 23,
+    "chars": 1217,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "plugin87-design-tokens.md",
+    "parent": "design-tokens",
+    "name": "design-tokens",
+    "lines": 22,
+    "chars": 1597,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "stitch-design-md.md",
+    "parent": "design-md",
+    "name": "design-md",
+    "lines": 173,
+    "chars": 7644,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": [
+      "allowed-tools-not-string"
+    ]
+  },
+  {
+    "file": "stitch-enhance-prompt.md",
+    "parent": "enhance-prompt",
+    "name": "enhance-prompt",
+    "lines": 205,
+    "chars": 6618,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": [
+      "allowed-tools-not-string"
+    ]
+  },
+  {
+    "file": "stitch-loop.md",
+    "parent": "stitch-loop",
+    "name": "stitch-loop",
+    "lines": 264,
+    "chars": 10220,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": [
+      "allowed-tools-not-string"
+    ]
+  },
+  {
+    "file": "stitch-react-components.md",
+    "parent": "react-components",
+    "name": "stitch::react-components",
+    "lines": 110,
+    "chars": 8725,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": [
+      "name-syntax",
+      "name!=dir",
+      "allowed-tools-not-string"
+    ]
+  },
+  {
+    "file": "stitch-taste-design.md",
+    "parent": "taste-design",
+    "name": "taste-design",
+    "lines": 192,
+    "chars": 12443,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": [
+      "allowed-tools-not-string"
+    ]
+  },
+  {
+    "file": "web-quality-audit.md",
+    "parent": "web-quality-audit",
+    "name": "web-quality-audit",
+    "lines": 210,
+    "chars": 10446,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "accesslint-audit.md",
+    "parent": "accessibility-audit",
+    "name": "accessibility-audit",
+    "lines": 86,
+    "chars": 7254,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "kreerc-accessibility.md",
+    "parent": "accessibility",
+    "name": "accessibility",
+    "lines": 69,
+    "chars": 9755,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "kreerc-accessibility-testing.md",
+    "parent": "accessibility-testing",
+    "name": "accessibility-testing",
+    "lines": 48,
+    "chars": 3049,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "anthropic-user-research.md",
+    "parent": "user-research",
+    "name": "user-research",
+    "lines": 42,
+    "chars": 1751,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "anthropic-research-synthesis.md",
+    "parent": "research-synthesis",
+    "name": "research-synthesis",
+    "lines": 93,
+    "chars": 2996,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "anthropic-accessibility-review.md",
+    "parent": "accessibility-review",
+    "name": "accessibility-review",
+    "lines": 129,
+    "chars": 4248,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "owl-usability-test-plan.md",
+    "parent": "usability-test-plan",
+    "name": "usability-test-plan",
+    "lines": 33,
+    "chars": 1639,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "ux-discovery-interviewer.md",
+    "parent": "ux-discovery-interviewer",
+    "name": "ux-discovery-interviewer",
+    "lines": 140,
+    "chars": 4649,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "uxui-evaluator.md",
+    "parent": "uxui-evaluator",
+    "name": "uxui-evaluator",
+    "lines": 261,
+    "chars": 11834,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "figma-design-to-code.md",
+    "parent": "figma-design-to-code",
+    "name": "figma-design-to-code",
+    "lines": 62,
+    "chars": 4947,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "microsoft-playwright-cli.md",
+    "parent": "playwright-cli",
+    "name": "playwright-cli",
+    "lines": 438,
+    "chars": 13505,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "tob-differential-review.md",
+    "parent": "differential-review",
+    "name": "differential-review",
+    "lines": 226,
+    "chars": 7339,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "tob-codeql.md",
+    "parent": "codeql",
+    "name": "codeql",
+    "lines": 296,
+    "chars": 18470,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "tob-semgrep.md",
+    "parent": "semgrep",
+    "name": "semgrep",
+    "lines": 272,
+    "chars": 14753,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "tob-supply-chain.md",
+    "parent": "supply-chain-risk-auditor",
+    "name": "supply-chain-risk-auditor",
+    "lines": 123,
+    "chars": 6963,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "angular-developer.md",
+    "parent": "angular-developer",
+    "name": "angular-developer",
+    "lines": 145,
+    "chars": 10735,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "angular-new-app.md",
+    "parent": "angular-new-app",
+    "name": "angular-new-app",
+    "lines": 63,
+    "chars": 4333,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "expo-design-system.md",
+    "parent": "expo-design-system",
+    "name": "expo-design-system",
+    "lines": 377,
+    "chars": 19391,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "expo-router.md",
+    "parent": "expo-router",
+    "name": "expo-router",
+    "lines": 241,
+    "chars": 7025,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "supabase-postgres-best-practices.md",
+    "parent": "supabase-postgres-best-practices",
+    "name": "supabase-postgres-best-practices",
+    "lines": 65,
+    "chars": 3229,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "prisma-postgres.md",
+    "parent": "prisma-postgres",
+    "name": "prisma-postgres",
+    "lines": 146,
+    "chars": 4713,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "firebase-security-rules-auditor.md",
+    "parent": "firebase-security-rules-auditor",
+    "name": "firebase-security-rules-auditor",
+    "lines": 74,
+    "chars": 3848,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "cloudflare-workers-best-practices.md",
+    "parent": "workers-best-practices",
+    "name": "workers-best-practices",
+    "lines": 61,
+    "chars": 5507,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "cloudflare-web-perf.md",
+    "parent": "web-perf",
+    "name": "web-perf",
+    "lines": 202,
+    "chars": 8253,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "antfu-vue-best-practices.md",
+    "parent": "vue-best-practices",
+    "name": "vue-best-practices",
+    "lines": 155,
+    "chars": 8795,
+    "license": "MIT",
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "antfu-vite.md",
+    "parent": "vite",
+    "name": "vite",
+    "lines": 73,
+    "chars": 2463,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "shadcn.md",
+    "parent": "shadcn",
+    "name": "shadcn",
+    "lines": 278,
+    "chars": 19427,
+    "license": null,
+    "has_allowed_tools": true,
+    "issues": []
+  },
+  {
+    "file": "next-dev-loop.md",
+    "parent": "next-dev-loop",
+    "name": "next-dev-loop",
+    "lines": 188,
+    "chars": 8289,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "next-cache-components-adoption.md",
+    "parent": "next-cache-components-adoption",
+    "name": "next-cache-components-adoption",
+    "lines": 251,
+    "chars": 33409,
+    "license": null,
+    "has_allowed_tools": false,
+    "issues": []
+  },
+  {
+    "file": "practicalswan-frontend-design.md",
+    "parent": "frontend-design",
+    "name": "frontend-design",
+    "lines": 280,
+    "chars": 16186,
+    "license": "MIT AND Apache-2.0",
+    "has_allowed_tools": false,
+    "issues": []
+  }
+]

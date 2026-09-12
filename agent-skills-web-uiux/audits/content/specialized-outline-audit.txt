@@ -1,0 +1,725 @@
+===== microsoft-playwright-cli.md =====
+---
+name: playwright-cli
+description: Automate browser interactions, test web pages and work with Playwright tests.
+allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
+---
+
+# Browser Automation with playwright-cli
+
+## Quick start
+
+```bash
+# open new browser
+playwright-cli open
+# navigate to a page
+playwright-cli goto https://playwright.dev
+# interact with the page using refs from the snapshot
+playwright-cli click e15
+playwright-cli type "page.click"
+playwright-cli press Enter
+# take a screenshot (rarely used, as snapshot is more common)
+-- HEADINGS --
+# Browser Automation with playwright-cli
+## Quick start
+# open new browser
+# navigate to a page
+# interact with the page using refs from the snapshot
+# take a screenshot (rarely used, as snapshot is more common)
+# close the browser
+## Commands
+### Core
+# open and navigate right away
+# --submit presses Enter after filling the element
+# drop files or data onto an element (from outside the page)
+# search the snapshot for text or a regexp, returns matching nodes with surrounding context
+# wrap the regexp in slashes to add flags, e.g. /i for case-insensitive
+# get element id, class, or any attribute not visible in the snapshot
+### Navigation
+### Keyboard
+### Mouse
+### Save as
+### Tabs
+### Storage
+# Cookies
+# LocalStorage
+# SessionStorage
+### Network
+### DevTools
+# record user actions in the browser, print them as Playwright code on stop
+# annotate each subsequent action (click, type, ...) with a callout naming the action and highlighting the target
+# launch the dashboard for UI review / design feedback — user annotates the page, you receive the annotated screenshot, snapshot, and notes
+# generate a Playwright locator for an element from its ref or selector
+# show a persistent highlight overlay for an element, optionally with a custom style
+# hide a single element highlight, or all page highlights when no target is given
+## Raw output
+## Open parameters
+# Use specific browser when creating session
+
+===== tob-differential-review.md =====
+---
+name: differential-review
+description: "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context, calculates blast radius by counting callers, checks test coverage of modified code, and generates a markdown report. Use when reviewing a PR, commit, or diff for security vulnerabilities, checking whether a change re-introduces a previously fixed bug, asking what else a change could break, or finding which modified code has no test covering it."
+allowed-tools: Read Write Grep Glob Bash
+---
+
+# Differential Security Review
+
+Security-focused code review for PRs, commits, and diffs.
+
+## Core Principles
+
+1. **Risk-First**: Focus on auth, crypto, value transfer, external calls
+2. **Evidence-Based**: Every finding backed by git history, line numbers, attack scenarios
+3. **Adaptive**: Scale to codebase size (SMALL/MEDIUM/LARGE)
+4. **Honest**: Explicitly state coverage limits and confidence level
+5. **Output-Driven**: Always generate comprehensive markdown report file
+
+---
+
+-- HEADINGS --
+# Differential Security Review
+## Core Principles
+## Rationalizations (Do Not Skip)
+## Quick Reference
+### Codebase Size Strategy
+### Risk Level Triggers
+## Workflow Overview
+## Decision Tree
+## Agents
+## Quality Checklist
+## Integration
+## Example Usage
+### Quick Triage (Small PR)
+### Standard Review (Medium Codebase)
+### Deep Audit (Large, Critical Change)
+## When NOT to Use This Skill
+## Red Flags (Stop and Investigate)
+## Tips for Best Results
+## Supporting Documentation
+
+===== tob-codeql.md =====
+---
+name: codeql
+description: >-
+  Scans a codebase for security vulnerabilities using CodeQL's interprocedural data flow and
+  taint tracking analysis. Triggers on "run codeql", "codeql scan", "build codeql database",
+  "SAST scan", "taint analysis", "dataflow analysis", or "find vulnerabilities in this repo".
+  Covers Python, JavaScript/TypeScript, Go, Java/Kotlin, C/C++, C#, Ruby, and Swift. Supports
+  "run all" (security-and-quality + security-experimental) and "important only"
+  (high-precision) scan modes, and creates data extension models for project-specific sources
+  and sinks. For fast single-file pattern matching, or when no build is available for a
+  compiled language, use the semgrep skill; to parse SARIF that already exists rather than
+  produce it, use the sarif-parsing skill.
+allowed-tools: Bash Read Write Edit Glob Grep AskUserQuestion TaskCreate TaskList TaskUpdate TaskGet
+---
+
+# CodeQL Analysis
+
+Supported languages: Python, JavaScript/TypeScript, Go, Java/Kotlin, C/C++, C#, Ruby, Swift.
+
+**Skill resources:** Reference files and templates are located at `{baseDir}/references/` and `{baseDir}/workflows/`.
+-- HEADINGS --
+# CodeQL Analysis
+## Essential Principles
+## Each Bash call is a fresh shell
+## Output Directory
+# Resolve output directory
+### Database Discovery
+# Command substitution, not `done < <(...)`: a process substitution discards the script's
+# exit status, so "codeql is not on this shell's PATH" (exit 2) would arrive as an empty
+# list and route to "build a new database" with three good ones sitting on disk.
+# The metadata the selection prompt needs, collected here rather than in a block of its
+# own: FOUND_DBS is gone by the next Bash call, and a loop over an array that no longer
+# exists prints nothing and reports success.
+## Quick Start
+# Verify CodeQL is installed. Stop here if it is not — every later command fails with
+# a less informative error, and the run wastes a build cycle before saying why.
+# jq parses `codeql resolve database --format=json` in the very next step. Without it
+# CODEQL_LANG comes back empty and the run continues against the wrong language.
+# uv runs both guard scripts and both suite generators. Check it here rather than at
+# suite generation, which is after the build — otherwise a machine without uv spends
+# the whole build before failing.
+## Rationalizations to Reject
+## Workflow Selection
+### Building unattended
+### Auto-Detection Logic
+### Database Selection Prompt
+### General Decision Prompt
+## Reference Index
+## Success Criteria
+
+===== tob-semgrep.md =====
+---
+name: semgrep
+description: >-
+  Runs a Semgrep security scan over a codebase: detects languages, selects
+  rulesets, presents the plan for explicit approval, then runs every approved
+  ruleset through scripts/run-scans.sh, which batches the semgrep processes and
+  writes scans.json, and merges the output to SARIF. Supports two scan modes,
+  "run all" for full ruleset coverage and "important only" for security
+  findings at medium-to-high confidence and impact. Uses Semgrep Pro for
+  cross-file taint analysis when it is available. Use when asked to scan code
+  for vulnerabilities, run a security audit with Semgrep, find bugs, or perform
+  static analysis. For the same scan without the approval gate, use the
+  /static-analysis:semgrep-scan workflow.
+allowed-tools: Bash Read Glob AskUserQuestion TaskCreate TaskList TaskUpdate
+---
+
+# Semgrep Security Scan
+
+Run a Semgrep scan with automatic language detection, parallel execution, and merged SARIF output.
+
+-- HEADINGS --
+# Semgrep Security Scan
+## Essential Principles
+## When to Use
+## When NOT to Use
+## Output Directory
+# Resolve output directory
+## Prerequisites
+# --metrics=off because Principle 1 has no exceptions, and this is the first semgrep command
+# of a run. stderr is kept because "OSS only" has several causes (logged out, no subscription,
+# registry blocked) and the run downgrades silently for all of them.
+## Scan Modes
+## Orchestration Architecture
+## Running it as a Workflow
+## Workflow
+# run-all
+# important-only, once the JSON post-filter has run over every file in raw/
+## Workflow and agents
+## Rationalizations to Reject
+## Reference Index
+## Success Criteria
+
+===== tob-supply-chain.md =====
+---
+name: supply-chain-risk-auditor
+description: "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile tree, abandoned or archived upstreams, npm publisher concentration, and install-time script execution. Use when asked to audit dependencies, assess supply-chain or third-party package risk, or review a dependency tree before an engagement."
+allowed-tools: Read Write Bash Glob Grep
+---
+
+# Supply Chain Risk Auditor
+
+Generates a supply-chain risk report for a project's direct dependencies (npm, PyPI,
+Go), plus an advisory sweep of everything its lockfile resolves. Two deterministic
+scripts do the measuring; your job is the judgment they refuse to automate.
+
+## Why the scripts do the measuring, not you
+
+Every figure in this report is a claim about somebody else's project, and hand-collected
+figures were measured wrong before this skill was rebuilt around scripts: GitHub
+contributor counts said five-plus people maintain `lodash` where npm's ACL says one, and
+`gh` saw zero downloads for a package that moves 164 million a week. Do not estimate
+maintainer counts, downloads, staleness, or CVE history from `gh`, web search, or
+memory — run the collector, and quote what it measured.
+-- HEADINGS --
+# Supply Chain Risk Auditor
+## Why the scripts do the measuring, not you
+## Workflow
+## Style for what you add
+## Reading the report
+## Rationalizations to reject
+## When not to use
+
+===== angular-developer.md =====
+---
+name: angular-developer
+description: Generates Angular code and provides architectural guidance. Trigger when creating projects, components, services, or HTTP communication, or for best practices on reactivity (signals, linkedSignal, resource, httpResource), forms, dependency injection, routing, SSR, accessibility (ARIA), animations, styling (component styles, Tailwind CSS), testing, naming conventions, or CLI tooling.
+license: MIT
+metadata:
+  author: Copyright 2026 Google LLC
+  version: '1.0'
+---
+
+# Angular Developer Guidelines
+
+1. Always analyze the project's Angular version before providing guidance, as best practices and available features can vary significantly between versions. If creating a new project with Angular CLI, do not specify a version unless prompted by the user.
+
+2. When generating code, follow Angular's style guide and best practices for maintainability and performance. Use the Angular CLI for scaffolding components, services, directives, pipes, and routes to ensure consistency.
+
+3. Once you finish generating code, run `ng build` to ensure there are no build errors. If there are errors, analyze the error messages and fix them before proceeding. Do not skip this step, as it is critical for ensuring the generated code is correct and functional.
+
+## Creating New Projects
+
+If no guidelines are provided by the user, here are some default rules to follow when creating a new Angular project:
+-- HEADINGS --
+# Angular Developer Guidelines
+## Creating New Projects
+## Components
+## Reactivity and Data Management
+## HTTP Communication
+## Forms
+## Dependency Injection
+## Pipes
+## Angular Aria
+## Routing
+## Styling and Animations
+## Testing
+## Tooling
+
+===== angular-new-app.md =====
+---
+name: angular-new-app
+description: Creates a new Angular app using the Angular CLI. This skill should be used whenever a user wants to create a new Angular application and contains important guidelines for how to effectively create a modern Angular application.
+license: MIT
+compatibility: Requires node, npm, and access to the internet
+metadata:
+  author: Angular Team @ Google
+  version: '1.0'
+---
+
+# Angular New App
+
+You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices. You have access to tools to create new Angular apps.
+
+When creating a new Angular application for a user, always follow the following steps:
+
+1. **Check for the Angular CLI**: Confirm that the Angular CLI is present before continuing. Here are some ways to confirm:
+   - on `*nix` systems `which ng`
+   - on Windows systems `where ng`, if powershell `gcm ng`
+
+-- HEADINGS --
+# Angular New App
+
+===== expo-design-system.md =====
+---
+name: expo-design-system
+description: Framework (OSS). Build and maintain a design system inside an Expo app - a reusable theme of design tokens (color, spacing, typography, radius, shadow, motion), reusable component structure with variant/size/state prop conventions, and rules for when to extract a repeated view into a shared component. Use when creating or organizing theme files and design tokens (theme.ts / theme/), extending an existing theme or styling library (NativeWind, Tamagui, Restyle, Unistyles) in its own idiom, standardizing styles so screens (including AI-generated ones) look consistent and polished, fixing an app that looks AI-generated or generic instead of native (the named native-slop tells), building an in-app component library, or auditing an app for design-system drift (hardcoded colors, spacing, fonts). For platform styling specifics (semantic colors, HIG rules, native controls) use expo-native-ui; for folder layout of a new app use expo-project-structure.
+version: 1.0.0
+license: MIT
+---
+
+# Expo Design Systems
+
+Make every screen in an app draw from one visual source of truth: a token theme and a small set of reusable components. This skill defines where tokens live, what they cover, how reusable components are shaped, and when a repeated view earns promotion into the system.
+
+Sibling skills own the layers around this one:
+
+- `expo-native-ui` - platform styling rules (HIG, semantic colors, controls, shadows syntax). Follow it for **what values look native**; follow this skill for **where values live and how they're reused**.
+- `expo-project-structure` - folder skeleton for new apps.
+
+For Tailwind projects, keep tokens in `global.css` as CSS variables and follow the styling library's own setup guidance. The scales and naming in this skill still apply; only the storage format changes.
+
+## References
+
+-- HEADINGS --
+# Expo Design Systems
+## References
+## Adopt Before You Build
+## The Theme
+### Colors
+### Spacing
+### Typography
+### Radius
+### Shadows
+### Motion
+## Reusable Components
+### The component contract
+### Composition over configuration
+### When to extract - and when not to
+## Where Decisions Live
+## Self-Critique Pass
+## Named Failures: Native Slop
+## Auditing an Existing App
+## Submitting Feedback
+
+===== expo-router.md =====
+---
+name: expo-router
+description: Framework (OSS). Navigation and routing for Expo Router. Covers file-based routes, groups and dynamic routes, folder organization, Link with previews and context menus, native Stack, page titles, modals and form sheets, NativeTabs, headers and toolbars, and header search bars.
+version: 1.0.1
+license: MIT
+---
+
+# Expo Router Navigation
+
+Navigation and routing for Expo Router apps. For screen styling, colors, controls, media, and visual effects, use the `expo-native-ui` skill; for motion and gestures, use `expo-animation`.
+
+## References
+
+Consult these resources as needed:
+
+```
+references/
+  route-structure.md     Route conventions, dynamic routes, groups, folder organization
+  tabs.md                NativeTabs, migration from JS tabs, iOS 26 features
+  toolbar-and-headers.md Stack headers and toolbar buttons, menus, search (iOS only)
+-- HEADINGS --
+# Expo Router Navigation
+## References
+## Code Style
+## Routes
+## Library Preferences
+## Behavior
+# Navigation
+## Link
+## Stack
+### Page Title
+## Context Menus
+## Link Previews
+## Modal
+## Sheet
+## Common route structure
+## Submitting Feedback
+
+===== supabase-postgres-best-practices.md =====
+---
+name: supabase-postgres-best-practices
+description: "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide — schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query."
+license: MIT
+metadata:
+  author: supabase
+  version: "1.1.1"
+  organization: Supabase
+  date: January 2026
+  abstract: Comprehensive Postgres performance optimization guide for developers using Supabase and Postgres. Contains performance rules across 8 categories, prioritized by impact from critical (query performance, connection management) to incremental (advanced features). Each rule includes detailed explanations, incorrect vs. correct SQL examples, query plan analysis, and specific performance metrics to guide automated optimization and code generation.
+---
+
+# Supabase Postgres Best Practices
+
+Comprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and schema design.
+
+## When to Apply
+
+Reference these guidelines when:
+- Writing SQL queries or designing schemas
+-- HEADINGS --
+# Supabase Postgres Best Practices
+## When to Apply
+## Rule Categories by Priority
+## How to Use
+## References
+
+===== prisma-postgres.md =====
+---
+name: prisma-postgres
+description: Prisma Postgres setup and operations guidance across Console, create-db CLI, Management API, and Management API SDK. Use when creating Prisma Postgres databases, working in Prisma Console, provisioning with create-db/create-pg/create-postgres, or integrating programmatic provisioning with service tokens or OAuth.
+license: MIT
+metadata:
+  author: prisma
+  version: "7.9.1"
+---
+
+# Prisma Postgres
+
+Guidance for creating, managing, and integrating Prisma Postgres across interactive and programmatic workflows.
+
+## When to Apply
+
+Reference this skill when:
+- Setting up Prisma Postgres from Prisma Console
+- Provisioning instant temporary databases with `create-db`
+- Linking an existing local project with `prisma postgres link`
+- Managing Prisma Postgres resources via Management API
+-- HEADINGS --
+# Prisma Postgres
+## When to Apply
+## Rule Categories by Priority
+## Quick Reference
+## Core Workflows
+### 1. Console-first workflow
+### 2. Quick provisioning with create-db
+### 2b. Persistent databases with the Platform CLI
+### 3. Link an existing local project
+### 4. Programmatic provisioning with Management API
+### 5. Type-safe integration with Management API SDK
+## Rule Files
+## How to Use
+
+===== firebase-security-rules-auditor.md =====
+---
+name: firebase-security-rules-auditor
+description: >-
+  Audits Firebase (Firestore, Cloud Storage) security rules for vulnerabilities, privilege escalation, role bypasses, create vs update inconsistencies, resource exhaustion, type safety, size limits, and hasOnly ownership checks. Use when auditing/reviewing rules, running red-team rule assessments, or scoring against auditor checklists. Don't use for Firebase CLI (login, deploy), Auth, Crashlytics, Remote Config, or database queries.
+metadata:
+  category: CloudSecurity
+---
+
+# Overview
+
+This skill acts as an auditor for Firebase Security Rules, evaluating them
+against a rigorous set of criteria to ensure they are secure, robust, and
+correctly implemented.
+
+# Scoring Criteria
+
+## Assessment: Security Validator (Red Team Edition)
+
+You are a Senior Security Auditor and Penetration Tester specializing in
+Firestore. Your goal is to find "the hole in the wall." Do not assume a rule is
+-- HEADINGS --
+# Overview
+# Scoring Criteria
+## Assessment: Security Validator (Red Team Edition)
+### Mandatory Audit Checklist:
+### Admin Bootstrapping & Privileges:
+### Scoring Criteria (1-5):
+
+===== cloudflare-workers-best-practices.md =====
+---
+name: workers-best-practices
+description: Cloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
+---
+
+Your knowledge of Cloudflare Workers APIs, types, and configuration may be outdated. **Prefer retrieval over pre-training** when writing or reviewing Workers code.
+
+Use the project's installed versions, generated types, and Wrangler compatibility settings as the baseline for existing code. Retrieve relevant Cloudflare documentation to verify API, configuration, runtime behavior, and limit claims.
+
+## References
+
+Read the sections relevant to the task:
+
+| Reference | When to use it |
+|-----------|----------------|
+| [Configuration and observability](references/configuration.md) | Compatibility dates, bindings, generated types, secrets, logs, and traces |
+| [Runtime patterns](references/runtime-patterns.md) | Streaming, promise lifetime, request state, service calls, security, and runtime tests |
+| [Platform API checks](references/platform-apis.md) | Handler signatures, platform classes, binding access, and serialization |
+
+For missing evidence, consult [Workers best practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/) or find the affected product in the [Cloudflare docs directory](https://developers.cloudflare.com/directory/). Use the installed Wrangler schema for config fields. A newer type package does not supersede the project's configured target.
+-- HEADINGS --
+## References
+## Keep Compatibility Dates Current
+## Enable Observability
+## Anti-Patterns to Flag
+## Validation
+## Scope
+
+===== cloudflare-web-perf.md =====
+---
+name: web-perf
+description: Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
+---
+
+# Web Performance Audit
+
+Your knowledge of web performance metrics, thresholds, and tooling APIs may be outdated. **Prefer retrieval over pre-training** when citing specific numbers or recommendations.
+
+## Retrieval Sources
+
+| Source | How to retrieve | Use for |
+|--------|----------------|---------|
+| web.dev | `https://web.dev/articles/vitals` | Core Web Vitals thresholds, definitions |
+| Chrome DevTools docs | `https://developer.chrome.com/docs/devtools/performance` | Tooling APIs, trace analysis |
+| Lighthouse scoring | `https://developer.chrome.com/docs/lighthouse/performance/performance-scoring` | Score weights, metric thresholds |
+
+## FIRST: Verify MCP Tools Available
+
+Discover available browser and performance tools before starting. Use the capabilities available for the requested audit. If trace tools are unavailable, continue any useful source or network analysis and state which measurements could not be collected.
+-- HEADINGS --
+# Web Performance Audit
+## Retrieval Sources
+## FIRST: Verify MCP Tools Available
+## Key Guidelines
+## Quick Reference
+## Workflow
+### Phase 1: Performance Trace
+### Phase 2: Core Web Vitals Analysis
+### Phase 3: Network Analysis
+### Phase 4: Accessibility Snapshot
+## Phase 5: Codebase Analysis
+### Detect Framework & Bundler
+### Tree-Shaking & Dead Code
+### Unused JS/CSS
+### Polyfills
+### Compression & Minification
+## Output Format
+
+===== antfu-vue-best-practices.md =====
+---
+name: vue-best-practices
+description: MUST be used for Vue.js tasks. Strongly recommends Composition API with `<script setup>` and TypeScript as the standard approach. Covers Vue 3, SSR, Volar, vue-tsc. Load for any Vue, .vue files, Vue Router, Pinia, or Vite with Vue work. ALWAYS use Composition API unless the project explicitly requires Options API.
+license: MIT
+metadata:
+  author: github.com/vuejs-ai
+  version: "18.0.0"
+---
+
+# Vue Best Practices Workflow
+
+Use this skill as an instruction set. Follow the workflow in order unless the user explicitly asks for a different order.
+
+## Core Principles
+- **Keep state predictable:** one source of truth, derive everything else.
+- **Make data flow explicit:** Props down, Events up for most cases.
+- **Favor small, focused components:** easier to test, reuse, and maintain.
+- **Avoid unnecessary re-renders:** use computed properties and watchers wisely.
+- **Readability counts:** write clear, self-documenting code.
+
+-- HEADINGS --
+# Vue Best Practices Workflow
+## Core Principles
+## 1) Confirm architecture before coding (required)
+### 1.1 Must-read core references (required)
+### 1.2 Plan component boundaries before coding (required)
+## 2) Apply essential Vue foundations (required)
+### Reactivity
+### SFC structure and template safety
+### Keep components focused
+### Component data flow
+### Composables
+## 3) Consider optional features only when requirements call for them
+### 3.1 Standard optional features
+### 3.2 Less-common optional features
+## 4) Run performance optimization after behavior is correct
+## 5) Final self-check before finishing
+
+===== antfu-vite.md =====
+---
+name: vite
+description: Vite build tool configuration, plugin API, SSR, and Vite 8 Rolldown migration. Use when working with Vite projects, vite.config.ts, Vite plugins, or building libraries/SSR apps with Vite.
+metadata:
+  author: Anthony Fu
+  version: "2026.1.31"
+  source: Generated from https://github.com/vitejs/vite, scripts at https://github.com/antfu/skills
+---
+
+# Vite
+
+> Based on Vite 8 beta (Rolldown-powered). Vite 8 uses Rolldown bundler and Oxc transformer.
+
+Vite is a next-generation frontend build tool with fast dev server (native ESM + HMR) and optimized production builds.
+
+## Preferences
+
+- Use TypeScript: prefer `vite.config.ts`
+- Always use ESM, avoid CommonJS
+
+-- HEADINGS --
+# Vite
+## Preferences
+## Core
+## Build & SSR
+## Advanced
+## Quick Reference
+### CLI Commands
+### Common Config
+### Official Plugins
+
+===== shadcn.md =====
+---
+name: shadcn
+description: Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat interfaces. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
+user-invocable: false
+allowed-tools: Bash(npx shadcn@latest *), Bash(pnpm dlx shadcn@latest *), Bash(bunx --bun shadcn@latest *)
+---
+
+# shadcn/ui
+
+A framework for building ui, components and design systems. Components are added as source code to the user's project via the CLI.
+
+> **IMPORTANT:** Run all CLI commands using the project's package runner: `npx shadcn@latest`, `pnpm dlx shadcn@latest`, or `bunx --bun shadcn@latest` — based on the project's `packageManager`. Examples below use `npx shadcn@latest` but substitute the correct runner for the project.
+
+## Current Project Context
+
+```json
+!`npx shadcn@latest info --json`
+```
+
+The JSON above contains the project config and installed components. Use `npx shadcn@latest docs <component>` to get documentation and example URLs for any component.
+-- HEADINGS --
+# shadcn/ui
+## Current Project Context
+## Principles
+## Critical Rules
+### Styling & Tailwind → [styling.md](./rules/styling.md)
+### Forms & Inputs → [forms.md](./rules/forms.md)
+### Component Structure → [composition.md](./rules/composition.md)
+### Use Components, Not Custom Markup → [composition.md](./rules/composition.md)
+### Icons → [icons.md](./rules/icons.md)
+### Chat & Messaging → [chat.md](./rules/chat.md)
+### CLI
+## Key Patterns
+## Component Selection
+## Key Fields
+## Component Docs, Examples, and Usage
+## Workflow
+## Updating Components
+## Quick Reference
+# Create a new project.
+# Create a monorepo project.
+# Initialize existing project.
+# Apply a preset to an existing project.
+# Inspect preset codes and project preset state.
+# Add components.
+# Preview changes before adding/updating.
+# Search registries.
+# Get component docs and example URLs.
+# View registry item details (for items not yet installed).
+## Detailed References
+
+===== next-dev-loop.md =====
+---
+name: next-dev-loop
+description: >
+  Verify Next.js runtime behavior after editing app code. Use this
+  skill to confirm a change actually works in a running app — not
+  just that it compiles or type-checks. Combines /_next/mcp
+  (Next.js's view) with agent-browser (the browser's view).
+  Requires a running `next dev`.
+---
+
+# next-dev-loop
+
+The edit/verify rhythm during `next dev` — make a change, then
+confirm it actually works at runtime, not only that the types or
+the build are happy.
+
+You verify through two views of the same running app:
+
+- **`/_next/mcp`** — an HTTP endpoint Next.js exposes about itself.
+  Knows framework-specific things: routes, segments, RSC, server
+-- HEADINGS --
+# next-dev-loop
+## requires
+## preflight
+## loop
+### before the edit — narrow the scope
+### after the edit — verify
+## gotchas
+## reference
+# /_next/mcp                 notes
+## teardown
+
+===== next-cache-components-adoption.md =====
+---
+name: next-cache-components-adoption
+description: >
+  Turn on Cache Components in a Next.js app and resolve the blocking routes it
+  surfaces. Use when the user wants to enable, adopt, or migrate to Cache
+  Components, flip the `cacheComponents` flag, work through a flood of
+  blocking-prerender / instant validation errors, run the
+  `cache-components-instant-false` codemod, or decide between opting routes out
+  with `export const instant = false` and fixing them in place.
+---
+
+# next-cache-components-adoption
+
+Enable Cache Components on an app and walk it to a passing build. This skill sequences the work; per-error recipes live in the dev overlay fix cards and the build's terminal output. The [migrating to Cache Components guide](https://nextjs.org/docs/app/guides/migrating-to-cache-components) is the canonical reference for the concepts and per-API recipes this skill applies — consult it whenever the skill steps reference a pattern (`"use cache"`, `cacheLife`, `<Suspense>` placement, etc.) and you want the full explanation.
+
+## requires
+
+- **App Router project.** Cache Components is an App Router feature; `cacheComponents: true` does nothing for `pages/` routes. If the project has a `pages/` or `src/pages/` tree but no `app/` or `src/app/` tree, stop and tell the user — Pages → App migration is its own project, not part of this skill. A hybrid app (both `pages/` and `app/`) is fine: the flag affects the `app/` routes; `pages/` routes are unaffected and don't need opt-outs.
+
+- **A resolved app directory.** Locate `next.config.{js,ts,mjs,cjs}` first: that's the project root, and an agent invoked from a subdirectory would otherwise test for `app/` against the wrong `cwd` and find nothing. Look for `app/` and `src/app/` under it, and treat every command and glob in this skill as relative to whichever one exists. If both exist, Next.js builds `app/` and never looks at `src/app/`, so its routes are shadowed and unbuilt — tell the user that and ask which tree to migrate instead of picking one.
+-- HEADINGS --
+# next-cache-components-adoption
+## requires
+### notes
+## the shape of the work
+## background
+## working surfaces
+### finding blocking routes
+### verifying each fix at runtime
+## step 1: choose a strategy
+### incremental
+### end of the pre-step: check in
+### direct
+## step 2: the inner loop, remove opt-outs one feature at a time
+### the loop, with a browser (preferred)
+### the loop, build-only (fallback)
+### loop notes
+## step 3: verify the feature
+### route table glyphs
+## further reading
+

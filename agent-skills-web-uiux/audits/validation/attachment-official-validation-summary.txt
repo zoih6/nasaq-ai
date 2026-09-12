@@ -1,0 +1,37 @@
+PASS CloudAI-X/threejs-skills skills/threejs-fundamentals/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/CloudAI-X__threejs-skills/00/threejs-fundamentals
+PASS CloudAI-X/threejs-skills skills/threejs-interaction/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/CloudAI-X__threejs-skills/01/threejs-interaction
+PASS CloudAI-X/threejs-skills skills/threejs-shaders/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/CloudAI-X__threejs-skills/02/threejs-shaders
+PASS LeoStehlik/no-slop-ui SKILL.md  | Valid skill: /tmp/attachment-validation-selected/LeoStehlik__no-slop-ui/00/no-slop-ui
+FAIL Owl-Listener/agent-ready SKILL.md  | Validation failed for /tmp/attachment-validation-selected/Owl-Listener__agent-ready/00/agent-ready:   - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+FAIL Vanszs/Anti-AI-UI Anti-AI-SLop/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/Vanszs__Anti-AI-UI/00/Anti-AI-SLop:   - Skill name 'Anti-AI-Slop UI/UX' must be lowercase   - Skill name 'Anti-AI-Slop UI/UX' contains invalid characters. Only letters, digits, and hyphens are allowed.   - Directory name 'Anti-AI-SLop' must match skill name 'Anti-AI-Slop UI/UX'
+FAIL Vanszs/Anti-AI-UI component-reference-design/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/Vanszs__Anti-AI-UI/01/component-reference-design:   - Skill name 'Component Reference Design' must be lowercase   - Skill name 'Component Reference Design' contains invalid characters. Only letters, digits, and hyphens are allowed.   - Directory name 'component-reference-design' must match skill name 'Component Reference Design'
+FAIL Vanszs/Anti-AI-UI ui-ux-pro-max/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/Vanszs__Anti-AI-UI/02/ui-ux-pro-max:   - SKILL.md must start with YAML frontmatter (---)
+PASS agamm/claude-code-owasp .claude/skills/owasp-security/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/agamm__claude-code-owasp/00/owasp-security
+PASS antonbabenko/terraform-skill skills/terraform-skill/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/antonbabenko__terraform-skill/00/terraform-skill
+PASS claudiusararu/unslop-ui-skill .claude/skills/no-ai-slop/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/claudiusararu__unslop-ui-skill/00/no-ai-slop
+PASS cloudflare/security-audit-skill skills/security-audit/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/cloudflare__security-audit-skill/00/security-audit
+PASS ckelsoe/prompt-architect skills/prompt-architect/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/ckelsoe__prompt-architect/00/prompt-architect
+PASS emilkowalski/skills skills/animate/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/emilkowalski__skills/00/animate
+PASS emilkowalski/skills skills/emil-design-eng/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/emilkowalski__skills/01/emil-design-eng
+FAIL emilkowalski/skills skills/pick-ui-library/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/emilkowalski__skills/02/pick-ui-library:   - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+FAIL emilkowalski/skills skills/prototype/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/emilkowalski__skills/03/prototype:   - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+FAIL emilkowalski/skills skills/review-animations/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/emilkowalski__skills/04/review-animations:   - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+FAIL funboy322/avoid-ai-design SKILL.md  | Validation failed for /tmp/attachment-validation-selected/funboy322__avoid-ai-design/00/avoid-ai-design:   - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+PASS github/awesome-copilot skills/anti-ui-slop/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/github__awesome-copilot/00/anti-ui-slop
+PASS hookdeck/agent-skills skills/event-gateway/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/hookdeck__agent-skills/00/event-gateway
+PASS hookdeck/agent-skills skills/hookdeck/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/hookdeck__agent-skills/01/hookdeck
+PASS hookdeck/agent-skills skills/outpost/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/hookdeck__agent-skills/02/outpost
+PASS mattpocock/skills skills/engineering/research/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/mattpocock__skills/00/research
+PASS mattpocock/skills skills/engineering/tdd/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/mattpocock__skills/01/tdd
+FAIL mattpocock/skills skills/productivity/grill-me/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/mattpocock__skills/02/grill-me:   - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+PASS mattpocock/skills skills/productivity/writing-for-agents/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/mattpocock__skills/03/writing-for-agents
+PASS neondatabase/agent-skills skills/neon/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/neondatabase__agent-skills/00/neon
+PASS neondatabase/agent-skills skills/neon-postgres/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/neondatabase__agent-skills/01/neon-postgres
+PASS neondatabase/agent-skills skills/neon-postgres-branches/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/neondatabase__agent-skills/02/neon-postgres-branches
+PASS renfei-design/Figma-AI-Bridge .github/skills/a11y-audit/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/renfei-design__Figma-AI-Bridge/00/a11y-audit
+PASS renfei-design/Figma-AI-Bridge .github/skills/figma-doc/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/renfei-design__Figma-AI-Bridge/01/figma-doc
+PASS testdino-hq/playwright-skill SKILL.md  | Valid skill: /tmp/attachment-validation-selected/testdino-hq__playwright-skill/00/playwright-skill
+FAIL testdino-hq/playwright-skill ci/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/testdino-hq__playwright-skill/01/ci:   - Directory name 'ci' must match skill name 'playwright-ci'
+FAIL testdino-hq/playwright-skill core/SKILL.md  | Validation failed for /tmp/attachment-validation-selected/testdino-hq__playwright-skill/02/core:   - Directory name 'core' must match skill name 'playwright-core'
+PASS testdino-hq/playwright-skill playwright-cli/SKILL.md  | Valid skill: /tmp/attachment-validation-selected/testdino-hq__playwright-skill/03/playwright-cli
+TOTAL 36 pass 25 fail 11

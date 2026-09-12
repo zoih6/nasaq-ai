@@ -1,0 +1,77 @@
+anthropic-frontend-design.md                VALID
+anthropic-webapp-testing.md                 VALID
+anthropic-web-artifacts-builder.md          VALID
+vercel-web-design-guidelines.md             VALID
+vercel-react-best-practices.md              FAIL
+  - Directory name 'react-best-practices' must match skill name 'vercel-react-best-practices'
+vercel-composition-patterns.md              FAIL
+  - Directory name 'composition-patterns' must match skill name 'vercel-composition-patterns'
+impeccable.md                               VALID
+hallmark.md                                 FAIL
+  - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+taste-skill-v2.md                           FAIL
+  - Directory name 'taste-skill' must match skill name 'design-taste-frontend'
+taste-skill-v1.md                           FAIL
+  - Directory name 'taste-skill-v1' must match skill name 'design-taste-frontend-v1'
+ui-ux-pro-max.md                            VALID
+ui-craft.md                                 FAIL
+  - Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+interface-design.md                         VALID
+plugin87-design-review.md                   FAIL
+  - Unexpected fields in frontmatter: invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+plugin87-design-tokens.md                   FAIL
+  - Unexpected fields in frontmatter: invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+stitch-design-md.md                         VALID
+stitch-enhance-prompt.md                    VALID
+stitch-loop.md                              VALID
+stitch-react-components.md                  FAIL
+  - Skill name 'stitch::react-components' contains invalid characters. Only letters, digits, and hyphens are allowed.
+  - Directory name 'react-components' must match skill name 'stitch::react-components'
+stitch-taste-design.md                      VALID
+web-quality-audit.md                        VALID
+accesslint-audit.md                         FAIL
+  - Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+kreerc-accessibility.md                     VALID
+kreerc-accessibility-testing.md             VALID
+anthropic-user-research.md                  VALID
+anthropic-research-synthesis.md             FAIL
+  - Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+anthropic-accessibility-review.md           FAIL
+  - Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+owl-usability-test-plan.md                  VALID
+ux-discovery-interviewer.md                 VALID
+uxui-evaluator.md                           FAIL
+  - Unexpected fields in frontmatter: author, env, homepage, tags, version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+figma-design-to-code.md                     FAIL
+  - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+microsoft-playwright-cli.md                 VALID
+tob-differential-review.md                  VALID
+tob-codeql.md                               VALID
+tob-semgrep.md                              VALID
+tob-supply-chain.md                         VALID
+angular-developer.md                        VALID
+angular-new-app.md                          VALID
+expo-design-system.md                       FAIL
+  - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+expo-router.md                              FAIL
+  - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+supabase-postgres-best-practices.md         VALID
+prisma-postgres.md                          VALID
+firebase-security-rules-auditor.md          VALID
+cloudflare-workers-best-practices.md        VALID
+cloudflare-web-perf.md                      VALID
+antfu-vue-best-practices.md                 VALID
+antfu-vite.md                               VALID
+shadcn.md                                   FAIL
+  - Unexpected fields in frontmatter: user-invocable. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed.
+next-dev-loop.md                            VALID
+next-cache-components-adoption.md           VALID
+practicalswan-frontend-design.md            FAIL
+  - Invalid YAML in frontmatter: While scanning
+  in "<unicode string>", line 5, column 7:
+    tags: [frontend, design, ui, ux, acces ... 
+          ^ (line: 5)
+Found ugly disallowed JSONesque flow mapping (surround with ' and ' to make text appear literally)
+  in "<unicode string>", line 5, column 8:
+    tags: [frontend, design, ui, ux, access ... 
+           ^ (line: 5)

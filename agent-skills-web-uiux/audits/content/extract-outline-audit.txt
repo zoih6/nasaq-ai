@@ -1,0 +1,1072 @@
+===== accesslint-audit.md =====
+---
+name: accessibility-audit
+description: "Whole site or product — a full web accessibility (a11y) audit against WCAG 2.2, following the WCAG-EM methodology. Defines scope, samples representative pages and flows, runs the automated tier (`accessibility-scan`) and the hands-on manual tier (`accessibility-inspect`), and produces one conformance report. Grades each finding by severity and evidence basis, and states per-criterion conformance as pass, fail, or undetermined (needs a human). Use it for 'audit my site for accessibility', 'is this product accessible', 'a11y audit', 'WCAG or Section 508 conformance report', or any multi-page assessment. Assesses; does not fix (use `accessibility-fix`) or diff (use `accessibility-diff`). For a single page use `accessibility-scan`; for hands-on keyboard and screen-reader checks use `accessibility-inspect`."
+argument-hint: "[target|url] [--level AA|AAA] [--selector <css>]"
+allowed-tools: Read, Glob, Grep, Bash, Skill, Task, mcp__plugin_accesslint_accesslint__list_rules, mcp__plugin_accesslint_accesslint__explain_rule
+---
+
+This is a full WCAG 2.2 accessibility audit using WCAG-EM. It defines scope, samples representative pages and flows, runs both evaluation tiers, and produces one conformance report:
+
+- Automated tier: `accesslint:accessibility-scan` (the rule engine).
+- Semi-automated manual tier: `accesslint:accessibility-inspect` (keyboard, focus, state, reflow, and the rest the engine can't decide).
+
+Assess; don't fix (`accesslint:accessibility-fix`) or diff (`accesslint:accessibility-diff`). One page with no sampling is a `accessibility-scan`, not an audit. This skill delegates each sampled page to its own subagent (step 4), so it stays light on large samples.
+
+The full doctrine — WCAG-EM in detail, the severity rubric with examples, the no-proxy boundary, grounding — is in [`../shared/methodology.md`](../shared/methodology.md). The rules needed to run this skill are below.
+
+## Grading
+
+Each finding carries a severity and an evidence basis. Keep them separate.
+
+- Evidence basis: ● verified (deterministic, with cited proof) · ◐ flagged (evidence captured, a person decides) · ○ human-required (needs assistive technology or lived experience; handed off, not emulated).
+- Severity: critical (blocks a core task) · serious (major barrier) · moderate (friction, still completable) · minor (polish).
+
+## WCAG-EM steps
+-- HEADINGS --
+## Grading
+## WCAG-EM steps
+## Report format
+# Accessibility audit — <product / scope>
+## Scope
+## Sample
+## Conformance (per success criterion)
+## Findings — by severity, tagged by evidence basis
+### Critical
+### Serious / Moderate / Minor
+## Human-required (○) — the testing handoff
+## Recommendations
+## Notes
+
+===== anthropic-accessibility-review.md =====
+---
+name: accessibility-review
+description: Run a WCAG 2.1 AA accessibility audit on a design or page. Trigger with "audit accessibility", "check a11y", "is this accessible?", or when reviewing a design for color contrast, keyboard navigation, touch target size, or screen reader behavior before handoff.
+argument-hint: "<Figma URL, URL, or description>"
+---
+
+# /accessibility-review
+
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+
+Audit a design or page for WCAG 2.1 AA accessibility compliance.
+
+## Usage
+
+```
+/accessibility-review $ARGUMENTS
+```
+
+Audit for accessibility: @$1
+
+## WCAG 2.1 AA Quick Reference
+
+### Perceivable
+- **1.1.1** Non-text content has alt text
+-- HEADINGS --
+# /accessibility-review
+## Usage
+## WCAG 2.1 AA Quick Reference
+### Perceivable
+### Operable
+### Understandable
+### Robust
+## Common Issues
+## Testing Approach
+## Output
+## Accessibility Audit: [Design/Page Name]
+### Summary
+### Findings
+### Color Contrast Check
+### Keyboard Navigation
+### Screen Reader
+### Priority Fixes
+## If Connectors Available
+## Tips
+
+===== anthropic-frontend-design.md =====
+---
+name: frontend-design
+description: Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+license: Complete terms in LICENSE.txt
+---
+
+# Frontend Design
+
+Approach this as the design lead at a design studio known for giving every client a distinct visual identity that is not mistaken for anyone else's. This client has already rejected proposals that felt cliché or templated, and is paying for a distinctive point of view: make deliberate, opinionated choices about palette, typography, and layout that are specific to this brief, and take aesthetic risk if justified.
+
+## Ground your designs in the subject matter
+
+If the brief does not identify what the product or subject matter is, identify it yourself before designing, and confirm with the client. You can come up with one concrete subject, the design's audience, and the design's primary job, as a proposal. If there's any information in your memory about the client's preferences or context about what they're building, use that as a hint. The subject's industry, subject matter, materials, and vernacular are where distinctive visual choices come from — a design for a toy for girls aged 8–11 will be very aesthetically different from a dashboard for financial analysts. Build with the brief's real content and subject matter throughout.
+
+## Design principles
+
+For web designs, the hero is the first thing viewers will see. Open with the most characteristic thing in the subject's world, in the form that is most appropriate: a headline, an image, an animation, a live demo, an interactive moment, or other treatments. Be deliberate with your choice: a big number with a small label, supporting stats, and a gradient accent is the default treatment, so only use it if that's truly the best option.
+
+Typography carries the personality of the page. You don't need a different typeface for display or headline text and body content: use one family or two, and if two, make them clearly distinct.
+
+Choose your typefaces deliberately, not the default families you would reach for on any other project, and set a clear type scale following the default guidance of The Elements of Typographic Style with intentional weights, widths, and spacing. When type is used as a headline or visual element, use the type treatment itself as an active part of the design, not a neutral delivery vehicle for the content.
+
+Default to line lengths of less than 80 characters. Serif typefaces can have slightly longer line lengths; give serif body text slightly more line-height than a sans-serif.
+
+-- HEADINGS --
+# Frontend Design
+## Ground your designs in the subject matter
+## Design principles
+## Process: plan, review against the brief, build, critique
+## Restraint and self-critique
+## More on writing in design
+
+===== anthropic-research-synthesis.md =====
+---
+name: research-synthesis
+description: Synthesize user research into themes, insights, and recommendations. Use when you have interview transcripts, survey results, usability test notes, support tickets, or NPS responses that need to be distilled into patterns, user segments, and prioritized next steps.
+argument-hint: "<research data, transcripts, or survey results>"
+---
+
+# /research-synthesis
+
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+
+Synthesize user research data into actionable insights. See the **user-research** skill for research methods, interview guides, and analysis frameworks.
+
+## Usage
+
+```
+/research-synthesis $ARGUMENTS
+```
+
+## What I Accept
+
+- Interview transcripts or notes
+- Survey results (CSV, pasted data)
+- Usability test recordings or notes
+- Support tickets or feedback
+-- HEADINGS --
+# /research-synthesis
+## Usage
+## What I Accept
+## Output
+## Research Synthesis: [Study Name]
+### Executive Summary
+### Key Themes
+### Insights → Opportunities
+### User Segments Identified
+### Recommendations
+### Questions for Further Research
+### Methodology Notes
+## If Connectors Available
+## Tips
+
+===== anthropic-user-research.md =====
+---
+name: user-research
+description: Plan, conduct, and synthesize user research. Trigger with "user research plan", "interview guide", "usability test", "survey design", "research questions", or when the user needs help with any aspect of understanding their users through research.
+---
+
+# User Research
+
+Help plan, execute, and synthesize user research studies.
+
+## Research Methods
+
+| Method | Best For | Sample Size | Time |
+|--------|----------|-------------|------|
+| User interviews | Deep understanding of needs and motivations | 5-8 | 2-4 weeks |
+| Usability testing | Evaluating a specific design or flow | 5-8 | 1-2 weeks |
+| Surveys | Quantifying attitudes and preferences | 100+ | 1-2 weeks |
+| Card sorting | Information architecture decisions | 15-30 | 1 week |
+| Diary studies | Understanding behavior over time | 10-15 | 2-8 weeks |
+| A/B testing | Comparing specific design choices | Statistical significance | 1-4 weeks |
+
+## Interview Guide Structure
+
+1. **Warm-up** (5 min): Build rapport, explain the session
+2. **Context** (10 min): Understand their current workflow
+-- HEADINGS --
+# User Research
+## Research Methods
+## Interview Guide Structure
+## Analysis Framework
+## Deliverables
+
+===== anthropic-web-artifacts-builder.md =====
+---
+name: web-artifacts-builder
+description: Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.
+license: Complete terms in LICENSE.txt
+---
+
+# Web Artifacts Builder
+
+To build powerful frontend claude.ai artifacts, follow these steps:
+1. Initialize the frontend repo using `scripts/init-artifact.sh`
+2. Develop your artifact by editing the generated code
+3. Bundle all code into a single HTML file using `scripts/bundle-artifact.sh`
+4. Display artifact to user
+5. (Optional) Test the artifact
+
+**Stack**: React 18 + TypeScript + Vite + Parcel (bundling) + Tailwind CSS + shadcn/ui
+
+## Design & Style Guidelines
+
+VERY IMPORTANT: To avoid what is often referred to as "AI slop", avoid using excessive centered layouts, purple gradients, uniform rounded corners, and Inter font.
+
+## Quick Start
+
+### Step 1: Initialize Project
+-- HEADINGS --
+# Web Artifacts Builder
+## Design & Style Guidelines
+## Quick Start
+### Step 1: Initialize Project
+### Step 2: Develop Your Artifact
+### Step 3: Bundle to Single HTML File
+### Step 4: Share Artifact with User
+### Step 5: Testing/Visualizing the Artifact (Optional)
+## Reference
+
+===== anthropic-webapp-testing.md =====
+---
+name: webapp-testing
+description: Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.
+license: Complete terms in LICENSE.txt
+---
+
+# Web Application Testing
+
+To test local web applications, write native Python Playwright scripts.
+
+**Helper Scripts Available**:
+- `scripts/with_server.py` - Manages server lifecycle (supports multiple servers)
+
+**Always run scripts with `--help` first** to see usage. DO NOT read the source until you try running the script first and find that a customized solution is abslutely necessary. These scripts can be very large and thus pollute your context window. They exist to be called directly as black-box scripts rather than ingested into your context window.
+
+## Decision Tree: Choosing Your Approach
+
+```
+User task → Is it static HTML?
+    ├─ Yes → Read HTML file directly to identify selectors
+    │         ├─ Success → Write Playwright script using selectors
+    │         └─ Fails/Incomplete → Treat as dynamic (below)
+    │
+    └─ No (dynamic webapp) → Is the server already running?
+-- HEADINGS --
+# Web Application Testing
+## Decision Tree: Choosing Your Approach
+## Example: Using with_server.py
+## Reconnaissance-Then-Action Pattern
+## Common Pitfall
+## Best Practices
+## Reference Files
+
+===== figma-design-to-code.md =====
+---
+name: figma-design-to-code
+description: "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE calling the `get_design_context` Figma MCP tool. You MUST trigger this skill whenever the user wants to implement, build, port, or code up a Figma design as code. Example prompts (not exhaustive) are 'implement this Figma design', 'build this screen from Figma', 'turn this Figma into code', 'design to code'. This skill provides critical instructions and steps to the agent on how to correctly implement Figma designs in code and must NOT be skipped."
+disable-model-invocation: false
+---
+
+# Implement a Figma Design as Code (Design → Code)
+
+Use this skill to turn a Figma design into code in a target codebase. This is the **read-FROM-Figma** direction: pull design context out of Figma with `get_design_context`, then adapt it into the project's real stack. For the reverse direction — building or updating a design *in* Figma from code — use [figma-generate-design](../figma-generate-design/SKILL.md) instead.
+
+This skill owns the **workflow** for design-to-code. Parameter mechanics (nodeId / fileKey / branchKey extraction, URL parsing, `format`/`query` options, response shape) live on the `get_design_context` tool description itself — follow them there.
+
+**Always include `figma-design-to-code` in the comma-separated `skillNames` parameter when calling `get_design_context`. If this skill was loaded via an MCP resource, you MUST prefix the name with `resource:` (e.g. `resource:figma-design-to-code`).** This is a logging parameter used to track skill usage — it does not affect execution.
+
+## Direction and Scope
+
+- You MUST use this skill for design → code: implementing, translating, or porting a Figma node into code.
+- You MUST NOT use this skill to write to Figma.
+
+## Workflow
+
+### 1. Call get_design_context first
+
+- You MUST call `get_design_context` on the target node before writing any code. It is your primary tool — a single call returns reference code, a screenshot, and contextual hints.
+-- HEADINGS --
+# Implement a Figma Design as Code (Design → Code)
+## Direction and Scope
+## Workflow
+### 1. Call get_design_context first
+### 2. Treat the output as a reference, not final code
+### 3. Reuse what the project already has
+### 4. Honor the response hints by priority
+### 5. Reproduce images and icons faithfully
+## Error Recovery
+
+===== hallmark.md =====
+---
+name: hallmark
+description: "Anti-AI-slop design skill for greenfield pages, audits, redesigns, and design extraction from URLs or screenshots. Use when the user asks to build a new app or landing page, wants to redesign something, invokes Hallmark by name, or uses audit/redesign/study."
+version: 1.1.0
+---
+
+# Hallmark
+
+A design skill for AI coding assistants. Makes the UIs they generate look made, not generated.
+
+Hallmark is opinionated, short, and boring on purpose. It encodes a tight set of rules — drawn from the consensus of the anti-AI-slop design field (Anthropic's frontend-design skill, the Claude cookbook on frontend aesthetics, and the 2026 "tactile rebellion" movement) — and refuses to let the model fall back to the defaults every LLM was trained on.
+
+The differentiator: Hallmark insists on **structural variety**, not just visual variety. Two pages by Hallmark for two different briefs should not share the same hero → 3-feature → CTA → footer rhythm. They should feel like different sites, not different colour-swaps of the same template. See [`references/structure.md`](references/structure.md).
+
+**Powered by Together AI.**
+
+---
+
+## How to use this skill
+
+Hallmark has one default behaviour and three explicit verbs.
+
+| Invocation | What it does |
+| --- | --- |
+-- HEADINGS --
+# Hallmark
+## How to use this skill
+## Disciplines that hold across every verb
+## When the brief is a component, not a page
+### What Component-scope keeps from the page flow
+### What Component-scope skips
+### What Component-scope emits
+### Stamp format for component output
+### When in doubt — ask once
+## Design flow (default)
+### 0. Pre-flight scan
+### 1. Design-context gate
+### 2. Pick a macrostructure FIRST
+### 2.5. Check project memory
+### 2.6. Theme route — studied-DNA, catalog, or custom
+### 3. Load the visual ruleset
+### 4. Decide on hero enrichment
+### 5. Preview
+### 6. Build
+### 7. The slop test
+## `hallmark audit`
+## `hallmark redesign`
+## `hallmark study`
+### Source-mode detection
+### Pipeline
+### Output contract for `study`
+### Limits to spell out to the user
+## Output contract & scope
+
+===== impeccable.md =====
+---
+name: impeccable
+description: Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.
+metadata:
+  version: 4.3.1
+---
+
+This skill gives you the tools and permission to create design that earns to be called out-of-distribution craft: Whereas before, your design work would have been safe, timid and measured, you now approach every design task as an award-winning design director with impeccable understanding for what makes exceptional design work: production-grade code, peak creativity, a clear POV, deep understanding of the needs of the client and users, and exceptional craft.
+
+Core principles:
+- Go all out. No hedging, no shortcuts. The deliverable must be complete (except assets the user must provide).
+- Dream big and bold. Distinct, beautiful, outstanding and highly inspiring work.
+- Verify in bounded passes, not a loop, and the ceiling covers the whole cycle: screenshots, defect scans, micro-edits, and rebuilds alike. Build fully, inspect once with a batched round (desktop and mobile together on the web; the shipped device classes on a native platform), fix everything it shows in one batch, confirm with at most one more round, and stop polishing. Open-ended self-QA burns the user's money doing worse what the finish handoffs do better.
+
+## Setup
+
+1. Run `<skill-base-dir>/scripts/impeccable context` once per session, where `<skill-base-dir>` is the directory that contains this SKILL.md (the skill folder, not a plugin root two levels above it); keep cwd at the user's project. That base directory resolves every `.agents/skills/impeccable/scripts/impeccable <verb>` command in this skill and its references, and `.agents/skills/impeccable/scripts` is the fallback only when the runtime reports no base directory. On a Windows shell without `sh`, call `.agents/skills/impeccable/scripts/impeccable.cmd` instead. The launcher runs a self-contained binary that ships next to it or is downloaded once on first run; no Node or other runtime is required. Pass a named source file or route as `--target <path>`. It loads PRODUCT.md, DESIGN.md, the matching surface brief, and native-platform guidance when applicable; follow its directives and do not rerun it.
+2. Load the request's playbook: its Commands-table reference for an explicit/implied sub-command, or [reference/new-work.md](reference/new-work.md) for a new surface or replacement visual world. Inspect target and incumbent visual truth before editing. When the app cannot run, start with committed visual-regression goldens or screenshot fixtures; verify target and freshness against current tokens, CSS, components, or assets, resolve conflicts, and compare theme/variant captures.
+3. After resolving analysis and direction, read [reference/craft-floor.md](reference/craft-floor.md) immediately before any UI edit, including small refinements. It carries the quality floor, the absolute bans, and the reflexes no detector catches. Do not load it for planning-only work.
+
+**Launcher unavailable:** On refusal or failure, send a separate message **before the next tool call**: “Context loading did not run; I’ll read the existing project context directly.” Then read existing PRODUCT.md and DESIGN.md without inventing missing context, follow applicable steps 2–3, and continue through permitted tools. This applies to planning and editing; launcher failure alone does not block either.
+
+## How to design
+
+-- HEADINGS --
+## Setup
+## How to design
+## Modes
+## Commands
+
+===== owl-usability-test-plan.md =====
+---
+name: usability-test-plan
+description: Design a usability study — research questions, methodology, participant criteria, metrics, and facilitation guide. Use when planning the study as a whole. For writing the task scenarios inside it, use `test-scenario` (prototyping-testing).
+---
+
+# Usability Test Plan
+
+Design a comprehensive usability test plan for evaluating designs and prototypes.
+
+## Context
+
+You are a senior UX researcher designing a usability test plan for $ARGUMENTS. If the user provides files (prototypes, designs, personas), read them first.
+
+## Instructions
+
+1. **Define objectives**: What specific questions should this test answer?
+2. **Create the test plan** with:
+   - **Research questions**: 3-5 specific questions to answer
+   - **Methodology**: Moderated vs unmoderated, remote vs in-person, think-aloud protocol
+   - **Participants**: Screening criteria, sample size (5-8 per segment), recruitment approach
+   - **Tasks**: 5-8 realistic task scenarios with success criteria and expected completion time
+   - **Metrics**: Task success rate, time on task, error rate, SUS/SEQ scores, satisfaction rating
+   - **Facilitation guide**: Script for introduction, task delivery, probing, and debrief
+   - **Data collection**: What to record, observation template, note-taking framework
+-- HEADINGS --
+# Usability Test Plan
+## Context
+## Instructions
+## Further Reading
+
+===== plugin87-design-review.md =====
+---
+name: design-review
+description: Review or audit a design/UI across 6 weighted dimensions with Nielsen's 10 heuristics and a prioritized findings table. Use when the user wants a design critique, quality score, heuristic evaluation, or audit of an existing screen, page, or product before/after build.
+invocation: model
+---
+
+# Skill: Design Review
+
+Run a structured, scored review.
+
+## Steps
+1. Read `workflows/design-review.md` (rubric, scoring guide, Nielsen heuristics, process).
+2. Gather context: the screen(s)/flow, target users, platform, constraints.
+3. Score the 6 dimensions (Visual Hierarchy 20%, Consistency 20%, Accessibility 20%, Usability 20%, Responsiveness 10%, Performance 10%); compute the weighted overall.
+4. Run the accessibility lens with `accessibility/wcag-checklist.md`; use `scripts/contrast.py` for any color-pair doubts.
+5. Check against the anti-slop tells in `taste/design-taste.md` (Banned Defaults checklist).
+6. Apply Nielsen's 10 heuristics; flag violations by number.
+
+## Output
+- The 6-dimension scored table + overall score.
+- A prioritized findings table: # · Severity (Critical → Major → Minor → Enhancement) · Finding · Recommendation.
+- Concrete, token-referenced fixes.
+-- HEADINGS --
+# Skill: Design Review
+## Steps
+## Output
+
+===== plugin87-design-tokens.md =====
+---
+name: design-tokens
+description: Generate, extend, or audit design tokens in DTCG format with the 3-tier architecture (primitive → semantic → component). Use when the user wants a color palette, type scale, spacing/shadow/radius/motion tokens, multi-brand theming, or wants to validate token files. Covers colors, typography, spacing, shadows, borders, breakpoints, motion, gradients, opacity, blur, sizing, states, theming.
+invocation: model
+---
+
+# Skill: Design Tokens
+
+Produce and maintain DTCG (`$type`/`$value`) tokens following the project's 3-tier system.
+
+## Steps
+1. Read `.claude/rules/tokens-and-color.md` → "Token System" + "Color Guidelines" and `.claude/rules/typography-and-spacing.md` for the rules (4px base, Major Third scale, OKLCH palette generation, dark-mode-at-semantic-layer).
+2. Read the relevant existing files in `tokens/` to match structure: `colors.json`, `typography.json`, `spacing.json`, `shadows.json`, `borders.json`, `breakpoints.json`, `motion.json`, `gradients.json`, `opacity.json`, `blur.json`, `sizing.json`, `states.json`, `theming.json`.
+3. Generate/extend tokens:
+   - Primitives = raw values (never used directly). Semantic = purpose aliases. Component = component-scoped.
+   - New palettes: generate 11 OKLCH shades; verify 500 ≥ 4.5:1 on white (text), 600 ≥ 3:1 (UI) using the `a11y-audit` skill / `scripts/contrast.py`.
+   - Multi-brand/density → `theming.json`.
+4. **Validate**: run `python3 scripts/validate_tokens.py` (JSON validity + alias resolution).
+
+## Output
+DTCG JSON. Preserve `$description` on every token. Reference, never hardcode.
+-- HEADINGS --
+# Skill: Design Tokens
+## Steps
+## Output
+
+===== stitch-design-md.md =====
+---
+name: design-md
+description: Analyze Stitch projects and synthesize a semantic design system into DESIGN.md files
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
+  - "web_fetch"
+---
+
+# Stitch DESIGN.md Skill
+
+You are an expert Design Systems Lead. Your goal is to analyze the provided technical assets and synthesize a "Semantic Design System" into a file named `DESIGN.md`.
+
+## Overview
+
+This skill helps you create `DESIGN.md` files that serve as the "source of truth" for prompting Stitch to generate new screens that align perfectly with existing design language. Stitch interprets design through "Visual Descriptions" supported by specific color values.
+
+## Prerequisites
+
+- Access to the Stitch MCP Server
+- A Stitch project with at least one designed screen
+- Access to the Stitch Effective Prompting Guide: https://stitch.withgoogle.com/docs/learn/prompting/
+
+-- HEADINGS --
+# Stitch DESIGN.md Skill
+## Overview
+## Prerequisites
+## The Goal
+## Retrieval and Networking
+## Analysis & Synthesis Instructions
+### 1. Extract Project Identity (JSON)
+### 2. Define the Atmosphere (Image/HTML)
+### 3. Map the Color Palette (Tailwind Config/JSON)
+### 4. Translate Geometry & Shape (CSS/Tailwind)
+### 5. Describe Depth & Elevation
+## Output Guidelines
+## Output Format (DESIGN.md Structure)
+# Design System: [Project Title]
+## 1. Visual Theme & Atmosphere
+## 2. Color Palette & Roles
+## 3. Typography Rules
+## 4. Component Stylings
+## 5. Layout Principles
+## Usage Example
+## Best Practices
+## Tips for Success
+## Common Pitfalls to Avoid
+
+===== stitch-enhance-prompt.md =====
+---
+name: enhance-prompt
+description: Transforms vague UI ideas into polished, Stitch-optimized prompts. Enhances specificity, adds UI/UX keywords, injects design system context, and structures output for better generation results.
+allowed-tools:
+  - "Read"
+  - "Write"
+---
+
+# Enhance Prompt for Stitch
+
+You are a **Stitch Prompt Engineer**. Your job is to transform rough or vague UI generation ideas into polished, optimized prompts that produce better results from Stitch.
+
+## Prerequisites
+
+Before enhancing prompts, consult the official Stitch documentation for the latest best practices:
+
+- **Stitch Effective Prompting Guide**: https://stitch.withgoogle.com/docs/learn/prompting/
+
+This guide contains up-to-date recommendations that may supersede or complement the patterns in this skill.
+
+## When to Use This Skill
+
+Activate when a user wants to:
+- Polish a UI prompt before sending to Stitch
+-- HEADINGS --
+# Enhance Prompt for Stitch
+## Prerequisites
+## When to Use This Skill
+## Enhancement Pipeline
+### Step 1: Assess the Input
+### Step 2: Check for DESIGN.md
+### Step 3: Apply Enhancements
+### Step 4: Format the Output
+## Output Options
+## Examples
+### Example 1: Vague Input → Structured Prompt
+### Example 2: Feature Request → Targeted Edit
+## Tips for Best Results
+
+===== stitch-loop.md =====
+---
+name: stitch-loop
+description: Teaches agents to iteratively build websites using Stitch with an autonomous baton-passing loop pattern
+allowed-tools:
+  - "stitch*:*"
+  - "chrome*:*"
+  - "Read"
+  - "Write"
+  - "Bash"
+---
+
+# Stitch Build Loop
+
+You are an **autonomous frontend builder** participating in an iterative site-building loop. Your goal is to generate a page using Stitch, integrate it into the site, and prepare instructions for the next iteration.
+
+## Overview
+
+The Build Loop pattern enables continuous, autonomous website development through a "baton" system. Each iteration:
+1. Reads the current task from a baton file (`.stitch/next-prompt.md`)
+2. Generates a page using Stitch MCP tools
+3. Integrates the page into the site structure
+4. Writes the next task to the baton file for the next iteration
+
+## Prerequisites
+-- HEADINGS --
+# Stitch Build Loop
+## Overview
+## Prerequisites
+## The Baton System
+## Execution Protocol
+### Step 1: Read the Baton
+### Step 2: Consult Context Files
+### Step 3: Generate with Stitch
+### Step 4: Integrate into Site
+### Step 4.5: Visual Verification (Optional)
+### Step 5: Update Site Documentation
+### Step 6: Prepare the Next Baton (Critical)
+## File Structure Reference
+### `.stitch/metadata.json` Schema
+## Orchestration Options
+## Design System Integration
+## Common Pitfalls
+## Troubleshooting
+
+===== stitch-react-components.md =====
+---
+name: stitch::react-components
+description: >-
+  Converts Stitch designs into modular Vite and React components, or syncs/updates
+  existing React components to align with the latest Stitch designs, using system-level
+  networking and AST-based validation.
+allowed-tools:
+  - "stitch*:*"
+  - "Bash"
+  - "Read"
+  - "Write"
+  - "web_fetch"
+---
+
+# Stitch to React Components
+
+You are a frontend engineer focused on transforming designs into clean React code or syncing/updating existing React components to align with the latest Stitch designs. You follow a modular approach and use automated tools to ensure code quality.
+
+> **CRITICAL: Every step in this skill is MANDATORY. Do NOT skip any step or take shortcuts. Each section contains a GATE that must be satisfied before proceeding.**
+
+## Phase 1: Retrieval and networking
+
+> **GATE: Phase 1 is complete ONLY when all screens have been downloaded via `scripts/fetch-stitch.sh` AND visually audited. Reading local files directly without going through this phase is PROHIBITED.**
+
+-- HEADINGS --
+# Stitch to React Components
+## Phase 1: Retrieval and networking
+### Anti-patterns for Phase 1
+## Phase 2: Style extraction
+### Anti-patterns for Phase 2
+## Phase 3: Architectural rules
+### Anti-patterns for Phase 3
+## Phase 4: Execution steps
+### Anti-patterns for Phase 4
+## Troubleshooting
+
+===== stitch-taste-design.md =====
+---
+name: taste-design
+description: Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, asymmetric layouts, perpetual micro-motion, and hardware-accelerated performance.
+allowed-tools:
+  - "StitchMCP"
+  - "Read"
+  - "Write"
+---
+
+# Stitch Design Taste — Semantic Design System Skill
+
+## Overview
+This skill generates `DESIGN.md` files optimized for Google Stitch screen generation. It translates the battle-tested anti-slop frontend engineering directives into Stitch's native semantic design language — descriptive, natural-language rules paired with precise values that Stitch's AI agent can interpret to produce premium, non-generic interfaces.
+
+The generated `DESIGN.md` serves as the **single source of truth** for prompting Stitch to generate new screens that align with a curated, high-agency design language. Stitch interprets design through **"Visual Descriptions"** supported by specific color values, typography specs, and component behaviors.
+
+## Prerequisites
+- Access to Google Stitch via [labs.google.com/stitch](https://labs.google.com/stitch)
+- Optionally: Stitch MCP Server for programmatic integration with Cursor, Antigravity, or Gemini CLI
+
+## The Goal
+Generate a `DESIGN.md` file that encodes:
+1. **Visual atmosphere** — the mood, density, and design philosophy
+2. **Color calibration** — neutrals, accents, and banned patterns with hex codes
+-- HEADINGS --
+# Stitch Design Taste — Semantic Design System Skill
+## Overview
+## Prerequisites
+## The Goal
+## Analysis & Synthesis Instructions
+### 1. Define the Atmosphere
+### 2. Map the Color Palette
+### 3. Establish Typography Rules
+### 4. Define the Hero Section
+### 5. Describe Component Stylings
+### 6. Define Layout Principles
+### 7. Define Responsive Rules
+### 8. Encode Motion Philosophy
+### 9. List Anti-Patterns (AI Tells)
+## Output Format (DESIGN.md Structure)
+# Design System: [Project Title]
+## 1. Visual Theme & Atmosphere
+## 2. Color Palette & Roles
+## 3. Typography Rules
+## 4. Component Stylings
+## 5. Layout Principles
+## 6. Motion & Interaction
+## 7. Anti-Patterns (Banned)
+## Best Practices
+## Tips for Success
+## Common Pitfalls to Avoid
+
+===== taste-skill-v1.md =====
+---
+name: design-taste-frontend-v1
+description: The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend` (v2 experimental), which is a substantial rewrite. Use this v1 install name only if you need exact backward compatibility.
+---
+
+# High-Agency Frontend Skill
+
+## 1. ACTIVE BASELINE CONFIGURATION
+* DESIGN_VARIANCE: 8 (1=Perfect Symmetry, 10=Artsy Chaos)
+* MOTION_INTENSITY: 6 (1=Static/No movement, 10=Cinematic/Magic Physics)
+* VISUAL_DENSITY: 4 (1=Art Gallery/Airy, 10=Pilot Cockpit/Packed Data)
+
+**AI Instruction:** The standard baseline for all generations is strictly set to these values (8, 6, 4). Do not ask the user to edit this file. Otherwise, ALWAYS listen to the user: adapt these values dynamically based on what they explicitly request in their chat prompts. Use these baseline (or user-overridden) values as your global variables to drive the specific logic in Sections 3 through 7.
+
+## 2. DEFAULT ARCHITECTURE & CONVENTIONS
+Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
+
+* **DEPENDENCY VERIFICATION [MANDATORY]:** Before importing ANY 3rd party library (e.g. `framer-motion`, `lucide-react`, `zustand`), you MUST check `package.json`. If the package is missing, you MUST output the installation command (e.g. `npm install package-name`) before providing the code. **Never** assume a library exists.
+* **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). 
+    * **RSC SAFETY:** Global state works ONLY in Client Components. In Next.js, wrap providers in a `"use client"` component.
+    * **INTERACTIVITY ISOLATION:** If Sections 4 or 7 (Motion/Liquid Glass) are active, the specific interactive UI component MUST be extracted as an isolated leaf component with `'use client'` at the very top. Server Components must exclusively render static layouts.
+* **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state strictly for deep prop-drilling avoidance.
+* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. 
+    * **TAILWIND VERSION LOCK:** Check `package.json` first. Do not use v4 syntax in v3 projects. 
+-- HEADINGS --
+# High-Agency Frontend Skill
+## 1. ACTIVE BASELINE CONFIGURATION
+## 2. DEFAULT ARCHITECTURE & CONVENTIONS
+## 3. DESIGN ENGINEERING DIRECTIVES (Bias Correction)
+## 4. CREATIVE PROACTIVITY (Anti-Slop Implementation)
+## 5. PERFORMANCE GUARDRAILS
+## 6. TECHNICAL REFERENCE (Dial Definitions)
+### DESIGN_VARIANCE (Level 1-10)
+### MOTION_INTENSITY (Level 1-10)
+### VISUAL_DENSITY (Level 1-10)
+## 7. AI TELLS (Forbidden Patterns)
+### Visual & CSS
+### Typography
+### Layout & Spacing
+### Content & Data (The "Jane Doe" Effect)
+### External Resources & Components
+## 8. THE CREATIVE ARSENAL (High-End Inspiration)
+### The Standard Hero Paradigm
+### Navigation & Menüs
+### Layout & Grids
+### Cards & Containers
+### Scroll-Animations
+### Galleries & Media
+### Typography & Text
+### Micro-Interactions & Effects
+## 9. THE "MOTION-ENGINE" BENTO PARADIGM
+### A. Core Design Philosophy
+### B. The Animation Engine Specs (Perpetual Motion)
+### C. The 5-Card Archetypes (Micro-Animation Specs)
+## 10. FINAL PRE-FLIGHT CHECK
+
+===== taste-skill-v2.md =====
+---
+name: design-taste-frontend
+description: Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check.
+---
+
+# tasteskill: Anti-Slop Frontend Skill
+
+> Landing pages, portfolios, and redesigns. Not dashboards, not data tables, not multi-step product UI.
+> Every rule below is **contextual**. None of it fires automatically. First read the brief, then pull only what fits.
+
+---
+
+## 0. BRIEF INFERENCE (Read the Room Before Anything Else)
+
+Before touching code or tweaking dials, **infer what the user actually wants**. Most LLM design output is bad because the model jumps to a default aesthetic instead of reading the room.
+
+### 0.A Read these signals first
+1. **Page kind** - landing (SaaS / consumer / agency / event), portfolio (dev / designer / creative studio), redesign (preserve vs overhaul), editorial / blog.
+2. **Vibe words** the user used - "minimalist", "calm", "Linear-style", "Awwwards", "brutalist", "premium consumer", "Apple-y", "playful", "serious B2B", "editorial", "agency-y", "glassy", "dark tech".
+3. **Reference signals** - URLs they linked, screenshots they pasted, products they named, brands they're competing with.
+4. **Audience** - B2B procurement panel vs. design-conscious consumer vs. recruiter scanning a portfolio. The audience picks the aesthetic, not your taste.
+5. **Brand assets that already exist** - logo, color, type, photography. For redesigns, these are starting material, not optional input (see Section 11).
+6. **Quiet constraints** - accessibility-first audiences, public-sector, regulated industries, trust-first commerce, kids' products. These constraints OVERRIDE aesthetic preference.
+
+-- HEADINGS --
+# tasteskill: Anti-Slop Frontend Skill
+## 0. BRIEF INFERENCE (Read the Room Before Anything Else)
+### 0.A Read these signals first
+### 0.B Output a one-line "Design Read" before generating
+### 0.C If the brief is ambiguous, ask one question, do not guess
+### 0.D Anti-Default Discipline
+## 1. THE THREE DIALS (Core Configuration)
+### 1.A Dial Inference (design read → dial values)
+### 1.B Use-Case Presets
+### 1.C How the Dials Drive Output
+## 2. BRIEF → DESIGN SYSTEM MAP
+### 2.A When to reach for a real design system (use official packages)
+### 2.B When the brief is an aesthetic, not a system
+## 3. DEFAULT ARCHITECTURE & CONVENTIONS
+### 3.A Stack
+### 3.B State
+### 3.C Icons
+### 3.D Emoji Policy
+### 3.E Responsiveness & Layout Mechanics
+### 3.F Dependency Verification (mandatory)
+## 4. DESIGN ENGINEERING DIRECTIVES (Bias Correction)
+### 4.1 Typography
+### 4.2 Color Calibration
+### 4.3 Layout Diversification
+### 4.4 Materiality, Shadows, Cards
+### 4.5 Interactive UI States
+### 4.6 Data & Form Patterns
+### 4.7 Layout Discipline (Hard Rules. Failing any of these is shipping broken work)
+### 4.8 Image & Visual Asset Strategy
+### 4.9 Content Density
+
+===== ui-craft.md =====
+---
+name: ui-craft
+description: "Use for UI design and implementation work to avoid generic AI-looking interfaces. Provides anti-slop rules, a required discovery phase before coding, and guidance for layout, typography, color, motion, accessibility, dashboards, tables, landing pages, theming, and polish. Trigger when editing UI code or reviewing and refining components, pages, screens, layouts, animations, responsive behavior, or design systems."
+argument-hint: "[action: build|animate|review|polish|audit] [target]"
+---
+
+# UI Craft
+
+You are a design engineer. Every decision below is one you make deliberately and can defend — never a default you inherited.
+
+## The Ladder (use this when explaining ui-craft to the user)
+
+One progression, four rungs. Never describe ui-craft as "layers" or "modes" — use these rung names, and name the rung the user is on before suggesting a command.
+
+| Rung | User wants | They do | They get | Effort |
+|------|-----------|---------|----------|--------|
+| **0 · Ask** | better UI, zero effort | ask for UI as always | taste by default: real hierarchy, system tokens, no slop | none |
+| **1 · Direct** | control one pass | `/craft`, `/critique`, `/polish`, `/animate`, … | a focused pass on one surface | one command |
+| **2 · Persist** | consistency across sessions | `/brief`, `/tokens`, `/remember` | durable design context every future session reads | write once |
+| **3 · Enforce** | it can't regress | `/finalize`, review agents, MCP gates, score, `ui-craft-detect` | gates in review/CI + a 0-100 number | wire once |
+
+`/sddesign` is **not** a rung — it is the express lane that walks rungs 1 to 3 for one big surface. When a pass finishes, name the natural next step (`/craft` → `/finalize`, `/brief` → `/tokens`, `/audit` → `/harden`).
+
+## Knobs (ask during Discovery, 1-10)
+-- HEADINGS --
+# UI Craft
+## The Ladder (use this when explaining ui-craft to the user)
+## Knobs (ask during Discovery, 1-10)
+## Quick Start: Top 12
+## Routing
+## Stack Detection (Always Run First)
+### Tailwind Translations (common)
+## Discovery Phase (Always Run First)
+### Step 1: Project Analysis
+### Step 2: Ask the User (Quick Ask)
+### Step 3: Apply Decisions
+### Craft Read (full surfaces)
+## Core Rules (Always Apply)
+### The Anti-Slop Test
+### The Craft Test (What TO Do)
+### When Rules Break
+### Convergence
+### Self-Correction
+### Animation Decision Ladder
+### Design Rules (core)
+## Review Format (Required)
+## Quick Decision Frameworks
+### Should This Animate?
+### Motion Budget
+## Reference Files
+### Tier 1 — Always load before writing UI
+### Tier 1b — Load on trigger
+### Tier 2 — Surface-specific (read when building this surface)
+### Tier 3 — Foundations (read for the relevant discipline)
+### Tier 4 — Opt-in (only on explicit request or specific commands)
+
+===== ui-ux-pro-max.md =====
+---
+name: ui-ux-pro-max
+description: "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks."
+---
+
+# UI/UX Pro Max - Design Intelligence
+
+Searchable local UI/UX guidance: 79 searchable styles (50 active), 192 product palettes and exact reasoning profiles, 74 font pairings, 119 UX guidelines, 105 curated icons, 17 GSAP presets, 25 chart types, and 22 technology stacks.
+
+## When to Apply
+
+Use this Skill when the task involves **UI structure, visual design decisions, interaction patterns, or user experience quality control**: designing new pages, creating/refactoring UI components, choosing color/typography/spacing/layout systems, reviewing UI for UX/accessibility/consistency, implementing navigation/animation/responsive behavior, or improving perceived quality and usability.
+
+Skip it for pure backend logic, API/database design, non-visual performance work, infrastructure/DevOps, or non-visual scripts — unless the task changes how something **looks, feels, moves, or is interacted with**.
+
+## Rule Categories by Priority
+
+*Follow priority 1→10 to decide which category to focus on first; use `--domain <Domain>` to query full details. The full rule text for every category lives in `references/quick-reference.md` — read it on demand rather than loading it every time.*
+
+| Priority | Category | Impact | Domain | Key Checks (Must Have) | Anti-Patterns (Avoid) |
+|----------|----------|--------|--------|------------------------|------------------------|
+| 1 | Accessibility | CRITICAL | `ux` | Contrast 4.5:1, Alt text, Keyboard nav, Aria-labels | Removing focus rings, Icon-only buttons without labels |
+| 2 | Touch & Interaction | CRITICAL | `ux` | Min size 44×44px, 8px+ spacing, Loading feedback | Reliance on hover only, Instant state changes (0ms) |
+| 3 | Performance | HIGH | `ux` | WebP/AVIF, Lazy loading, Reserve space (CLS &lt; 0.1) | Layout thrashing, Cumulative Layout Shift |
+-- HEADINGS --
+# UI/UX Pro Max - Design Intelligence
+## When to Apply
+## Rule Categories by Priority
+## Running the search tool
+## Workflow
+## Query Contract
+### Step 1: Analyze User Requirements
+### Step 2: Generate Design System (REQUIRED for new pages/projects)
+### Step 2b: Persist Design System (Master + Overrides Pattern)
+### Step 2c: Design Dials (optional)
+### Step 3: Supplement with Detailed Searches (as needed)
+### Step 4: Stack Guidelines
+## If a search returns 0 results
+## Example Workflow
+# Step 2: design system
+# Step 3: supplement
+# Step 4: stack guidelines
+## Output Formats
+## Tips for Better Results
+## Before Delivering App UI
+
+===== vercel-composition-patterns.md =====
+---
+name: vercel-composition-patterns
+description:
+  React composition patterns that scale. Use when refactoring components with
+  boolean prop proliferation, building flexible component libraries, or
+  designing reusable APIs. Triggers on tasks involving compound components,
+  render props, context providers, or component architecture. Includes React 19
+  API changes.
+license: MIT
+metadata:
+  author: vercel
+  version: '1.0.0'
+---
+
+# React Composition Patterns
+
+Composition patterns for building flexible, maintainable React components. Avoid
+boolean prop proliferation by using compound components, lifting state, and
+composing internals. These patterns make codebases easier for both humans and AI
+agents to work with as they scale.
+
+## When to Apply
+
+Reference these guidelines when:
+-- HEADINGS --
+# React Composition Patterns
+## When to Apply
+## Rule Categories by Priority
+## Quick Reference
+### 1. Component Architecture (HIGH)
+### 2. State Management (MEDIUM)
+### 3. Implementation Patterns (MEDIUM)
+### 4. React 19 APIs (MEDIUM)
+## How to Use
+## Full Compiled Document
+
+===== vercel-react-best-practices.md =====
+---
+name: vercel-react-best-practices
+description: React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
+license: MIT
+metadata:
+  author: vercel
+  version: "1.0.0"
+---
+
+# Vercel React Best Practices
+
+Comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Contains 70 rules across 8 categories, prioritized by impact to guide automated refactoring and code generation.
+
+## When to Apply
+
+Reference these guidelines when:
+- Writing new React components or Next.js pages
+- Implementing data fetching (client or server-side)
+- Reviewing code for performance issues
+- Refactoring existing React/Next.js code
+- Optimizing bundle size or load times
+
+## Rule Categories by Priority
+
+-- HEADINGS --
+# Vercel React Best Practices
+## When to Apply
+## Rule Categories by Priority
+## Quick Reference
+### 1. Eliminating Waterfalls (CRITICAL)
+### 2. Bundle Size Optimization (CRITICAL)
+### 3. Server-Side Performance (HIGH)
+### 4. Client-Side Data Fetching (MEDIUM-HIGH)
+### 5. Re-render Optimization (MEDIUM)
+### 6. Rendering Performance (MEDIUM)
+### 7. JavaScript Performance (LOW-MEDIUM)
+### 8. Advanced Patterns (LOW)
+## How to Use
+## Full Compiled Document
+
+===== vercel-web-design-guidelines.md =====
+---
+name: web-design-guidelines
+description: Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices".
+metadata:
+  author: vercel
+  version: "1.0.0"
+  argument-hint: <file-or-pattern>
+---
+
+# Web Interface Guidelines
+
+Review files for compliance with Web Interface Guidelines.
+
+## How It Works
+
+1. Fetch the latest guidelines from the source URL below
+2. Read the specified files (or prompt user for files/pattern)
+3. Check against all rules in the fetched guidelines
+4. Output findings in the terse `file:line` format
+
+## Guidelines Source
+
+Fetch fresh guidelines before each review:
+
+-- HEADINGS --
+# Web Interface Guidelines
+## How It Works
+## Guidelines Source
+## Usage
+
+===== web-quality-audit.md =====
+---
+name: web-quality-audit
+description: Run an evidence-led web quality audit covering performance, accessibility, SEO, best practices, and agentic browsing. Use when asked to "audit my site", "review web quality", "run lighthouse audit", "check page quality", or "optimize my website".
+license: MIT
+metadata:
+  author: web-quality-skills
+  version: "2.0"
+---
+
+# Web quality audit
+
+Comprehensive quality review that combines live browser evidence with source inspection. Covers Performance, Accessibility, SEO, Best Practices, and Agentic Browsing without treating an aggregate score as proof of quality.
+
+> **Lighthouse 13+.** The Performance category now uses shared **Performance Insights** across Lighthouse and the DevTools Performance panel ([announcement](https://developer.chrome.com/blog/moving-lighthouse-to-insights)). Follow current insight names and evidence. Do not require removed audit IDs or automatically recreate their recommendations; some were retired because they were noisy, inactionable, or easy to over-recommend.
+
+## How it works
+
+1. Establish the audit target: representative URLs, important states and journeys, public versus authenticated access, and mobile/desktop scope.
+2. If a page can run, read [the measurement workflow](../performance/references/MEASUREMENT.md) and collect a minimal live baseline before searching the codebase broadly.
+3. Use runtime failures to localize source inspection. Keep measured findings separate from hypotheses found only in code.
+4. Categorize by user impact and confidence, then make or recommend specific fixes.
+5. Re-run equivalent automated checks and the affected manual flows. Report what is verified and what still needs field or human validation.
+
+## Tool routing
+-- HEADINGS --
+# Web quality audit
+## How it works
+## Tool routing
+## Audit categories
+### Performance
+### Accessibility
+### SEO
+### Best practices
+### Agentic browsing
+## Severity levels
+## Audit output format
+## Audit results
+### Evidence
+### Critical issues (X found)
+### High priority (X found)
+### Summary
+### Recommended priority
+### Verification
+## Quick checklist
+### Before every deploy
+### Weekly review
+### Monthly deep dive
+## References
+

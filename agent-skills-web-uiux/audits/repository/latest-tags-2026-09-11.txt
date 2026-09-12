@@ -1,0 +1,14 @@
+AccessLint__skills                                   v0.8.0
+Leonxlnx__taste-skill                                (no tags)
+Nutlope__hallmark                                    (no tags)
+Owl-Listener__designer-skills                        (no tags)
+addyosmani__web-quality-skills                       (no tags)
+anthropics__knowledge-work-plugins                   (no tags)
+anthropics__skills                                   (no tags)
+educlopez__ui-craft                                  v1.0.20
+figma__mcp-server-guide                              v2.2.96-figquery.1
+google-labs-code__stitch-skills                      v1.0
+nextlevelbuilder__ui-ux-pro-max-skill                v2.15.0
+pbakaus__impeccable                                  skill-v4.3.1
+plugin87__ux-ui-agent-skills                         v2.5.1
+vercel-labs__agent-skills                            agent-skills-dd089a8c752c966dee8bf0f27cb625ba193ffd9e

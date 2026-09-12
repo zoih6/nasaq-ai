@@ -1,0 +1,294 @@
+[
+  {
+    "file": "anthropic-frontend-design.md",
+    "directory": "frontend-design",
+    "problems": []
+  },
+  {
+    "file": "anthropic-webapp-testing.md",
+    "directory": "webapp-testing",
+    "problems": []
+  },
+  {
+    "file": "anthropic-web-artifacts-builder.md",
+    "directory": "web-artifacts-builder",
+    "problems": []
+  },
+  {
+    "file": "vercel-web-design-guidelines.md",
+    "directory": "web-design-guidelines",
+    "problems": []
+  },
+  {
+    "file": "vercel-react-best-practices.md",
+    "directory": "react-best-practices",
+    "problems": [
+      "Directory name 'react-best-practices' must match skill name 'vercel-react-best-practices'"
+    ]
+  },
+  {
+    "file": "vercel-composition-patterns.md",
+    "directory": "composition-patterns",
+    "problems": [
+      "Directory name 'composition-patterns' must match skill name 'vercel-composition-patterns'"
+    ]
+  },
+  {
+    "file": "impeccable.md",
+    "directory": "impeccable",
+    "problems": []
+  },
+  {
+    "file": "hallmark.md",
+    "directory": "hallmark",
+    "problems": [
+      "Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "taste-skill-v2.md",
+    "directory": "taste-skill",
+    "problems": [
+      "Directory name 'taste-skill' must match skill name 'design-taste-frontend'"
+    ]
+  },
+  {
+    "file": "taste-skill-v1.md",
+    "directory": "taste-skill-v1",
+    "problems": [
+      "Directory name 'taste-skill-v1' must match skill name 'design-taste-frontend-v1'"
+    ]
+  },
+  {
+    "file": "ui-ux-pro-max.md",
+    "directory": "ui-ux-pro-max",
+    "problems": []
+  },
+  {
+    "file": "ui-craft.md",
+    "directory": "ui-craft",
+    "problems": [
+      "Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "interface-design.md",
+    "directory": "interface-design",
+    "problems": []
+  },
+  {
+    "file": "plugin87-design-review.md",
+    "directory": "design-review",
+    "problems": [
+      "Unexpected fields in frontmatter: invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "plugin87-design-tokens.md",
+    "directory": "design-tokens",
+    "problems": [
+      "Unexpected fields in frontmatter: invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "stitch-design-md.md",
+    "directory": "design-md",
+    "problems": []
+  },
+  {
+    "file": "stitch-enhance-prompt.md",
+    "directory": "enhance-prompt",
+    "problems": []
+  },
+  {
+    "file": "stitch-loop.md",
+    "directory": "stitch-loop",
+    "problems": []
+  },
+  {
+    "file": "stitch-react-components.md",
+    "directory": "react-components",
+    "problems": [
+      "Skill name 'stitch::react-components' contains invalid characters. Only letters, digits, and hyphens are allowed.",
+      "Directory name 'react-components' must match skill name 'stitch::react-components'"
+    ]
+  },
+  {
+    "file": "stitch-taste-design.md",
+    "directory": "taste-design",
+    "problems": []
+  },
+  {
+    "file": "web-quality-audit.md",
+    "directory": "web-quality-audit",
+    "problems": []
+  },
+  {
+    "file": "accesslint-audit.md",
+    "directory": "accessibility-audit",
+    "problems": [
+      "Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "kreerc-accessibility.md",
+    "directory": "accessibility",
+    "problems": []
+  },
+  {
+    "file": "kreerc-accessibility-testing.md",
+    "directory": "accessibility-testing",
+    "problems": []
+  },
+  {
+    "file": "anthropic-user-research.md",
+    "directory": "user-research",
+    "problems": []
+  },
+  {
+    "file": "anthropic-research-synthesis.md",
+    "directory": "research-synthesis",
+    "problems": [
+      "Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "anthropic-accessibility-review.md",
+    "directory": "accessibility-review",
+    "problems": [
+      "Unexpected fields in frontmatter: argument-hint. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "owl-usability-test-plan.md",
+    "directory": "usability-test-plan",
+    "problems": []
+  },
+  {
+    "file": "ux-discovery-interviewer.md",
+    "directory": "ux-discovery-interviewer",
+    "problems": []
+  },
+  {
+    "file": "uxui-evaluator.md",
+    "directory": "uxui-evaluator",
+    "problems": [
+      "Unexpected fields in frontmatter: author, env, homepage, tags, version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "figma-design-to-code.md",
+    "directory": "figma-design-to-code",
+    "problems": [
+      "Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "microsoft-playwright-cli.md",
+    "directory": "playwright-cli",
+    "problems": []
+  },
+  {
+    "file": "tob-differential-review.md",
+    "directory": "differential-review",
+    "problems": []
+  },
+  {
+    "file": "tob-codeql.md",
+    "directory": "codeql",
+    "problems": []
+  },
+  {
+    "file": "tob-semgrep.md",
+    "directory": "semgrep",
+    "problems": []
+  },
+  {
+    "file": "tob-supply-chain.md",
+    "directory": "supply-chain-risk-auditor",
+    "problems": []
+  },
+  {
+    "file": "angular-developer.md",
+    "directory": "angular-developer",
+    "problems": []
+  },
+  {
+    "file": "angular-new-app.md",
+    "directory": "angular-new-app",
+    "problems": []
+  },
+  {
+    "file": "expo-design-system.md",
+    "directory": "expo-design-system",
+    "problems": [
+      "Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "expo-router.md",
+    "directory": "expo-router",
+    "problems": [
+      "Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "supabase-postgres-best-practices.md",
+    "directory": "supabase-postgres-best-practices",
+    "problems": []
+  },
+  {
+    "file": "prisma-postgres.md",
+    "directory": "prisma-postgres",
+    "problems": []
+  },
+  {
+    "file": "firebase-security-rules-auditor.md",
+    "directory": "firebase-security-rules-auditor",
+    "problems": []
+  },
+  {
+    "file": "cloudflare-workers-best-practices.md",
+    "directory": "workers-best-practices",
+    "problems": []
+  },
+  {
+    "file": "cloudflare-web-perf.md",
+    "directory": "web-perf",
+    "problems": []
+  },
+  {
+    "file": "antfu-vue-best-practices.md",
+    "directory": "vue-best-practices",
+    "problems": []
+  },
+  {
+    "file": "antfu-vite.md",
+    "directory": "vite",
+    "problems": []
+  },
+  {
+    "file": "shadcn.md",
+    "directory": "shadcn",
+    "problems": [
+      "Unexpected fields in frontmatter: user-invocable. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+    ]
+  },
+  {
+    "file": "next-dev-loop.md",
+    "directory": "next-dev-loop",
+    "problems": []
+  },
+  {
+    "file": "next-cache-components-adoption.md",
+    "directory": "next-cache-components-adoption",
+    "problems": []
+  },
+  {
+    "file": "practicalswan-frontend-design.md",
+    "directory": "frontend-design",
+    "problems": [
+      "Invalid YAML in frontmatter: While scanning\n  in \"<unicode string>\", line 5, column 7:\n    tags: [frontend, design, ui, ux, acces ... \n          ^ (line: 5)\nFound ugly disallowed JSONesque flow mapping (surround with ' and ' to make text appear literally)\n  in \"<unicode string>\", line 5, column 8:\n    tags: [frontend, design, ui, ux, access ... \n           ^ (line: 5)"
+    ]
+  }
+]

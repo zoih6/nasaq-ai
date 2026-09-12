@@ -1,0 +1,254 @@
+[
+  {
+    "repo": "CloudAI-X/threejs-skills",
+    "path": "skills/threejs-fundamentals/SKILL.md",
+    "folder": "threejs-fundamentals",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/CloudAI-X__threejs-skills/00/threejs-fundamentals"
+  },
+  {
+    "repo": "CloudAI-X/threejs-skills",
+    "path": "skills/threejs-interaction/SKILL.md",
+    "folder": "threejs-interaction",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/CloudAI-X__threejs-skills/01/threejs-interaction"
+  },
+  {
+    "repo": "CloudAI-X/threejs-skills",
+    "path": "skills/threejs-shaders/SKILL.md",
+    "folder": "threejs-shaders",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/CloudAI-X__threejs-skills/02/threejs-shaders"
+  },
+  {
+    "repo": "LeoStehlik/no-slop-ui",
+    "path": "SKILL.md",
+    "folder": "no-slop-ui",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/LeoStehlik__no-slop-ui/00/no-slop-ui"
+  },
+  {
+    "repo": "Owl-Listener/agent-ready",
+    "path": "SKILL.md",
+    "folder": "agent-ready",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/Owl-Listener__agent-ready/00/agent-ready:\n  - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+  },
+  {
+    "repo": "Vanszs/Anti-AI-UI",
+    "path": "Anti-AI-SLop/SKILL.md",
+    "folder": "Anti-AI-SLop",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/Vanszs__Anti-AI-UI/00/Anti-AI-SLop:\n  - Skill name 'Anti-AI-Slop UI/UX' must be lowercase\n  - Skill name 'Anti-AI-Slop UI/UX' contains invalid characters. Only letters, digits, and hyphens are allowed.\n  - Directory name 'Anti-AI-SLop' must match skill name 'Anti-AI-Slop UI/UX'"
+  },
+  {
+    "repo": "Vanszs/Anti-AI-UI",
+    "path": "component-reference-design/SKILL.md",
+    "folder": "component-reference-design",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/Vanszs__Anti-AI-UI/01/component-reference-design:\n  - Skill name 'Component Reference Design' must be lowercase\n  - Skill name 'Component Reference Design' contains invalid characters. Only letters, digits, and hyphens are allowed.\n  - Directory name 'component-reference-design' must match skill name 'Component Reference Design'"
+  },
+  {
+    "repo": "Vanszs/Anti-AI-UI",
+    "path": "ui-ux-pro-max/SKILL.md",
+    "folder": "ui-ux-pro-max",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/Vanszs__Anti-AI-UI/02/ui-ux-pro-max:\n  - SKILL.md must start with YAML frontmatter (---)"
+  },
+  {
+    "repo": "agamm/claude-code-owasp",
+    "path": ".claude/skills/owasp-security/SKILL.md",
+    "folder": "owasp-security",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/agamm__claude-code-owasp/00/owasp-security"
+  },
+  {
+    "repo": "antonbabenko/terraform-skill",
+    "path": "skills/terraform-skill/SKILL.md",
+    "folder": "terraform-skill",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/antonbabenko__terraform-skill/00/terraform-skill"
+  },
+  {
+    "repo": "claudiusararu/unslop-ui-skill",
+    "path": ".claude/skills/no-ai-slop/SKILL.md",
+    "folder": "no-ai-slop",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/claudiusararu__unslop-ui-skill/00/no-ai-slop"
+  },
+  {
+    "repo": "cloudflare/security-audit-skill",
+    "path": "skills/security-audit/SKILL.md",
+    "folder": "security-audit",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/cloudflare__security-audit-skill/00/security-audit"
+  },
+  {
+    "repo": "ckelsoe/prompt-architect",
+    "path": "skills/prompt-architect/SKILL.md",
+    "folder": "prompt-architect",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/ckelsoe__prompt-architect/00/prompt-architect"
+  },
+  {
+    "repo": "emilkowalski/skills",
+    "path": "skills/animate/SKILL.md",
+    "folder": "animate",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/emilkowalski__skills/00/animate"
+  },
+  {
+    "repo": "emilkowalski/skills",
+    "path": "skills/emil-design-eng/SKILL.md",
+    "folder": "emil-design-eng",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/emilkowalski__skills/01/emil-design-eng"
+  },
+  {
+    "repo": "emilkowalski/skills",
+    "path": "skills/pick-ui-library/SKILL.md",
+    "folder": "pick-ui-library",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/emilkowalski__skills/02/pick-ui-library:\n  - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+  },
+  {
+    "repo": "emilkowalski/skills",
+    "path": "skills/prototype/SKILL.md",
+    "folder": "prototype",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/emilkowalski__skills/03/prototype:\n  - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+  },
+  {
+    "repo": "emilkowalski/skills",
+    "path": "skills/review-animations/SKILL.md",
+    "folder": "review-animations",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/emilkowalski__skills/04/review-animations:\n  - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+  },
+  {
+    "repo": "funboy322/avoid-ai-design",
+    "path": "SKILL.md",
+    "folder": "avoid-ai-design",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/funboy322__avoid-ai-design/00/avoid-ai-design:\n  - Unexpected fields in frontmatter: version. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+  },
+  {
+    "repo": "github/awesome-copilot",
+    "path": "skills/anti-ui-slop/SKILL.md",
+    "folder": "anti-ui-slop",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/github__awesome-copilot/00/anti-ui-slop"
+  },
+  {
+    "repo": "hookdeck/agent-skills",
+    "path": "skills/event-gateway/SKILL.md",
+    "folder": "event-gateway",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/hookdeck__agent-skills/00/event-gateway"
+  },
+  {
+    "repo": "hookdeck/agent-skills",
+    "path": "skills/hookdeck/SKILL.md",
+    "folder": "hookdeck",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/hookdeck__agent-skills/01/hookdeck"
+  },
+  {
+    "repo": "hookdeck/agent-skills",
+    "path": "skills/outpost/SKILL.md",
+    "folder": "outpost",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/hookdeck__agent-skills/02/outpost"
+  },
+  {
+    "repo": "mattpocock/skills",
+    "path": "skills/engineering/research/SKILL.md",
+    "folder": "research",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/mattpocock__skills/00/research"
+  },
+  {
+    "repo": "mattpocock/skills",
+    "path": "skills/engineering/tdd/SKILL.md",
+    "folder": "tdd",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/mattpocock__skills/01/tdd"
+  },
+  {
+    "repo": "mattpocock/skills",
+    "path": "skills/productivity/grill-me/SKILL.md",
+    "folder": "grill-me",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/mattpocock__skills/02/grill-me:\n  - Unexpected fields in frontmatter: disable-model-invocation. Only ['allowed-tools', 'compatibility', 'description', 'license', 'metadata', 'name'] are allowed."
+  },
+  {
+    "repo": "mattpocock/skills",
+    "path": "skills/productivity/writing-for-agents/SKILL.md",
+    "folder": "writing-for-agents",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/mattpocock__skills/03/writing-for-agents"
+  },
+  {
+    "repo": "neondatabase/agent-skills",
+    "path": "skills/neon/SKILL.md",
+    "folder": "neon",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/neondatabase__agent-skills/00/neon"
+  },
+  {
+    "repo": "neondatabase/agent-skills",
+    "path": "skills/neon-postgres/SKILL.md",
+    "folder": "neon-postgres",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/neondatabase__agent-skills/01/neon-postgres"
+  },
+  {
+    "repo": "neondatabase/agent-skills",
+    "path": "skills/neon-postgres-branches/SKILL.md",
+    "folder": "neon-postgres-branches",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/neondatabase__agent-skills/02/neon-postgres-branches"
+  },
+  {
+    "repo": "renfei-design/Figma-AI-Bridge",
+    "path": ".github/skills/a11y-audit/SKILL.md",
+    "folder": "a11y-audit",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/renfei-design__Figma-AI-Bridge/00/a11y-audit"
+  },
+  {
+    "repo": "renfei-design/Figma-AI-Bridge",
+    "path": ".github/skills/figma-doc/SKILL.md",
+    "folder": "figma-doc",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/renfei-design__Figma-AI-Bridge/01/figma-doc"
+  },
+  {
+    "repo": "testdino-hq/playwright-skill",
+    "path": "SKILL.md",
+    "folder": "playwright-skill",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/testdino-hq__playwright-skill/00/playwright-skill"
+  },
+  {
+    "repo": "testdino-hq/playwright-skill",
+    "path": "ci/SKILL.md",
+    "folder": "ci",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/testdino-hq__playwright-skill/01/ci:\n  - Directory name 'ci' must match skill name 'playwright-ci'"
+  },
+  {
+    "repo": "testdino-hq/playwright-skill",
+    "path": "core/SKILL.md",
+    "folder": "core",
+    "ok": false,
+    "message": "Validation failed for /tmp/attachment-validation-selected/testdino-hq__playwright-skill/02/core:\n  - Directory name 'core' must match skill name 'playwright-core'"
+  },
+  {
+    "repo": "testdino-hq/playwright-skill",
+    "path": "playwright-cli/SKILL.md",
+    "folder": "playwright-cli",
+    "ok": true,
+    "message": "Valid skill: /tmp/attachment-validation-selected/testdino-hq__playwright-skill/03/playwright-cli"
+  }
+]

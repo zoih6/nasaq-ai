@@ -1,0 +1,11 @@
+microsoft__playwright                  9e371c00b5b8333296837a8d0cf6eaff413a6be4  tag=v1.63.0
+trailofbits__skills                    321ccfe628eca0d314b0ee4eaffcdd8a05639aaf  tag=(no tags)
+angular__skills                        137ea6e7c48c043e8ff93770d46fd48501f8d67e  tag=22.2.0-next.7+sha-b9fb456
+expo__skills                           ea892a7d1421fea5ecdf8c00a4550867fdf8c423  tag=(no tags)
+supabase__agent-skills                 8331f910845103c08d51f6ca1d86ebb7d1f745e3  tag=v0.1.8
+prisma__skills                         1123817e60d15ca0f3af91878923241dee7e3b09  tag=(no tags)
+firebase__agent-skills                 a0b4e143f40c1ebe05fe5f9a4787fecd4da8f478  tag=(no tags)
+cloudflare__skills                     b052c32bab7dd493513260228a36c88294f343f1  tag=(no tags)
+antfu__skills                          a74f281a27dadc02397bc1a174b0f2c97531b6ae  tag=(no tags)
+shadcn-ui__ui                          3ba91b1cc83e1bbe4ab35a422ff2a694849c5048  tag=ui@0.0.4
+vercel__next.js                        637b8cfa5ece38cc817db0ea04682647dbcbaad5  tag=v16.4.0-canary.25

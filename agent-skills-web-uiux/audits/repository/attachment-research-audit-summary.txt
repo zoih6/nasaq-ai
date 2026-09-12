@@ -1,0 +1,311 @@
+
+## CloudAI-X/threejs-skills
+HEAD b1c623076c661fc9b03dac19292e825a5d106823 2026-01-20T00:13:16+03:00 files=11 skills=10
+licenses=[]
+skills/threejs-animation/SKILL.md
+skills/threejs-fundamentals/SKILL.md
+skills/threejs-geometry/SKILL.md
+skills/threejs-interaction/SKILL.md
+skills/threejs-lighting/SKILL.md
+skills/threejs-loaders/SKILL.md
+skills/threejs-materials/SKILL.md
+skills/threejs-postprocessing/SKILL.md
+skills/threejs-shaders/SKILL.md
+skills/threejs-textures/SKILL.md
+
+## JuliusBrussee/caveman
+HEAD 15581d14007fd01fb3f132016741962f34936ca2 2026-09-07T08:19:43Z files=1388 skills=24
+licenses=['LICENSE', 'LICENSE.BSL', 'browse/LICENSE', 'engine/LICENSE', 'extension/LICENSE', 'mcp/LICENSE', 'mcp/LICENSE.launcher', 'mem/LICENSE', 'mem/js/LICENSE', 'mem/py/LICENSE', 'packages/agent/LICENSE', 'packages/cli/LICENSE', 'packages/create-caveman-agent/LICENSE', 'packages/device-auth/LICENSE', 'packages/sdk/python/LICENSE', 'packages/sdk/typescript/LICENSE', 'packages/shared/binary-installer/LICENSE', 'packages/shared/contracts/LICENSE', 'proxy/LICENSE', 'rewriter/LICENSE', 'shared/platform/LICENSE', 'shared/provider-catalog/LICENSE', 'shrink/LICENSE', 'shrink/LICENSE.launcher']
+plugins/caveman/skills/cavecrew/SKILL.md
+plugins/caveman/skills/caveman-compress/SKILL.md
+plugins/caveman/skills/caveman-stats/SKILL.md
+plugins/caveman/skills/caveman/SKILL.md
+skills/cavecrew/SKILL.md
+skills/caveman-commit/SKILL.md
+skills/caveman-compress/SKILL.md
+skills/caveman-discover/SKILL.md
+skills/caveman-evidence-review/SKILL.md
+skills/caveman-explore/SKILL.md
+skills/caveman-help/SKILL.md
+skills/caveman-learn/SKILL.md
+skills/caveman-manage/SKILL.md
+skills/caveman-optimize/SKILL.md
+skills/caveman-review/SKILL.md
+skills/caveman-setup/SKILL.md
+skills/caveman-stats/SKILL.md
+skills/caveman/SKILL.md
+skills/investigate-first/SKILL.md
+skills/lean-build/SKILL.md
+skills/migration/SKILL.md
+skills/safe-refactor/SKILL.md
+skills/surgical-patch/SKILL.md
+skills/verify-and-stop/SKILL.md
+
+## LeoStehlik/no-slop-ui
+HEAD 3c8f9e5ef5ca18f5632f7b9ad8f95e2d68188bcf 2026-08-31T14:44:19Z files=17 skills=1
+licenses=['LICENSE']
+SKILL.md
+
+## Owl-Listener/agent-ready
+HEAD 84ae3cd15de7c89b34cc72270dc4af049af79028 2026-05-13T19:50:43+01:00 files=11 skills=1
+licenses=[]
+SKILL.md
+
+## Rosmarinusofficinalispoloneck995/anti-slop
+HEAD 6627175c60588d8c43943b9d872c37baed824891 2026-09-10T22:13:32Z files=8 skills=0
+licenses=['LICENSE']
+
+
+## Vanszs/Anti-AI-UI
+HEAD fd2a142e52e0f33002bb3c9cf966f0e878d31dfa 2026-06-19T15:38:53+07:00 files=42 skills=3
+licenses=['LICENSE']
+Anti-AI-SLop/SKILL.md
+component-reference-design/SKILL.md
+ui-ux-pro-max/SKILL.md
+
+## VoltAgent/awesome-agent-skills
+HEAD 8873794bcb26ff5dcf9cd518c87cf5638ca44b92 2026-09-07T11:53:40+03:00 files=4 skills=0
+licenses=['LICENSE']
+
+
+## agamm/claude-code-owasp
+HEAD bfaf257b2859986a6a84d2b7491e1fab2218cd53 2026-07-27T22:32:39-05:00 files=6 skills=1
+licenses=['LICENSE']
+.claude/skills/owasp-security/SKILL.md
+
+## antonbabenko/terraform-skill
+HEAD 0a3a4a66e99001347d36a41e10260a825be3ab62 2026-07-03T07:56:30+02:00 files=31 skills=1
+licenses=['LICENSE']
+skills/terraform-skill/SKILL.md
+
+## ckelsoe/prompt-architect
+HEAD 6c7a2c7b5a15cbb918828c7878c226a592985702 2026-07-24T14:00:32-04:00 files=83 skills=1
+licenses=['LICENSE']
+skills/prompt-architect/SKILL.md
+
+## claudiusararu/unslop-ui-skill
+HEAD f954aaf0d21c47d66bfc318b1aab904cf650c109 2026-06-28T18:09:58+03:00 files=6 skills=1
+licenses=['LICENSE']
+.claude/skills/no-ai-slop/SKILL.md
+
+## cloudflare/security-audit-skill
+HEAD d24bc269171a9171fac58493e0ffba511d571a4a 2026-09-10T12:45:47+01:00 files=22 skills=1
+licenses=['LICENSE']
+skills/security-audit/SKILL.md
+
+## emilkowalski/skills
+HEAD d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7 2026-08-21T11:32:32+02:00 files=23 skills=12
+licenses=['LICENSE']
+skills/animate-expo/SKILL.md
+skills/animate/SKILL.md
+skills/animation-vocabulary/SKILL.md
+skills/apple-design/SKILL.md
+skills/ask-sonner/SKILL.md
+skills/emil-design-eng/SKILL.md
+skills/find-animation-opportunities/SKILL.md
+skills/improve-animations/SKILL.md
+skills/pick-ui-library/SKILL.md
+skills/prototype/SKILL.md
+skills/review-animations/SKILL.md
+skills/write-swift/SKILL.md
+
+## funboy322/avoid-ai-design
+HEAD 8337060636a8cf12e32e883eb367becd702aa526 2026-06-18T21:49:10+03:00 files=19 skills=1
+licenses=['LICENSE']
+SKILL.md
+
+## github/awesome-copilot
+HEAD 7568a482ce2df38f8965ab5336a3220db796a4ba 2026-09-09T10:23:17+10:00 files=2837 skills=435
+licenses=['LICENSE', 'eng/lib/license.mjs', 'extensions/apng-studio/LICENSE', 'extensions/sentry-triage/LICENSE', 'skills/anti-ui-slop/LICENSE', 'skills/appinsights-instrumentation/LICENSE.txt', 'skills/azure-resource-visualizer/LICENSE.txt', 'skills/azure-role-selector/LICENSE.txt', 'skills/quality-playbook/LICENSE.txt', 'skills/resemble-detect/LICENSE', 'skills/winmd-api-search/LICENSE.txt']
+.github/skills/agentic-workflows/SKILL.md
+.github/skills/create-canvas-extension/SKILL.md
+skills/acquire-codebase-knowledge/SKILL.md
+skills/acreadiness-assess/SKILL.md
+skills/acreadiness-generate-instructions/SKILL.md
+skills/acreadiness-policy/SKILL.md
+skills/ad-campaign-analyzer/SKILL.md
+skills/add-educational-comments/SKILL.md
+skills/adobe-illustrator-scripting/SKILL.md
+skills/agent-governance/SKILL.md
+skills/agent-owasp-compliance/SKILL.md
+skills/agent-skill-stack/SKILL.md
+skills/agent-supply-chain/SKILL.md
+skills/agentic-eval/SKILL.md
+skills/ai-prompt-engineering-safety-review/SKILL.md
+skills/ai-ready/SKILL.md
+skills/ai-team-orchestration/SKILL.md
+skills/anti-ui-slop/SKILL.md
+skills/appinsights-instrumentation/SKILL.md
+skills/apple-appstore-reviewer/SKILL.md
+skills/arch-linux-triage/SKILL.md
+skills/architecture-blueprint-generator/SKILL.md
+skills/arduino-azure-iot-edge-integration/SKILL.md
+skills/arize-ai-provider-integration/SKILL.md
+skills/arize-annotation/SKILL.md
+skills/arize-dataset/SKILL.md
+skills/arize-evaluator/SKILL.md
+skills/arize-experiment/SKILL.md
+skills/arize-instrumentation/SKILL.md
+skills/arize-link/SKILL.md
+skills/arize-prompt-optimization/SKILL.md
+skills/arize-trace/SKILL.md
+skills/aspire/SKILL.md
+skills/aspnet-minimal-api-openapi/SKILL.md
+skills/audit-integrity/SKILL.md
+skills/automate-this/SKILL.md
+skills/autoresearch/SKILL.md
+skills/aws-cdk-python-setup/SKILL.md
+skills/aws-cloudwatch-investigation/SKILL.md
+skills/aws-cost-optimize/SKILL.md
+skills/aws-resource-health-diagnose/SKILL.md
+skills/aws-resource-query/SKILL.md
+skills/aws-well-architected-review/SKILL.md
+skills/az-cost-optimize/SKILL.md
+skills/azure-architecture-autopilot/SKILL.md
+skills/azure-container-registry-cli/SKILL.md
+skills/azure-deployment-preflight/SKILL.md
+skills/azure-developer-cli/SKILL.md
+skills/azure-devops-cli/SKILL.md
+skills/azure-pricing/SKILL.md
+skills/azure-resource-health-diagnose/SKILL.md
+skills/azure-resource-visualizer/SKILL.md
+skills/azure-role-selector/SKILL.md
+skills/azure-smart-city-iot-solution-builder/SKILL.md
+skills/azure-static-web-apps/SKILL.md
+skills/azure-well-architected-review/SKILL.md
+skills/batch-files/SKILL.md
+skills/bench-read/SKILL.md
+skills/bigquery-pipeline-audit/SKILL.md
+skills/boost-prompt/SKILL.md
+skills/brag-sheet/SKILL.md
+skills/breakdown-epic-arch/SKILL.md
+skills/breakdown-epic-pm/SKILL.md
+skills/breakdown-feature-implementation/SKILL.md
+skills/breakdown-feature-prd/SKILL.md
+skills/breakdown-plan/SKILL.md
+skills/breakdown-test/SKILL.md
+skills/bug-receipt/SKILL.md
+skills/bug-reproduction-brief/SKILL.md
+skills/build-evidence-map/SKILL.md
+skills/centos-linux-triage/SKILL.md
+skills/chrome-devtools/SKILL.md
+skills/cli-mastery/SKILL.md
+skills/cloud-design-patterns/SKILL.md
+skills/code-exemplars-blueprint-generator/SKILL.md
+skills/code-tour/SKILL.md
+skills/codebase-memory-mcp/SKILL.md
+skills/codeql/SKILL.md
+skills/comment-code-generate-a-tutorial/SKILL.md
+skills/commit-message-storyteller/SKILL.md
+skills/competitor-ad-intelligence/SKILL.md
+skills/containerize-aspnet-framework/SKILL.md
+skills/containerize-aspnetcore/SKILL.md
+skills/content-management-systems/SKILL.md
+skills/context-map/SKILL.md
+skills/conventional-branch/SKILL.md
+skills/conventional-commit/SKILL.md
+skills/convert-excel-to-md/SKILL.md
+skills/convert-pdf-to-md/SKILL.md
+skills/convert-plaintext-to-md/SKILL.md
+skills/convert-word-to-md/SKILL.md
+skills/copilot-cli-quickstart/SKILL.md
+skills/copilot-instructions-blueprint-generator/SKILL.md
+skills/copilot-pr-autopilot/SKILL.md
+skills/copilot-sdk/SKILL.md
+skills/copilot-spaces/SKILL.md
+skills/copilot-usage-metrics/SKILL.md
+skills/cosmosdb-datamodeling/SKILL.md
+skills/create-agentsmd/SKILL.md
+skills/create-architectural-decision-record/SKILL.md
+
+## hookdeck/agent-skills
+HEAD fb16bab9e6b8255c32d10dea9ca12690c435d682 2026-08-19T11:43:01+01:00 files=383 skills=3
+licenses=['LICENSE', 'skills/outpost/examples/fastapi-saas/LICENSE', 'skills/outpost/examples/nextjs-saas/LICENSE']
+skills/event-gateway/SKILL.md
+skills/hookdeck/SKILL.md
+skills/outpost/SKILL.md
+
+## mattpocock/skills
+HEAD 3cca18b368ae95cdbdebbff572ccafa662551015 2026-09-04T09:43:27+01:00 files=164 skills=37
+licenses=['LICENSE']
+skills/engineering/ask-matt/SKILL.md
+skills/engineering/code-review/SKILL.md
+skills/engineering/codebase-design/SKILL.md
+skills/engineering/diagnosing-bugs/SKILL.md
+skills/engineering/domain-modeling/SKILL.md
+skills/engineering/grill-with-docs/SKILL.md
+skills/engineering/implement/SKILL.md
+skills/engineering/improve-codebase-architecture/SKILL.md
+skills/engineering/prototype/SKILL.md
+skills/engineering/research/SKILL.md
+skills/engineering/resolving-merge-conflicts/SKILL.md
+skills/engineering/setup-matt-pocock-skills/SKILL.md
+skills/engineering/tdd/SKILL.md
+skills/engineering/to-spec/SKILL.md
+skills/engineering/to-tickets/SKILL.md
+skills/engineering/triage/SKILL.md
+skills/engineering/wayfinder/SKILL.md
+skills/engineering/wizard/SKILL.md
+skills/in-progress/claude-handoff/SKILL.md
+skills/in-progress/implement-spec/SKILL.md
+skills/in-progress/loop-me/SKILL.md
+skills/in-progress/retro/SKILL.md
+skills/in-progress/setup-ts-deep-modules/SKILL.md
+skills/in-progress/writing-beats/SKILL.md
+skills/in-progress/writing-fragments/SKILL.md
+skills/in-progress/writing-shape/SKILL.md
+skills/misc/git-guardrails-claude-code/SKILL.md
+skills/misc/migrate-to-shoehorn/SKILL.md
+skills/misc/scaffold-exercises/SKILL.md
+skills/misc/setup-pre-commit/SKILL.md
+skills/productivity/grill-me/SKILL.md
+skills/productivity/grilling/SKILL.md
+skills/productivity/handoff/SKILL.md
+skills/productivity/teach/SKILL.md
+skills/productivity/to-questionnaire/SKILL.md
+skills/productivity/wait-what/SKILL.md
+skills/productivity/writing-for-agents/SKILL.md
+
+## neondatabase/agent-skills
+HEAD 2e0da3a1653bcdd227565ac14bb3e9e453a8b854 2026-09-04T10:39:10-07:00 files=234 skills=15
+licenses=['LICENSE']
+evals/neon-postgres-egress-optimizer/.claude/skills/score-eval/SKILL.md
+plugins/neon-postgres/skills/neon-ai-gateway/SKILL.md
+plugins/neon-postgres/skills/neon-functions/SKILL.md
+plugins/neon-postgres/skills/neon-object-storage/SKILL.md
+plugins/neon-postgres/skills/neon-postgres-branches/SKILL.md
+plugins/neon-postgres/skills/neon-postgres-egress-optimizer/SKILL.md
+plugins/neon-postgres/skills/neon-postgres/SKILL.md
+plugins/neon-postgres/skills/neon/SKILL.md
+skills/neon-ai-gateway/SKILL.md
+skills/neon-functions/SKILL.md
+skills/neon-object-storage/SKILL.md
+skills/neon-postgres-branches/SKILL.md
+skills/neon-postgres-egress-optimizer/SKILL.md
+skills/neon-postgres/SKILL.md
+skills/neon/SKILL.md
+
+## renfei-design/Figma-AI-Bridge
+HEAD 9570c3c48977406559fd2293d059cd03d9b215c0 2026-02-28T20:39:02+08:00 files=28 skills=6
+licenses=['LICENSE']
+.github/skills/a11y-audit/SKILL.md
+.github/skills/content-review/SKILL.md
+.github/skills/figma-doc/SKILL.md
+.github/skills/figma-slides/SKILL.md
+.github/skills/online-research/SKILL.md
+.github/skills/workflow-diagram/SKILL.md
+
+## safishamsi/graphify
+HEAD 23f2ffaa43fd12f25d9eabe91e6d184b5d89b474 2026-09-10T23:19:02+01:00 files=883 skills=0
+licenses=['LICENSE']
+
+
+## testdino-hq/playwright-skill
+HEAD 400e4256cd22669ad69c18d31d3e5541e4e1c2a3 2026-09-06T15:27:50+05:30 files=79 skills=6
+licenses=['LICENSE']
+SKILL.md
+ci/SKILL.md
+core/SKILL.md
+migration/SKILL.md
+playwright-cli/SKILL.md
+pom/SKILL.md

@@ -1,0 +1,704 @@
+[
+  {
+    "url": "https://agentskills.io/specification",
+    "status": 200,
+    "final": "https://agentskills.io/specification",
+    "ok": true
+  },
+  {
+    "url": "https://arxiv.org/abs/2406.06608",
+    "status": 200,
+    "final": "https://arxiv.org/abs/2406.06608",
+    "ok": true
+  },
+  {
+    "url": "https://cli.github.com/manual/gh_skill_install",
+    "status": 200,
+    "final": "https://cli.github.com/manual/gh_skill_install",
+    "ok": true
+  },
+  {
+    "url": "https://cli.github.com/manual/gh_skill_preview",
+    "status": 200,
+    "final": "https://cli.github.com/manual/gh_skill_preview",
+    "ok": true
+  },
+  {
+    "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills",
+    "status": 200,
+    "final": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/AccessLint/skills",
+    "status": 200,
+    "final": "https://github.com/AccessLint/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/All-Hands-AI/OpenHands",
+    "status": 200,
+    "final": "https://github.com/OpenHands/OpenHands",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/CloudAI-X/threejs-skills",
+    "status": 200,
+    "final": "https://github.com/CloudAI-X/threejs-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Dammyjay93/interface-design",
+    "status": 200,
+    "final": "https://github.com/Dammyjay93/interface-design",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Dammyjay93/interface-design/tree/main/.claude/skills/interface-design",
+    "status": 200,
+    "final": "https://github.com/Dammyjay93/interface-design/tree/main/.claude/skills/interface-design",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/FlowiseAI/Flowise",
+    "status": 200,
+    "final": "https://github.com/FlowiseAI/Flowise",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/JacobLinCool/ux-discovery-interviewer-skill",
+    "status": 200,
+    "final": "https://github.com/JacobLinCool/ux-discovery-interviewer-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/JuliusBrussee/caveman",
+    "status": 200,
+    "final": "https://github.com/JuliusBrussee/caveman",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/KreerC/ACCESSIBILITY.md",
+    "status": 200,
+    "final": "https://github.com/KreerC/ACCESSIBILITY.md",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/LeoStehlik/no-slop-ui",
+    "status": 200,
+    "final": "https://github.com/LeoStehlik/no-slop-ui",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Leonxlnx/taste-skill",
+    "status": 200,
+    "final": "https://github.com/Leonxlnx/taste-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill",
+    "status": 200,
+    "final": "https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill-v1",
+    "status": 200,
+    "final": "https://github.com/Leonxlnx/taste-skill/tree/main/skills/taste-skill-v1",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Nutlope/hallmark",
+    "status": 200,
+    "final": "https://github.com/Nutlope/hallmark",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Nutlope/hallmark/tree/main/skills/hallmark",
+    "status": 200,
+    "final": "https://github.com/Nutlope/hallmark/tree/main/skills/hallmark",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Owl-Listener/agent-ready",
+    "status": 200,
+    "final": "https://github.com/Owl-Listener/agent-ready",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Owl-Listener/designer-skills",
+    "status": 200,
+    "final": "https://github.com/Owl-Listener/designer-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Rosmarinusofficinalispoloneck995/anti-slop",
+    "status": 200,
+    "final": "https://github.com/Rosmarinusofficinalispoloneck995/anti-slop",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/Vanszs/Anti-AI-UI",
+    "status": 200,
+    "final": "https://github.com/Vanszs/Anti-AI-UI",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/VoltAgent/awesome-agent-skills",
+    "status": 200,
+    "final": "https://github.com/VoltAgent/awesome-agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/activepieces/activepieces",
+    "status": 200,
+    "final": "https://github.com/activepieces/activepieces",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/addyosmani/agent-skills",
+    "status": 200,
+    "final": "https://github.com/addyosmani/agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/addyosmani/web-quality-skills",
+    "status": 200,
+    "final": "https://github.com/addyosmani/web-quality-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/agamm/claude-code-owasp",
+    "status": 200,
+    "final": "https://github.com/agamm/claude-code-owasp",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/agentskills/agentskills",
+    "status": 200,
+    "final": "https://github.com/agentskills/agentskills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/angular/skills",
+    "status": 200,
+    "final": "https://github.com/angular/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/antfu/skills",
+    "status": 200,
+    "final": "https://github.com/antfu/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/accessibility-review",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/accessibility-review",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-critique",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-critique",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-handoff",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-handoff",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-system",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/design-system",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/research-synthesis",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/research-synthesis",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/user-research",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/user-research",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/ux-copy",
+    "status": 200,
+    "final": "https://github.com/anthropics/knowledge-work-plugins/tree/main/design/skills/ux-copy",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/skills",
+    "status": 200,
+    "final": "https://github.com/anthropics/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+    "status": 200,
+    "final": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+    "status": 200,
+    "final": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+    "status": 200,
+    "final": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+    "status": 200,
+    "final": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/antonbabenko/terraform-skill",
+    "status": 200,
+    "final": "https://github.com/antonbabenko/terraform-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/browser-use/browser-use",
+    "status": 200,
+    "final": "https://github.com/browser-use/browser-use",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/ckelsoe/prompt-architect",
+    "status": 200,
+    "final": "https://github.com/ckelsoe/prompt-architect",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/claudiusararu/unslop-ui-skill",
+    "status": 200,
+    "final": "https://github.com/claudiusararu/unslop-ui-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/cloudflare/security-audit-skill",
+    "status": 200,
+    "final": "https://github.com/cloudflare/security-audit-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/cloudflare/skills",
+    "status": 200,
+    "final": "https://github.com/cloudflare/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/cloudflare/skills/tree/main/skills/web-perf",
+    "status": 200,
+    "final": "https://github.com/cloudflare/skills/tree/main/skills/web-perf",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/crewAIInc/crewAI",
+    "status": 200,
+    "final": "https://github.com/crewAIInc/crewAI",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/educlopez/ui-craft",
+    "status": 200,
+    "final": "https://github.com/educlopez/ui-craft",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/emilkowalski/skills",
+    "status": 200,
+    "final": "https://github.com/emilkowalski/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/expo/skills",
+    "status": 200,
+    "final": "https://github.com/expo/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/figma/mcp-server-guide",
+    "status": 200,
+    "final": "https://github.com/figma/mcp-server-guide",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/figma/mcp-server-guide/tree/main/skills",
+    "status": 200,
+    "final": "https://github.com/figma/mcp-server-guide/tree/main/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/finfin/awesome-frontend-skills",
+    "status": 200,
+    "final": "https://github.com/finfin/awesome-frontend-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/firebase/agent-skills",
+    "status": 200,
+    "final": "https://github.com/firebase/agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/funboy322/avoid-ai-design",
+    "status": 200,
+    "final": "https://github.com/funboy322/avoid-ai-design",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/github/awesome-copilot",
+    "status": 200,
+    "final": "https://github.com/github/awesome-copilot",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/github/awesome-copilot/tree/main/skills/anti-ui-slop",
+    "status": 200,
+    "final": "https://github.com/github/awesome-copilot/tree/main/skills/anti-ui-slop",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/google-labs-code/stitch-skills",
+    "status": 200,
+    "final": "https://github.com/google-labs-code/stitch-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/hookdeck/agent-skills",
+    "status": 200,
+    "final": "https://github.com/hookdeck/agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/langchain-ai/langgraph",
+    "status": 200,
+    "final": "https://github.com/langchain-ai/langgraph",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/langflow-ai/langflow",
+    "status": 200,
+    "final": "https://github.com/langflow-ai/langflow",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/langgenius/dify",
+    "status": 200,
+    "final": "https://github.com/langgenius/dify",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/mattpocock/skills",
+    "status": 200,
+    "final": "https://github.com/mattpocock/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/microsoft/autogen",
+    "status": 200,
+    "final": "https://github.com/microsoft/autogen",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/microsoft/playwright",
+    "status": 200,
+    "final": "https://github.com/microsoft/playwright",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/microsoft/playwright/tree/main/packages/playwright-core/src/tools/skills/playwright-cli",
+    "status": 200,
+    "final": "https://github.com/microsoft/playwright/tree/main/packages/playwright-core/src/tools/skills/playwright-cli",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/neondatabase/agent-skills",
+    "status": 200,
+    "final": "https://github.com/neondatabase/agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "status": 200,
+    "final": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/obra/superpowers",
+    "status": 200,
+    "final": "https://github.com/obra/superpowers",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/obra/superpowers/tree/main/skills/writing-skills",
+    "status": 200,
+    "final": "https://github.com/obra/superpowers/tree/main/skills/writing-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/pbakaus/impeccable",
+    "status": 200,
+    "final": "https://github.com/pbakaus/impeccable",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/pbakaus/impeccable/tree/main/.agents/skills/impeccable",
+    "status": 200,
+    "final": "https://github.com/pbakaus/impeccable/tree/main/.agents/skills/impeccable",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/plugin87/ux-ui-agent-skills",
+    "status": 200,
+    "final": "https://github.com/plugin87/ux-ui-agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/princeton-nlp/SWE-agent",
+    "status": 200,
+    "final": "https://github.com/SWE-agent/SWE-agent",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/prisma/skills",
+    "status": 200,
+    "final": "https://github.com/prisma/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/promptfoo/promptfoo",
+    "status": 200,
+    "final": "https://github.com/promptfoo/promptfoo",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/renfei-design/Figma-AI-Bridge",
+    "status": 200,
+    "final": "https://github.com/renfei-design/Figma-AI-Bridge",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/safishamsi/graphify",
+    "status": 200,
+    "final": "https://github.com/Graphify-Labs/graphify",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/shadcn-ui/ui",
+    "status": 200,
+    "final": "https://github.com/shadcn-ui/ui",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/shadcn-ui/ui/tree/main/skills/shadcn",
+    "status": 200,
+    "final": "https://github.com/shadcn-ui/ui/tree/main/skills/shadcn",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/supabase/agent-skills",
+    "status": 200,
+    "final": "https://github.com/supabase/agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/testdino-hq/playwright-skill",
+    "status": 200,
+    "final": "https://github.com/testdino-hq/playwright-skill",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/trailofbits/skills",
+    "status": 200,
+    "final": "https://github.com/trailofbits/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/trailofbits/skills/tree/main/plugins/differential-review/skills/differential-review",
+    "status": 200,
+    "final": "https://github.com/trailofbits/skills/tree/main/plugins/differential-review/skills/differential-review",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/trailofbits/skills/tree/main/plugins/static-analysis/skills/codeql",
+    "status": 200,
+    "final": "https://github.com/trailofbits/skills/tree/main/plugins/static-analysis/skills/codeql",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/trailofbits/skills/tree/main/plugins/static-analysis/skills/semgrep",
+    "status": 200,
+    "final": "https://github.com/trailofbits/skills/tree/main/plugins/static-analysis/skills/semgrep",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/trailofbits/skills/tree/main/plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor",
+    "status": 200,
+    "final": "https://github.com/trailofbits/skills/tree/main/plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/agent-skills",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/agent-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-native-skills",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-native-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/next-skills",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/next-skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel-labs/skills",
+    "status": 200,
+    "final": "https://github.com/vercel-labs/skills",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel/next.js",
+    "status": 200,
+    "final": "https://github.com/vercel/next.js",
+    "ok": true
+  },
+  {
+    "url": "https://github.com/vercel/next.js/tree/canary/skills",
+    "status": 200,
+    "final": "https://github.com/vercel/next.js/tree/canary/skills",
+    "ok": true
+  },
+  {
+    "url": "https://help.figma.com/hc/en-us/articles/39166810751895-Figma-skills-for-MCP",
+    "status": 200,
+    "final": "https://help.figma.com/hc/en-us/articles/39166810751895-Figma-skills-for-MCP",
+    "ok": true
+  },
+  {
+    "url": "https://make.com",
+    "status": 403,
+    "final": "https://www.make.com/en",
+    "ok": false
+  },
+  {
+    "url": "https://n8n.io",
+    "status": 200,
+    "final": "https://n8n.io/",
+    "ok": true
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=48504912",
+    "status": 200,
+    "final": "https://news.ycombinator.com/item?id=48504912",
+    "ok": true
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=49058547",
+    "status": 200,
+    "final": "https://news.ycombinator.com/item?id=49058547",
+    "ok": true
+  },
+  {
+    "url": "https://nextjs.org/docs/app/guides/ai-agents",
+    "status": 200,
+    "final": "https://nextjs.org/docs/app/guides/ai-agents",
+    "ok": true
+  },
+  {
+    "url": "https://www.promptfoo.dev/docs/",
+    "status": 200,
+    "final": "https://www.promptfoo.dev/docs/",
+    "ok": true
+  },
+  {
+    "url": "https://www.reddit.com/r/AI_Agents/comments/1s51cre/the_claude_code_skills_actually_worth_installing/",
+    "status": 403,
+    "final": "https://www.reddit.com/r/AI_Agents/comments/1s51cre/the_claude_code_skills_actually_worth_installing/",
+    "ok": false
+  },
+  {
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1oxn1gj/frontenddesign_skill_is_so_amazing/",
+    "status": 403,
+    "final": "https://www.reddit.com/r/ClaudeAI/comments/1oxn1gj/frontenddesign_skill_is_so_amazing/",
+    "ok": false
+  },
+  {
+    "url": "https://www.reddit.com/r/ClaudeCode/comments/1syachi/best_skill_for_uxui_impeccable_vs_uxui_pro_max_vs/",
+    "status": 403,
+    "final": "https://www.reddit.com/r/ClaudeCode/comments/1syachi/best_skill_for_uxui_impeccable_vs_uxui_pro_max_vs/",
+    "ok": false
+  },
+  {
+    "url": "https://www.reddit.com/r/UXDesign/comments/1syaen1/best_uxuiskill_for_claude_code_impeccable_vs_uxui/",
+    "status": 403,
+    "final": "https://www.reddit.com/r/UXDesign/comments/1syaen1/best_uxuiskill_for_claude_code_impeccable_vs_uxui/",
+    "ok": false
+  },
+  {
+    "url": "https://www.skills.sh/docs",
+    "status": 200,
+    "final": "https://www.skills.sh/docs",
+    "ok": true
+  },
+  {
+    "url": "https://x.com/littlemartta/status/2039038639087194470",
+    "status": 200,
+    "final": "https://x.com/littlemartta/status/2039038639087194470",
+    "ok": true
+  },
+  {
+    "url": "https://zapier.com",
+    "status": 200,
+    "final": "https://zapier.com/",
+    "ok": true
+  }
+]
