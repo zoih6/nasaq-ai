@@ -99,7 +99,23 @@ Additional gates:
 - Repository secret-pattern scan: **PASS**.
 - Large-file gate: **PASS**.
 
-No application runtime code or dependency was changed.
+The operating-method integration itself changed no application runtime code or dependency.
+
+### Final-alias accessibility follow-up
+
+The documentation delivery deployment `dpl_HSWoMDhbXHHt7T6u6huRtHRbEPLY` reached `READY`, but its final Chromium alias smoke exposed a timing-sensitive existing contrast weakness while the service result entrance animation was still running:
+
+- Initial complete smoke: **7/8 PASS**, one Axe `color-contrast` failure.
+- Eight-run targeted reproduction on the unchanged production build: **3 PASS / 5 FAIL**.
+- Observed contrast during opacity blending: **4.25–4.42:1** for the active research-output step.
+- Static base accent/soft pair: **4.61:1**, technically passing but without a robust transition margin.
+- Root-cause fix: active output-step text uses `--service-deep` with a fallback to `--service`.
+- Deep/soft service-palette range: **6.32–7.85:1**; research: **6.47:1**.
+- Post-fix `npm run check`: **PASS**; audit: **0 vulnerabilities**.
+- Post-fix targeted repeated flow: **12/12 PASS**; the added computed-token regression assertion then passed **5/5**.
+- Post-fix complete local Chromium motion/feedback gate: **8/8 PASS** after the product and test updates.
+
+This follow-up demonstrates the operating method's evidence rule: a `READY` deployment was not treated as proof of a passing user journey, and the failure was reproduced and fixed at the semantic color-token boundary rather than hidden with a test retry.
 
 ## GitHub and Vercel delivery
 

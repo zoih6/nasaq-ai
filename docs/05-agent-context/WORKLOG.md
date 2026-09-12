@@ -43,6 +43,9 @@
 - Ran `npm run check`: lint and workspace typechecks passed, Vitest 4/4 passed, and the 57-page production build passed.
 - Committed and pushed the operating foundation as `b225c5cb2508b4191b92ad43999de3ee6145f983`; matching Vercel deployment `dpl_9QEhikhxnXoWj2rhCtypwK9AFZAD` reached `READY` with the production alias attached.
 - Added `docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md` as the permanent evidence receipt.
+- A final alias smoke on the subsequent documentation deployment exposed a timing-sensitive Axe contrast failure in the research workspace output: 7/8 passed initially, and an eight-run reproduction yielded 3 passes / 5 failures while the result entrance opacity was still blending colors.
+- Root cause: the research service's base accent was only 4.61:1 on its soft surface, so animation blending temporarily reduced Axe's observed ratio to 4.25–4.42:1. The active output step now uses the semantic `--service-deep` token (6.47:1 for research; 6.32–7.85:1 across all service deep/soft pairs).
+- Post-fix local evidence: `npm run check` PASS, audit 0, targeted repeated flow 12/12 PASS, then 5/5 with the added computed-token regression assertion, and complete Chromium motion/feedback gate 8/8 PASS.
 
 ## Prior stable milestone — U1.1
 

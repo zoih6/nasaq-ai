@@ -155,6 +155,7 @@ test("service workspace recovers from validation and completes its simulated pat
   await expect(page.locator(".service-start-button")).toBeDisabled();
   await expect(page.locator('.service-output[data-feedback-state="success"]')).toContainText("Your space is ready", { timeout: 8_000 });
   await expect(page.locator(".service-path-card li.is-complete")).toHaveCount(4);
+  await expect(page.locator(".service-output__canvas > aside button.is-active")).toHaveCSS("color", "rgb(7, 95, 126)");
   await expect(page.getByText("No external service runs in this prototype.", { exact: false })).toBeVisible();
   await expectNoSeriousAccessibilityViolations(page);
   expect(errors).toEqual([]);

@@ -55,6 +55,7 @@ The next product stage is **U2 — Service Depth**. Before changing product code
 - The first remote WebKit run exposed test-protocol latency around the intentionally short 760ms working state. The assertion now captures state and computed animation styles in one in-browser task; the targeted WebKit rerun and the complete live gate passed. Product behavior did not change.
 - Canonical receipt: `docs/04-delivery/U1-2-MOTION-VERIFICATION.md`.
 - Evidence: `docs/04-delivery/evidence/u1-2/`.
+- A later final-alias smoke exposed a timing-sensitive Axe contrast failure on the research output's active step during entrance opacity. The text now uses `--service-deep` on `--service-soft`; local follow-up passed `npm run check`, audit 0, a 12/12 repeated targeted flow, and the complete 8/8 Chromium motion gate.
 
 ## Immediate next action
 

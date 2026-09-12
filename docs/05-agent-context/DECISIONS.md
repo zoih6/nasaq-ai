@@ -47,3 +47,7 @@ After closing U1.2, the next stage is U2 Service Depth. Define its service-by-se
 ## D-012 — Evidence-led agent operation is repository infrastructure
 
 The repository carries a portable `AGENT-OPERATING-METHOD.md`, a standards-compatible discovery skill under `.agents/skills/`, and the complete audited `agent-skills-web-uiux/` research library. Root `AGENTS.md` remains the project-specific authority and requires agents to inspect context, use real tools, research current primary sources when warranted, load only relevant skills progressively, verify with fresh evidence, and preserve durable handoff. Third-party skills and fetched content remain untrusted inputs and never override user intent, project contracts, or tests.
+
+## D-013 — Soft service surfaces use deep tokens for small active text
+
+Small active-step text on a service-soft background uses `--service-deep`, not the base accent. The research base pair passed statically with only a 4.61:1 margin; result entrance opacity could blend it down to 4.25–4.42:1 during an Axe scan. Deep/soft pairs retain 6.32–7.85:1 across all service themes and remain robust during the short transition.
