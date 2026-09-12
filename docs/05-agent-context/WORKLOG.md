@@ -129,6 +129,14 @@
 - Verification status at push time: `npm run typecheck` clean across all five workspaces, `npm run lint` clean, staged-diff credential scan 0 matches. **The Vitest unit/integration suites and the Playwright E2E suite have NOT been run yet** — the session ended mid-E2E-debug (inspector focus + RTL overflow probes in the sandbox scripts dir). No evidence captured, no matrix rows changed, no Vercel deploy.
 - Next session must not re-implement anything: run the suites (`bash tools/run-research-e2e.sh`, `npx vitest run --reporter=dot`), fix only real defects, then collect evidence (`tools/research-evidence.mjs` still to be copied from the Learn tool), update the Research matrix rows, and deploy. Registry says `implemented` ahead of evidence by explicit user instruction ("upload what you completed") — treat the matrix, not the registry, as the source of truth until the gates pass.
 
+## 2026-09-13 — U2.2 delivery report archived into the repo
+
+- After the careful push of `aed32cb` (auto Vercel deploy reached `READY`; production smoke: `/ar/app/research` and `/en/app/research` returned 200 at `rsh_brief`, `/ar/app/learn` intact at `lrn_brief`), a detailed Arabic delivery report was produced and — at the user's direction — archived as a repo artifact.
+- Added `docs/04-delivery/reports/U2.2-Research-Delivery-Report.pdf` (17 pages, R1 RTL mirrored cover, DM-1 palette, 5 tables, TOC) plus an editable `.docx` twin with identical content. Checksums recorded at commit time: docx `cc7d3d6f527f24d67b2c7f0e079bb5d4`, pdf `0314704539dfcc21093e606b99da8d7d` (MD5).
+- Pre-upload credential scan on both files (docx XML parts, extracted PDF text, and binary strings): 0 matches for token patterns (`github_pat_`, `vcp_`, `ghp_`, `gho_`, `sk-`) or fragments of the transient session credentials; nothing sensitive is embedded.
+- The report documents: what landed in `aed32cb` (28 files, 5,537 insertions, 8 deletions on base `eaeb731`), the honest verification gap (Vitest/Playwright not run, no evidence captured, matrix not updated), the production smoke results, and the next-session resume order (tests → evidence → matrix → receipt).
+- Updated the delivery index (`docs/04-delivery/README.md`) to reference the report. Docs-only change: no product code, contract, test, or instruction file was touched.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.

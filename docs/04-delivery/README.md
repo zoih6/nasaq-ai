@@ -4,6 +4,7 @@
 
 ## الموجود الآن
 
+- [تقرير تسليم U2.2 Research](reports/U2.2-Research-Delivery-Report.pdf) — تقرير الحالة التفصيلي بعد رفع الحاكم `aed32cb` بحذر: الكود مكتمل ودُفع إلى `main`، النشر التلقائي على Vercel بلغ `READY`، والاختبارات والأدلة وتحديث المصفوفة معلقة للجلسة القادمة (نسخة DOCX قابلة للتحرير بجواره في `reports/`).
 - [تدقيق جاهزية هندسة وكلاء المنتج](PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md) — evidence matrix، فجوات ومخاطر، معمارية مستهدفة، بوابات `PA-G0..PA-G10`، وخطة معالجة؛ Backend الوكلاء `NO-GO` حتى إغلاقها.
 - [إيصال تحقق وتسليم التدقيق](PRODUCT-AGENT-ARCHITECTURE-AUDIT-VERIFICATION.md) — فحوص الوثائق والمستودع وبوابات GitHub/Vercel المطابقة للمصدر.
 - [إيصال تخطيط وتسليم U2](U2-PLANNING-VERIFICATION.md) — حزمة التخطيط منشورة؛ لا يعني تنفيذ المنتج.
