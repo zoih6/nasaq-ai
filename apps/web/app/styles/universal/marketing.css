@@ -69,7 +69,7 @@ html[lang="ar"] .universal-hero__copy h1 { line-height: 1.24; letter-spacing: -.
 .universal-starters button { min-height: 48px; padding: 9px 11px; display: flex; align-items: center; justify-content: space-between; gap: 7px; border: 1px solid var(--u-line); border-radius: 11px; color: var(--u-muted); background: rgba(255,255,255,.72); text-align: start; font-size: 12px; cursor: pointer; }
 .universal-starters button:hover { border-color: rgba(var(--service-rgb),.3); color: var(--service); background: var(--service-soft); }
 .universal-demo-result { margin-block-start: 10px; padding: 12px; display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 9px; border: 1px solid rgba(var(--service-rgb),.22); border-radius: 13px; background: linear-gradient(135deg, var(--service-soft), white); animation: universal-result-in var(--u-motion-duration-slow) var(--u-motion-ease-enter); }
-@keyframes universal-result-in { from { opacity: 0; transform: translateY(6px) scale(.99); } }
+@keyframes universal-result-in { from { transform: translateY(6px) scale(.99); } }
 .universal-demo-result > span { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 10px; color: var(--service); background: white; box-shadow: var(--u-shadow-sm); }
 .universal-demo-result small, .universal-demo-result strong { display: block; }
 .universal-demo-result small { color: var(--service); font-size: 11px; font-weight: 650; }

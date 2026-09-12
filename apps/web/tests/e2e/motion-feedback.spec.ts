@@ -240,22 +240,46 @@ test("reduced motion removes spatial activity without removing feedback meaning"
 
   const tileDuration = await page.locator(".adaptive-service-tile").first().evaluate((element) => getComputedStyle(element).transitionDuration);
   expect(tileDuration).toMatch(/1e-05s|0\.00001s|0\.01ms/);
-  await page.locator(".adaptive-task-composer textarea").fill("Help me plan a short learning path");
+  const reducedMotionPrompt = page.locator(".adaptive-task-composer textarea");
+  await page.locator(".adaptive-starters button").first().click();
+  await expect(reducedMotionPrompt).not.toHaveValue("");
   // Capture the transient state in one browser task. Remote WebKit protocol
-  // round-trips can outlast the intentionally short 760ms simulation.
+  // round-trips can outlast the intentionally short 760ms simulation, while
+  // one animation frame is not always enough for React to commit in WebKit.
   const workingSnapshot = await page.evaluate(async () => {
-    document.querySelector<HTMLButtonElement>(".adaptive-task-submit")?.click();
-    await new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve()));
-    const feedback = document.querySelector<HTMLElement>('.adaptive-thinking[data-feedback-state="working"]');
-    const icon = feedback?.querySelector<SVGElement>(".u-feedback__icon svg");
-    const progress = feedback?.querySelector<HTMLElement>(".u-feedback__progress > i");
-    if (!feedback || !icon || !progress) return null;
-    return {
-      text: feedback.textContent,
-      busy: feedback.getAttribute("aria-busy"),
-      iconAnimationName: getComputedStyle(icon).animationName,
-      progressAnimationName: getComputedStyle(progress).animationName,
-    };
+    const submit = document.querySelector<HTMLButtonElement>(".adaptive-task-submit");
+    if (!submit) return null;
+
+    return new Promise<null | { text: string | null; busy: string | null; iconAnimationName: string; progressAnimationName: string }>((resolve) => {
+      let settled = false;
+      const observer = new MutationObserver(capture);
+      const timeout = window.setTimeout(() => finish(null), 650);
+
+      function finish(value: null | { text: string | null; busy: string | null; iconAnimationName: string; progressAnimationName: string }) {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        observer.disconnect();
+        resolve(value);
+      }
+
+      function capture() {
+        const feedback = document.querySelector<HTMLElement>('.adaptive-thinking[data-feedback-state="working"]');
+        const icon = feedback?.querySelector<SVGElement>(".u-feedback__icon svg");
+        const progress = feedback?.querySelector<HTMLElement>(".u-feedback__progress > i");
+        if (!feedback || !icon || !progress) return;
+        finish({
+          text: feedback.textContent,
+          busy: feedback.getAttribute("aria-busy"),
+          iconAnimationName: getComputedStyle(icon).animationName,
+          progressAnimationName: getComputedStyle(progress).animationName,
+        });
+      }
+
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+      submit.click();
+      capture();
+    });
   });
   expect(workingSnapshot).not.toBeNull();
   expect(workingSnapshot?.text).toContain("Explicit simulation");

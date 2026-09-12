@@ -50,4 +50,8 @@ The repository carries a portable `AGENT-OPERATING-METHOD.md`, a standards-compa
 
 ## D-013 — Soft service surfaces use deep tokens for small active text
 
-Small active-step text on a service-soft background uses `--service-deep`, not the base accent. The research base pair passed statically with only a 4.61:1 margin; result entrance opacity could blend it down to 4.25–4.42:1 during an Axe scan. Deep/soft pairs retain 6.32–7.85:1 across all service themes and remain robust during the short transition.
+Small active-step text on a service-soft background uses `--service-deep`, not the base accent. The research base pair passed statically with only a 4.61:1 margin; result entrance opacity could blend it down to 4.25–4.42:1 during an Axe scan. Deep/soft pairs retain 6.32–7.85:1 across all service themes and provide a stronger static margin.
+
+## D-014 — Text-rich result entrances do not animate parent opacity
+
+`universal-result-in` retains its subtle translate/scale orientation cue but no longer fades the entire result container. A parent-opacity fade composites every descendant toward the outer surface and can temporarily pull otherwise compliant text, body copy, and inverse buttons below 4.5:1. Removing parent opacity preserves contrast throughout entry; the existing reduced-motion path still makes the spatial cue effectively instant.

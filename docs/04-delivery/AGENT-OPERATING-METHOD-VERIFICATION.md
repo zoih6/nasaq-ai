@@ -103,19 +103,16 @@ The operating-method integration itself changed no application runtime code or d
 
 ### Final-alias accessibility follow-up
 
-The documentation delivery deployment `dpl_HSWoMDhbXHHt7T6u6huRtHRbEPLY` reached `READY`, but its final Chromium alias smoke exposed a timing-sensitive existing contrast weakness while the service result entrance animation was still running:
+The documentation delivery deployment `dpl_HSWoMDhbXHHt7T6u6huRtHRbEPLY` reached `READY`, but its final Chromium alias smoke exposed a timing-sensitive existing contrast weakness while the text-rich service result entrance animation was running:
 
-- Initial complete smoke: **7/8 PASS**, one Axe `color-contrast` failure.
-- Eight-run targeted reproduction on the unchanged production build: **3 PASS / 5 FAIL**.
-- Observed contrast during opacity blending: **4.25–4.42:1** for the active research-output step.
-- Static base accent/soft pair: **4.61:1**, technically passing but without a robust transition margin.
-- Root-cause fix: active output-step text uses `--service-deep` with a fallback to `--service`.
-- Deep/soft service-palette range: **6.32–7.85:1**; research: **6.47:1**.
-- Post-fix `npm run check`: **PASS**; audit: **0 vulnerabilities**.
-- Post-fix targeted repeated flow: **12/12 PASS**; the added computed-token regression assertion then passed **5/5**.
-- Post-fix complete local Chromium motion/feedback gate: **8/8 PASS** after the product and test updates.
+1. Initial complete smoke: **7/8 PASS**, with one Axe `color-contrast` failure.
+2. Eight-run reproduction on the unchanged build: **3 PASS / 5 FAIL**. The research active-step color was observed at 4.25–4.42:1 during opacity blending; its static base accent/soft pair was only 4.61:1.
+3. First hardening changed active-step text to semantic `--service-deep` (6.47:1 for research; 6.32–7.85:1 across service deep/soft pairs) and added a computed-token regression assertion. Local gates passed: check, audit 0, 12/12 repeated flow, 5/5 with the assertion, and 8/8 full motion gate.
+4. Hardening commit `0b07c4a70dbf0b3103daba1b8d24a1e806554497` deployed as `dpl_HmfRwMycXAXA8zqCeNzyerX4eXqk` (`READY`). Its production eight-run gate passed 7/8: the active step remained fixed, but one unusually early scan caught four other descendants at 4.36–4.44:1.
+5. The broader root cause was therefore the shared parent `opacity` entrance, which temporarily composites every foreground/background pair toward the outer surface. The final fix removes opacity from `universal-result-in` while retaining the small translate/scale orientation cue and the existing reduced-motion equivalent path.
+6. Final local evidence after the complete fix: `npm run check` **PASS**, audit **0**, targeted production-shape repetition **20/20 PASS**, complete Chromium gate **8/8 PASS**, WebKit reduced-motion repetition **10/10 PASS**, and the cross-browser motion/feedback gate **22 PASS + 2 expected forced-colors skips**.
 
-This follow-up demonstrates the operating method's evidence rule: a `READY` deployment was not treated as proof of a passing user journey, and the failure was reproduced and fixed at the semantic color-token boundary rather than hidden with a test retry.
+This follow-up demonstrates the operating method's evidence rule: neither a `READY` deployment nor one passing rerun was treated as proof. The issue was reproduced repeatedly, the first hypothesis was tested rather than defended, and the full parent-level root cause was corrected instead of hidden with retries or an Axe exclusion.
 
 ## GitHub and Vercel delivery
 

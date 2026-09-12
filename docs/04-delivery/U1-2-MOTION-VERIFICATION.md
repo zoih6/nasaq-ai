@@ -144,3 +144,7 @@ Axe WCAG 2.0/2.1/2.2 A/AA لم يجد مخالفات serious أو critical في 
 - reflow مكافئ لـ200%، shell modes، 44px targets، bottom sheets، RTL/LTR، reduced motion، التدفقات الأساسية، وAxe.
 
 أول تشغيل بعيد كشف سباقًا في قياس حالة working القصيرة على WebKit: كان بروتوكول الاختبار ينهي round-trip بعد اكتمال محاكاة 760ms. ثُبت الاختبار بأخذ snapshot للحالة المؤقتة داخل browser task واحدة؛ أعيدت البوابة كاملة ونجحت **22 + 2 skips**. لم يتطلب ذلك تغييرًا في سلوك المنتج.
+
+### تقوية contrast بعد التسليم
+
+كشف smoke لاحق متكرر أن Axe قد يفحص نتيجة workspace أثناء `opacity` entrance، فيرى ألوان النص والخلفية بعد compositing بنسبة `4.25–4.44:1` رغم أن الحالات الساكنة تمر. استُبدل لون الخطوة النشطة بـ`--service-deep`، وأزيل `opacity` من حاوية `universal-result-in` مع بقاء cue مكاني صغير ومسار reduced-motion. أضيف assertion للون الدلالي، وثُبت التقاط الحالة المؤقتة عبر WebKit بإشارة React فعلية وMutationObserver داخل المتصفح بدل سباق protocol. نجحت البوابة المحلية بعد الإصلاح: **20/20** للتدفق المستهدف، **8/8** على Chromium، **10/10** لتكرار reduced-motion على WebKit، و**22 pass + 2 expected skips** عبر المحركات، مع `npm run check` ناجح وaudit يساوي صفرًا.

@@ -44,8 +44,9 @@
 - Committed and pushed the operating foundation as `b225c5cb2508b4191b92ad43999de3ee6145f983`; matching Vercel deployment `dpl_9QEhikhxnXoWj2rhCtypwK9AFZAD` reached `READY` with the production alias attached.
 - Added `docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md` as the permanent evidence receipt.
 - A final alias smoke on the subsequent documentation deployment exposed a timing-sensitive Axe contrast failure in the research workspace output: 7/8 passed initially, and an eight-run reproduction yielded 3 passes / 5 failures while the result entrance opacity was still blending colors.
-- Root cause: the research service's base accent was only 4.61:1 on its soft surface, so animation blending temporarily reduced Axe's observed ratio to 4.25–4.42:1. The active output step now uses the semantic `--service-deep` token (6.47:1 for research; 6.32–7.85:1 across all service deep/soft pairs).
-- Post-fix local evidence: `npm run check` PASS, audit 0, targeted repeated flow 12/12 PASS, then 5/5 with the added computed-token regression assertion, and complete Chromium motion/feedback gate 8/8 PASS.
+- First hardening used the semantic `--service-deep` token for the active output step (6.47:1 for research; 6.32–7.85:1 across service deep/soft pairs) and added a computed-token assertion. Local 12/12 + 5/5 targeted and 8/8 full gates passed; commit `0b07c4a70dbf0b3103daba1b8d24a1e806554497` deployed as `dpl_HmfRwMycXAXA8zqCeNzyerX4eXqk` (`READY`).
+- An eight-run production repetition on that build passed 7/8: the active step remained fixed, but an earlier scan caught four other descendants blended below 4.5:1. This disproved the narrow hypothesis and located the full cause at the shared parent-opacity entrance.
+- Removed opacity from `universal-result-in` while retaining the 6px/.99 spatial cue and reduced-motion path. Replaced the remaining WebKit transient-state race with a browser-local MutationObserver after a React-confirmed starter selection. Final local evidence: `npm run check` PASS, audit 0, targeted repetition 20/20 PASS, Chromium 8/8, WebKit reduced-motion repetition 10/10, and cross-browser 22 pass + 2 expected forced-colors skips.
 
 ## Prior stable milestone — U1.1
 
