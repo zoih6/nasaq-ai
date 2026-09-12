@@ -80,7 +80,9 @@
 - Restored dependencies with `npm ci` after the first gate correctly failed because `eslint` was absent. Installation audited 461 packages with 0 vulnerabilities and warned that locked `eslint@9.39.5` is unsupported.
 - `npm run check` then passed: ESLint, all workspace typechecks, Vitest 4/4, Next.js 16.3.4 build, and 57/57 generated pages.
 - Added `docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md` and synchronized discovery/context files. No product/runtime/U2 implementation changed.
-- GitHub commit/push and Vercel/production verification are still pending at this log entry and must not be inferred from local success.
+- Committed the integrated method as `be3cccab0dda867dd5fa40d6e4a2def69e692c04` and pushed it to GitHub `main`.
+- Verified source-matching production deployment `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE` reached `READY` with no error and all three production aliases attached.
+- Production HTTP smoke returned 200 for `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`. The methodology task is closed; U2 remains `NOT STARTED`.
 
 ## Prior stable milestone — U1.1
 

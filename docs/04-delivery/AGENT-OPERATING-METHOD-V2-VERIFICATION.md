@@ -1,6 +1,6 @@
 # Evidence-Led Agent Operating Method v2.0 — Verification Receipt
 
-Date: 2026-09-12 (Asia/Aden) · Status: local verification passed; GitHub/Vercel closure pending
+Date: 2026-09-12 (Asia/Aden) · Status: integrated, pushed, deployed, and production-smoked
 
 ## Decision
 
@@ -144,7 +144,17 @@ No application route, component, package manifest, lockfile, or runtime dependen
 
 ## GitHub and Vercel delivery
 
-Pending. This section will be updated only after the relevant commit, push, provider state, aliases, and production smoke actually exist.
+- Method/integration commit: `be3cccab0dda867dd5fa40d6e4a2def69e692c04` (`docs: expand agent operating method to v2`).
+- GitHub repository/branch: private `zoih6/nasaq-ai`, `main`; push succeeded from baseline `60bc37b5f1b166bf5517fbdd121171763a44c432` to the integration commit.
+- Matching Vercel deployment: `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE`.
+- Deployment URL: <https://nasaq-23npffxnd-4zobir89-labs-projects.vercel.app>.
+- Provider state: `READY`, target `production`, `errorCode: null`.
+- Vercel API source identity: GitHub organization `zoih6`, repository `nasaq-ai`, branch `main`, source SHA exactly `be3cccab0dda867dd5fa40d6e4a2def69e692c04`.
+- Attached aliases: `nasaq-ai.vercel.app`, `nasaq-ai-4zobir89-labs-projects.vercel.app`, and `nasaq-ai-git-main-4zobir89-labs-projects.vercel.app`.
+- `vercel inspect nasaq-ai.vercel.app --json` resolved the production alias to the matching deployment in `READY` state.
+- Production HTTP smoke: **200** on `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`.
+
+This receipt and durable-context update is committed after the verified method commit, so future agents must inspect current `HEAD`, `origin/main`, the latest Vercel deployment, and the alias rather than treating a self-referential receipt hash as possible or assuming this recorded deployment is forever current.
 
 ## Usage
 

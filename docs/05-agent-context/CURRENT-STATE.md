@@ -24,9 +24,10 @@ The repository's portable agent method has been expanded and reviewed as version
 - Research covers current standards/official sites, repositories, and explicitly non-normative forum/social signals. The canonical reference section carries 37 links.
 - Full-document structure, portability, links, whitespace, Markdown, credential patterns, and official Agent Skills validation passed. `npm run check` passed after dependency restoration: ESLint, all workspace typechecks, Vitest 4/4, and a 57-page Next.js production build.
 - Permanent receipt: [`docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`](../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md).
-- GitHub/Vercel delivery is pending and must not be claimed until the commit, push, provider state, aliases, and production smoke are verified.
+- Integration commit `be3cccab0dda867dd5fa40d6e4a2def69e692c04` was pushed to GitHub `main`; matching Vercel deployment `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE` reached `READY` with `errorCode: null`, all production aliases attached, and source SHA equal to the integration commit.
+- Production smoke returned HTTP 200 for `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`.
 
-This methodology work does not start or satisfy any U2 implementation row.
+This methodology work is closed and does not start or satisfy any U2 implementation row. Inspect the current closure commit and newest deployment on restart rather than assuming the integration deployment remains the newest metadata-only build.
 
 ## Stable product baseline before U2 planning
 

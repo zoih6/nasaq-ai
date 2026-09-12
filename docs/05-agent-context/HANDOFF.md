@@ -16,9 +16,9 @@
 
 **U2 planning is complete. U2 implementation is not started.** The current runtime still uses one generic `ServiceWorkspace` for the service routes and a timeout-driven generic result. Contracts and mock API do not yet contain the U2 service-session/artifact domain.
 
-The portable operating standard is now `AGENT-OPERATING-METHOD.md` v2.0, with `.agents/skills/evidence-led-agent-workflow/SKILL.md` v2.0.0 as its concise activation layer. The method integrates requirements, context/prompt engineering, architecture, decomposition, code organization, tests/evals, security, maintainability, and agent lifecycle without replacing project-specific authority. Its permanent verification receipt is [`../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`](../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md). Local gates passed; GitHub/Vercel delivery remains pending until exact provider evidence is recorded.
+The portable operating standard is now `AGENT-OPERATING-METHOD.md` v2.0, with `.agents/skills/evidence-led-agent-workflow/SKILL.md` v2.0.0 as its concise activation layer. The method integrates requirements, context/prompt engineering, architecture, decomposition, code organization, tests/evals, security, maintainability, and agent lifecycle without replacing project-specific authority. Its permanent verification receipt is [`../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`](../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md). Integration commit `be3cccab0dda867dd5fa40d6e4a2def69e692c04` is on GitHub `main`; matching Vercel deployment `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE` is `READY`, source-matched, aliased to production, and HTTP-smoked on four Arabic/English routes.
 
-This operating-standard update does not implement U2. Once it is delivered and production-smoked, the product handoff remains U2.0 Foundation below.
+This operating-standard update is closed and does not implement U2. The product handoff remains U2.0 Foundation below.
 
 ### Canonical U2 package
 
