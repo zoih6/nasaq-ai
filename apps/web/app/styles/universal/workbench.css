@@ -1,0 +1,118 @@
+/* U2 service workbench foundation
+   Shared, domain-neutral parts only: identity, stage navigation, run status,
+   receipt, demo-storage disclosure, and handoff preview. Domain surfaces layer
+   their own layout on top; nothing here assumes a specific service. */
+
+.u2-harness { width: min(1320px, 100%); margin: 0 auto; }
+.u2-harness__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-block-end: 18px; }
+.u2-harness__eyebrow { display: inline-flex; align-items: center; gap: 6px; color: var(--u-primary-strong); font-size: 13px; font-weight: 700; }
+.u2-harness__head h1 { margin: 6px 0 0; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.3; letter-spacing: -.03em; }
+.u2-harness__head p { max-width: 760px; margin: 6px 0 0; color: var(--u-muted); font-size: 14px; line-height: 1.75; }
+.u2-harness__head > a { min-height: var(--u-touch); display: inline-flex; align-items: center; padding-inline: 14px; border: 1px solid var(--u-line-strong); border-radius: 11px; color: var(--u-ink-soft); background: var(--u-surface-solid); font-size: 13px; font-weight: 650; text-decoration: none; }
+.u2-harness__head > a:hover { border-color: rgba(var(--u-primary-rgb, 85 76 230), .35); }
+.u2-harness__controls { display: flex; flex-wrap: wrap; gap: 10px; padding: 12px; border: 1px solid var(--u-line); border-radius: 14px; background: var(--u-surface-solid); }
+.u2-harness__controls label { display: grid; gap: 5px; min-width: 160px; }
+.u2-harness__controls span { color: var(--u-muted); font-size: 12px; font-weight: 650; }
+.u2-harness__controls select { min-height: var(--u-touch); padding-inline: 10px; border: 1px solid var(--u-line-strong); border-radius: 10px; color: var(--u-ink); background: var(--u-surface-solid); font-size: 13px; }
+.u2-harness__resumed { margin: 12px 0 0; padding: 10px 12px; border: 1px solid rgba(32, 191, 143, .35); border-radius: 12px; color: #235c4b; background: #eaf8f3; font-size: 13px; }
+.u2-harness__body { display: grid; gap: 10px; }
+.u2-harness__body > p { margin: 0; color: var(--u-muted); font-size: 13px; }
+.u2-harness__body button { min-height: var(--u-touch); width: fit-content; padding-inline: 14px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--u-line-strong); border-radius: 11px; color: var(--u-ink); background: var(--u-surface-solid); font-size: 13px; font-weight: 650; cursor: pointer; }
+
+.u2-workbench { margin-block-start: 18px; padding: clamp(14px, 1.6vw, 22px); border: 1px solid var(--u-line); border-radius: 20px; background: var(--u-surface); box-shadow: var(--u-shadow-sm); }
+.u2-workbench__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.u2-workbench__eyebrow { color: var(--u-primary-strong); font-size: 13px; font-weight: 700; }
+.u2-workbench__head h1 { margin: 4px 0 0; font-size: clamp(23px, 2.6vw, 31px); }
+.u2-workbench__head p { max-width: 680px; margin: 6px 0 0; color: var(--u-muted); font-size: 14px; line-height: 1.7; }
+.u2-workbench__session { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; font-size: 12px; }
+.u2-workbench__session code { padding: 2px 6px; border-radius: 7px; background: var(--u-primary-soft); color: var(--u-primary-strong); font-family: "IBM Plex Mono", monospace; font-size: 12px; }
+.u2-workbench__badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.u2-badge { min-height: var(--u-touch); padding-inline: 12px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(85, 76, 230, .3); border-radius: 11px; color: var(--u-primary-strong); background: var(--u-primary-soft); font-size: 12.5px; font-weight: 650; cursor: pointer; }
+.u2-badge--ghost { border-color: var(--u-line-strong); color: var(--u-ink-soft); background: var(--u-surface-solid); }
+.u2-badge:hover { border-color: rgba(85, 76, 230, .5); }
+
+.u2-stages { margin-block-start: 16px; overflow: hidden; }
+.u2-stages ol { display: flex; gap: 8px; margin: 0; padding: 0 0 4px; overflow-x: auto; list-style: none; }
+/* `position: relative` keeps the visually-hidden reason span inside the
+   clipped stage list instead of anchoring it to the viewport (which would
+   widen the document). */
+.u2-stages li { position: relative; flex: 0 0 auto; }
+.u2-stages ol:focus-visible { outline: 2px solid var(--u-primary); outline-offset: 2px; }
+.u2-stages button { min-height: var(--u-touch); padding: 7px 11px; display: grid; grid-template-columns: 16px auto; align-items: center; gap: 4px 7px; border: 1px solid var(--u-line); border-radius: 12px; color: var(--u-muted); background: var(--u-surface-solid); text-align: start; font-size: 12.5px; }
+.u2-stages button span { grid-column: 2; font-weight: 650; color: var(--u-ink-soft); }
+.u2-stages button small { grid-column: 2; color: var(--u-faint); font-size: 11px; }
+.u2-stages button em { grid-column: 2; color: var(--u-primary-strong); font-size: 11px; font-style: normal; }
+.u2-stages li[data-status="active"] button { border-color: rgba(85, 76, 230, .4); background: var(--u-primary-soft); }
+.u2-stages li[data-status="completed"] button { border-color: rgba(32, 191, 143, .35); }
+
+.u2-workbench__controls { margin-block-start: 14px; display: grid; gap: 10px; }
+.u2-start { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.u2-start__button { min-height: var(--u-touch); padding-inline: 16px; display: inline-flex; align-items: center; gap: 7px; border: 0; border-radius: 11px; color: white; background: var(--u-primary); font-size: 13px; font-weight: 700; cursor: pointer; }
+.u2-start__button:disabled { opacity: .65; cursor: progress; }
+.u2-start small { color: var(--u-muted); font-size: 12px; }
+.u2-run { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--u-line); border-radius: 12px; background: var(--u-surface-solid); }
+.u2-run__status { display: inline-flex; align-items: center; gap: 7px; margin: 0; color: var(--u-ink-soft); font-size: 13px; font-weight: 650; }
+.u2-run__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.u2-run__actions button { min-height: var(--u-touch); padding-inline: 12px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--u-line-strong); border-radius: 10px; color: var(--u-ink-soft); background: var(--u-surface-solid); font-size: 12.5px; cursor: pointer; }
+.u2-run__notice { color: var(--u-muted); font-size: 12px; }
+.u2-workbench__utility { display: flex; flex-wrap: wrap; gap: 8px; }
+.u2-workbench__utility button { min-height: var(--u-touch); padding-inline: 12px; border: 1px solid var(--u-line-strong); border-radius: 10px; color: var(--u-ink-soft); background: var(--u-surface-solid); font-size: 12.5px; cursor: pointer; }
+.u2-workbench__body { margin-block-start: 14px; padding: 14px; border: 1px dashed var(--u-line-strong); border-radius: 14px; }
+.u2-workbench__artifact { margin-block-start: 12px; padding: 12px; border: 1px solid var(--u-line); border-radius: 14px; background: #f8f8fc; }
+.u2-workbench__artifact header { display: flex; align-items: center; gap: 7px; color: var(--u-ink-soft); }
+.u2-workbench__artifact h2 { margin: 0; font-size: 14px; }
+.u2-workbench__artifact ul { margin: 8px 0 0; padding-inline-start: 18px; color: var(--u-muted); font-size: 12.5px; }
+
+.u2-overlay { position: fixed; inset: 0; background: rgba(23, 24, 45, .44); animation: universal-backdrop-in var(--u-motion-duration-moderate) var(--u-motion-ease-enter); }
+.u2-overlay__content { position: fixed; inset-block-start: 50%; inset-inline-start: 50%; transform: translate(-50%, -50%); width: min(560px, calc(100vw - 32px)); max-height: min(640px, calc(100vh - 48px)); overflow-y: auto; overscroll-behavior: contain; padding: 18px; border-radius: 18px; background: var(--u-surface-solid); box-shadow: var(--u-shadow-lg); }
+[dir="rtl"] .u2-overlay__content { transform: translate(50%, -50%); }
+.u2-overlay__content--wide { width: min(720px, calc(100vw - 32px)); }
+.u2-overlay__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.u2-overlay__head h2 { margin: 0; font-size: 17px; }
+.u2-overlay__head p { margin: 4px 0 0; color: var(--u-muted); font-size: 13px; line-height: 1.6; }
+.u2-overlay__head button { min-width: var(--u-touch); min-height: var(--u-touch); display: grid; place-items: center; border: 1px solid var(--u-line); border-radius: 10px; color: var(--u-muted); background: var(--u-surface-solid); cursor: pointer; }
+.u2-overlay__body { margin-block-start: 12px; display: grid; gap: 12px; font-size: 13px; color: var(--u-ink-soft); }
+.u2-overlay__meta { margin: 0; color: var(--u-muted); font-size: 12.5px; }
+.u2-overlay__action { min-height: var(--u-touch); width: fit-content; padding-inline: 14px; border: 0; border-radius: 11px; color: white; background: var(--u-primary); font-size: 13px; font-weight: 650; cursor: pointer; }
+.u2-overlay__action:disabled { opacity: .6; cursor: not-allowed; }
+.u2-receipt__mode { margin: 0; padding: 9px 11px; border-radius: 11px; color: #235c4b; background: #eaf8f3; font-weight: 650; }
+.u2-receipt__meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 0; }
+.u2-receipt__meta div { padding: 9px; border: 1px solid var(--u-line); border-radius: 11px; }
+.u2-receipt__meta dt { color: var(--u-muted); font-size: 12px; }
+.u2-receipt__meta dd { margin: 3px 0 0; color: var(--u-ink); font-weight: 650; }
+.u2-receipt__section h3 { margin: 0 0 5px; font-size: 13px; }
+.u2-receipt__section p { margin: 0; color: var(--u-muted); font-size: 12.5px; }
+.u2-receipt__section ul { margin: 0; padding-inline-start: 18px; color: var(--u-ink-soft); font-size: 12.5px; line-height: 1.7; }
+.u2-receipt__section--boundary { padding: 10px; border: 1px solid rgba(85, 76, 230, .25); border-radius: 12px; background: var(--u-primary-soft); }
+.u2-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.u2-unavailable { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.u2-unavailable button { min-height: var(--u-touch); padding-inline: 12px; border: 1px solid var(--u-line); border-radius: 10px; color: var(--u-faint); background: #f4f4f8; font-size: 12.5px; }
+.u2-unavailable small { color: var(--u-muted); font-size: 12px; }
+
+@media (max-width: 900px) {
+  .u2-workbench__head { flex-direction: column; }
+  .u2-overlay__content { inset-block-start: auto; inset-block-end: 0; inset-inline: 0; transform: none; width: 100%; max-height: min(86vh, 720px); border-end-start-radius: 0; border-end-end-radius: 0; }
+  [dir="rtl"] .u2-overlay__content { transform: none; }
+}
+
+@media (max-width: 560px) {
+  .u2-harness__controls { flex-direction: column; }
+  .u2-harness__controls label { min-width: 0; }
+  .u2-workbench { border-radius: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u2-overlay { animation: none; }
+}
+
+@media (forced-colors: active) {
+  .u2-badge,
+  .u2-stages button,
+  .u2-run,
+  .u2-workbench__artifact,
+  .u2-receipt__meta div { border-color: CanvasText; }
+  .u2-receipt__mode,
+  .u2-receipt__section--boundary { border: 1px solid CanvasText; }
+  .u2-start__button,
+  .u2-overlay__action { background: Highlight; color: HighlightText; }
+}

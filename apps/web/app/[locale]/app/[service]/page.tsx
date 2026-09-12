@@ -4,15 +4,17 @@ import { isLocale } from "@nasaq/i18n";
 import { ServiceWorkspace } from "@/components/universal/service-workspace";
 import { UniversalLibrary } from "@/components/universal/universal-library";
 import { getUniversalService, type UniversalServiceId } from "@/lib/universal-content";
+import { getRegisteredServiceIds } from "@/features/service-workbench/service-registry";
 
-const serviceMap: Record<string, UniversalServiceId> = {
-  learn: "learn",
-  research: "research",
-  create: "create",
-  code: "code",
-  analyze: "analyze",
-  explore: "explore",
-};
+/**
+ * Service route composition.
+ *
+ * U2.0 keeps every registered service on the existing prototype workspace. The
+ * explicit registry (`features/service-workbench/service-registry.ts`) is the
+ * single place that flips a service to its domain composition in a later slice,
+ * so routes stay stable and shippable while the foundation lands.
+ */
+const serviceMap = Object.fromEntries(getRegisteredServiceIds().map((serviceId) => [serviceId, serviceId])) as Record<string, UniversalServiceId>;
 
 export function generateStaticParams() {
   return [...Object.keys(serviceMap), "library"].map((service) => ({ service }));
