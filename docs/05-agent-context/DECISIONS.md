@@ -79,3 +79,11 @@ Artifacts and resumable stages may use a versioned `sessionStorage` adapter so L
 ## D-020 — The portable method is one integrated engineering and agent-lifecycle standard
 
 `AGENT-OPERATING-METHOD.md` v2.0 remains the single canonical operating source rather than splitting Software Engineering, Prompt Engineering, security, or lifecycle rules into competing manuals. Project/vendor instruction files and `.agents/skills/evidence-led-agent-workflow/SKILL.md` are thin discovery or activation layers. Deterministic authorization, state transitions, validation, retries, budgets, and side effects belong in code/workflow controls rather than prompt prose; prompts, models, tools, retrieval, memory, parsers, guardrails, datasets, graders, and thresholds are versioned and evaluated as one behavior bundle. Multi-agent execution is conditional, requires isolated ownership plus one integrator, and never transfers final verification responsibility away from the coordinator.
+
+## D-021 — Product-agent Backend is blocked by a formal readiness gate
+
+The product vision, PRD, state machines, conceptual contracts, permissions, security requirements, and Prototype UX collectively describe important parts of Nasaq product agents, but they are not a canonical executable runtime architecture. The current Zod contracts are narrower Prototype view/simulation shapes, and no provider, durable orchestrator, database, worker, tool executor, credential broker, memory service, telemetry pipeline, or eval harness exists. Therefore product-agent Backend is `NO-GO` until `PA-G0..PA-G9` pass with evidence and `PA-G10` records an approved limited scope. The controlling audit is `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`.
+
+## D-022 — U2 ServiceRun and future AgentRun remain separate bounded contexts
+
+U2 may proceed as Frontend-only deterministic simulation, but its `ServiceSession`, `ServiceRun`, `ServiceStage`, `ServiceEvent`, `SimulationReceipt`, and handoff/storage contracts must not become implicit Agent/Flow runtime contracts. Use service-specific names or namespaces; do not widen a shared `RunStatus` or promote the current `agentDefinitionSchema` into a Backend model. `docs/05-agent-context/U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md` is mandatory for every U2 implementation agent and does not itself close any product-agent readiness gate.

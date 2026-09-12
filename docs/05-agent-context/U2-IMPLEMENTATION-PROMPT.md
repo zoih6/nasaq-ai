@@ -2,6 +2,8 @@
 
 انسخ محتوى هذا الملف كاملًا إلى محادثة جديدة مع وكيل يملك أدوات repository/browser/web/GitHub/Vercel. هذا الطلب مستقل، لكن المستودع وملفات السياق هما مصدر الحقيقة عند أي اختلاف.
 
+> **ملحق إلزامي:** يجب قراءة وتطبيق [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md) وتقرير [جاهزية هندسة وكلاء المنتج](../04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md). U2 تبقى Service Frontend simulation؛ ولا تمنح إذنًا ببناء Product Agent Backend/Runtime.
+
 ---
 
 أنت الوكيل المنفّذ للموجة **U2 — Service Depth** في مشروع **Nasaq AI**. ابدأ العمل الفعلي من المستودع، ولا تكتفِ بتقديم خطة أو أمثلة. مع ذلك نفّذ الموجة تدريجيًا ولا تدّعِ اكتمال ما لم تُغلقه بالأدلة.
@@ -28,13 +30,15 @@
 4. `docs/05-agent-context/CURRENT-STATE.md`
 5. `docs/05-agent-context/HANDOFF.md`
 6. `docs/05-agent-context/DECISIONS.md`
-7. `docs/01-product/U2-SERVICE-DEPTH.md` — العقد الحاكم للموجة
-8. `docs/04-delivery/U2-TRACEABILITY-AND-QA.md` — كل acceptance/test/evidence gates
-9. `docs/00-vision/NASAQ-UNIVERSAL-RESET.md`
-10. `docs/01-product/{SCREEN-INVENTORY,STATE-MACHINES,SITEMAP}.md`
-11. `docs/02-design/MOTION-AND-FEEDBACK.md`
-12. `docs/03-architecture/{FRONTEND-ARCHITECTURE,CONTRACTS,PERMISSIONS}.md`
-13. التنفيذ الحالي للخدمات، Home، Library، contracts، mock API، i18n، CSS، وE2E.
+7. `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md` — حكم NO-GO والفجوات والحدود
+8. `docs/05-agent-context/U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md` — ملحق U2 الإلزامي
+9. `docs/01-product/U2-SERVICE-DEPTH.md` — العقد الحاكم للموجة
+10. `docs/04-delivery/U2-TRACEABILITY-AND-QA.md` — كل acceptance/test/evidence gates
+11. `docs/00-vision/NASAQ-UNIVERSAL-RESET.md`
+12. `docs/01-product/{SCREEN-INVENTORY,STATE-MACHINES,SITEMAP}.md`
+13. `docs/02-design/MOTION-AND-FEEDBACK.md`
+14. `docs/03-architecture/{FRONTEND-ARCHITECTURE,CONTRACTS,PERMISSIONS}.md`
+15. التنفيذ الحالي للخدمات، Home، Library، contracts، mock API، i18n، CSS، وE2E.
 
 `docs/02-design/DESIGN.md` مرجع قديم جزئيًا. لا تستخدمه لإحياء Precision Workspace أو تموضع المحترفين/الفرق أو لتجاوز Universal Reset وLuminous System المنفذ. عقد U2 يسجل supersession صريحًا.
 
@@ -93,6 +97,8 @@ npx npm@11.6.4 --version
 - Zod contracts وdeterministic simulator وfixtures ثنائية اللغة.
 - artifacts قابلة للتحرير/الإصدار والحفظ المؤقت في Library.
 - handoffs صريحة محددة في العقد.
+
+طبّق حدود الملحق الإلزامي: أنواع U2 تحمل `Service*` أو namespace خدمة واضحًا؛ `ServiceRun` ليس `AgentRun` أو `FlowRun`، و`SimulationReceipt` ليس `ExecutionReceipt`. لا توسّع عقود الوكلاء الحالية أو تجعلها canonical للـBackend ضمن هذه الموجة.
 
 يجب أن تختلف كل خدمة بالـworkflow والمدخلات والمخرج ونقطة المراجعة، لا باللون والنص فقط. ممنوع توسيع component الحالي بسلسلة `serviceId === ...` أو boolean props كثيفة. استخدم explicit variants، feature boundaries، reducers/transitions typed، وclient boundaries صغيرة.
 
@@ -260,7 +266,8 @@ docs/04-delivery/evidence/u2/<slice>/
 5. أنشئ Service Workbench primitives/provider وSimulationReceipt، دون نسخ UI خدمة واحدة على الست.
 6. أضف i18n namespaces typed.
 7. حافظ على routes الحالية حتى تثبت بوابة foundation.
-8. نفذ local/cross-browser regression والأدلة والreceipt.
-9. إذا أغلقت U2.0 فعلًا، commit/push/deploy/verify ثم انتقل إلى Learn؛ وإلا سلّم handoff صادقًا عند آخر نقطة متحققة.
+8. نفذ local/cross-browser regression والأدلة والreceipt، وأثبت فحوص `U2-PA-001..012` الواردة في الملحق الإلزامي.
+9. سجّل في receipt أن Product Agent Backend/Runtime لم يُنفذ وأن بواباته ما زالت NO-GO.
+10. إذا أغلقت U2.0 فعلًا، commit/push/deploy/verify ثم انتقل إلى Learn؛ وإلا سلّم handoff صادقًا عند آخر نقطة متحققة.
 
 في تحديثاتك للمستخدم كن موجزًا ودقيقًا: ماذا تغير، ما الدليل، ما لم يُنفذ، وما الخطوة التالية. لا تستخدم عبارة «اكتمل» دون evidence حديث مطابق للعقد.

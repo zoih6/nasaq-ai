@@ -22,6 +22,16 @@ This repository is the source of truth for the Nasaq universal AI platform proto
 - The core model is a hybrid adaptive experience: one central intelligent composer plus clear service spaces.
 - Future access is hybrid BYOK plus unified credit, but it is not the public interface's primary message.
 
+## Product-agent architecture gate
+
+- Distinguish the development-agent method from Nasaq's product-agent runtime. `AGENT-OPERATING-METHOD.md` governs how an implementation agent works; it does not define or implement Nasaq `AgentRun` behavior.
+- Read [`docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`](docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md) before changing any Agent/Run/Tool/Skill/Approval contract or proposing agent Backend work.
+- Product-agent Backend is **NO-GO** until gates `PA-G0` through `PA-G9` pass with evidence and `PA-G10` records an approved, limited GO. Do not add agent APIs, database schemas, provider adapters, workers/queues, durable orchestration, tool/skill execution, credential brokers, persistent memory, or agent eval release paths before that decision.
+- The current `packages/contracts` Agent/Run shapes and `packages/mock-api` data are Prototype view/simulation contracts, not canonical Backend schemas. Do not persist or publish them as a runtime API without the documented contract-migration gate.
+- Keep bounded contexts explicit: U2 `ServiceRun` is not future `AgentRun` or `FlowRun`; `SimulationReceipt` is not an authenticated `ExecutionReceipt` or audit record.
+- Every U2 implementation agent must also read and apply [`docs/05-agent-context/U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](docs/05-agent-context/U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md). U2 may build typed local simulation foundations only; it does not close any product-agent Backend gate.
+- Architecture-readiness work—threat models, data classification, canonical specifications, ADR comparisons, and non-networked contract/eval fixtures—is allowed. It must remain documentation/specification work unless a later approval explicitly authorizes implementation.
+
 ## Required workflow
 
 1. Apply `AGENT-OPERATING-METHOD.md`; read the current-state and handoff files before implementation.
@@ -45,4 +55,4 @@ This repository is the source of truth for the Nasaq universal AI platform proto
 
 ## Current milestone
 
-**U2 — Service Depth is specified and ready for implementation; product implementation has not started.** The governing contract is `docs/01-product/U2-SERVICE-DEPTH.md`, its acceptance/evidence matrix is `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, and the restart-ready execution request is `docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md`. Begin with U2.0 Foundation, then close one specialized service slice at a time. Preserve the Frontend-only, explicitly simulated scope; do not add provider/search/file-processing/code-execution/Backend capabilities without a separately approved milestone. Current status and handoff details live in `docs/05-agent-context/CURRENT-STATE.md` and `docs/05-agent-context/HANDOFF.md`.
+**The product-agent architecture audit is complete; product-agent Backend remains NO-GO. U2 — Service Depth is still specified and not implemented.** The audit and readiness sequence are in `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`. U2 may proceed independently as Frontend-only explicit simulation under `docs/01-product/U2-SERVICE-DEPTH.md`, `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, `docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md`, and the mandatory boundary addendum. Begin U2 with U2.0 Foundation and keep its Service domain separate from future Agent Runtime contracts. If assigned product-agent architecture work, close the documentation/readiness package first and do not implement Backend. Current status and track-specific handoff details live in `docs/05-agent-context/CURRENT-STATE.md` and `docs/05-agent-context/HANDOFF.md`.

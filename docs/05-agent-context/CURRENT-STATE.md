@@ -2,15 +2,27 @@
 
 Last updated: 2026-09-12 (Asia/Aden)
 
+## Product-agent architecture readiness
+
+**The repository-wide product-agent audit is complete. Product-agent Backend/Runtime is `NO-GO`; no Backend or runtime code was added.**
+
+- Canonical audit: [`docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`](../04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md).
+- Result: product-agent vision, UX, requirements, state machines, conceptual contracts, permissions, security, and error principles are partly explicit, but no complete executable architecture joins Persona, PromptBundle, Context/Memory, Tool/Skill runtime, Authorization, Durable Execution, Errors, Telemetry, Evals, and release lifecycle.
+- The current `packages/contracts` Agent/Run schemas and `packages/mock-api` fixtures are Prototype view/simulation contracts, not canonical Backend models.
+- No API handlers, provider adapters, database, queue/worker, durable orchestrator, tool executor, credential broker, persistent memory, telemetry exporter, prompt registry, or agent eval runner exists in source.
+- Backend cannot begin until `PA-G0..PA-G9` pass with evidence and `PA-G10` records a limited approved GO.
+- U2 remains independent and Frontend-only; its mandatory boundary instructions are [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md).
+
 ## Milestone status
 
-**U2 — Service Depth is fully specified and ready for implementation handoff; no U2 product implementation has started.**
+**Two non-conflicting tracks are now defined: U2 Service Depth may start as explicit Frontend simulation; product-agent architecture may advance through documentation/readiness only. Neither U2 product implementation nor product-agent Backend implementation has started.**
 
 The completed planning package is:
 
 - [`docs/01-product/U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) — canonical stage contract: scope, architecture, shared domain model, service-by-service workflows, states, truth/security boundaries, sequencing, risks, and acceptance criteria.
 - [`docs/04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — 79 requirement rows mapped to planned unit/integration/E2E/manual checks and evidence. Every implementation row remains `NOT STARTED`.
 - [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — restart-ready request for a new implementation agent.
+- [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md) — mandatory separation of U2 Service contracts from future Product Agent Runtime.
 - [`docs/04-delivery/U2-PLANNING-VERIFICATION.md`](../04-delivery/U2-PLANNING-VERIFICATION.md) — local checks, checksums, GitHub commit, matching Vercel deployment, and production HTTP smoke.
 
 This delivery changes documentation only. It does not replace `ServiceWorkspace`, add contracts/fixtures, implement specialized workspaces, or alter runtime behavior.
@@ -98,7 +110,12 @@ Each slice is independently verified, committed, pushed, deployed, and productio
 
 ## Immediate next action
 
-A new agent should use `U2-IMPLEMENTATION-PROMPT.md`, confirm the latest synchronized `main` and baseline gates, then implement **U2.0 Foundation only** before touching Learn. It must use targeted current official documentation and relevant audited skill extracts, keep the current routes stable, and stop if Backend/provider/file-processing/sandbox/new-dependency scope becomes necessary.
+Choose the assigned track explicitly:
+
+1. **U2 implementation:** read `U2-IMPLEMENTATION-PROMPT.md` plus the mandatory boundary addendum, confirm synchronized `main` and baseline gates, then implement **U2.0 Foundation only**. Keep `ServiceRun` separate from Agent/Flow runtime and stop before any Backend/provider/file-processing/sandbox scope.
+2. **Product-agent architecture:** start `PA-ARCH-001` in the readiness audit and complete the documentation/specification package in dependency order. Do not create API/DB/provider/worker/tool/memory runtime until the readiness gates pass and an approved GO exists.
+
+If the assignment does not name a track, ask before mutation; do not infer that auditing authorizes Backend.
 
 ## Secrets
 

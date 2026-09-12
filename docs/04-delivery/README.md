@@ -4,6 +4,7 @@
 
 ## الموجود الآن
 
+- [تدقيق جاهزية هندسة وكلاء المنتج](PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md) — evidence matrix، فجوات ومخاطر، معمارية مستهدفة، بوابات `PA-G0..PA-G10`، وخطة معالجة؛ Backend الوكلاء `NO-GO` حتى إغلاقها.
 - [إيصال تخطيط وتسليم U2](U2-PLANNING-VERIFICATION.md) — حزمة التخطيط منشورة؛ لا يعني تنفيذ المنتج.
 - [مصفوفة تتبّع وقبول U2](U2-TRACEABILITY-AND-QA.md) — خطة requirements/tests/evidence؛ كل صفوف التنفيذ ما زالت `NOT STARTED`.
 - [إيصال U1.2 للحركة والتغذية الراجعة](U1-2-MOTION-VERIFICATION.md)

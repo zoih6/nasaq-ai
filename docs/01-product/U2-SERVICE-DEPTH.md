@@ -6,6 +6,7 @@
 > **النطاق:** Frontend-first، ثنائي اللغة، ومحاكاة صريحة فقط
 > **العقد المرافق:** [مصفوفة التتبّع والجودة](../04-delivery/U2-TRACEABILITY-AND-QA.md)
 > **طلب التنفيذ المستقل:** [U2 Implementation Prompt](../05-agent-context/U2-IMPLEMENTATION-PROMPT.md)
+> **ملحق الحدود الإلزامي:** [فصل Service Workbench عن Product Agent Runtime](../05-agent-context/U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md)
 
 هذه الوثيقة هي العقد المرجعي للموجة **U2 — Service Depth**. وجودها لا يعني أن الموجة نُفذت؛ كل معاييرها تبدأ بحالة `NOT STARTED` إلى أن يقدم التنفيذ دليلًا حديثًا مطابقًا لمصفوفة التتبّع.
 

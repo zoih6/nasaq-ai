@@ -84,6 +84,17 @@
 - Verified source-matching production deployment `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE` reached `READY` with no error and all three production aliases attached.
 - Production HTTP smoke returned 200 for `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`. The methodology task is closed; U2 remains `NOT STARTED`.
 
+## 2026-09-12 — Product-agent architecture readiness audit completed
+
+- Inspected the product vision, PRD, state machines, conceptual contracts, permissions, Frontend architecture, U2 contract/prompt, actual Zod contracts, mock fixtures/data adapters, Agent Builder, Run/Approval UI, package topology, and existing Vitest/Playwright coverage.
+- Confirmed the distinction between the mature development-agent method in `AGENT-OPERATING-METHOD.md` and the still-incomplete Nasaq Product Agent Runtime architecture.
+- Verified that the current source contains no Agent Backend/API route, provider adapter, database, queue/worker, durable orchestrator, tool executor, credential broker, persistent memory, prompt registry, telemetry exporter, or agent eval runner.
+- Documented concrete drift between conceptual contracts and actual schemas: no canonical AgentVersion resource, thin AgentDefinition, reduced tool risks/run states, presentation-only events, no ToolGrant/SkillBinding/ContextPolicy/MemoryPolicy/PromptBundle, and browser-only publish/test/approval/receipt behavior.
+- Researched current official guidance from Anthropic, OpenAI, Google ADK, Microsoft, MCP, Agent Skills, Temporal, OpenTelemetry, OWASP, and NIST; checked relevant repositories and retained Hacker News/Reddit only as non-normative field signals.
+- Added `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md` with evidence matrix, threat register, target boundaries, canonical resource requirements, test strategy, `PA-G0..PA-G10` gates, phased remediation plan, sources, repository links, skills, and a restart-ready architecture handoff.
+- Added `docs/05-agent-context/U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md` and linked it from the U2 contract/prompt. U2 remains Frontend-only; `ServiceRun`/`SimulationReceipt` cannot become implicit `AgentRun`/execution proof.
+- Updated `AGENTS.md`, durable context, decision log, and delivery indexes. No product code, dependency, Backend, runtime, or U2 implementation changed.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.

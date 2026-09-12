@@ -7,26 +7,39 @@
 3. Read `docs/05-agent-context/CURRENT-STATE.md`, this handoff, and `DECISIONS.md`.
 4. Run `git status --short --branch`, `git log -5 --oneline`, `git rev-parse HEAD`, and `git rev-parse origin/main`.
 5. Confirm the newest GitHub/Vercel state; do not assume an identifier copied here is the latest docs-only closure.
-6. Read `agent-skills-web-uiux/README.md` and its current report; load only relevant extracts.
-7. Read the three U2 handoff documents listed below before implementation.
-8. If dependencies are absent, run `npx npm@11.6.4 ci` from the root lockfile.
-9. Run the baseline gates before changing runtime code.
+6. Read `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md` before Agent/Run/Tool/Skill/Approval or Backend work.
+7. Read `agent-skills-web-uiux/README.md` and its current report; load only relevant extracts.
+8. Choose the assigned track explicitly. For U2, read the canonical U2 package plus its mandatory boundary addendum. For product-agent architecture, follow `PA-ARCH-001..012` and do documentation/specification work only.
+9. If dependencies are absent, run `npx npm@11.6.4 ci` from the root lockfile.
+10. Run the baseline gates before changing runtime code.
 
 ## Current handoff point
 
-**U2 planning is complete. U2 implementation is not started.** The current runtime still uses one generic `ServiceWorkspace` for the service routes and a timeout-driven generic result. Contracts and mock API do not yet contain the U2 service-session/artifact domain.
+**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. U2 planning is complete and U2 implementation is not started.** No product/runtime code changed during the audit.
+
+The current runtime still uses one generic `ServiceWorkspace` for the service routes and a timeout-driven generic result. Contracts and mock API do not yet contain the U2 service-session/artifact domain. Separately, the Agent/Run contracts are Prototype view/simulation shapes, and no Agent Backend, provider adapter, database, durable orchestrator, worker, tool executor, credential broker, persistent memory, telemetry exporter, prompt registry, or eval runner exists.
+
+There are now two explicit tracks:
+
+- **U2:** may implement Frontend-only Service Depth under the U2 prompt and mandatory boundary addendum.
+- **Product-agent architecture:** may close `PA-G0..PA-G10` readiness artifacts; it must not implement Backend until the gates and limited GO pass.
 
 The portable operating standard is now `AGENT-OPERATING-METHOD.md` v2.0, with `.agents/skills/evidence-led-agent-workflow/SKILL.md` v2.0.0 as its concise activation layer. The method integrates requirements, context/prompt engineering, architecture, decomposition, code organization, tests/evals, security, maintainability, and agent lifecycle without replacing project-specific authority. Its permanent verification receipt is [`../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`](../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md). Integration commit `be3cccab0dda867dd5fa40d6e4a2def69e692c04` is on GitHub `main`; matching Vercel deployment `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE` is `READY`, source-matched, aliased to production, and HTTP-smoked on four Arabic/English routes.
 
-This operating-standard update is closed and does not implement U2. The product handoff remains U2.0 Foundation below.
+This operating-standard update is closed and does not implement U2. The U2 implementation handoff remains U2.0 Foundation below; the separate product-agent architecture handoff is documentation-only.
 
 ### Canonical U2 package
 
 1. [`../01-product/U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) — source of truth for scope and product/architecture behavior.
 2. [`../04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — source of truth for acceptance, tests, browsers, evidence, receipts, and release closure.
 3. [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — copy-ready instructions for the implementation agent.
+4. [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md) — mandatory separation from future Agent Runtime.
 
-Do not interpret the planning documents as evidence that any requirement passed. All 79 implementation requirements remain `NOT STARTED` until fresh evidence updates the matrix.
+Do not interpret the planning documents as evidence that any requirement passed. All 79 implementation requirements remain `NOT STARTED` until fresh evidence updates the matrix. U2 does not close any `PA-G*` product-agent readiness gate.
+
+### Product-agent architecture handoff
+
+The controlling artifact is [`../04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`](../04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md). Its evidence matrix finds Persona/System Prompt/Context/Memory/Tools/Skills/Permissions/Durable Execution/Errors/Telemetry/Evals/Release partially specified across documents but not joined into an executable canonical architecture. Start with `PA-ARCH-001` (boundaries/glossary), then threat model and data classification. Complete `PA-ARCH-001..012` as documentation/specification work; do not add Backend/API/DB/provider/worker/tool/memory code. Product, Backend/AI, and Security/Privacy must approve the limited GO after `PA-G0..G9` pass.
 
 ## Verified U2 planning delivery
 
@@ -64,6 +77,8 @@ Only after U2.0 is verified, receipted, pushed, deployed, and production-smoked 
 - Ask remains the general gateway/router; no seventh domain editor.
 - Six explicit domain compositions; no `serviceId === ...` soup or boolean-prop explosion.
 - Frontend simulation only; no Backend/database/auth/provider/live search/real file processing.
+- U2 `ServiceRun`/`ServiceEvent`/`SimulationReceipt` remain separate from future `AgentRun`/durable events/`ExecutionReceipt`; do not promote Prototype Agent contracts to Backend schemas.
+- Product-agent Backend remains `NO-GO` until `PA-G0..PA-G10` close as defined in the audit.
 - no arbitrary code execution, shell, sandbox, Git, image generation, or external telemetry.
 - Analyze uses bundled samples for deterministic local calculations only.
 - local file interaction is metadata-only if implemented; no content read/upload/persistence.
