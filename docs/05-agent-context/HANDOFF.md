@@ -41,6 +41,17 @@ Do not interpret the planning documents as evidence that any requirement passed.
 
 The controlling artifact is [`../04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`](../04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md). Its evidence matrix finds Persona/System Prompt/Context/Memory/Tools/Skills/Permissions/Durable Execution/Errors/Telemetry/Evals/Release partially specified across documents but not joined into an executable canonical architecture. Start with `PA-ARCH-001` (boundaries/glossary), then threat model and data classification. Complete `PA-ARCH-001..012` as documentation/specification work; do not add Backend/API/DB/provider/worker/tool/memory code. Product, Backend/AI, and Security/Privacy must approve the limited GO after `PA-G0..G9` pass.
 
+## Verified product-agent audit delivery
+
+- Content commit: `88e10738a0a23214d440741957f6b15c6323f27a`, pushed to GitHub `main`.
+- Matching Vercel deployment: `dpl_6YoLRZg6dRqwfWWJs8JekpjSfREt` (`READY`, `errorCode: null`, target `production`, source SHA matched).
+- Production aliases: <https://nasaq-ai.vercel.app>, `nasaq-ai-4zobir89-labs-projects.vercel.app`, and `nasaq-ai-git-main-4zobir89-labs-projects.vercel.app`.
+- HTTP 200: `/ar`, `/en`, `/ar/app/home`, `/en/app/research`, plus `/ar` on the immutable deployment.
+- Repository/documentation gates: PASS; external URLs 28 HTTP 200 + one non-normative Reddit 403 + no definite broken reference.
+- Receipt: [`../04-delivery/PRODUCT-AGENT-ARCHITECTURE-AUDIT-VERIFICATION.md`](../04-delivery/PRODUCT-AGENT-ARCHITECTURE-AUDIT-VERIFICATION.md).
+
+A context-only closure may be newer; trust fresh Git/Vercel inspection over these historical identifiers.
+
 ## Verified U2 planning delivery
 
 - Content commit: `4fc72140f1402c07c40ec0bfefc5d61efcd6db93`, pushed to GitHub `main`.

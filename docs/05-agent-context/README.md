@@ -15,7 +15,7 @@ This directory is the durable handoff layer for humans and agents working on Nas
 9. [`WORKLOG.md`](WORKLOG.md) — concise chronological record.
 10. [`../../agent-skills-web-uiux/README.md`](../../agent-skills-web-uiux/README.md) — audited skill/UI/UX research library; load relevant extracts only.
 
-Long-form product, design, architecture, and verification documents remain in `docs/00-vision` through `docs/04-delivery`; this directory links them rather than duplicating them. U2 is governed by `docs/01-product/U2-SERVICE-DEPTH.md`, `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, and the mandatory boundary addendum. Product-agent Backend is governed by the readiness audit and remains NO-GO until its gates pass. The operating-method evidence receipt is `docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`.
+Long-form product, design, architecture, and verification documents remain in `docs/00-vision` through `docs/04-delivery`; this directory links them rather than duplicating them. U2 is governed by `docs/01-product/U2-SERVICE-DEPTH.md`, `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, and the mandatory boundary addendum. Product-agent Backend is governed by the readiness audit and remains NO-GO until its gates pass. Its delivery receipt is `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-AUDIT-VERIFICATION.md`; the operating-method evidence receipt is `docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`.
 
 ## Update protocol
 
