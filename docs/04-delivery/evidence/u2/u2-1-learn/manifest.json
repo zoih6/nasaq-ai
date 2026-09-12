@@ -1,0 +1,261 @@
+{
+  "milestone": "U2.1 Learn",
+  "generatedAt": "2026-09-12T18:04:31.070Z",
+  "source": "main",
+  "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+  "browser": "chromium (Playwright 1.63.0)",
+  "baseUrlKind": "local_dev",
+  "baseUrl": "http://127.0.0.1:3000",
+  "command": "node tools/u2-learn-evidence.mjs (next dev served on 127.0.0.1:3000)",
+  "captureNote": "Captured against the Next dev server. The production build could not run inside the 2 GB sandbox (next build was OOM-killed); the production deploy is verified separately through the Vercel deployment for the same commit.",
+  "records": [
+    {
+      "id": "u2-1-01-learn-setup-ar-360",
+      "requirementIds": [
+        "U2-LRN-001",
+        "U2-LRN-007",
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/ar/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_brief",
+      "state": "guided_setup_brief",
+      "workspaceMode": "guided",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-01-learn-setup-ar-360.png",
+      "sha256": "29daf37227b84891536088cc0b1db04a42267d91c1a64f3b79ac14232405bf07",
+      "capturedAt": "2026-09-12T18:04:08.615Z"
+    },
+    {
+      "id": "u2-1-02-learn-path-review-en-1280",
+      "requirementIds": [
+        "U2-LRN-003",
+        "U2-LRN-004",
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/en/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_path_review",
+      "state": "guided_path_review_edited",
+      "workspaceMode": "guided",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-02-learn-path-review-en-1280.png",
+      "sha256": "467e768d39f7a64182c87f8458a233593097cd5a4ce14e2acacd8b5eb48a3ed0",
+      "capturedAt": "2026-09-12T18:04:13.247Z"
+    },
+    {
+      "id": "u2-1-03-learn-lesson-check-en-1280",
+      "requirementIds": [
+        "U2-LRN-001",
+        "U2-LRN-005",
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/en/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_check",
+      "state": "guided_lesson_then_check_with_hint",
+      "workspaceMode": "guided",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-03-learn-lesson-check-en-1280.png",
+      "sha256": "1905a04347fa5b8fd03eb1d57cf8ec63538225102d19b879a6c8d3f39897ffea",
+      "capturedAt": "2026-09-12T18:04:17.785Z"
+    },
+    {
+      "id": "u2-1-04-learn-complete-ar-1280",
+      "requirementIds": [
+        "U2-LRN-001",
+        "U2-LRN-006",
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/ar/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_complete",
+      "state": "guided_complete_with_saved_path",
+      "workspaceMode": "guided",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-04-learn-complete-ar-1280.png",
+      "sha256": "bf2468237a3db06ae9d9595d6ea8026fb61e89ce6e30ad2f74192f8c80fd0a89",
+      "capturedAt": "2026-09-12T18:04:22.620Z"
+    },
+    {
+      "id": "u2-1-05-learn-error-recovery-ar-390",
+      "requirementIds": [
+        "U2-LRN-007",
+        "U2-LRN-002",
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/ar/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_check",
+      "state": "fast_self_assessed_reduced_state",
+      "workspaceMode": "fast",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-05-learn-error-recovery-ar-390.png",
+      "sha256": "255e9fc0566963aeb137cc0fb27de16837fb4b1faf3bbcc844eb4f0994094a4e",
+      "capturedAt": "2026-09-12T18:04:26.529Z"
+    },
+    {
+      "id": "u2-1-06-learn-reduced-motion-en-390",
+      "requirementIds": [
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/en/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_brief",
+      "state": "reduced_motion_brief",
+      "workspaceMode": "guided",
+      "reducedMotion": true,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-06-learn-reduced-motion-en-390.png",
+      "sha256": "2880088bfb1c467890de96fa992678eee1412ad19ac83cd4fb8d294828f031b3",
+      "capturedAt": "2026-09-12T18:04:28.715Z"
+    },
+    {
+      "id": "u2-1-07-learn-forced-colors-ar-390",
+      "requirementIds": [
+        "U2-LRN-008"
+      ],
+      "commitSha": "f3e3e31327eaabc00ff78a0d798d1cf58e072b42",
+      "route": "/ar/app/learn",
+      "baseUrlKind": "local_dev",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "lrn_brief",
+      "state": "forced_colors_brief",
+      "workspaceMode": "guided",
+      "reducedMotion": false,
+      "forcedColors": true,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "serious": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "file": "u2-1-07-learn-forced-colors-ar-390.png",
+      "sha256": "5d08897ec023d258bb7f41114c16c1e38c8f45dbde3b6928f48ae0fe119fc050",
+      "capturedAt": "2026-09-12T18:04:30.956Z"
+    }
+  ]
+}
