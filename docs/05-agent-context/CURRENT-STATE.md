@@ -11,6 +11,7 @@ The completed planning package is:
 - [`docs/01-product/U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) — canonical stage contract: scope, architecture, shared domain model, service-by-service workflows, states, truth/security boundaries, sequencing, risks, and acceptance criteria.
 - [`docs/04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — 79 requirement rows mapped to planned unit/integration/E2E/manual checks and evidence. Every implementation row remains `NOT STARTED`.
 - [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — restart-ready request for a new implementation agent.
+- [`docs/04-delivery/U2-PLANNING-VERIFICATION.md`](../04-delivery/U2-PLANNING-VERIFICATION.md) — local checks, checksums, GitHub commit, matching Vercel deployment, and production HTTP smoke.
 
 This delivery changes documentation only. It does not replace `ServiceWorkspace`, add contracts/fixtures, implement specialized workspaces, or alter runtime behavior.
 
@@ -24,7 +25,16 @@ This delivery changes documentation only. It does not replace `ServiceWorkspace`
 - Final U1.2 runtime hardening: `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4`.
 - U1.2 local and production evidence remains canonical in `docs/04-delivery/U1-2-MOTION-VERIFICATION.md`.
 
-A restarting agent must still inspect current `HEAD`, `origin/main`, and the newest Vercel deployment rather than assuming the baseline above is the latest documentation commit.
+## U2 planning delivery
+
+- Content commit: `4fc72140f1402c07c40ec0bfefc5d61efcd6db93` (`docs: specify U2 service depth`), pushed to GitHub `main`.
+- Matching deployment: `dpl_FQrq9imwQDPehM4mmn6vGLN3mi83` (`READY`, `errorCode: null`, target `production`).
+- Confirmed aliases: `nasaq-ai.vercel.app`, `nasaq-ai-4zobir89-labs-projects.vercel.app`, and `nasaq-ai-git-main-4zobir89-labs-projects.vercel.app`.
+- Production HTTP smoke: 200 on `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`.
+- Repository gates: `npm run check` PASS; Vitest 4/4; build 57 pages; `npm audit --audit-level=high` found 0 vulnerabilities.
+- Planning integrity: 79/79 requirement IDs mapped, 0 broken relative links across 23 changed Markdown files, staged credential-pattern scan 0 hits.
+
+A restarting agent must still inspect current `HEAD`, `origin/main`, and the newest Vercel deployment rather than assuming this content commit is the latest context-only closure.
 
 ## U2 decisions now fixed
 

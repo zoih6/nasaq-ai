@@ -4,6 +4,7 @@
 
 ## الموجود الآن
 
+- [إيصال تخطيط وتسليم U2](U2-PLANNING-VERIFICATION.md) — حزمة التخطيط منشورة؛ لا يعني تنفيذ المنتج.
 - [مصفوفة تتبّع وقبول U2](U2-TRACEABILITY-AND-QA.md) — خطة requirements/tests/evidence؛ كل صفوف التنفيذ ما زالت `NOT STARTED`.
 - [إيصال U1.2 للحركة والتغذية الراجعة](U1-2-MOTION-VERIFICATION.md)
 - [إيصال U1.1 للعرض المتجاوب والتفاعل](U1-1-RESPONSIVE-VERIFICATION.md)

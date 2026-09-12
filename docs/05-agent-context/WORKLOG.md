@@ -63,6 +63,9 @@
 - Added `docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md`, a restart-ready instruction package that begins with U2.0 Foundation and forbids overclaiming or unapproved Backend/provider scope.
 - Added cross-document pointers and a formal supersession notice to the historical Precision design baseline.
 - No product code, runtime behavior, dependency, Backend, or provider integration was changed in this planning task.
+- Local planning gates passed: 79/79 acceptance IDs traced, 0 broken relative links across 23 changed Markdown files, `npm run check` PASS, Vitest 4/4, 57-page build, audit 0, and staged credential-pattern scan 0 hits.
+- Pushed the planning content as `4fc72140f1402c07c40ec0bfefc5d61efcd6db93`; matching Vercel deployment `dpl_FQrq9imwQDPehM4mmn6vGLN3mi83` reached `READY` with the production aliases attached.
+- Production HTTP smoke returned 200 for `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`; the permanent receipt is `docs/04-delivery/U2-PLANNING-VERIFICATION.md`.
 
 ## Prior stable milestone — U1.1
 

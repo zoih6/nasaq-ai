@@ -24,6 +24,7 @@
 - **عقد U2:** [Service Depth](docs/01-product/U2-SERVICE-DEPTH.md)
 - **مصفوفة U2:** [Traceability, QA, and Evidence](docs/04-delivery/U2-TRACEABILITY-AND-QA.md)
 - **طلب الوكيل التالي:** [U2 Implementation Prompt](docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md)
+- **إيصال التخطيط:** [U2 Planning Verification](docs/04-delivery/U2-PLANNING-VERIFICATION.md)
 
 ## منهج تشغيل الوكلاء
 

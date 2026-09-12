@@ -24,14 +24,21 @@
 
 Do not interpret the planning documents as evidence that any requirement passed. All 79 implementation requirements remain `NOT STARTED` until fresh evidence updates the matrix.
 
-## Stable baseline recorded before this planning package
+## Verified U2 planning delivery
 
-- Product/docs baseline: `c71d83a9f422d476134b7e39ee077184fbdd2ae5`
+- Content commit: `4fc72140f1402c07c40ec0bfefc5d61efcd6db93`, pushed to GitHub `main`.
+- Matching Vercel deployment: `dpl_FQrq9imwQDPehM4mmn6vGLN3mi83` (`READY`, no error, production aliases attached).
 - Production alias: <https://nasaq-ai.vercel.app>
-- Recorded matching deployment: `dpl_3PWz7ZDSKT8J1996fvSXD4mC7jqe` (`READY`)
+- HTTP 200: `/ar`, `/en`, `/ar/app/home`, `/en/app/research`.
+- Receipt: [`../04-delivery/U2-PLANNING-VERIFICATION.md`](../04-delivery/U2-PLANNING-VERIFICATION.md).
+
+## Stable product baseline before planning
+
+- Baseline commit: `c71d83a9f422d476134b7e39ee077184fbdd2ae5`
+- Baseline deployment: `dpl_3PWz7ZDSKT8J1996fvSXD4mC7jqe` (`READY`)
 - Final U1.2 runtime hardening: `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4`
 
-Always trust current Git/Vercel inspection over these historical identifiers.
+Always trust current Git/Vercel inspection over historical identifiers; a context-only closure commit may follow the content commit.
 
 ## First implementation target: U2.0 Foundation
 
