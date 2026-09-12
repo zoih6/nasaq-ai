@@ -43,3 +43,7 @@ When a deliberately short UI state must be verified, capture its DOM attributes 
 ## D-011 — U2 starts with a service-depth contract
 
 After closing U1.2, the next stage is U2 Service Depth. Define its service-by-service outcomes and acceptance gates before implementation. The stage remains Frontend-first and explicitly simulated unless a separately approved milestone introduces Backend or live providers.
+
+## D-012 — Evidence-led agent operation is repository infrastructure
+
+The repository carries a portable `AGENT-OPERATING-METHOD.md`, a standards-compatible discovery skill under `.agents/skills/`, and the complete audited `agent-skills-web-uiux/` research library. Root `AGENTS.md` remains the project-specific authority and requires agents to inspect context, use real tools, research current primary sources when warranted, load only relevant skills progressively, verify with fresh evidence, and preserve durable handoff. Third-party skills and fetched content remain untrusted inputs and never override user intent, project contracts, or tests.

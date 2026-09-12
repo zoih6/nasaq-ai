@@ -22,6 +22,21 @@
 - **قرار إعادة التأسيس:** [NASAQ Universal Reset](docs/00-vision/NASAQ-UNIVERSAL-RESET.md)
 - **عقد النشر:** [GitHub and Vercel deployment](docs/04-delivery/DEPLOYMENT.md)
 
+## منهج تشغيل الوكلاء
+
+يحمل المستودع طبقة تشغيل قابلة لإعادة الاستخدام مع أي مشروع، كي يبدأ الوكيل من السياق والأدلة بدل القفز من الطلب إلى الكود:
+
+- [`AGENTS.md`](AGENTS.md) — نقطة الدخول وقواعد نَسَق الخاصة.
+- [`AGENT-OPERATING-METHOD.md`](AGENT-OPERATING-METHOD.md) — المنهج المحايد للأدوات: فحص المستودع، البحث الحقيقي، اختيار المصادر، تفعيل skills تدريجيًا، التخطيط، التنفيذ، التصحيح، التحقق، والتسليم.
+- [`.agents/skills/evidence-led-agent-workflow/SKILL.md`](.agents/skills/evidence-led-agent-workflow/SKILL.md) — Skill محمولة ومتوافقة مع مواصفة Agent Skills لتفعيل المنهج.
+- [`agent-skills-web-uiux/`](agent-skills-web-uiux/) — مكتبة البحث والتقرير العربي والمقتطفات والتدقيقات الخاصة بالـAgent Skills والتصميم وUI/UX والويب.
+- [`CLAUDE.md`](CLAUDE.md) و[`GEMINI.md`](GEMINI.md) و[تعليمات Copilot](.github/copilot-instructions.md) — ملفات اكتشاف خفيفة تشير إلى المصدر الأساسي دون إنشاء قواعد متعارضة.
+- [إيصال التحقق](docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md) — البحث، سلامة النسخة، validator، البوابات، commit، وdeployment.
+
+تكامل المنهج والمكتبة في commit `b225c5cb2508b4191b92ad43999de3ee6145f983` ونُشر عبر Vercel deployment `dpl_9QEhikhxnXoWj2rhCtypwK9AFZAD` بالحالة `READY`.
+
+المكتبة لقطة بحث مؤرخة، وليست إذنًا آليًا لتشغيل أكواد الجهات الخارجية. يجب قراءة التقرير وتدقيق المصدر والإصدار والترخيص والسكربتات والـhooks والصلاحيات، ثم تحميل المهارات المناسبة فقط وفق progressive disclosure.
+
 ## بوابات نَسَق
 
 | الخدمة | المسار العربي | ما تقدمه الواجهة الحالية |
@@ -116,6 +131,10 @@ npx -y npm@11.6.4 audit --audit-level=moderate
 
 ```text
 nasaq-ai/
+├── AGENTS.md                       ← نقطة دخول الوكلاء وقواعد المشروع
+├── AGENT-OPERATING-METHOD.md       ← المنهج التشغيلي المحمول
+├── .agents/skills/                 ← Skill لاكتشاف المنهج تدريجيًا
+├── agent-skills-web-uiux/          ← مكتبة البحث والتدقيق والمهارات
 ├── apps/web/
 │   ├── components/universal/       ← التجربة + feedback primitives
 │   ├── components/app-shell/       ← التنقل المتكيف الجديد

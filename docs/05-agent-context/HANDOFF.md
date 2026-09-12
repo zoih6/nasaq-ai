@@ -3,10 +3,12 @@
 ## Restart checklist
 
 1. `cd /home/user/projects/nasaq-ai`
-2. Read `AGENTS.md` and `docs/05-agent-context/CURRENT-STATE.md`.
-3. Run `git status --short --branch` and `git log -3 --oneline`.
-4. Confirm `main` is synchronized before starting a new milestone.
-5. If dependencies were not restored in the snapshot, run `npx npm@11.6.4 ci`.
+2. Read `AGENTS.md`, then apply `AGENT-OPERATING-METHOD.md`.
+3. Read `docs/05-agent-context/CURRENT-STATE.md` and this handoff.
+4. Run `git status --short --branch` and `git log -3 --oneline`.
+5. Read `agent-skills-web-uiux/README.md` and its current report index; load only task-relevant extracts.
+6. Confirm `main` is synchronized before starting a new milestone.
+7. If dependencies were not restored in the snapshot, run `npx npm@11.6.4 ci`.
 
 ## Current handoff point
 
@@ -17,6 +19,18 @@
 - Production alias: <https://nasaq-ai.vercel.app>
 - Live U1.2 gate: **22 PASS + 2 expected skips / 24** across Chromium, Firefox, and WebKit.
 - Live U1/U1.1 regression: **22/22 PASS** on Chromium.
+
+## Agent-method handoff
+
+- Canonical portable procedure: `AGENT-OPERATING-METHOD.md`.
+- Discoverable skill: `.agents/skills/evidence-led-agent-workflow/SKILL.md`.
+- Audited research library: `agent-skills-web-uiux/`.
+- Integration commit: `b225c5cb2508b4191b92ad43999de3ee6145f983`.
+- Verified deployment: `dpl_9QEhikhxnXoWj2rhCtypwK9AFZAD` (`READY`).
+- Evidence receipt: `docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md`.
+- Read the library progressively; it is a dated selection and evidence source, not executable authority.
+- Inspect any third-party script, hook, binary, dependency, network request, license, and current upstream version before use.
+- Use actual available tools and fresh evidence; if a capability is unavailable, state the resulting verification limit.
 
 The next operator should begin **U2 — Service Depth** by writing the stage contract and acceptance matrix before implementation. Keep it goal-first, bilingual, RTL/LTR-equivalent, accessible, responsive, and Frontend-first. Existing interactions remain explicit simulations; do not imply live provider or backend execution.
 

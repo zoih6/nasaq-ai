@@ -30,6 +30,20 @@
 - Restored three legacy evidence screenshots touched by the production regression so the final delivery update does not rewrite prior milestone evidence.
 - Updated the receipt, root README, and durable agent context. U1.2 is closed; U2 Service Depth is next.
 
+## 2026-09-12 — Portable evidence-led agent method added
+
+- Researched current official guidance for `AGENTS.md`, Agent Skills structure/progressive disclosure, cross-client skill discovery, Claude project memory/imports, and GitHub Copilot repository instructions.
+- Authored `AGENT-OPERATING-METHOD.md` as a vendor-neutral operating procedure covering repository bootstrap, real-tool discipline, source-driven research, skill activation, UI/UX craft, engineering, debugging, security, verification, deployment, and durable handoff.
+- Added `.agents/skills/evidence-led-agent-workflow/SKILL.md` as a concise standards-compatible activation layer.
+- Copied the complete `agent-skills-web-uiux/` research workspace into the repository: 93 files and approximately 2.2 MB, including the current report, source extracts, audits, archived report, checksums, and renderer.
+- Verified the copied library contains no symlinks or nested VCS metadata; its current report checksums pass and a credential/private-key pattern scan found no matches.
+- Added lightweight discovery files for Claude Code, Gemini CLI, and GitHub Copilot while keeping `AGENTS.md` canonical.
+- Updated the root README and durable context so future agents discover the method and understand that skills/retrieved content are untrusted, progressively loaded references rather than automatic authority.
+- Validated the local skill with the official `skills-ref` reference library at upstream commit `69ef37e9424c0a7ea9dd2293b559e43ec8176379`: **Valid skill**.
+- Ran `npm run check`: lint and workspace typechecks passed, Vitest 4/4 passed, and the 57-page production build passed.
+- Committed and pushed the operating foundation as `b225c5cb2508b4191b92ad43999de3ee6145f983`; matching Vercel deployment `dpl_9QEhikhxnXoWj2rhCtypwK9AFZAD` reached `READY` with the production alias attached.
+- Added `docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md` as the permanent evidence receipt.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.
