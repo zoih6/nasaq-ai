@@ -113,6 +113,14 @@
 - Pushed content commit `4f257124a829202384963510cc3422f58a3c5f6a` to GitHub `main`; matching Vercel deployment `dpl_66T9CeDnMz6D1YhRkQ7wMGQ1QRo3` completed with source SHA matched, and the production alias returned HTTP 200 on six routes including the new foundation preview with a commit-specific CSS/HTML fingerprint.
 - Updated the U2 traceability matrix (16 core rows), durable context, decision log, and delivery index. Receipt: `docs/04-delivery/U2-0-FOUNDATION-VERIFICATION.md`. No Backend/provider/runtime scope was added; `PA-G0..PA-G10` remain unchanged.
 
+## 2026-09-12 — Workspace weight investigated and a hygiene protocol added
+
+- The workspace became slow to open during the U2.0 verification runs. Measured cause: transient artifacts inside the tree — `node_modules` (tens of thousands of files), three Playwright browser engines (~1 GB), `apps/web/.next`, `test-results/`, and `tsconfig.tsbuildinfo` — not the repository contents, which are 28 MB across 493 files.
+- Those paths are git-ignored and excluded from the saved snapshot, so they disappear on sandbox reset; the tree is light again now and no source, contract, test, or instruction file was at fault.
+- Added `tools/workspace-hygiene.sh` with `status`, `clean [--deps]`, and `browsers` subcommands: it reports transient weight, removes only git-ignored output, and prints the outside-workspace browser install commands.
+- Added the workspace-hygiene rules to `AGENTS.md`, `CURRENT-STATE.md`, and the `HANDOFF.md` restart checklist, and refreshed the stale `AGENTS.md` milestone line to reflect the deployed `U2.0` foundation.
+- Cleaned the two leftover artifacts; `status` now reports `LIGHT`. No product code, contract, or test changed.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.

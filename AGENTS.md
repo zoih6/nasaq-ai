@@ -53,6 +53,16 @@ This repository is the source of truth for the Nasaq universal AI platform proto
 - Bind preview servers to `0.0.0.0` and make browser-facing calls through relative URLs.
 - Never put credentials, tokens, private keys, `.env` values, or credential-bearing remote URLs in source, docs, logs, screenshots, commits, or agent-context files.
 
+## Workspace hygiene
+
+The repository is small (~30 MB, under 500 tracked files); the workspace only becomes heavy or slow to open when transient artifacts pile up inside it.
+
+- Dependencies, browser binaries, and build/test output are transient: they are git-ignored and are never part of the saved workspace snapshot.
+- Keep Playwright browsers outside the workspace (`PLAYWRIGHT_BROWSERS_PATH=/tmp/nasaq-playwright`) and install only the engines the current gate needs; add Firefox/WebKit for the single cross-browser close-out and remove the cache afterwards.
+- Run `bash tools/workspace-hygiene.sh status` before heavy work and `bash tools/workspace-hygiene.sh clean` (add `--deps` to also drop `node_modules`) when pausing or handing off. A `LIGHT` verdict means the workspace is safe to browse.
+- Delete temporary probes, screenshots, logs, and scratch scripts created during debugging; never leave dev/start servers or watch processes running.
+- **Every task ends `LIGHT`.** As the last action of a task or commit — including documentation-only tasks — run `bash tools/workspace-hygiene.sh clean --all` so no dependency tree, browser binary, build output, or test artifact remains. Reinstall only what the next task actually needs.
+
 ## Current milestone
 
-**The product-agent architecture audit is complete; product-agent Backend remains NO-GO. U2 — Service Depth is still specified and not implemented.** The audit and readiness sequence are in `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`. U2 may proceed independently as Frontend-only explicit simulation under `docs/01-product/U2-SERVICE-DEPTH.md`, `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, `docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md`, and the mandatory boundary addendum. Begin U2 with U2.0 Foundation and keep its Service domain separate from future Agent Runtime contracts. If assigned product-agent architecture work, close the documentation/readiness package first and do not implement Backend. Current status and track-specific handoff details live in `docs/05-agent-context/CURRENT-STATE.md` and `docs/05-agent-context/HANDOFF.md`.
+**The product-agent architecture audit is complete; product-agent Backend remains NO-GO. `U2.0` Foundation is implemented, verified, and deployed (`main@f2090ba`); the next slice is `U2.1` Learn.** The audit and readiness sequence are in `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md`. U2 may proceed independently as Frontend-only explicit simulation under `docs/01-product/U2-SERVICE-DEPTH.md`, `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, `docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md`, and the mandatory boundary addendum. Keep the U2 Service domain separate from future Agent Runtime contracts. If assigned product-agent architecture work, close the documentation/readiness package first and do not implement Backend. Current status and track-specific handoff details live in `docs/05-agent-context/CURRENT-STATE.md` and `docs/05-agent-context/HANDOFF.md`.

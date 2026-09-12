@@ -12,6 +12,8 @@
 8. Choose the assigned track explicitly. For U2, read the canonical U2 package plus its mandatory boundary addendum. For product-agent architecture, follow `PA-ARCH-001..012` and do documentation/specification work only.
 9. If dependencies are absent, run `npx npm@11.6.4 ci` from the root lockfile.
 10. Run the baseline gates before changing runtime code.
+11. Keep the workspace light: `bash tools/workspace-hygiene.sh status` before heavy work; install Playwright browsers outside the workspace via `PLAYWRIGHT_BROWSERS_PATH` and only the engines the gate needs.
+12. End every task `LIGHT`: the last action of a task or commit is `bash tools/workspace-hygiene.sh clean --all`. A finished task leaves no `node_modules`, browser binary, build output, or test artifact behind.
 
 ## Current handoff point
 

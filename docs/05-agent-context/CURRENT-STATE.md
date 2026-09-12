@@ -14,6 +14,24 @@ Last updated: 2026-09-12 (Asia/Aden)
 - بيان الحقيقة: تشغيل وكلاء المنتج (Backend/Runtime) غير منفّذ؛ `PA-G0..PA-G10` لم تتغير وما زالت `NO-GO`.
 - الخطوة التالية: `U2.1` Learn بعد قراءة قسمه في العقد وصفوف `U2-LRN-001..008`؛ لم تبدأ.
 
+## Workspace hygiene (operating constraint)
+
+The saved workspace is small (about 28 MB across ~493 files). It becomes heavy — slow or impossible to open in the file browser — only when transient artifacts accumulate inside it:
+
+- `node_modules` (tens of thousands of files and hundreds of MB),
+- Playwright browser binaries (about 1 GB for Chromium + Firefox + WebKit),
+- `apps/web/.next`, `apps/web/test-results/`, `apps/web/playwright-report/`, and `*.tsbuildinfo`.
+
+All of these are git-ignored, are excluded from the saved snapshot, and are removed automatically when the sandbox is reset — which is why dependencies must be reinstalled after a restart. The previous session ran three engines, a production build, and repeated E2E suites without cleaning, which is what made the workspace unopenable; the sources and instructions were never the cause.
+
+Rules from now on:
+
+1. Report weight with `bash tools/workspace-hygiene.sh status` before heavy work; a `LIGHT` verdict means it is safe to browse.
+2. Install browsers outside the workspace: `export PLAYWRIGHT_BROWSERS_PATH=/tmp/nasaq-playwright`; install Chromium by default and add Firefox/WebKit only for the cross-browser close-out gate.
+3. Run `bash tools/workspace-hygiene.sh clean` when pausing, and `clean --deps` (plus removing the browser cache) before a long handoff or when the workspace must stay browsable.
+4. Never leave `next start`/`next dev` servers, watchers, or probe scripts behind; delete temporary probes after each run.
+5. **Every task ends `LIGHT`:** the closing action of any task or commit is `bash tools/workspace-hygiene.sh clean --all` (dependencies, browser cache, build output, test artifacts). Nothing heavy survives a finished task; the next task reinstalls only what it needs.
+
 ## Product-agent architecture readiness
 
 **The repository-wide product-agent audit is complete. Product-agent Backend/Runtime is `NO-GO`; no Backend or runtime code was added.**
