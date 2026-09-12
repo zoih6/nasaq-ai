@@ -12,7 +12,18 @@ Last updated: 2026-09-12 (Asia/Aden)
 - الأدلة: [`evidence/u2/u2-0-foundation/`](../04-delivery/evidence/u2/u2-0-foundation/) (9 لقطات + manifest). الإيصال: [`U2-0-FOUNDATION-VERIFICATION.md`](../04-delivery/U2-0-FOUNDATION-VERIFICATION.md).
 - المصفوفة محدَّثة: `U2-CORE-003..018` موزَّعة بين `PASS` و`IN PROGRESS` (الأخيرة بسبب فحوص بشرية أو أسطح لاحقة)؛ صفوف `U2.1`–`U2.7` و`MAN-*` كما هي.
 - بيان الحقيقة: تشغيل وكلاء المنتج (Backend/Runtime) غير منفّذ؛ `PA-G0..PA-G10` لم تتغير وما زالت `NO-GO`.
-- الخطوة التالية: `U2.1` Learn بعد قراءة قسمه في العقد وصفوف `U2-LRN-001..008`؛ لم تبدأ.
+- الخطوة التالية بعد U2.0 كانت `U2.1` Learn، وقد أُغلقت بأدلة؛ الشريحة القادمة `U2.2` Research بعد إذن صريح (تفاصيل التسليم في [`U2-NEXT-SESSION-RESEARCH.md`](U2-NEXT-SESSION-RESEARCH.md)).
+
+## U2 Service Depth — U2.1 Learn (closed)
+
+**`U2.1` Learn منفَّذة ومنشورة بمحاكاة حتمية صريحة، بلا Backend/Runtime، وبلا ادعاء اكتمال بلا دليل.**
+
+- commit الكود: `f3e3e31`، ثم أدلته `e7ee7d8`، ثم تسليم الجلسة القادمة `bb3ee65` على `main`؛ Vercel `success`، والإنتاج <https://nasaq-ai.vercel.app> عاد 200 على `/ar`, `/en`, `/ar/app/learn`, `/en/app/learn` وSSR يحمل `data-stage="lrn_brief"`.
+- المراحل الثمانية: `lrn_brief → lrn_diagnostic → lrn_path_review → lrn_lesson → lrn_check → lrn_feedback → lrn_checkpoint → lrn_complete`، مع مسار Fast مسجَّل كتقييم ذاتي ظاهر + quick check، وتبديل Fast↔Guided بلا فقدان إجابات.
+- بوابات محفوظة: `lesson_not_engaged`, `diagnostic_incomplete`, `path_missing`, `check_incomplete`؛ استئناف المرحلة عبر `resumeStageKey` مع نموذج ثقة `reachableStages` (مرحلة مُزيَّفة تُرفض إلى `lrn_brief`).
+- البوابات الميكانيكية: `tsc` 0، ESLint 0، Vitest **87/87** (9 ملفات)، Playwright Chromium **12/12** (‏`--workers=1 --retries=1`)، `axe serious/critical = 0/0` و`documentOverflow = 0` في 7 لقطات.
+- الأدلة: [`evidence/u2/u2-1-learn/`](../04-delivery/evidence/u2/u2-1-learn/) (7 لقطات + manifest)؛ والصفوف `U2-LRN-001..007 = PASS` و`U2-LRN-008 = IN PROGRESS` (يبقى فحص قارئ الشاشة البشري `MAN-SR-001`).
+- عيوب حقيقية اكتُشفت وأُصلحت قبل الدفع: تباين نص في وحدة مسار متجاوزة، سبب التجاوز غير معروض، نقر قبل hydration، وهدف لمس 44px عند 320px.
 
 ## Workspace hygiene (operating constraint)
 
@@ -55,7 +66,7 @@ A context/receipt-only closure commit follows the content delivery; always inspe
 
 ## Milestone status
 
-**Two non-conflicting tracks remain: U2 Service Depth proceeds as explicit Frontend simulation (`U2.0` closed, `U2.1` next), and product-agent architecture advances through documentation/readiness only. Product-agent Backend implementation has not started.**
+**Two non-conflicting tracks remain: U2 Service Depth proceeds as explicit Frontend simulation (`U2.0` and `U2.1` closed, `U2.2` Research next), and product-agent architecture advances through documentation/readiness only. Product-agent Backend implementation has not started.**
 
 The completed planning package is:
 

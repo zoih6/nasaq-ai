@@ -17,7 +17,7 @@
 
 ## Current handoff point
 
-**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. `U2.0` Foundation is implemented, verified, and deployed; the next slice is `U2.1` Learn.**
+**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. `U2.0` Foundation and `U2.1` Learn are implemented, verified, and deployed; the next slice is `U2.2` Research, and it needs an explicit go.** See [`U2-NEXT-SESSION-RESEARCH.md`](U2-NEXT-SESSION-RESEARCH.md) for the restart brief of that slice.
 
 The current runtime still uses one generic `ServiceWorkspace` for the service routes and a timeout-driven generic result. Contracts and mock API do not yet contain the U2 service-session/artifact domain. Separately, the Agent/Run contracts are Prototype view/simulation shapes, and no Agent Backend, provider adapter, database, durable orchestrator, worker, tool executor, credential broker, persistent memory, telemetry exporter, prompt registry, or eval runner exists.
 
