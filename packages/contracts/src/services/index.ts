@@ -29,6 +29,7 @@ export * from "./handoff";
 export * from "./events";
 export * from "./transitions";
 export * from "./learn";
+export * from "./research";
 
 // The locale type is shared with the prototype contracts; U2 does not own or widen it.
 export type { Locale } from "../index";

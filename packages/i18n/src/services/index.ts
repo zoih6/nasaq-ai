@@ -11,6 +11,8 @@ import { serviceIds } from "@nasaq/contracts/services";
 
 import type { LearnCopy } from "./learn-content";
 import { learnContentAr, learnContentEn } from "./learn-content";
+import type { ResearchCopy } from "./research-content";
+import { researchContentAr, researchContentEn } from "./research-content";
 
 export type ServiceEntry = {
   label: string;
@@ -23,9 +25,15 @@ export type ServiceEntry = {
 /**
  * Learn owns extra copy in U2.1: topics, diagnostic questions, path rationale,
  * feedback, edge states, and the UI strings of its stages. The foundation type
- * stays untouched for the other five services.
+ * stays untouched for the other services.
  */
 export type LearnServiceEntry = ServiceEntry & LearnCopy;
+
+/**
+ * Research owns extra copy in U2.2: topics, clarifications, plan rules,
+ * sources, claims, activity, report, and the UI strings of its stages.
+ */
+export type ResearchServiceEntry = ServiceEntry & ResearchCopy;
 
 export type ServiceDictionary = {
   workbench: {
@@ -105,7 +113,7 @@ export type ServiceDictionary = {
   runStatus: Record<ServiceRunStatus, string>;
   sessionStatus: Record<ServiceSessionStatus, string>;
   scenarios: Record<ServiceScenarioId, string>;
-  services: Record<ServiceId, ServiceEntry> & { learn: LearnServiceEntry };
+  services: Record<ServiceId, ServiceEntry> & { learn: LearnServiceEntry; research: ResearchServiceEntry };
 };
 
 const ar: ServiceDictionary = {
@@ -255,6 +263,7 @@ const ar: ServiceDictionary = {
         rsh_report_edit: "التقرير",
         rsh_complete: "الإيصال والحفظ",
       },
+      ...researchContentAr,
     },
     create: {
       label: "اكتب وصمّم",
@@ -467,6 +476,7 @@ const en: ServiceDictionary = {
         rsh_report_edit: "Report",
         rsh_complete: "Receipt and save",
       },
+      ...researchContentEn,
     },
     create: {
       label: "Write and design",

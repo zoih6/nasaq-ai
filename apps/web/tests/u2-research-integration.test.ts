@@ -1,15 +1,14 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { handoffBundleSchema, learnSessionStateSchema } from "@nasaq/contracts/services";
+import { handoffBundleSchema, researchSessionStateSchema } from "@nasaq/contracts/services";
 import type { ServiceEvent, ServiceRun } from "@nasaq/contracts/services";
 import {
   buildServiceScenarioFixture,
   createDeterministicMockServiceClient,
-  createLearnStatePreset,
   createManualServiceClock,
+  createResearchStatePreset,
   createServiceIdFactory,
-  getLearnTopic,
 } from "@nasaq/mock-api/services";
 import {
   buildDemoSnapshot,
@@ -19,15 +18,15 @@ import {
 } from "../features/service-workbench/storage/store";
 import { createInitialWorkbenchState, serviceWorkbenchReducer } from "../features/service-workbench/state/reducer";
 import { getServiceRegistryEntry, getRegisteredServiceIds } from "../features/service-workbench/service-registry";
-import { learnReducer, createInitialLearnState, type LearnAction } from "../features/learn/state/learn-reducer";
+import { researchReducer, createInitialResearchState, type ResearchAction } from "../features/research/state/research-reducer";
 
 /**
- * IT-LRN-001 / IT-WB-003 — Learn composes with the shared workbench.
+ * IT-RSH-001 / IT-WB-003 — Research composes with the shared workbench.
  *
- * The integration point is the seam, not the pixels: the Learn slice feeds the
- * generic session/run/receipt/handoff path through the same reducer and store
- * that every other service will use, and owns nothing that belongs to the
- * workbench. DOM-level behaviour is covered by `tests/e2e/service-learn.spec.ts`.
+ * The integration point is the seam, not the pixels: the Research slice feeds
+ * the generic session/run/receipt/handoff path through the same reducer and
+ * store that every other service uses, and owns nothing that belongs to the
+ * workbench. DOM-level behaviour is covered by `tests/e2e/service-research.spec.ts`.
  */
 
 const START = Date.parse("2026-09-12T00:00:00.000Z");
@@ -36,7 +35,7 @@ const AT = "2026-09-12T00:00:05.000Z";
 
 /** The fixture run is a complete `ServiceRun`, so tests never hand-build one. */
 function requireFixtureRun(scenarioId: "happy" | "failed_retryable"): ServiceRun {
-  const run = buildServiceScenarioFixture({ serviceId: "learn", scenarioId, locale: "ar" }).run;
+  const run = buildServiceScenarioFixture({ serviceId: "research", scenarioId, locale: "ar" }).run;
   if (run === null) {
     throw new Error(`fixture ${scenarioId} has no run`);
   }
@@ -46,8 +45,8 @@ function requireFixtureRun(scenarioId: "happy" | "failed_retryable"): ServiceRun
 function driveRun(scenarioId: "happy" | "needs_input" | "failed_retryable") {
   const client = createDeterministicMockServiceClient();
   const clock = createManualServiceClock(START);
-  const ids = createServiceIdFactory(`learn_${scenarioId}_ar`);
-  const created = client.createSession({ serviceId: "learn", locale: "ar", scenarioId });
+  const ids = createServiceIdFactory(`research_${scenarioId}_ar`);
+  const created = client.createSession({ serviceId: "research", locale: "ar", scenarioId });
   const events: ServiceEvent[] = [];
   const runner = client.createRun({
     session: created.session,
@@ -70,7 +69,7 @@ function driveRun(scenarioId: "happy" | "needs_input" | "failed_retryable") {
   };
 }
 
-describe("IT-LRN-001 — the Learn slice runs inside the shared workbench without owning its receipts", () => {
+describe("IT-RSH-001 — the Research slice runs inside the shared workbench without owning its receipts", () => {
   it("produces a terminal run, one artifact, and one receipt through the shared client", () => {
     const { client, ids, created, runner, events, status } = driveRun("happy");
     expect(status).toBe("completed");
@@ -80,14 +79,17 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
     expect(events.every((event) => event.streamId === runner.streamId)).toBe(true);
 
     const run = requireFixtureRun("happy");
-
     const { artifact, version } = client.buildArtifact({ session: created.session, run, locale: "ar", ids });
-    expect(artifact.kind).toBe("learning_path");
-    expect(artifact.serviceId).toBe("learn");
+    expect(artifact.kind).toBe("research_report");
+    expect(artifact.serviceId).toBe("research");
+    if (version.content.kind !== "research_report") {
+      throw new Error("artifact content is not a research report");
+    }
+    expect(version.content.limitations.length).toBeGreaterThan(0);
 
     const receipt = client.buildReceipt({ session: created.session, run, scenarioId: "happy", locale: "ar", ids, storage: "session_storage" });
     expect(receipt.runId).toBe(run.id);
-    expect(receipt.serviceId).toBe("learn");
+    expect(receipt.serviceId).toBe("research");
     expect(receipt.mode).toBe("explicit_simulation");
     expect(receipt.networkCalls).toBe(0);
     expect(receipt.productAgentRuntime).toBe("not_implemented");
@@ -97,7 +99,7 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
     expect(version.artifactId).toBe(artifact.id);
   });
 
-  it("keeps the Learn domain block and the shared records in one versioned snapshot", () => {
+  it("keeps the Research domain block and the shared records in one versioned snapshot", () => {
     const { client, ids, created } = driveRun("happy");
     const run = requireFixtureRun("happy");
     const { artifact, version } = client.buildArtifact({ session: created.session, run, locale: "ar", ids });
@@ -106,8 +108,8 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
     let workbench = createInitialWorkbenchState(created.session, created.stages);
     expect(workbench.domains).toHaveLength(0);
 
-    const learnState = createLearnStatePreset({ locale: "ar", now: AT, preset: "unit_complete", topicId: "spaced_repetition", mode: "guided", minutes: 15 });
-    workbench = serviceWorkbenchReducer(workbench, { type: "domain/replaced", block: { serviceId: "learn", stateVersion: 1, payload: learnState } });
+    const researchState = createResearchStatePreset({ locale: "ar", now: AT, preset: "sources_ready", topicId: "waiting_time_q3", mode: "guided" });
+    workbench = serviceWorkbenchReducer(workbench, { type: "domain/replaced", block: { serviceId: "research", stateVersion: 1, payload: researchState } });
     workbench = serviceWorkbenchReducer(workbench, { type: "records/attached", artifact, version, receipt });
 
     expect(workbench.domains).toHaveLength(1);
@@ -126,26 +128,26 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
     expect(store.write(snapshot).ok).toBe(true);
     const read = store.read();
     expect(demoStoreSnapshotSchema.safeParse(read.snapshot).success).toBe(true);
-    // Round-trip: the workbench reads the service record, the Learn slice reads
-    // its own block, and neither one parses the other's payload.
-    expect(read.snapshot?.artifacts[0]?.kind).toBe("learning_path");
-    const block = read.snapshot?.domains?.find((candidate) => candidate.serviceId === "learn");
+    // Round-trip: the workbench reads the service record, the Research slice
+    // reads its own block, and neither one parses the other's payload.
+    expect(read.snapshot?.artifacts[0]?.kind).toBe("research_report");
+    const block = read.snapshot?.domains?.find((candidate) => candidate.serviceId === "research");
     expect(block?.stateVersion).toBe(1);
-    expect(Object.keys(block?.payload ?? {})).not.toContain("kind");
-    expect(learnSessionStateSchema.safeParse(block?.payload).success).toBe(true);
-    expect(block?.payload.progress.completedModules).toBeGreaterThan(0);
+    expect(researchSessionStateSchema.safeParse(block?.payload).success).toBe(true);
+    expect(block?.payload.activity.status).toBe("done");
+    expect(block?.payload.evidenceIds.length).toBeGreaterThan(0);
   });
 
   it("restores saved demo data through one explicit workbench action", () => {
     const { client, created } = driveRun("happy");
-    const learnState = createLearnStatePreset({ locale: "en", now: AT, preset: "path_complete", topicId: "spaced_repetition", mode: "guided", minutes: 15 });
+    const researchState = createResearchStatePreset({ locale: "en", now: AT, preset: "report_partial", topicId: "waiting_time_q3", mode: "guided" });
     const snapshot = buildDemoSnapshot({
       savedAt: AT,
       sessions: [{ ...created.session, artifactIds: [] }],
       artifacts: [],
       receipts: [],
       handoffs: [],
-      domains: [{ serviceId: "learn", stateVersion: 1, payload: learnState }],
+      domains: [{ serviceId: "research", stateVersion: 1, payload: researchState }],
     });
     const savedSession = snapshot.sessions.at(0);
     if (savedSession === undefined) {
@@ -164,12 +166,15 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
     });
     expect(workbench.savedAt).toBe(AT);
     expect(workbench.storageStatus).toBe("session");
-    expect(workbench.domains[0]?.serviceId).toBe("learn");
+    expect(workbench.domains[0]?.serviceId).toBe("research");
     expect(client.capabilities.networkCalls).toBe(0);
+    // The restored block lands on the stage its recorded facts support.
+    const restored = createInitialResearchState("en", researchState);
+    expect(restored.ui.stage).toBe("rsh_report_edit");
   });
 
   it("never reads storage while rendering, so hydration matches the server", () => {
-    const route = readFileSync(join(repoRoot, "apps", "web", "features", "learn", "learn-route.tsx"), "utf8");
+    const route = readFileSync(join(repoRoot, "apps", "web", "features", "research", "research-route.tsx"), "utf8");
     const provider = readFileSync(join(repoRoot, "apps", "web", "features", "service-workbench", "state", "workbench-provider.tsx"), "utf8");
     // A render-time storage read would render different markup on the server
     // (no storage) and the client (saved data) → hydration mismatch.
@@ -182,41 +187,35 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
   });
 
   it("keeps the route composition thin and the registry the single flip point", () => {
-    const entry = getServiceRegistryEntry("learn");
-    expect(entry.route).toBe("/app/learn");
-    expect(entry.screenId).toBe("U2-LRN-001");
+    const entry = getServiceRegistryEntry("research");
+    expect(entry.route).toBe("/app/research");
+    expect(entry.screenId).toBe("U2-RSH-001");
     expect(entry.renderer).toBe("domain_workspace");
     expect(entry.status).toBe("implemented");
-    // U2.1 Learn landed first; U2.2 Research joined it. The remaining services
-    // stay on the foundation until their slices land with evidence.
     expect(getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented")).toEqual(["learn", "research"]);
 
-    const route = readFileSync(join(repoRoot, "apps", "web", "features", "learn", "learn-route.tsx"), "utf8");
+    const route = readFileSync(join(repoRoot, "apps", "web", "features", "research", "research-route.tsx"), "utf8");
     // The route composes: it must not reach into storage internals or re-derive
     // workbench behaviour.
     expect(route).toContain("createDeterministicMockServiceClient");
-    expect(route).toContain("LearnWorkspace");
+    expect(route).toContain("ResearchWorkspace");
     expect(route).not.toMatch(/localStorage|useReducer|createRun\(/u);
   });
 });
 
-describe("IT-WB-003 — the shared handoff path carries Learn output without Learn owning the overlay", () => {
-  it("previews, confirms, and consumes a Learn → Research handoff through the workbench reducer", () => {
+describe("IT-WB-003 — the shared handoff path carries Research output without Research owning the overlay", () => {
+  it("previews, confirms, and consumes a Research → Create handoff through the workbench reducer", () => {
     const client = createDeterministicMockServiceClient();
-    const ids = createServiceIdFactory("learn_to_research");
-    const created = client.createSession({ serviceId: "learn", locale: "ar", scenarioId: "happy" });
-    const topicModule = getLearnTopic("spaced_repetition").modules[0];
-    if (topicModule === undefined) {
-      throw new Error("spaced_repetition has no first module");
-    }
+    const ids = createServiceIdFactory("research_to_create");
+    const created = client.createSession({ serviceId: "research", locale: "ar", scenarioId: "happy" });
 
     const bundle = client.buildHandoff({
       id: ids.next("hnd_"),
-      fromServiceId: "learn",
-      toServiceId: "research",
+      fromServiceId: "research",
+      toServiceId: "create",
       sourceSessionId: created.session.id,
-      intentSummary: `${topicModule.id} — ${topicModule.objectiveKey}`,
-      selectedFields: ["services.learn.topics.spaced_repetition", "services.learn.content.sr_why_gaps.objective"],
+      intentSummary: "waiting_time_q3 — أثر زمن الانتظار على رضا العملاء",
+      selectedFields: ["question", "claims"],
     });
     expect(handoffBundleSchema.safeParse(bundle).success).toBe(true);
     expect(bundle.status).toBe("preview");
@@ -234,8 +233,8 @@ describe("IT-WB-003 — the shared handoff path carries Learn output without Lea
     expect(workbench.handoffs[0]?.status).toBe("consumed");
   });
 
-  it("keeps the Learn workspace on the shared shell and inside the U2 boundaries", () => {
-    const learnDir = join(repoRoot, "apps", "web", "features", "learn");
+  it("keeps the Research workspace on the shared shell and inside the U2 boundaries", () => {
+    const researchDir = join(repoRoot, "apps", "web", "features", "research");
     const files: string[] = [];
     const walk = (dir: string) => {
       for (const entry of readdirSync(dir)) {
@@ -247,9 +246,9 @@ describe("IT-WB-003 — the shared handoff path carries Learn output without Lea
         }
       }
     };
-    walk(learnDir);
+    walk(researchDir);
 
-    const workspace = readFileSync(join(learnDir, "learn-workspace.tsx"), "utf8");
+    const workspace = readFileSync(join(researchDir, "research-workspace.tsx"), "utf8");
     expect(workspace).toContain("ServiceWorkbenchShell");
     expect(workspace).toContain("useServiceWorkbench");
     expect(workspace).toContain("setDomainBlock");
@@ -268,41 +267,33 @@ describe("IT-WB-003 — the shared handoff path carries Learn output without Lea
     }
   });
 
-  it("keeps the learn flow's own state machine independent of the run lifecycle", () => {
-    // A learner can keep answering while a run is terminal, and a run can fail
-    // without erasing the recorded answers: the two state machines never merge.
+  it("keeps the research flow's own state machine independent of the run lifecycle", () => {
+    // A researcher can keep excluding sources while a run is terminal, and a
+    // run can fail without erasing the recorded plan: the two state machines
+    // never merge.
     const { client } = driveRun("happy");
-    const created = client.createSession({ serviceId: "learn", locale: "en", scenarioId: "failed_retryable" });
+    const created = client.createSession({ serviceId: "research", locale: "en", scenarioId: "failed_retryable" });
     const failed = driveRun("failed_retryable");
     expect(String(failed.status)).toContain("failed");
 
     let workbench = createInitialWorkbenchState(created.session, created.stages);
-    let learn = createInitialLearnState("en");
-    const actions: LearnAction[] = [
-      { type: "draft/motivation", value: "ship the slice" },
-      { type: "brief/submit", at: AT },
-      // Every diagnostic question must be answered before a guided path exists.
-      ...getLearnTopic("spaced_repetition").diagnostic.map((question) => ({
-        type: "diagnostic/answer" as const,
-        questionId: question.id,
-        choiceId: question.choices[1]?.id ?? null,
-        skipped: false,
-        at: AT,
-      })),
-      { type: "path/build", at: AT },
-      { type: "path/confirm", at: AT },
-      { type: "lesson/engage", at: AT },
+    let research = createInitialResearchState("en", createResearchStatePreset({ locale: "en", now: AT, preset: "sources_ready", topicId: "waiting_time_q3", mode: "guided" }));
+
+    const actions: ResearchAction[] = [
+      { type: "source/exclude-preview", sourceId: "src_survey_csat" },
+      { type: "source/exclude-apply", at: AT },
     ];
     for (const action of actions) {
-      learn = learnReducer(learn, action);
+      research = researchReducer(research, action);
     }
-    workbench = serviceWorkbenchReducer(workbench, { type: "domain/replaced", block: { serviceId: "learn", stateVersion: 1, payload: learn.session } });
+    workbench = serviceWorkbenchReducer(workbench, { type: "domain/replaced", block: { serviceId: "research", stateVersion: 1, payload: research.session } });
     workbench = serviceWorkbenchReducer(workbench, { type: "storage/status", status: "memory" });
 
     expect(workbench.run).toBeNull();
-    expect(learn.session.path).not.toBeNull();
-    expect(learn.session.diagnosticAnswers).toHaveLength(getLearnTopic("spaced_repetition").diagnostic.length);
-    expect(learn.session.lessonEngaged).toBe(true);
+    expect(research.session.approvedPlanVersion).toBe(1);
+    expect(research.session.sources.find((source) => source.id === "src_survey_csat")?.excluded).toBe(true);
+    // The exclusion removed the survey evidence from the coverage set.
+    expect(research.session.evidenceIds).not.toContain("evd_survey_csat");
     expect(workbench.storageStatus).toBe("memory");
   });
 });

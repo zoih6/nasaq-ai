@@ -26,7 +26,7 @@ export type ServiceRegistryEntry = {
 
 export const serviceRegistry = {
   learn: { serviceId: "learn", route: "/app/learn", screenId: "U2-LRN-001", routeId: "R-U2-LRN-001", renderer: "domain_workspace", status: "implemented", foundationSurface: "/preview/service-foundation" },
-  research: { serviceId: "research", route: "/app/research", screenId: "U2-RSH-001", routeId: "R-U2-RSH-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
+  research: { serviceId: "research", route: "/app/research", screenId: "U2-RSH-001", routeId: "R-U2-RSH-001", renderer: "domain_workspace", status: "implemented", foundationSurface: "/preview/service-foundation" },
   create: { serviceId: "create", route: "/app/create", screenId: "U2-CRT-001", routeId: "R-U2-CRT-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
   code: { serviceId: "code", route: "/app/code", screenId: "U2-COD-001", routeId: "R-U2-COD-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
   analyze: { serviceId: "analyze", route: "/app/analyze", screenId: "U2-ANA-001", routeId: "R-U2-ANA-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },

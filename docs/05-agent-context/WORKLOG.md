@@ -121,6 +121,14 @@
 - Added the workspace-hygiene rules to `AGENTS.md`, `CURRENT-STATE.md`, and the `HANDOFF.md` restart checklist, and refreshed the stale `AGENTS.md` milestone line to reflect the deployed `U2.0` foundation.
 - Cleaned the two leftover artifacts; `status` now reports `LIGHT`. No product code, contract, or test changed.
 
+## 2026-09-12 — U2.2 Research slice implemented (code landed, verification still pending)
+
+- Started from `main @ eaeb731` and followed `U2-NEXT-SESSION-RESEARCH.md` §3 steps 1–7. The full Research implementation now exists: `packages/contracts/src/services/research.ts` (Zod session/run/artifact/plan/source/claim schemas with `networkCalls: 0` and `productAgentRuntime: "not_implemented"`), `packages/mock-api/src/services/research/` (topics/sources/claims/activity/plan/report/presets, deterministic, no `Math.random`/`Date.now`), `packages/i18n/src/services/research-content.ts` (ar/en), and `apps/web/features/research/` (reducer with the five guards, surfaces incl. citation inspector, workspace, route).
+- Registered the slice: `service-registry.ts` flips research to `implemented` / `domain_workspace`, `service-route-renderers.tsx` mounts `ResearchRoute`, `storage/store.ts` adds the research domain block, and the contracts/i18n/mock-api indexes export the new modules. `workbench.css` gains the research-specific layout rules.
+- Wrote the test suite per §12.7 naming: `u2-research-state.test.ts`, `u2-research-integration.test.ts`, `e2e/service-research.spec.ts`, updated `u2-boundaries.test.ts` + `u2-learn-integration.test.ts` (implemented list is now `[learn, research]`), and added `tools/run-research-e2e.sh` (memory-resilient dev-server + batch runner, same pattern as Learn).
+- Verification status at push time: `npm run typecheck` clean across all five workspaces, `npm run lint` clean, staged-diff credential scan 0 matches. **The Vitest unit/integration suites and the Playwright E2E suite have NOT been run yet** — the session ended mid-E2E-debug (inspector focus + RTL overflow probes in the sandbox scripts dir). No evidence captured, no matrix rows changed, no Vercel deploy.
+- Next session must not re-implement anything: run the suites (`bash tools/run-research-e2e.sh`, `npx vitest run --reporter=dot`), fix only real defects, then collect evidence (`tools/research-evidence.mjs` still to be copied from the Learn tool), update the Research matrix rows, and deploy. Registry says `implemented` ahead of evidence by explicit user instruction ("upload what you completed") — treat the matrix, not the registry, as the source of truth until the gates pass.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.
