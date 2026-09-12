@@ -123,11 +123,13 @@ _تاريخ الإغلاق: 12 سبتمبر 2026 — Asia/Aden · الحالة: 
 
 ## 10. GitHub وVercel
 
-- الفرع: `main` · commit المحتوى: `4f257124a829202384963510cc3422f58a3c5f6a` (تم الدفع: `17ddea3..4f25712`).
-- النشر المطابق للمصدر: `dpl_66T9CeDnMz6D1YhRkQ7wMGQ1QRo3` مرتبط بـcommit `4f257124` عبر حالة نشر Vercel: `success` — «Deployment has completed».
-- التحقق من الإنتاج (alias الأساسي <https://nasaq-ai.vercel.app>): HTTP **200** على `/ar`، `/en`، `/ar/app/home`، `/en/app/research`، `/ar/preview/service-foundation`، `/en/preview/service-foundation`.
+- الفرع: `main` · commit المحتوى: `4f257124a829202384963510cc3422f58a3c5f6a` (مدفوع: `17ddea3..4f25712`) · commit الإيصال والأدلة: `f2090ba646f8ed083988dc220e629d333799d5cd` (مدفوع: `4f25712..f2090ba`).
+- النشر المطابق لـcommit المحتوى: `dpl_66T9CeDnMz6D1YhRkQ7wMGQ1QRo3` — `READY`، `target: production`، بلا `errorCode`.
+- النشر المطابق لـcommit الإيصال: `dpl_G2oaB1LJ1K7a1RTvPQNHpSQVqE27` — `READY`، `target: production`، `errorCode: null`، مصدره `f2090ba646f8ed083988dc220e629d333799d5cd` نفسه.
+- الـaliases المرفقة بالنشر الأخير (من Vercel API): `nasaq-ai.vercel.app`، `nasaq-ai-4zobir89-labs-projects.vercel.app`، `nasaq-ai-git-main-4zobir89-labs-projects.vercel.app`.
+- طريقة التحقق (آلية هذه المرة): قُرئت `v6/deployments` و`v13/deployments/{id}` و`/commits/{sha}/status` لنفس الـcommit؛ النتيجة `READY`/`production`/`success` مع `errorCode: null` وثلاثة aliases، وهذا يُغلق التحفظ الذي كان مسجّلًا سابقًا في هذا القسم.
+- تحقق الإنتاج عبر alias الأساسي <https://nasaq-ai.vercel.app>: HTTP **200** على `/ar`، `/en`، `/ar/app/home`، `/en/app/research`، `/ar/preview/service-foundation`، `/en/preview/service-foundation`.
 - بصمة محتوى تثبت أن الإنتاج يخدم هذا الـcommit تحديدًا: صفحة المعاينة في الإنتاج تحتوي `u2-harness` و`noindex`، وملف CSS الإنتاجي يحتوي القاعدة `u2-stages ol:focus-visible` التي أُضيفت في هذا الـcommit فقط.
-- طريقة التحقق الموثقة: معرّف النشر وحالته قُرِئا من حالة نشر Vercel المعلّقة على الـcommit نفسه؛ alias الأساسي عاد 200 بمحتوى هذا الـcommit. لم يُستعلم Vercel REST API هذه الجلسة (يتطلب token)، لذلك حقول `target`/قائمة الـaliases الموثقة سابقًا لم تُعَد قراءتها آليًا؛ aliases الفريق (`nasaq-ai-4zobir89-…`, `nasaq-ai-git-main-…)` تعيد تحويلًا إلى دخول Vercel (حماية النشر) كما هو ملاحظ.
 - قد يتبع هذا الإيصال commit توثيقي مغلق (context/receipt-only)؛ على أي وكيل عند الاستئناف قراءة `HEAD` و`origin/main` وأحدث نشر لا افتراض أن نشر الـcontent هو الأحدث.
 
 ## 11. الخطوة التالية
