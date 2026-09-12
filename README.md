@@ -82,13 +82,14 @@ npx -y npm@11.6.4 run test:e2e:cross-browser
 npx -y npm@11.6.4 audit --audit-level=moderate
 ```
 
-نتيجة U1.1 المحلية في 2026-09-12:
+نتيجة U1.1 المحلية والإنتاجية في 2026-09-12:
 
 - ESLint: ناجح دون warnings.
 - TypeScript strict عبر workspaces: ناجح.
 - Vitest: **4/4**.
 - Playwright الكامل على Chromium: **38/38**.
 - مصفوفة U1.1 وU1 الأساسية على Chromium وFirefox وWebKit: **66/66**.
+- بوابة U1/U1.1 مباشرة على إنتاج Vercel: **22/22**.
 - Production build: ناجح؛ **57 static pages** مع detail routes الديناميكية.
 - Axe WCAG 2.0/2.1/2.2 A/AA: بلا مخالفات serious أو critical في بوابة Chromium/Firefox.
 - عشرة أحجام أساسية، وإعادة تدفق مكافئة لتكبير `200%`: بلا document-level horizontal overflow.

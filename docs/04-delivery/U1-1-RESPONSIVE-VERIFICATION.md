@@ -1,7 +1,7 @@
 # U1.1 — Responsive & Interaction Verification
 
-**تاريخ البوابة المحلية:** 2026-09-12
-**الحالة:** ناجحة محليًا؛ يُستكمل إيصال الإنتاج بعد نشر commit التسليم
+**تاريخ التحقق:** 2026-09-12
+**الحالة:** ناجحة محليًا وعلى الإنتاج
 **النطاق:** Frontend ومحاكاة صريحة فقط؛ لا Backend أو providers حقيقيين
 
 ## 1. ما أُغلق في U1.1
@@ -115,6 +115,9 @@ npx -y npm@11.6.4 run test:e2e:cross-browser
 ## 7. إيصال النشر
 
 - خط أساس الإنتاج قبل U1.1: `2659133dff4d78e3e0dbc1dd8400799a6060bc80`.
-- GitHub: <https://github.com/zoih6/nasaq-ai> — `main`.
+- commit تنفيذ U1.1: `ed5056550ef5fa28cfa6e83500d8687613c4dea8`.
+- GitHub: <https://github.com/zoih6/nasaq-ai> — دُفع إلى `main` بنجاح.
+- Vercel deployment: `dpl_8N2tzJFbfUc4dNum95F66Ed3k3zf` — `READY` دون error code.
+- aliases المؤكدة: `nasaq-ai.vercel.app` وpreview الخاص بـ`main`.
 - الإنتاج: <https://nasaq-ai.vercel.app>.
-- commit وVercel deployment الخاصان بـU1.1 يضافان بعد اكتمال النشر والتحقق الحي.
+- بوابة U1/U1.1 الحية على الإنتاج عبر Chromium: **22/22 PASS**، وتشمل مصفوفة العرض والـoverflow وAxe والتفاعلات الأساسية.
