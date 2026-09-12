@@ -7,7 +7,8 @@
 - [تدقيق جاهزية هندسة وكلاء المنتج](PRODUCT-AGENT-ARCHITECTURE-READINESS-AUDIT.md) — evidence matrix، فجوات ومخاطر، معمارية مستهدفة، بوابات `PA-G0..PA-G10`، وخطة معالجة؛ Backend الوكلاء `NO-GO` حتى إغلاقها.
 - [إيصال تحقق وتسليم التدقيق](PRODUCT-AGENT-ARCHITECTURE-AUDIT-VERIFICATION.md) — فحوص الوثائق والمستودع وبوابات GitHub/Vercel المطابقة للمصدر.
 - [إيصال تخطيط وتسليم U2](U2-PLANNING-VERIFICATION.md) — حزمة التخطيط منشورة؛ لا يعني تنفيذ المنتج.
-- [مصفوفة تتبّع وقبول U2](U2-TRACEABILITY-AND-QA.md) — خطة requirements/tests/evidence؛ كل صفوف التنفيذ ما زالت `NOT STARTED`.
+- [مصفوفة تتبّع وقبول U2](U2-TRACEABILITY-AND-QA.md) — خطة requirements/tests/evidence؛ صفوف `U2.0` مُحدَّثة بدليل حديث، و`U2.1`–`U2.7` ما زالت `NOT STARTED`.
+- [إيصال تنفيذ وتحقق U2.0 Foundation](U2-0-FOUNDATION-VERIFICATION.md) — عقود/محاكي/تخزين/Workbench/أدلة/نشر مطابق؛ Backend الوكلاء ما زال `NO-GO`.
 - [إيصال U1.2 للحركة والتغذية الراجعة](U1-2-MOTION-VERIFICATION.md)
 - [إيصال U1.1 للعرض المتجاوب والتفاعل](U1-1-RESPONSIVE-VERIFICATION.md)
 - [إيصال تحقق Wave 1](WAVE-1-VERIFICATION.md)

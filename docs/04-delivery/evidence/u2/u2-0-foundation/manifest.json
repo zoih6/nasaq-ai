@@ -1,0 +1,312 @@
+{
+  "milestone": "U2.0 Foundation",
+  "generatedAt": "2026-09-12T07:26:51.208Z",
+  "source": "main",
+  "commitSha": "4f257124a829202384963510cc3422f58a3c5f6a",
+  "browser": "chromium (Playwright 1.63.0)",
+  "baseUrlKind": "local_production",
+  "baseUrl": "http://127.0.0.1:3000",
+  "command": "node .u2-evidence.mjs (production build served on 127.0.0.1:3000)",
+  "records": [
+    {
+      "id": "u2-0-01-foundation-setup-ar-320",
+      "requirementIds": [
+        "U2-CORE-003",
+        "U2-CORE-006",
+        "U2-CORE-011",
+        "U2-CORE-012"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/ar/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "الهدف والوقت",
+      "state": "setup_idle_mobile",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-01-foundation-setup-ar-320.png",
+      "sha256": "f0c5226da7bd5e73c460dd785f09a47aa61ea11263e23fec6143c3fb5a2271e3",
+      "capturedAt": "2026-09-12T07:26:52.766Z"
+    },
+    {
+      "id": "u2-0-02-run-active-en-1440",
+      "requirementIds": [
+        "U2-CORE-005",
+        "U2-CORE-010"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/en/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "Goal and time",
+      "state": "run_active_desktop",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-02-run-active-en-1440.png",
+      "sha256": "7edb15ba4da3b124fc3a8faee4dbf5a62cb226ec2daa3ffae03145da35fc0656",
+      "capturedAt": "2026-09-12T07:26:54.746Z"
+    },
+    {
+      "id": "u2-0-03-artifact-ready-ar-1440",
+      "requirementIds": [
+        "U2-CORE-004",
+        "U2-CORE-007",
+        "U2-CORE-010"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/ar/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "الهدف والوقت",
+      "state": "artifact_ready_desktop",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-03-artifact-ready-ar-1440.png",
+      "sha256": "2b9769475a9516239fa5e0dc3e5599a312c76141b0e72a0c963dae9c458fcd23",
+      "capturedAt": "2026-09-12T07:26:59.280Z"
+    },
+    {
+      "id": "u2-0-04-receipt-truth-ar-1440",
+      "requirementIds": [
+        "U2-CORE-007",
+        "U2-CORE-008"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/ar/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "الهدف والوقت",
+      "state": "receipt_open_desktop",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-04-receipt-truth-ar-1440.png",
+      "sha256": "2b0c9fd33bba8f486b2cbd9171cfa7585ee1fe38bec9666483fb9207d7b6427c",
+      "capturedAt": "2026-09-12T07:27:03.760Z"
+    },
+    {
+      "id": "u2-0-05-needs-input-en-390",
+      "requirementIds": [
+        "U2-CORE-005",
+        "U2-CORE-010"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/en/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "needs_input",
+      "stageId": "Goal and time",
+      "state": "needs_input_mobile",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-05-needs-input-en-390.png",
+      "sha256": "5000935067475c48b3c76871f3a07bc2ced9621c658a539540be1961559d9487",
+      "capturedAt": "2026-09-12T07:27:05.722Z"
+    },
+    {
+      "id": "u2-0-06-failed-retryable-en-390",
+      "requirementIds": [
+        "U2-CORE-006",
+        "U2-CORE-010"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/en/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "failed_retryable",
+      "stageId": "Goal and time",
+      "state": "retryable_failure_mobile",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-06-failed-retryable-en-390.png",
+      "sha256": "0a59cdcbfab34cb73917912a081145658d541a75cd7b90e964d1e04af73c66ff",
+      "capturedAt": "2026-09-12T07:27:07.752Z"
+    },
+    {
+      "id": "u2-0-07-storage-recovery-ar-390",
+      "requirementIds": [
+        "U2-CORE-009",
+        "U2-CORE-017"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/ar/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "storage_failure",
+      "stageId": "الهدف والوقت",
+      "state": "storage_corrupt_recovered_mobile",
+      "reducedMotion": false,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-07-storage-recovery-ar-390.png",
+      "sha256": "acc198d5512920d0cd96531b8fd1ccaa98d3d272a92e1b8e4a0a80fc8d213ed4",
+      "capturedAt": "2026-09-12T07:27:09.373Z"
+    },
+    {
+      "id": "u2-0-08-forced-colors-ar-390",
+      "requirementIds": [
+        "U2-CORE-013"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/ar/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "ar",
+      "direction": "rtl",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "الهدف والوقت",
+      "state": "forced_colors_mobile",
+      "reducedMotion": false,
+      "forcedColors": true,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-08-forced-colors-ar-390.png",
+      "sha256": "8b53807abd23565a8c1044b06b4a0237879e9fb36a35481f18b46c0bb2d550a9",
+      "capturedAt": "2026-09-12T07:27:11.533Z"
+    },
+    {
+      "id": "u2-0-09-reduced-motion-en-1440",
+      "requirementIds": [
+        "U2-CORE-014"
+      ],
+      "commitSha": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+      "route": "/en/preview/service-foundation",
+      "baseUrlKind": "local_production",
+      "locale": "en",
+      "direction": "ltr",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "browser": "chromium",
+      "scenarioId": "happy",
+      "stageId": "Goal and time",
+      "state": "reduced_motion_receipt_desktop",
+      "reducedMotion": true,
+      "forcedColors": false,
+      "httpStatus": 200,
+      "documentOverflowPx": 0,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "axe": {
+        "status": "pass",
+        "violations": 0
+      },
+      "file": "u2-0-09-reduced-motion-en-1440.png",
+      "sha256": "2694266059b81d618e603fd89d767b5c408b804f860f7109fcebb5735ef77f92",
+      "capturedAt": "2026-09-12T07:27:16.105Z"
+    }
+  ],
+  "captureBaseCommit": "17ddea3d3f80cbbb2c2e5493c18755648f2d24e7",
+  "captureNote": "Captured 2026-09-12T07:26Z from the working tree based on 17ddea3; that exact tree was committed unchanged as 4f257124 (verified: no source file changed after capture). Server: local production build (npm run build && npm run start) on 127.0.0.1:3000."
+}

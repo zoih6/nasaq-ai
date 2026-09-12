@@ -2,6 +2,18 @@
 
 Last updated: 2026-09-12 (Asia/Aden)
 
+## U2 Service Depth — U2.0 Foundation (closed)
+
+**`U2.0` منفَّذة ومنشورة بأدلة حديثة. التنفيذ Frontend-only بمحاكاة حتمية صريحة؛ لم يُضف Backend/Runtime.**
+
+- commit المحتوى: `4f257124a829202384963510cc3422f58a3c5f6a` على `main`؛ النشر المطابق `dpl_66T9CeDnMz6D1YhRkQ7wMGQ1QRo3` («Deployment has completed») وalias الإنتاج <https://nasaq-ai.vercel.app> عاد 200 على ستة مسارات تشمل مسار المعاينة الجديد.
+- المُنجَز: عقود `packages/contracts/src/services` (session/run/stage/artifact/evidence/receipt/handoff/events/transitions)، محاكي `packages/mock-api/src/services` (clock/ids/plans/fixtures/runner/client)، قواميس `packages/i18n/src/services`، Workbench مشترك في `apps/web/features/service-workbench` (تخزين جلسة مُصدَّر، analytics بقائمة مسموحة، reducer/provider، registry، shell، overlays)، سطح تحقق داخلي `apps/web/features/service-foundation` ومسار `/{locale}/preview/service-foundation` (`noindex`)، إضافة إلى 56 اختبار وحدة و15 اختبار E2E.
+- البوابات: `npm run check` = 0 (ESLint 0/0، typecheck، Vitest 56/56، build)، `npm audit --audit-level=high` = 0، Chromium 15/15 و30/30، متعدد المحركات 42/3 و88/2 (skips موثقة)، وaxe `pass/0` على 9 لقطات بلا تجاوز مستندي.
+- الأدلة: [`evidence/u2/u2-0-foundation/`](../04-delivery/evidence/u2/u2-0-foundation/) (9 لقطات + manifest). الإيصال: [`U2-0-FOUNDATION-VERIFICATION.md`](../04-delivery/U2-0-FOUNDATION-VERIFICATION.md).
+- المصفوفة محدَّثة: `U2-CORE-003..018` موزَّعة بين `PASS` و`IN PROGRESS` (الأخيرة بسبب فحوص بشرية أو أسطح لاحقة)؛ صفوف `U2.1`–`U2.7` و`MAN-*` كما هي.
+- بيان الحقيقة: تشغيل وكلاء المنتج (Backend/Runtime) غير منفّذ؛ `PA-G0..PA-G10` لم تتغير وما زالت `NO-GO`.
+- الخطوة التالية: `U2.1` Learn بعد قراءة قسمه في العقد وصفوف `U2-LRN-001..008`؛ لم تبدأ.
+
 ## Product-agent architecture readiness
 
 **The repository-wide product-agent audit is complete. Product-agent Backend/Runtime is `NO-GO`; no Backend or runtime code was added.**
@@ -25,17 +37,17 @@ A context/receipt-only closure commit follows the content delivery; always inspe
 
 ## Milestone status
 
-**Two non-conflicting tracks are now defined: U2 Service Depth may start as explicit Frontend simulation; product-agent architecture may advance through documentation/readiness only. Neither U2 product implementation nor product-agent Backend implementation has started.**
+**Two non-conflicting tracks remain: U2 Service Depth proceeds as explicit Frontend simulation (`U2.0` closed, `U2.1` next), and product-agent architecture advances through documentation/readiness only. Product-agent Backend implementation has not started.**
 
 The completed planning package is:
 
 - [`docs/01-product/U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) — canonical stage contract: scope, architecture, shared domain model, service-by-service workflows, states, truth/security boundaries, sequencing, risks, and acceptance criteria.
-- [`docs/04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — 79 requirement rows mapped to planned unit/integration/E2E/manual checks and evidence. Every implementation row remains `NOT STARTED`.
+- [`docs/04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — 79 requirement rows mapped to planned unit/integration/E2E/manual checks and evidence. `U2.0` rows now carry fresh evidence (`PASS`/`IN PROGRESS`); `U2.1`–`U2.7` rows remain `NOT STARTED`.
 - [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — restart-ready request for a new implementation agent.
 - [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md) — mandatory separation of U2 Service contracts from future Product Agent Runtime.
 - [`docs/04-delivery/U2-PLANNING-VERIFICATION.md`](../04-delivery/U2-PLANNING-VERIFICATION.md) — local checks, checksums, GitHub commit, matching Vercel deployment, and production HTTP smoke.
 
-This delivery changes documentation only. It does not replace `ServiceWorkspace`, add contracts/fixtures, implement specialized workspaces, or alter runtime behavior.
+The planning delivery changed documentation only. The `U2.0` implementation that followed added the foundation packages/features listed above; it still does not replace `ServiceWorkspace`, so every `/[locale]/app/{service}` route keeps the U1 surface until its slice lands.
 
 ## Agent operating standard v2.0
 
@@ -122,7 +134,7 @@ Each slice is independently verified, committed, pushed, deployed, and productio
 
 Choose the assigned track explicitly:
 
-1. **U2 implementation:** read `U2-IMPLEMENTATION-PROMPT.md` plus the mandatory boundary addendum, confirm synchronized `main` and baseline gates, then implement **U2.0 Foundation only**. Keep `ServiceRun` separate from Agent/Flow runtime and stop before any Backend/provider/file-processing/sandbox scope.
+1. **U2 implementation:** `U2.0` is closed (see above). The next slice is **`U2.1` Learn**: read the Learn section of `U2-SERVICE-DEPTH.md` and rows `U2-LRN-001..008`, then implement the Learn workspace over the U2.0 foundation. Keep `ServiceRun` separate from Agent/Flow runtime and stop before any Backend/provider/file-processing/sandbox scope.
 2. **Product-agent architecture:** start `PA-ARCH-001` in the readiness audit and complete the documentation/specification package in dependency order. Do not create API/DB/provider/worker/tool/memory runtime until the readiness gates pass and an approved GO exists.
 
 If the assignment does not name a track, ask before mutation; do not infer that auditing authorizes Backend.

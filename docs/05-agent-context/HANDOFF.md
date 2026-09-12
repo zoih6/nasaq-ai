@@ -15,7 +15,7 @@
 
 ## Current handoff point
 
-**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. U2 planning is complete and U2 implementation is not started.** No product/runtime code changed during the audit.
+**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. `U2.0` Foundation is implemented, verified, and deployed; the next slice is `U2.1` Learn.**
 
 The current runtime still uses one generic `ServiceWorkspace` for the service routes and a timeout-driven generic result. Contracts and mock API do not yet contain the U2 service-session/artifact domain. Separately, the Agent/Run contracts are Prototype view/simulation shapes, and no Agent Backend, provider adapter, database, durable orchestrator, worker, tool executor, credential broker, persistent memory, telemetry exporter, prompt registry, or eval runner exists.
 
@@ -28,6 +28,16 @@ The portable operating standard is now `AGENT-OPERATING-METHOD.md` v2.0, with `.
 
 This operating-standard update is closed and does not implement U2. The U2 implementation handoff remains U2.0 Foundation below; the separate product-agent architecture handoff is documentation-only.
 
+### U2.0 delivery (closed)
+
+- Content commit: `4f257124a829202384963510cc3422f58a3c5f6a`, pushed to GitHub `main` (`17ddea3..4f25712`).
+- Matching Vercel deployment `dpl_66T9CeDnMz6D1YhRkQ7wMGQ1QRo3` reached the completed deployment state attached to that exact commit; the production alias <https://nasaq-ai.vercel.app> returned HTTP 200 on `/ar`, `/en`, `/ar/app/home`, `/en/app/research`, and both `/{ar,en}/preview/service-foundation` routes, with a production CSS/HTML fingerprint proving the alias serves this commit only.
+- Implemented: shared service contracts, deterministic event simulator, session-only storage, ar/en service dictionaries, shared Service Workbench (registry, reducer/provider, shell, overlays), noindex foundation surface, 56 unit + 15 E2E tests.
+- Gates: `npm run check` 0 (ESLint 0/0, typecheck, Vitest 56/56, build); audit 0; Chromium 15/15 and 30/30 baseline; cross-browser 42 passed/3 skipped and 88 passed/2 skipped; Axe `pass/0` on all nine captures with zero document overflow.
+- Evidence: `docs/04-delivery/evidence/u2/u2-0-foundation/` (nine captures + manifest). Receipt: [`../04-delivery/U2-0-FOUNDATION-VERIFICATION.md`](../04-delivery/U2-0-FOUNDATION-VERIFICATION.md).
+- Boundaries preserved: no Backend/API/DB/provider/live search/upload/file processing/execution/sandbox/persistent memory; `PA-G0..PA-G10` unchanged and still `NO-GO`. `ServiceWorkspace` still serves every `/[locale]/app/{service}` route.
+- Next: `U2.1` Learn (not started).
+
 ### Canonical U2 package
 
 1. [`../01-product/U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) — source of truth for scope and product/architecture behavior.
@@ -35,7 +45,7 @@ This operating-standard update is closed and does not implement U2. The U2 imple
 3. [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — copy-ready instructions for the implementation agent.
 4. [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md) — mandatory separation from future Agent Runtime.
 
-Do not interpret the planning documents as evidence that any requirement passed. All 79 implementation requirements remain `NOT STARTED` until fresh evidence updates the matrix. U2 does not close any `PA-G*` product-agent readiness gate.
+Do not interpret the planning documents as evidence that any requirement passed. `U2.0` rows were updated only with fresh post-change evidence (16 core rows: `PASS` or `IN PROGRESS`); `U2.1`–`U2.7` rows remain `NOT STARTED` until their own evidence updates the matrix. U2 does not close any `PA-G*` product-agent readiness gate.
 
 ### Product-agent architecture handoff
 

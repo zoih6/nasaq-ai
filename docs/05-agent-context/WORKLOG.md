@@ -99,6 +99,20 @@
 - Pushed content commit `88e10738a0a23214d440741957f6b15c6323f27a` to GitHub `main`; source-matching Vercel deployment `dpl_6YoLRZg6dRqwfWWJs8JekpjSfREt` reached `READY` with no error and all production aliases attached.
 - Production and immutable-deployment smoke returned HTTP 200 on five checks. Permanent receipt: `docs/04-delivery/PRODUCT-AGENT-ARCHITECTURE-AUDIT-VERIFICATION.md`.
 
+## 2026-09-12 — U2.0 Service Depth foundation implemented, verified, and deployed
+
+- Started from synchronized `main@17ddea3d3f80cbbb2c2e5493c18755648f2d24e7`; restored dependencies with `npx npm@11.6.4 ci` and re-ran the baseline gates before touching runtime code.
+- Added shared service contracts in `packages/contracts/src/services` (session with consistency `superRefine`, run/stage/artifact/evidence/receipt/handoff, 15 events, transition table, retry creation, event application) without widening the shared run status enum or changing `packages/contracts/src/index.ts`.
+- Added the deterministic simulator in `packages/mock-api/src/services` (manual/timer clock, seeded ids, scenario plans, ar/en fixtures, event runner, mock client reporting `deterministic_mock`, `explicit_simulation`, `networkCalls: 0`, and `productAgentRuntime: "not_implemented"`).
+- Added `packages/i18n/src/services` ar/en dictionaries for services, stages, statuses, scenarios, notices, and storage messages, plus locale formatters.
+- Added `apps/web/features/service-workbench` (versioned session-only storage with memory/session/corrupt_recovered/quota_exceeded/unavailable states, allowlisted analytics, reducer/provider, explicit registry with Ask outside it, shell, primitives, receipt/storage/handoff overlays) and the noindex `/{locale}/preview/service-foundation` verification surface.
+- Wrote 56 unit tests across seven files and a 15-test Chromium E2E suite covering lifecycle, cancel race, retry, needs_input, per-service stage sequences, zero network calls, storage recovery, locale switch, handoff confirmation, keyboard path, Axe, forced colors, reduced motion, 44px targets, and 200% reflow.
+- Fixed defects the gates exposed: 320px RTL document overflow from an absolutely positioned hidden span, Axe `scrollable-region-focusable` on the disabled stage list, simulator event ordering and cancel re-checks, `needs_input` reached from `validating`, retry-of-transient resolves to success in a new run, and focus restoration after overlay close.
+- Captured nine foundation evidence states (ar/en, 320/390/1440, needs_input, failed_retryable, storage recovery, forced colors, reduced motion) into `docs/04-delivery/evidence/u2/u2-0-foundation/` with a manifest; all returned HTTP 200, zero document overflow, and Axe `pass/0`.
+- Final gates: `npm run check` 0 (ESLint 0 errors/0 warnings, typecheck, Vitest 56/56, production build); `npm audit --audit-level=high` 0; Chromium E2E 15/15 and baseline 30/30; cross-browser 42 passed/3 skipped and 88 passed/2 skipped.
+- Pushed content commit `4f257124a829202384963510cc3422f58a3c5f6a` to GitHub `main`; matching Vercel deployment `dpl_66T9CeDnMz6D1YhRkQ7wMGQ1QRo3` completed with source SHA matched, and the production alias returned HTTP 200 on six routes including the new foundation preview with a commit-specific CSS/HTML fingerprint.
+- Updated the U2 traceability matrix (16 core rows), durable context, decision log, and delivery index. Receipt: `docs/04-delivery/U2-0-FOUNDATION-VERIFICATION.md`. No Backend/provider/runtime scope was added; `PA-G0..PA-G10` remain unchanged.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.

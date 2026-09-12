@@ -4,6 +4,7 @@
 > **تاريخ الإعداد:** 12 سبتمبر 2026 — Asia/Aden
 > **العقد المرجعي:** [U2 — Service Depth](../01-product/U2-SERVICE-DEPTH.md)
 > **خط الأساس:** `main@c71d83a9f422d476134b7e39ee077184fbdd2ae5`
+> **تحديث 12 سبتمبر 2026 — `U2.0`:** نُفِّذت شريحة الأساس ونُشرت (`main@4f257124a829202384963510cc3422f58a3c5f6a`) بأدلة حديثة. صفوف `U2-CORE-003..018` لم تعد `NOT STARTED`؛ صفوف `U2.1`–`U2.7` والفحوص البشرية `MAN-*` ما زالت كما هي. التفاصيل في [`U2-0-FOUNDATION-VERIFICATION.md`](U2-0-FOUNDATION-VERIFICATION.md).
 
 الغرض من هذه الوثيقة منع تحوّل «اكتملت U2» إلى تقدير بصري. كل requirement له سطح تنفيذ متوقع، اختبار، ودليل. تبدأ كل الصفوف بـ`NOT STARTED`، ولا تتحول إلى `PASS` إلا بعد دليل حديث جُمع بعد آخر تغيير ذي صلة.
 
@@ -151,30 +152,49 @@
 
 ---
 
+### 2.5 مواقع التنفيذ الفعلية (`U2.0`)
+
+| الملف | IDs المغطّاة فعليًا |
+|---|---|
+| `apps/web/tests/u2-contracts.test.ts` | `UT-CON-001..004`, `UT-FIX-001` |
+| `apps/web/tests/u2-simulator.test.ts` | `UT-SIM-001..002` |
+| `apps/web/tests/u2-storage.test.ts` | `UT-STO-001..002` |
+| `apps/web/tests/u2-i18n.test.ts` | `UT-I18N-001..002` |
+| `apps/web/tests/u2-truth.test.ts` | `UT-RCP-001`, `UT-HND-001`, `UT-ANL-001` |
+| `apps/web/tests/u2-boundaries.test.ts` | `U2-PA-001..003`, `U2-PA-005`, `U2-PA-008`, `U2-PA-012`, `U2-CORE-001..002`, `U2-CORE-015` |
+| `apps/web/tests/e2e/service-depth-core.spec.ts` | `E2E-U2-003..005`، `E2E-A11Y-001..003`، `E2E-MOT-001`، `E2E-RSP-001..002`، وتغطية `IT-WB-002`/`IT-HND-001` جزئيًا |
+| `apps/web/tests/e2e/{wave-one,responsive,motion-feedback}.spec.ts` | `E2E-REG-001..002` |
+
+لم تُنفَّذ بعد: `IT-WB-001/003/004`، `IT-STO-001` (نسخة Library)، `IT-SEC-001` الكامل، وكل اختبارات `U2.1`–`U2.7`.
+
+---
+
 ## 3. مصفوفة التتبّع — Core
 
 | Requirement | المختصر | سطح التنفيذ المتوقع | الاختبار/الفحص | الدليل المرئي | الحالة |
 |---|---|---|---|---|---|
 | `U2-CORE-001` | ست compositions متخصصة | registry + six feature workspaces | `IT-*`, all service E2E, `MAN-CFT-001` | `VIS-SVC-01..06` | `NOT STARTED` |
 | `U2-CORE-002` | Ask gateway لا خدمة سابعة | Ask route/rules/handoff | `UT-ASK-001`, `E2E-U2-001` | `VIS-XSV-01` | `NOT STARTED` |
-| `U2-CORE-003` | عقود Zod المشتركة | `packages/contracts/src/services` | `UT-CON-001..002` | receipt schema sample | `NOT STARTED` |
-| `U2-CORE-004` | lifecycles/final invariant | transition guards | `UT-CON-003`, `E2E-U2-005` | status/receipt capture | `NOT STARTED` |
-| `U2-CORE-005` | simulator deterministic/event-driven | mock simulator/clock | `UT-CON-004`, `UT-SIM-001..002` | busy/cancel states | `NOT STARTED` |
-| `U2-CORE-006` | scenario fixture suite | fixture registry/builders | `UT-FIX-001`, per-service E2E | error/warning/dense captures | `NOT STARTED` |
-| `U2-CORE-007` | truth disclosure/receipt | badge + receipt overlay | `UT-RCP-001`, `IT-WB-002`, `MAN-TRUTH-001` | `VIS-RCP-*` | `NOT STARTED` |
-| `U2-CORE-008` | no live provider/search/upload/exec | adapters/security boundaries | `IT-SEC-001`, network assertions, source scan | receipt `networkCalls:0` | `NOT STARTED` |
-| `U2-CORE-009` | session-only storage | store adapter + Library copy | `UT-STO-001..002`, `E2E-U2-002..004` | `VIS-LIB-01..03` | `NOT STARTED` |
-| `U2-CORE-010` | no dead controls | action contracts/UI | `IT-WB-004`, per-service E2E | disabled reason/working actions | `NOT STARTED` |
-| `U2-CORE-011` | ar/en + bidi parity | i18n service namespaces | `UT-I18N-001..002`, `E2E-U2-003`, `MAN-RTL-001` | paired ar/en captures | `NOT STARTED` |
-| `U2-CORE-012` | responsive/reflow/touch | service CSS/layouts | `E2E-RSP-001..004`, `MAN-200-001`, `MAN-MOB-001` | mobile/tablet/desktop set | `NOT STARTED` |
-| `U2-CORE-013` | accessibility/alternatives | semantics + alternative views | `E2E-A11Y-001..003`, `MAN-KBD-001`, `MAN-SR-001` | focus/forced-color states | `NOT STARTED` |
-| `U2-CORE-014` | motion baseline محفوظ | motion tokens/feedback | `E2E-MOT-001`, existing motion suite | reduced-motion capture | `NOT STARTED` |
-| `U2-CORE-015` | feature boundaries/composition | folders/imports/provider API | architecture/source review + lint/typecheck | N/A: source evidence | `NOT STARTED` |
-| `U2-CORE-016` | analytics allowlist/no telemetry | analytics interface/dev logger | `UT-ANL-001`, network assertions | N/A: event evidence | `NOT STARTED` |
-| `U2-CORE-017` | baseline regressions | existing app/tests | `E2E-REG-001..002`, `npm run check` | baseline route smoke | `NOT STARTED` |
-| `U2-CORE-018` | per-slice/prod evidence | receipts/manifests/deployment | closure checklist §12 | proof board + manifests | `NOT STARTED` |
+| `U2-CORE-003` | عقود Zod المشتركة | `packages/contracts/src/services` | `UT-CON-001..002` | receipt schema sample | `PASS` |
+| `U2-CORE-004` | lifecycles/final invariant | transition guards | `UT-CON-003`, `E2E-U2-005` | status/receipt capture | `PASS` |
+| `U2-CORE-005` | simulator deterministic/event-driven | mock simulator/clock | `UT-CON-004`, `UT-SIM-001..002` | busy/cancel states | `PASS` |
+| `U2-CORE-006` | scenario fixture suite | fixture registry/builders | `UT-FIX-001`, per-service E2E | error/warning/dense captures | `PASS` |
+| `U2-CORE-007` | truth disclosure/receipt | badge + receipt overlay | `UT-RCP-001`, `IT-WB-002`, `MAN-TRUTH-001` | `VIS-RCP-*` | `IN PROGRESS` |
+| `U2-CORE-008` | no live provider/search/upload/exec | adapters/security boundaries | `IT-SEC-001`, network assertions, source scan | receipt `networkCalls:0` | `IN PROGRESS` |
+| `U2-CORE-009` | session-only storage | store adapter + Library copy | `UT-STO-001..002`, `E2E-U2-002..004` | `VIS-LIB-01..03` | `IN PROGRESS` |
+| `U2-CORE-010` | no dead controls | action contracts/UI | `IT-WB-004`, per-service E2E | disabled reason/working actions | `IN PROGRESS` |
+| `U2-CORE-011` | ar/en + bidi parity | i18n service namespaces | `UT-I18N-001..002`, `E2E-U2-003`, `MAN-RTL-001` | paired ar/en captures | `IN PROGRESS` |
+| `U2-CORE-012` | responsive/reflow/touch | service CSS/layouts | `E2E-RSP-001..004`, `MAN-200-001`, `MAN-MOB-001` | mobile/tablet/desktop set | `IN PROGRESS` |
+| `U2-CORE-013` | accessibility/alternatives | semantics + alternative views | `E2E-A11Y-001..003`, `MAN-KBD-001`, `MAN-SR-001` | focus/forced-color states | `IN PROGRESS` |
+| `U2-CORE-014` | motion baseline محفوظ | motion tokens/feedback | `E2E-MOT-001`, existing motion suite | reduced-motion capture | `PASS` |
+| `U2-CORE-015` | feature boundaries/composition | folders/imports/provider API | architecture/source review + lint/typecheck | N/A: source evidence | `PASS` |
+| `U2-CORE-016` | analytics allowlist/no telemetry | analytics interface/dev logger | `UT-ANL-001`, network assertions | N/A: event evidence | `PASS` |
+| `U2-CORE-017` | baseline regressions | existing app/tests | `E2E-REG-001..002`, `npm run check` | baseline route smoke | `PASS` |
+| `U2-CORE-018` | per-slice/prod evidence | receipts/manifests/deployment | closure checklist §12 | proof board + manifests | `PASS` |
 
 ---
+
+> الأدلة الفعلية لصفوف `U2.0`: 56 اختبار وحدة (7 ملفات) + 15 اختبار E2E + 9 لقطات في [`evidence/u2/u2-0-foundation/`](evidence/u2/u2-0-foundation/) مع `manifest.json`. `IN PROGRESS` تعني: الأتمتة المذكورة مرّت، وتبقى الفحوص البشرية أو أسطح الشريحة التالية غير مغلقة. `PASS` تعني تحققًا حديثًا بعد آخر تغيير ذي صلة. التفاصيل الكاملة في [`U2-0-FOUNDATION-VERIFICATION.md`](U2-0-FOUNDATION-VERIFICATION.md).
 
 ## 4. مصفوفة Learn
 
