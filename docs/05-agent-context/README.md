@@ -9,10 +9,11 @@ This directory is the durable handoff layer for humans and agents working on Nas
 3. [`CURRENT-STATE.md`](CURRENT-STATE.md) — exact active milestone, known baseline, and immediate next actions.
 4. [`HANDOFF.md`](HANDOFF.md) — restart checklist and operational commands.
 5. [`DECISIONS.md`](DECISIONS.md) — consequential choices and rationale.
-6. [`WORKLOG.md`](WORKLOG.md) — concise chronological record.
-7. [`../../agent-skills-web-uiux/README.md`](../../agent-skills-web-uiux/README.md) — audited skill/UI/UX research library; load relevant extracts only.
+6. [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — restart-ready execution request for the next agent; use only when beginning U2 implementation.
+7. [`WORKLOG.md`](WORKLOG.md) — concise chronological record.
+8. [`../../agent-skills-web-uiux/README.md`](../../agent-skills-web-uiux/README.md) — audited skill/UI/UX research library; load relevant extracts only.
 
-Long-form product, design, architecture, and verification documents remain in `docs/00-vision` through `docs/04-delivery`; this directory links them rather than duplicating them. The operating-method evidence receipt is `docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md`.
+Long-form product, design, architecture, and verification documents remain in `docs/00-vision` through `docs/04-delivery`; this directory links them rather than duplicating them. U2 is governed by `docs/01-product/U2-SERVICE-DEPTH.md` and `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`. The operating-method evidence receipt is `docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md`.
 
 ## Update protocol
 

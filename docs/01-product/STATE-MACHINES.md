@@ -8,6 +8,8 @@
 | المرجع | [PRD](PRD.md) · [Sitemap](SITEMAP.md) · [Screen Inventory](SCREEN-INVENTORY.md) |
 
 > الهدف ليس رسم animation للحالة، بل منع الحالات المستحيلة والتكرار والفشل الصامت. الـFrontend يعرض الحالة؛ الـBackend الحقيقي هو مصدر الحقيقة عندما يبدأ Alpha.
+>
+> **ملحق U2:** يفصل [`U2-SERVICE-DEPTH.md`](U2-SERVICE-DEPTH.md#8-آلات-الحالة-والمحاكي) بين lifecycle الجلسة والـrun والـartifact وبين stages الخاصة بكل خدمة، ويطبق قاعدة عدم عودة run نهائي إلى active.
 
 ---
 

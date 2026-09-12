@@ -8,6 +8,8 @@
 | المرجع | [PRD](../01-product/PRD.md) · [Design](../02-design/DESIGN.md) |
 | نمط المستودع | npm workspaces monorepo |
 
+> **ملحق U2 المخطط:** يطبق [`U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md#6-معمارية-التنفيذ-المستهدفة) طبقة Service Workbench مشتركة وfeature compositions مستقلة؛ يمنع توسيع القالب الحالي إلى giant conditional component.
+
 ---
 
 ## 1. الأهداف المعمارية

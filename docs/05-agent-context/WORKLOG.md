@@ -49,6 +49,21 @@
 - Removed opacity from `universal-result-in` while retaining the 6px/.99 spatial cue and reduced-motion path. Replaced the remaining WebKit transient-state race with a browser-local MutationObserver after a React-confirmed starter selection. Final local evidence: `npm run check` PASS, audit 0, targeted repetition 20/20 PASS, Chromium 8/8, WebKit reduced-motion repetition 10/10, and cross-browser 22 pass + 2 expected forced-colors skips.
 - Pushed final runtime hardening as `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4`; matching deployment `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx` reached `READY` with no error and all production aliases. Final-alias evidence: targeted service/Axe **20/20**, complete Chromium repository suite **46/46**, and HTTP **200** for `/ar` and `/en`.
 
+## 2026-09-12 — U2 Service Depth discovery and implementation contract completed
+
+- Confirmed a clean synchronized baseline at `c71d83a9f422d476134b7e39ee077184fbdd2ae5` before planning.
+- Inspected the generic service route/component/content, Home, Library, contracts, mock API, i18n, current CSS, architecture/product/design documents, and U1 E2E gates.
+- Verified that all seven service routes currently share one timeout-driven `ServiceWorkspace` result and that U2 service-session/artifact contracts and deterministic service fixtures do not yet exist.
+- Researched current official product patterns for guided learning, deep research, editable canvases, code-review/sandbox boundaries, data-analysis provenance/accessibility, and knowledge maps; used repository and Reddit/Hacker News signals only as qualitative failure evidence.
+- Selected a small audited skill stack: source-driven development, research synthesis, Interface Design, React composition/best practices, accessibility, Playwright, web quality, and security.
+- Fixed the U2 product decision: six specialized workspaces; Ask remains the general gateway/router; a shared Service Workbench owns lifecycle/receipts/storage while domain compositions remain independent.
+- Resolved roadmap ambiguity: U2 uses explicit fixtures, metadata-only file interaction, static Code preview/checks, bundled deterministic Analyze calculations, and session-only demo persistence; real search/upload/processing/sandboxes/providers remain later milestones.
+- Added `docs/01-product/U2-SERVICE-DEPTH.md`, a complete canonical contract with service stages, artifacts, state layers, truth/security/analytics boundaries, sequencing, risks, acceptance criteria, and research/repository/skill links.
+- Added `docs/04-delivery/U2-TRACEABILITY-AND-QA.md`, mapping 79 requirements to planned unit/integration/E2E/manual checks, cross-browser/responsive matrices, evidence manifests, receipts, and release gates. All implementation rows remain `NOT STARTED`.
+- Added `docs/05-agent-context/U2-IMPLEMENTATION-PROMPT.md`, a restart-ready instruction package that begins with U2.0 Foundation and forbids overclaiming or unapproved Backend/provider scope.
+- Added cross-document pointers and a formal supersession notice to the historical Precision design baseline.
+- No product code, runtime behavior, dependency, Backend, or provider integration was changed in this planning task.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.

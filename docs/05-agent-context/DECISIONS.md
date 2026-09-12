@@ -55,3 +55,23 @@ Small active-step text on a service-soft background uses `--service-deep`, not t
 ## D-014 — Text-rich result entrances do not animate parent opacity
 
 `universal-result-in` retains its subtle translate/scale orientation cue but no longer fades the entire result container. A parent-opacity fade composites every descendant toward the outer surface and can temporarily pull otherwise compliant text, body copy, and inverse buttons below 4.5:1. Removing parent opacity preserves contrast throughout entry; the existing reduced-motion path still makes the spatial cue effectively instant.
+
+## D-015 — U2 builds six domain workspaces; Ask remains the shared gateway
+
+Learn, Research, Create, Code, Analyze, and Explore receive explicit workflows, stage models, review surfaces, and artifact types. Ask & Talk remains the general starting point and deterministic, user-confirmed router. It does not become a seventh specialized editor. This matches the Universal Reset roadmap and prevents another generic-chat skin from being counted as service depth.
+
+## D-016 — Shared workbench through composition, not a conditional monolith
+
+U2 introduces a domain-neutral Service Workbench for session/run lifecycle, storage, artifact actions, simulation receipts, and handoffs. Each service owns an explicit feature composition and reducer/transition logic. Do not expand the current `ServiceWorkspace` with `serviceId === ...` branches or boolean-prop combinations; use typed interfaces, explicit variants, and feature boundaries.
+
+## D-017 — U2 truth boundary is fixtures plus narrow local computation
+
+U2 remains Frontend-only. Research/source activity, drafting, visual concepts, and Code preview/checks are deterministic simulations. Analyze may run pure deterministic transforms on bundled datasets. Local file interaction, if present, is metadata-only and cannot read, upload, process, or persist content. Code is never evaluated. Every result exposes a SimulationReceipt listing local work, simulated work, omitted capabilities, network calls, and storage mode.
+
+## D-018 — U2 demo persistence is session-only and explicit
+
+Artifacts and resumable stages may use a versioned `sessionStorage` adapter so Library and cross-route continuation work within the current tab. The UI must say this is local, temporary, unsynchronized demo storage and offer a clear action. File bytes, auth data, secrets, and external content are excluded from the schema.
+
+## D-019 — Universal Reset and Luminous supersede conflicting Precision direction
+
+`docs/02-design/DESIGN.md` remains historical guidance for non-conflicting semantics, accessibility, RTL/LTR, and component rigor. Its professional-only positioning and Precision Workspace visual direction do not govern Universal/U2. User intent, `NASAQ-UNIVERSAL-RESET.md`, the implemented Luminous CSS, `MOTION-AND-FEEDBACK.md`, and the U2 contract take precedence.

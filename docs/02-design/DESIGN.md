@@ -8,7 +8,9 @@
 | المرجع | [PRD](../01-product/PRD.md) · [Sitemap](../01-product/SITEMAP.md) · [Screen Inventory](../01-product/SCREEN-INVENTORY.md) |
 | الاتجاه | **Precision Workspace — هدوء تشغيلي دقيق** |
 
-> هذه الوثيقة ليست moodboard. هي عقد قابل للتنفيذ يحدد كيف تبدو نَسَق، كيف تتصرف، وكيف تحافظ على الوضوح والثقة والكثافة والوصولية بالعربية والإنجليزية.
+> **إشعار supersession — 12 سبتمبر 2026:** تمثل هذه الوثيقة baseline تاريخيًا لاتجاه Precision Workspace. في تجربة Universal وU2، تتقدم عليها رؤية [`NASAQ-UNIVERSAL-RESET.md`](../00-vision/NASAQ-UNIVERSAL-RESET.md)، ونظام Luminous المنفذ، وعقد [`U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md)، و[`MOTION-AND-FEEDBACK.md`](MOTION-AND-FEEDBACK.md). لا تُستخدم الفقرات المتعارضة هنا لإعادة التموضع المهني القديم أو إلغاء الاتجاه المضيء المختار.
+>
+> تبقى القواعد غير المتعارضة حول semantics، الوصولية، RTL/LTR، الحالات، والثقة مرجعًا صالحًا.
 
 ---
 

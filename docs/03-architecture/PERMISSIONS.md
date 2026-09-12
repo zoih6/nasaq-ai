@@ -8,6 +8,8 @@
 | المرجع | [PRD](../01-product/PRD.md) · [State Machines](../01-product/STATE-MACHINES.md) · [Contracts](CONTRACTS.md) |
 
 > الدور يحدد ما يستطيع الشخص إدارته. **Tool policy** تحدد ما يستطيع الوكيل تنفيذه. **Approval** تفوض فعلًا محددًا مرة واحدة. هذه ثلاث طبقات مختلفة ولا تستبدل إحداها الأخرى.
+>
+> **U2:** لا تضيف Auth أو أدوارًا أو side effects خارجية. confirmations فيها تحمي أفعال الجلسة المحلية فقط؛ التفاصيل في [`U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md#211-الصلاحيات-والموافقات-في-u2).
 
 ---
 

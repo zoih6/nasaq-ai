@@ -8,6 +8,8 @@
 | المرجع | [PRD](../01-product/PRD.md) · [State Machines](../01-product/STATE-MACHINES.md) · [Frontend Architecture](FRONTEND-ARCHITECTURE.md) |
 
 > هذه الوثيقة تحدد أشكال البيانات والسلوك على الحدود. الأمثلة TypeScript إرشادية، والتنفيذ الفعلي يكون في `packages/contracts` باستخدام Zod كمصدر لأنواع runtime وcompile-time.
+>
+> **ملحق U2 المخطط:** عقود ServiceSession/ServiceRun/ServiceStage/ArtifactVersion/EvidenceRef/SimulationReceipt/HandoffBundle موصوفة في [`U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md#7-نموذج-العقود-المشترك) ولم تُنفذ بعد.
 
 ---
 

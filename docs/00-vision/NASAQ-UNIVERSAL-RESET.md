@@ -160,13 +160,15 @@
 - RTL/LTR وreduced motion وhigh contrast وforced colors وإعادة تدفق تعادل تكبير `200%`.
 - بوابة آلية عبر Chromium وFirefox وWebKit، مع مصفوفة عشرة أحجام وفحص Axe/overflow.
 
-### U1.2 — Motion & Feedback Language — التالية
+### U1.2 — Motion & Feedback Language — مكتملة
 
 - حركة وظيفية تشرح تغير الحالة والانتقال بين المساحات دون استعراض زائد.
 - نظام موحد لحالات loading/success/empty/error والتغذية الراجعة الدقيقة.
 - مسار reduced-motion مكافئ؛ لا تعتمد أي معلومة أو إجراء على الحركة وحدها.
 
-### الموجة U2 — عمق كل خدمة
+### الموجة U2 — عمق كل خدمة — مخططة وجاهزة للتنفيذ
+
+العقد التفصيلي ومصفوفة القبول: [`U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) و[`U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md). لم يبدأ تنفيذ المنتج في هذه الموجة بعد.
 
 - تعلم: تشخيص مستوى، مسارات، أسئلة سقراطية واختبارات.
 - بحث: خطة بحث، اختيار أنواع المصادر، citations workspace.

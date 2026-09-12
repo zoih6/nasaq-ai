@@ -9,6 +9,8 @@
 | قاعدة اللغة | كل رابط قابل للمشاركة يبدأ بـ`/{locale}`؛ القيم المدعومة أولًا `ar` و`en` |
 
 > هذه الخريطة تحدد **مكان كل تجربة وكيف يصل إليها المستخدم**. التفاصيل الدقيقة لكل شاشة في [SCREEN-INVENTORY.md](SCREEN-INVENTORY.md)، وحالاتها في [STATE-MACHINES.md](STATE-MACHINES.md).
+>
+> **ملحق U2:** تبقى routes الخدمات الحالية canonical، ويضيف [عقد U2](U2-SERVICE-DEPTH.md#5-هندسة-المعلومات-والمسارات) Screen/Route IDs وحالات overlays دون إنشاء route لكل خطوة.
 
 ---
 
