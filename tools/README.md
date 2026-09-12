@@ -31,3 +31,12 @@ bash tools/workspace-hygiene.sh browsers        # أوامر تثبيت متصف
 ```
 
 `node_modules` ومتصفحات Playwright و`​.next` و`test-results` كلها مولّدة ومتجاهَلة في Git، ولا تُحفظ في اللقطة؛ تتراكم داخل المساحة أثناء العمل وتُبطئ فتحها. استخدم `status` قبل العمل الثقيل، ويُنهى **كل** مهمة بالأمر `clean --all` حتى لا تبقى مخلفات ثقيلة في المساحة.
+
+## فحص توكن GitHub محليًا
+
+```bash
+bash tools/verify-gh-token.sh                # يقرأ GITHUB_TOKEN_TEST أو يطلب الإدخال بصمت
+bash tools/verify-gh-token.sh --repo zoih6/nasaq-ai
+```
+
+يطبع الطول والنوع وسلامة المحارف وبصمة SHA-256 (أول 16 خانة) ونتيجة API ونتيجة git، **ولا يطبع التوكن ولا يكتبه على القرص أبدًا**.
