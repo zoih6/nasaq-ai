@@ -1,6 +1,6 @@
 # Current State
 
-_Last updated: 2026-09-12 (Asia/Aden)_
+Last updated: 2026-09-12 (Asia/Aden)
 
 ## Milestone status
 
@@ -14,6 +14,19 @@ The completed planning package is:
 - [`docs/04-delivery/U2-PLANNING-VERIFICATION.md`](../04-delivery/U2-PLANNING-VERIFICATION.md) — local checks, checksums, GitHub commit, matching Vercel deployment, and production HTTP smoke.
 
 This delivery changes documentation only. It does not replace `ServiceWorkspace`, add contracts/fixtures, implement specialized workspaces, or alter runtime behavior.
+
+## Agent operating standard v2.0
+
+The repository's portable agent method has been expanded and reviewed as version 2.0:
+
+- `AGENT-OPERATING-METHOD.md` is now a 26-section, vendor/model/stack/project-neutral procedure spanning requirements, context and prompt engineering, architecture, decomposition, construction, debugging, testing/evals, security/privacy/safety, maintainability/operations, agent lifecycle, verification, delivery, and reusable templates.
+- `.agents/skills/evidence-led-agent-workflow/SKILL.md` is synchronized at version 2.0.0 as a concise activation layer; the canonical method remains the source of truth.
+- Research covers current standards/official sites, repositories, and explicitly non-normative forum/social signals. The canonical reference section carries 37 links.
+- Full-document structure, portability, links, whitespace, Markdown, credential patterns, and official Agent Skills validation passed. `npm run check` passed after dependency restoration: ESLint, all workspace typechecks, Vitest 4/4, and a 57-page Next.js production build.
+- Permanent receipt: [`docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`](../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md).
+- GitHub/Vercel delivery is pending and must not be claimed until the commit, push, provider state, aliases, and production smoke are verified.
+
+This methodology work does not start or satisfy any U2 implementation row.
 
 ## Stable product baseline before U2 planning
 

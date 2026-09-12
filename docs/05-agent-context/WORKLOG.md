@@ -67,6 +67,21 @@
 - Pushed the planning content as `4fc72140f1402c07c40ec0bfefc5d61efcd6db93`; matching Vercel deployment `dpl_FQrq9imwQDPehM4mmn6vGLN3mi83` reached `READY` with the production aliases attached.
 - Production HTTP smoke returned 200 for `/ar`, `/en`, `/ar/app/home`, and `/en/app/research`; the permanent receipt is `docs/04-delivery/U2-PLANNING-VERIFICATION.md`.
 
+## 2026-09-12 — Portable operating method expanded to v2.0 and locally verified
+
+- Re-read the canonical method, activation skill, project instructions, durable context, and previous delivery receipt before editing; confirmed the clean synchronized baseline at `60bc37b5f1b166bf5517fbdd121171763a44c432`.
+- Researched and cross-checked SWEBOK, NIST SSDF/AI guidance, CMU SEI architecture material, C4/ADRs, Google code-review practices, current Anthropic/OpenAI/Google/Microsoft prompt and agent guidance, OWASP agentic threats, Agent Skills, HumanLayer 12-Factor Agents, Promptfoo, and qualitative Hacker News/Reddit field signals.
+- Expanded `AGENT-OPERATING-METHOD.md` to v2.0 while preserving the previous repository-first, research, UI/UX, debugging, security, verification, and durable-handoff guarantees.
+- Integrated practical procedures and gates for BCP 14 instruction precedence, requirements/quality scenarios/change control, context assembly/compaction, prompt contracts and behavior-bundle versioning, architecture/ADRs, dependency-aware planning, safe multi-agent coordination, code organization, risk-based tests and probabilistic evals, privacy/safety/supply chain, maintenance/operations/retirement, and bounded agent lifecycle/recovery.
+- Added five reusable templates and a categorized primary-source/reference section with 37 unique URLs; live URL checks returned 34 HTTP 200, three access-controlled HTTP 403, and no 404/5xx.
+- Synchronized `.agents/skills/evidence-led-agent-workflow/SKILL.md` at v2.0.0 and validated it with official `skills-ref` at upstream commit `69ef37e9424c0a7ea9dd2293b559e43ec8176379`: **Valid skill**.
+- Full-document audits passed: 26/26 sequential sections, balanced fences, no tabs/trailing whitespace, no duplicate non-trivial long lines, required coverage present, portable scope intact, changed relative links valid, and no credential after review of two URL-text false positives from a deliberately broad `sk-` heuristic.
+- Markdownlint v0.38.0 passed with 0 errors after disabling only the repository-incompatible 80-column rule (`MD013`); default output contained only that style rule.
+- Restored dependencies with `npm ci` after the first gate correctly failed because `eslint` was absent. Installation audited 461 packages with 0 vulnerabilities and warned that locked `eslint@9.39.5` is unsupported.
+- `npm run check` then passed: ESLint, all workspace typechecks, Vitest 4/4, Next.js 16.3.4 build, and 57/57 generated pages.
+- Added `docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md` and synchronized discovery/context files. No product/runtime/U2 implementation changed.
+- GitHub commit/push and Vercel/production verification are still pending at this log entry and must not be inferred from local success.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.

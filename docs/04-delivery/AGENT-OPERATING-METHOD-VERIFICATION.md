@@ -1,6 +1,8 @@
 # Evidence-Led Agent Operating Method — Delivery Verification
 
-_Date: 2026-09-12 (Asia/Aden) · Status: integrated, pushed, and production-ready_
+> **Historical v1 receipt.** The canonical method is now v2.0; use `AGENT-OPERATING-METHOD-V2-VERIFICATION.md` for its current research, coverage, and verification evidence.
+
+Date: 2026-09-12 (Asia/Aden) · Status: historical v1 delivery record
 
 ## Decision
 

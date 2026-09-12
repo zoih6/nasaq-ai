@@ -31,11 +31,12 @@
 يحمل المستودع طبقة تشغيل قابلة لإعادة الاستخدام مع أي مشروع، كي يبدأ الوكيل من السياق والأدلة بدل القفز من الطلب إلى الكود:
 
 - [`AGENTS.md`](AGENTS.md) — نقطة الدخول وقواعد نَسَق الخاصة.
-- [`AGENT-OPERATING-METHOD.md`](AGENT-OPERATING-METHOD.md) — المنهج المحايد للأدوات: فحص المستودع، البحث الحقيقي، اختيار المصادر، تفعيل skills تدريجيًا، التخطيط، التنفيذ، التصحيح، التحقق، والتسليم.
-- [`.agents/skills/evidence-led-agent-workflow/SKILL.md`](.agents/skills/evidence-led-agent-workflow/SKILL.md) — Skill محمولة ومتوافقة مع مواصفة Agent Skills لتفعيل المنهج.
+- [`AGENT-OPERATING-METHOD.md`](AGENT-OPERATING-METHOD.md) **v2.0** — منهج محايد شامل: تحليل المتطلبات، هندسة السياق والتعليمات والأوامر، المعمارية، تقسيم العمل، تنظيم الكود، الاختبارات والتقييمات، الأمن، الصيانة، دورة حياة الوكيل، التحقق، والتسليم بالأدلة.
+- [`.agents/skills/evidence-led-agent-workflow/SKILL.md`](.agents/skills/evidence-led-agent-workflow/SKILL.md) **v2.0.0** — Skill محمولة ومتوافقة مع مواصفة Agent Skills لتفعيل المنهج الكامل دون تكرار المصدر الأساسي.
 - [`agent-skills-web-uiux/`](agent-skills-web-uiux/) — مكتبة البحث والتقرير العربي والمقتطفات والتدقيقات الخاصة بالـAgent Skills والتصميم وUI/UX والويب.
 - [`CLAUDE.md`](CLAUDE.md) و[`GEMINI.md`](GEMINI.md) و[تعليمات Copilot](.github/copilot-instructions.md) — ملفات اكتشاف خفيفة تشير إلى المصدر الأساسي دون إنشاء قواعد متعارضة.
-- [إيصال التحقق](docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md) — البحث، سلامة النسخة، validator، البوابات، commit، وdeployment.
+- [إيصال تحقق v2.0](docs/04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md) — البحث، المراجعة الشاملة، validator، البوابات، commit، وdeployment.
+- [إيصال الإصدار الأول](docs/04-delivery/AGENT-OPERATING-METHOD-VERIFICATION.md) — سجل التحقق التاريخي السابق.
 
 تكامل المنهج والمكتبة في commit `b225c5cb2508b4191b92ad43999de3ee6145f983` ونُشر عبر Vercel deployment `dpl_9QEhikhxnXoWj2rhCtypwK9AFZAD` بالحالة `READY`.
 
