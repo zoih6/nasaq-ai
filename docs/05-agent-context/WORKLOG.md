@@ -19,7 +19,16 @@
 - Added `motion-feedback.spec.ts`; the gate exposed and drove fixes for bottom-sheet viewport escape, scale-reduced touch targets, a shrinking topbar avatar, and stale completion timers.
 - Local results: check PASS; Vitest 4/4; 57-page build; audit 0; full Chromium 46/46; cross-browser U1/U1.1/U1.2 88 passed + 2 expected skips from 90.
 - Captured nine U1.2 visual states; every route returned 200 with zero document overflow and zero browser errors.
-- Production commit, push, deployment, and live smoke remain pending.
+
+## 2026-09-12 — U1.2 deployed and production-verified
+
+- Committed the U1.2 implementation as `89ed5294637ca455636496c9e3bc88a1a7a2ec22` and pushed it to GitHub `main`.
+- Verified matching Vercel deployment `dpl_HWsQ7JrCqrFZFQY4tbahjyfCwF39` reached `READY` and served <https://nasaq-ai.vercel.app>.
+- Ran the live U1.2 gate on Chromium, Firefox, and WebKit: **22 PASS + 2 expected forced-colors skips / 24**.
+- Ran the live U1/U1.1 Chromium regression across ten viewports and core flows: **22/22 PASS**.
+- The first WebKit reduced-motion run missed the deliberately brief working state because protocol round-trips exceeded its 760ms lifetime. Capturing the DOM state and computed animation styles inside one browser task removed that test race; the targeted rerun and complete live gate passed without a product-code change.
+- Restored three legacy evidence screenshots touched by the production regression so the final delivery update does not rewrite prior milestone evidence.
+- Updated the receipt, root README, and durable agent context. U1.2 is closed; U2 Service Depth is next.
 
 ## Prior stable milestone — U1.1
 

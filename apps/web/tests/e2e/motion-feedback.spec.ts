@@ -240,11 +240,27 @@ test("reduced motion removes spatial activity without removing feedback meaning"
   const tileDuration = await page.locator(".adaptive-service-tile").first().evaluate((element) => getComputedStyle(element).transitionDuration);
   expect(tileDuration).toMatch(/1e-05s|0\.00001s|0\.01ms/);
   await page.locator(".adaptive-task-composer textarea").fill("Help me plan a short learning path");
-  await page.locator(".adaptive-task-submit").click();
-  const working = page.locator('.adaptive-thinking[data-feedback-state="working"]');
-  await expect(working).toContainText("Explicit simulation");
-  await expect(working.locator(".u-feedback__icon svg")).toHaveCSS("animation-name", "none");
-  await expect(working.locator(".u-feedback__progress > i")).toHaveCSS("animation-name", "none");
+  // Capture the transient state in one browser task. Remote WebKit protocol
+  // round-trips can outlast the intentionally short 760ms simulation.
+  const workingSnapshot = await page.evaluate(async () => {
+    document.querySelector<HTMLButtonElement>(".adaptive-task-submit")?.click();
+    await new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve()));
+    const feedback = document.querySelector<HTMLElement>('.adaptive-thinking[data-feedback-state="working"]');
+    const icon = feedback?.querySelector<SVGElement>(".u-feedback__icon svg");
+    const progress = feedback?.querySelector<HTMLElement>(".u-feedback__progress > i");
+    if (!feedback || !icon || !progress) return null;
+    return {
+      text: feedback.textContent,
+      busy: feedback.getAttribute("aria-busy"),
+      iconAnimationName: getComputedStyle(icon).animationName,
+      progressAnimationName: getComputedStyle(progress).animationName,
+    };
+  });
+  expect(workingSnapshot).not.toBeNull();
+  expect(workingSnapshot?.text).toContain("Explicit simulation");
+  expect(workingSnapshot?.busy).toBe("true");
+  expect(workingSnapshot?.iconAnimationName).toBe("none");
+  expect(workingSnapshot?.progressAnimationName).toBe("none");
   await expect(page.locator('.adaptive-ready[data-feedback-state="success"]')).toContainText("Intent understood", { timeout: 8_000 });
 
   await page.goto("/en");

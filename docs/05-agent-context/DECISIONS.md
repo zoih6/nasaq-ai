@@ -35,3 +35,11 @@ Mobile dialogs and command sheets use opacity-only entrance/exit. Transforming t
 ## D-009 — Completion feedback does not vanish automatically
 
 The personalization completion toast remains until dismissed. This avoids a timing dependency, keeps the message available for cognitive and screen-reader review, and still provides an explicit 44px close control.
+
+## D-010 — Transient-state assertions stay inside one browser task
+
+When a deliberately short UI state must be verified, capture its DOM attributes and computed styles in one in-browser task rather than across several Playwright protocol round-trips. This keeps WebKit latency from outliving the state while preserving the product's short productive-motion timing; do not lengthen user-facing feedback merely to accommodate a test.
+
+## D-011 — U2 starts with a service-depth contract
+
+After closing U1.2, the next stage is U2 Service Depth. Define its service-by-service outcomes and acceptance gates before implementation. The stage remains Frontend-first and explicitly simulated unless a separately approved milestone introduces Backend or live providers.

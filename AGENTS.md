@@ -35,4 +35,4 @@ This repository is the source of truth for the Nasaq universal AI platform proto
 
 ## Current milestone
 
-U1.2 — Motion & Feedback Language. Its active specification, research, implementation status, and next steps live in `docs/05-agent-context/CURRENT-STATE.md` and `docs/02-design/MOTION-AND-FEEDBACK.md`.
+**U1.2 — Motion & Feedback Language is complete and verified in production.** Implementation commit: `89ed5294637ca455636496c9e3bc88a1a7a2ec22`; verified Vercel deployment: `dpl_HWsQ7JrCqrFZFQY4tbahjyfCwF39` (`READY`) on <https://nasaq-ai.vercel.app>. The next stage is **U2 — Service Depth**; define its contract and acceptance gates before implementation while preserving the Frontend-first, explicitly simulated scope. Current status and handoff details live in `docs/05-agent-context/CURRENT-STATE.md` and `docs/05-agent-context/HANDOFF.md`.

@@ -1,10 +1,10 @@
 # U1.2 — Motion & Feedback Verification
 
-_تاريخ التحقق المحلي: 2026-09-12 · حالة الإنتاج: بانتظار الدفع والنشر_
+_تاريخ التحقق المحلي والإنتاجي: 2026-09-12 · الحالة: مكتملة ومنشورة_
 
 ## القرار
 
-**U1.2 مكتملة وظيفيًا ومتحققة محليًا.** لغة الحركة وحالات التغذية الراجعة جاهزة للدفع إلى `main` ثم التحقق المباشر على Vercel. لا يتضمن هذا التسليم Backend أو مزودًا حقيقيًا؛ جميع حالات العمل محاكاة معلنة.
+**U1.2 مكتملة، مدفوعة إلى `main`، منشورة، ومتحققة على alias الإنتاج.** لا يتضمن هذا التسليم Backend أو مزودًا حقيقيًا؛ جميع حالات العمل محاكاة معلنة.
 
 ## ما تم تنفيذه
 
@@ -119,10 +119,28 @@ Axe WCAG 2.0/2.1/2.2 A/AA لم يجد مخالفات serious أو critical في 
 
 ## التحقق الإنتاجي
 
-يُستكمل بعد الدفع:
-
-- Commit التنفيذ: pending
-- Vercel deployment: pending
-- الحالة: pending
+- Commit التنفيذ: `89ed5294637ca455636496c9e3bc88a1a7a2ec22`
+- GitHub branch: `main`
+- Vercel deployment: `dpl_HWsQ7JrCqrFZFQY4tbahjyfCwF39`
+- الحالة: `READY`، دون `errorCode`
 - Production alias: <https://nasaq-ai.vercel.app>
-- Production smoke: pending
+- Aliases المؤكدة: `nasaq-ai.vercel.app`، `nasaq-ai-4zobir89-labs-projects.vercel.app`، `nasaq-ai-git-main-4zobir89-labs-projects.vercel.app`
+
+### بوابة U1.2 الحية
+
+شُغلت `motion-feedback.spec.ts` مباشرة على alias الإنتاج عبر المحركات الثلاثة:
+
+- Chromium: **8/8 PASS**.
+- Firefox: **7/7 PASS** + forced-colors skip متوقع.
+- WebKit: **7/7 PASS** + forced-colors skip متوقع.
+- الإجمالي: **22 PASS + 2 expected skips** من 24.
+
+### بوابة الانحدار الحية
+
+شُغلت `wave-one.spec.ts` و`responsive.spec.ts` مباشرة على alias الإنتاج في Chromium:
+
+- **22/22 PASS**.
+- عشرة viewports من `320×568` إلى `1920×1080`.
+- reflow مكافئ لـ200%، shell modes، 44px targets، bottom sheets، RTL/LTR، reduced motion، التدفقات الأساسية، وAxe.
+
+أول تشغيل بعيد كشف سباقًا في قياس حالة working القصيرة على WebKit: كان بروتوكول الاختبار ينهي round-trip بعد اكتمال محاكاة 760ms. ثُبت الاختبار بأخذ snapshot للحالة المؤقتة داخل browser task واحدة؛ أعيدت البوابة كاملة ونجحت **22 + 2 skips**. لم يتطلب ذلك تغييرًا في سلوك المنتج.
