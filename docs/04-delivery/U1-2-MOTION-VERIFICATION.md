@@ -148,3 +148,5 @@ Axe WCAG 2.0/2.1/2.2 A/AA لم يجد مخالفات serious أو critical في 
 ### تقوية contrast بعد التسليم
 
 كشف smoke لاحق متكرر أن Axe قد يفحص نتيجة workspace أثناء `opacity` entrance، فيرى ألوان النص والخلفية بعد compositing بنسبة `4.25–4.44:1` رغم أن الحالات الساكنة تمر. استُبدل لون الخطوة النشطة بـ`--service-deep`، وأزيل `opacity` من حاوية `universal-result-in` مع بقاء cue مكاني صغير ومسار reduced-motion. أضيف assertion للون الدلالي، وثُبت التقاط الحالة المؤقتة عبر WebKit بإشارة React فعلية وMutationObserver داخل المتصفح بدل سباق protocol. نجحت البوابة المحلية بعد الإصلاح: **20/20** للتدفق المستهدف، **8/8** على Chromium، **10/10** لتكرار reduced-motion على WebKit، و**22 pass + 2 expected skips** عبر المحركات، مع `npm run check` ناجح وaudit يساوي صفرًا.
+
+نُشر الإصلاح في commit `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4` عبر deployment `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx` (`READY`, بلا error code، والـproduction aliases مرتبطة). على alias النهائي نجح التكرار المستهدف **20/20**، ثم بوابة Chromium الكاملة للمستودع **46/46**، وأعاد المساران `/ar` و`/en` حالة HTTP **200**.

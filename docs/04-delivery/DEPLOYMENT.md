@@ -34,6 +34,13 @@ When backend integration begins, document each variable by name, owner, environm
 
 The Vercel project is connected to the GitHub repository. Pushes to `main` create production deployments; other branches create preview deployments, subject to the project’s Git settings.
 
+## Latest verified runtime
+
+- Runtime commit: `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4`
+- Production deployment: `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx` (`READY`, no error code, aliases attached)
+- Deployment URL: `nasaq-lh96arfda-4zobir89-labs-projects.vercel.app` (deployment protection may require account access; use the public alias for user-path checks)
+- Public alias verification: repeated service/Axe 20/20, complete Chromium repository suite 46/46, and HTTP 200 for `/ar` and `/en`
+
 ## Honest boundary
 
 Deployment publishes the verified frontend prototype. Authentication, persistence, real provider routing, databases, payments, uploads, and external effects remain intentionally unimplemented until their server-side security boundaries are reviewed.

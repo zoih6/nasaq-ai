@@ -32,8 +32,9 @@
 - Inspect any third-party script, hook, binary, dependency, network request, license, and current upstream version before use.
 - Use actual available tools and fresh evidence; if a capability is unavailable, state the resulting verification limit.
 - Post-delivery hardening: active output-step text uses `--service-deep`, and `universal-result-in` no longer animates parent opacity after repeated production Axe runs proved that compositing could temporarily reduce several descendants below 4.5:1. Final local follow-up: 20/20 targeted, Chromium 8/8, WebKit reduced-motion 10/10, and cross-browser 22 pass + 2 expected forced-colors skips.
+- Runtime hardening commit `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4` is deployed as `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx` (`READY`, no error, production aliases attached). Final alias gates passed: targeted service/Axe 20/20, full Chromium repository suite 46/46, and HTTP 200 on `/ar` and `/en`.
 
-Before U2, the next operator must push the final parent-opacity hardening and close its production evidence: matching Vercel deployment `READY`, repeated service-flow/Axe PASS, complete Chromium motion-gate PASS, `/ar` and `/en` HTTP PASS, and clean synchronized Git state. Then begin **U2 — Service Depth** by writing the stage contract and acceptance matrix before implementation. Keep it goal-first, bilingual, RTL/LTR-equivalent, accessible, responsive, and Frontend-first. Existing interactions remain explicit simulations; do not imply live provider or backend execution.
+After confirming the documentation closure commit and its docs-only deployment are healthy, begin **U2 — Service Depth** by writing the stage contract and acceptance matrix before implementation. Keep it goal-first, bilingual, RTL/LTR-equivalent, accessible, responsive, and Frontend-first. Existing interactions remain explicit simulations; do not imply live provider or backend execution.
 
 ## Verified U1.2 targets
 

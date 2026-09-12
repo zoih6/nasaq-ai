@@ -56,10 +56,11 @@ The next product stage is **U2 — Service Depth**. Before changing product code
 - Canonical receipt: `docs/04-delivery/U1-2-MOTION-VERIFICATION.md`.
 - Evidence: `docs/04-delivery/evidence/u1-2/`.
 - A later final-alias smoke exposed timing-sensitive Axe contrast failures during the text-rich result's parent-opacity entrance. The active step now uses `--service-deep` on `--service-soft`, and `universal-result-in` no longer fades the parent; it retains only the small spatial cue with the existing reduced-motion override. Final local follow-up passed `npm run check`, audit 0, a 20/20 repeated targeted flow, Chromium 8/8, WebKit reduced-motion 10/10, and cross-browser 22 pass + 2 expected forced-colors skips.
+- Final runtime commit `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4` is on GitHub `main`; matching deployment `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx` is `READY` with no error and all production aliases. Final-alias verification passed targeted service/Axe 20/20, the complete Chromium repository suite 46/46, and HTTP 200 for `/ar` and `/en`.
 
 ## Immediate next action
 
-Push the final parent-opacity hardening, wait for the matching Vercel deployment to reach `READY`, then run repeated production service-flow/Axe checks, the complete Chromium motion gate, HTTP checks for `/ar` and `/en`, and local/remote cleanliness checks. Do not declare closure from deployment state alone. Only after all production evidence passes should U2 discovery and specification begin.
+Begin U2 discovery and specification only after confirming this documentation closure commit is synchronized and its docs-only deployment is healthy. Apply `AGENT-OPERATING-METHOD.md`: inspect current context, trigger source research where needed, select only relevant audited skills, define an acceptance/evidence matrix, and do not broaden scope into Backend/providers without an explicit approved milestone.
 
 ## Secrets
 

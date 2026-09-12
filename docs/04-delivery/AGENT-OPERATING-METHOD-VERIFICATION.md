@@ -111,6 +111,7 @@ The documentation delivery deployment `dpl_HSWoMDhbXHHt7T6u6huRtHRbEPLY` reached
 4. Hardening commit `0b07c4a70dbf0b3103daba1b8d24a1e806554497` deployed as `dpl_HmfRwMycXAXA8zqCeNzyerX4eXqk` (`READY`). Its production eight-run gate passed 7/8: the active step remained fixed, but one unusually early scan caught four other descendants at 4.36–4.44:1.
 5. The broader root cause was therefore the shared parent `opacity` entrance, which temporarily composites every foreground/background pair toward the outer surface. The final fix removes opacity from `universal-result-in` while retaining the small translate/scale orientation cue and the existing reduced-motion equivalent path.
 6. Final local evidence after the complete fix: `npm run check` **PASS**, audit **0**, targeted production-shape repetition **20/20 PASS**, complete Chromium gate **8/8 PASS**, WebKit reduced-motion repetition **10/10 PASS**, and the cross-browser motion/feedback gate **22 PASS + 2 expected forced-colors skips**.
+7. Final runtime commit `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4` deployed as `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx`: `READY`, `errorCode: null`, production aliases attached. On `https://nasaq-ai.vercel.app`, the repeated service/Axe gate passed **20/20**, the complete Chromium repository suite passed **46/46**, and `/ar` plus `/en` each returned HTTP **200**.
 
 This follow-up demonstrates the operating method's evidence rule: neither a `READY` deployment nor one passing rerun was treated as proof. The issue was reproduced repeatedly, the first hypothesis was tested rather than defended, and the full parent-level root cause was corrected instead of hidden with retries or an Axe exclusion.
 
@@ -123,6 +124,8 @@ This follow-up demonstrates the operating method's evidence rule: neither a `REA
 - Deployment URL: <https://nasaq-5674bef32-4zobir89-labs-projects.vercel.app>.
 - Production alias: <https://nasaq-ai.vercel.app>.
 - Confirmed aliases: `nasaq-ai.vercel.app`, `nasaq-ai-4zobir89-labs-projects.vercel.app`, and `nasaq-ai-git-main-4zobir89-labs-projects.vercel.app`.
+- Accessibility follow-up runtime commit: `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4`.
+- Matching production deployment: `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx`, URL `nasaq-lh96arfda-4zobir89-labs-projects.vercel.app`, `READY`, no error code, with all three production aliases attached.
 
 ## Security and trust statement
 

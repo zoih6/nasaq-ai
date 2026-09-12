@@ -47,6 +47,7 @@
 - First hardening used the semantic `--service-deep` token for the active output step (6.47:1 for research; 6.32–7.85:1 across service deep/soft pairs) and added a computed-token assertion. Local 12/12 + 5/5 targeted and 8/8 full gates passed; commit `0b07c4a70dbf0b3103daba1b8d24a1e806554497` deployed as `dpl_HmfRwMycXAXA8zqCeNzyerX4eXqk` (`READY`).
 - An eight-run production repetition on that build passed 7/8: the active step remained fixed, but an earlier scan caught four other descendants blended below 4.5:1. This disproved the narrow hypothesis and located the full cause at the shared parent-opacity entrance.
 - Removed opacity from `universal-result-in` while retaining the 6px/.99 spatial cue and reduced-motion path. Replaced the remaining WebKit transient-state race with a browser-local MutationObserver after a React-confirmed starter selection. Final local evidence: `npm run check` PASS, audit 0, targeted repetition 20/20 PASS, Chromium 8/8, WebKit reduced-motion repetition 10/10, and cross-browser 22 pass + 2 expected forced-colors skips.
+- Pushed final runtime hardening as `7f9f9eeba5f15054b03acd9cf4bcbeea03b41dc4`; matching deployment `dpl_HuFbb7afzkjRUQrsE9PhZMSNLiCx` reached `READY` with no error and all production aliases. Final-alias evidence: targeted service/Axe **20/20**, complete Chromium repository suite **46/46**, and HTTP **200** for `/ar` and `/en`.
 
 ## Prior stable milestone — U1.1
 
