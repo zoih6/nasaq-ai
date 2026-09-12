@@ -17,6 +17,7 @@ import {
   GraduationCap,
   Image as ImageIcon,
   LayoutGrid,
+  LoaderCircle,
   MessageCircle,
   Mic,
   Palette,
@@ -29,6 +30,7 @@ import {
   WandSparkles,
 } from "lucide-react";
 import type { Locale } from "@nasaq/contracts";
+import { ActivityFeedback } from "@/components/universal/activity-feedback";
 import { getUniversalService, type UniversalServiceId } from "@/lib/universal-content";
 
 const serviceIcons = {
@@ -67,8 +69,9 @@ export function ServiceWorkspace({ locale, serviceId }: { locale: Locale; servic
   const isArabic = locale === "ar";
   const [prompt, setPrompt] = useState("");
   const [mode, setMode] = useState<"guided" | "fast">("guided");
-  const [status, setStatus] = useState<"idle" | "working" | "ready">("idle");
+  const [status, setStatus] = useState<"idle" | "working" | "ready" | "error">("idle");
   const timerRef = useRef<number | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const tools = isArabic ? serviceTools[serviceId] : serviceToolsEn[serviceId];
 
   const copy = isArabic
@@ -85,6 +88,13 @@ export function ServiceWorkspace({ locale, serviceId }: { locale: Locale; servic
         attach: "أضف ملفًا أو صورة",
         voice: "إدخال صوتي",
         working: "نَسَق يجهّز المساحة المناسبة…",
+        workingShort: "جارٍ التهيئة",
+        simulation: "محاكاة واضحة",
+        progress: "تهيئة أدوات المساحة",
+        validationLabel: "الطلب غير مكتمل",
+        validationTitle: "أضف مقصدك قبل البدء",
+        validationBody: "اكتب طلبًا قصيرًا أو اختر بداية سريعة أدناه، ثم أعد المحاولة.",
+        returnToPrompt: "العودة إلى الطلب",
         ready: "المساحة جاهزة",
         openOutput: "افتح المخرج",
         restart: "ابدأ من جديد",
@@ -112,6 +122,13 @@ export function ServiceWorkspace({ locale, serviceId }: { locale: Locale; servic
         attach: "Add a file or image",
         voice: "Voice input",
         working: "Nasaq is preparing the right space…",
+        workingShort: "Preparing",
+        simulation: "Explicit simulation",
+        progress: "Preparing workspace tools",
+        validationLabel: "Your request is incomplete",
+        validationTitle: "Add your intent before starting",
+        validationBody: "Write a short request or choose a quick start below, then try again.",
+        returnToPrompt: "Return to my request",
         ready: "Your space is ready",
         openOutput: "Open output",
         restart: "Start again",
@@ -131,13 +148,29 @@ export function ServiceWorkspace({ locale, serviceId }: { locale: Locale; servic
     if (timerRef.current !== null) window.clearTimeout(timerRef.current);
   }, []);
 
+  function cancelPendingRun() {
+    if (timerRef.current !== null) {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }
+
   function start() {
-    if (timerRef.current !== null) window.clearTimeout(timerRef.current);
+    cancelPendingRun();
+    if (!prompt.trim()) {
+      setStatus("error");
+      window.requestAnimationFrame(() => textareaRef.current?.focus());
+      return;
+    }
     setStatus("working");
-    timerRef.current = window.setTimeout(() => setStatus("ready"), 720);
+    timerRef.current = window.setTimeout(() => {
+      timerRef.current = null;
+      setStatus("ready");
+    }, 820);
   }
 
   function reset() {
+    cancelPendingRun();
     setPrompt("");
     setStatus("idle");
   }
@@ -174,16 +207,17 @@ export function ServiceWorkspace({ locale, serviceId }: { locale: Locale; servic
           <div className="service-prompt-area">
             <span className="service-prompt-area__orb"><Icon size={24} /></span>
             <div><small>{service.eyebrow}</small><h2>{copy.title}</h2></div>
-            <textarea rows={5} value={prompt} onChange={(event) => { setPrompt(event.target.value); setStatus("idle"); }} placeholder={service.prompt} aria-label={service.prompt} />
+            <textarea ref={textareaRef} rows={5} value={prompt} onChange={(event) => { cancelPendingRun(); setPrompt(event.target.value); setStatus("idle"); }} placeholder={service.prompt} aria-label={service.prompt} aria-invalid={status === "error"} aria-describedby={status === "error" ? "service-request-error" : undefined} />
             <div className="service-prompt-area__bottom">
               <div><button type="button" aria-label={copy.attach}><Paperclip size={17} />{copy.attach}</button><button type="button" aria-label={copy.voice}><Mic size={17} />{copy.voice}</button></div>
-              <button type="button" className="service-start-button" onClick={start}>{copy.start}<ArrowUp size={17} /></button>
+              <button type="button" className="service-start-button" onClick={start} disabled={status === "working"} data-loading={status === "working"}>{status === "working" ? copy.workingShort : copy.start}{status === "working" ? <LoaderCircle size={17} /> : <ArrowUp size={17} />}</button>
             </div>
           </div>
 
-          {status === "working" ? <div className="service-working" role="status"><span><i /><i /><i /></span><strong>{copy.working}</strong><small>{tools.join(" · ")}</small></div> : null}
+          {status === "working" ? <ActivityFeedback state="working" className="service-working" label={copy.simulation} title={copy.working} description={tools.join(" · ")} progressLabel={copy.progress} /> : null}
+          {status === "error" ? <ActivityFeedback id="service-request-error" state="error" label={copy.validationLabel} title={copy.validationTitle} description={copy.validationBody} action={<button type="button" onClick={() => textareaRef.current?.focus()}>{copy.returnToPrompt}</button>} /> : null}
           {status === "ready" ? (
-            <article className="service-output" aria-live="polite">
+            <article className="service-output" role="status" aria-live="polite" aria-atomic="true" data-feedback-state="success">
               <header><span><Check size={18} /></span><div><small>{copy.ready}</small><h2>{service.outputTitle}</h2></div><button type="button" onClick={reset}>{copy.restart}</button></header>
               <div className="service-output__canvas">
                 <aside>{copy.sampleSections.map((item, index) => <button type="button" className={index === 0 ? "is-active" : ""} key={item}><span>{index + 1}</span>{item}</button>)}</aside>
@@ -200,11 +234,11 @@ export function ServiceWorkspace({ locale, serviceId }: { locale: Locale; servic
         </aside>
       </section>
 
-      {status === "idle" ? (
+      {status === "idle" || status === "error" ? (
         <section className="service-lower-grid">
           <div>
             <header><span>{copy.templates}</span><p>{copy.templatesBody}</p></header>
-            <div className="service-template-grid">{templates.map(({ title, icon: TemplateIcon }) => <button type="button" onClick={() => setPrompt(title)} key={title}><span><TemplateIcon size={18} /></span><strong>{title}</strong><ArrowLeft size={14} /></button>)}</div>
+            <div className="service-template-grid">{templates.map(({ title, icon: TemplateIcon }) => <button type="button" onClick={() => { cancelPendingRun(); setPrompt(title); setStatus("idle"); }} key={title}><span><TemplateIcon size={18} /></span><strong>{title}</strong><ArrowLeft size={14} /></button>)}</div>
           </div>
           <div>
             <header><span>{copy.recent}</span><p>{copy.recentBody}</p></header>

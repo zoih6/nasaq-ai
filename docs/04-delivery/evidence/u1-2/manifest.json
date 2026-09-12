@@ -1,0 +1,141 @@
+{
+  "milestone": "U1.2 Motion & Feedback Language",
+  "generatedAt": "2026-09-12T02:28:11.299Z",
+  "source": "local optimized Next.js production build",
+  "browser": "153.0.8010.12",
+  "motionTokens": {
+    "--u-motion-duration-instant": "80ms",
+    "--u-motion-duration-fast": ".12s",
+    "--u-motion-duration-moderate": ".18s",
+    "--u-motion-duration-slow": ".26s",
+    "--u-motion-duration-expressive": ".42s",
+    "--u-motion-duration-progress": ".76s",
+    "--u-motion-duration-activity-cycle": ".9s",
+    "--u-motion-ease-standard": "cubic-bezier(.2,0,.38,.9)",
+    "--u-motion-ease-enter": "cubic-bezier(0,0,.38,.9)",
+    "--u-motion-ease-exit": "cubic-bezier(.2,0,1,.9)",
+    "--u-motion-distance-lg": "16px"
+  },
+  "records": [
+    {
+      "name": "marketing-ready-ar",
+      "route": "/ar",
+      "state": "success",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200
+    },
+    {
+      "name": "home-validation-ar",
+      "route": "/ar/app/home",
+      "state": "error",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200,
+      "focusedElement": "TEXTAREA"
+    },
+    {
+      "name": "home-ready-ar",
+      "route": "/ar/app/home",
+      "state": "success",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200
+    },
+    {
+      "name": "service-working-en",
+      "route": "/en/app/research",
+      "state": "working",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200
+    },
+    {
+      "name": "service-ready-en",
+      "route": "/en/app/research",
+      "state": "success",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200
+    },
+    {
+      "name": "library-empty-en",
+      "route": "/en/app/library",
+      "state": "empty-with-recovery",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200
+    },
+    {
+      "name": "dialog-mobile-ar",
+      "route": "/ar/app/home",
+      "state": "mobile-dialog-open",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200,
+      "dialogBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 390,
+        "height": 832
+      }
+    },
+    {
+      "name": "reduced-motion-working-en",
+      "route": "/en/app/home",
+      "state": "working-reduced-motion",
+      "viewport": {
+        "width": 820,
+        "height": 1000
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200,
+      "reducedStyles": {
+        "feedbackAnimationDuration": "1e-05s",
+        "iconAnimationName": "none",
+        "progressAnimationName": "none"
+      }
+    },
+    {
+      "name": "personalization-toast-ar",
+      "route": "/ar/app/home",
+      "state": "persistent-completion",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "browserErrors": [],
+      "httpStatus": 200
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # نَسَق — منصة ذكاء اصطناعي تتكيف معك
 
-> **الحالة:** Universal Experience U1.1 — صقل responsive والتفاعل مكتمل ومتحقق عبر ثلاثة محركات
+> **الحالة:** Universal Experience U1.2 — لغة الحركة والتغذية الراجعة مكتملة ومتحققة محليًا؛ النشر الإنتاجي قيد التسليم
 >
 > **المنتج:** منصة عربية/إنجليزية للتعلّم والبحث والصناعة والبرمجة والتحليل والاستكشاف
 >
@@ -62,6 +62,18 @@
 - RTL/LTR كاملان، و`prefers-reduced-motion` وhigh contrast وforced colors.
 - CSS مقسم حسب المسؤولية إلى foundations وmarketing وshell وhome وworkspaces وlibrary وresponsive.
 
+### لغة U1.2 للحركة والتغذية الراجعة
+
+- motion tokens مركزية للمدة، easing، المسافة، الدخول، الخروج، progress، ودورة النشاط.
+- حركة وظيفية قصيرة للضغط والتبويبات والتنقل والبطاقات وroute changes، دون bounce أو parallax.
+- دخول وخروج منضبط للقوائم وdrawer وnotifications وcommand palette والحوارات وbottom sheets.
+- حالات مشتركة وواضحة لـvalidation/error، working/progress، success/completion، empty، وrecovery.
+- المؤلف ومساحات الخدمات تلغي timer القديم عند تعديل الطلب، فلا تصل نتيجة stale خارج سياقها.
+- toast حفظ التخصيص ثابت حتى يغلقه المستخدم، وLibrary تقدم مسح البحث والتصفية بنقرة واحدة.
+- أزيلت الحلقات الزخرفية المفتوحة؛ الحركة الدورية الوحيدة مؤشر صغير أثناء busy الفعلي.
+- `prefers-reduced-motion` يزيل الحركة المكانية والنشاط البصري غير الضروري مع بقاء النص والدلالة والوظيفة.
+- forced colors، keyboard، screen-reader semantics، RTL/LTR، responsive، وثلاثة محركات ضمن بوابة الاختبار.
+
 ## التشغيل المحلي
 
 المتطلبات: Node.js `>=20.9.0` وnpm `11.6.4`.
@@ -82,32 +94,32 @@ npx -y npm@11.6.4 run test:e2e:cross-browser
 npx -y npm@11.6.4 audit --audit-level=moderate
 ```
 
-نتيجة U1.1 المحلية والإنتاجية في 2026-09-12:
+نتيجة U1.2 المحلية في 2026-09-12، مع بقاء baseline الإنتاجي لـU1.1 حتى اكتمال النشر:
 
 - ESLint: ناجح دون warnings.
 - TypeScript strict عبر workspaces: ناجح.
 - Vitest: **4/4**.
-- Playwright الكامل على Chromium: **38/38**.
-- مصفوفة U1.1 وU1 الأساسية على Chromium وFirefox وWebKit: **66/66**.
-- بوابة U1/U1.1 مباشرة على إنتاج Vercel: **22/22**.
+- Playwright الكامل على Chromium: **46/46**.
+- مصفوفة U1 وU1.1 وU1.2 على Chromium وFirefox وWebKit: **88 ناجحًا + تجاوزان متوقعان** لاختبار forced-colors خارج Chromium، من أصل 90.
 - Production build: ناجح؛ **57 static pages** مع detail routes الديناميكية.
 - Axe WCAG 2.0/2.1/2.2 A/AA: بلا مخالفات serious أو critical في بوابة Chromium/Firefox.
 - عشرة أحجام أساسية، وإعادة تدفق مكافئة لتكبير `200%`: بلا document-level horizontal overflow.
-- سبع لقطات تسليم نهائية: HTTP `200`، أخطاء console/page تساوي `0`، وoverflow أفقي يساوي `0`.
-- npm audit: 0 vulnerabilities في آخر بوابة U1؛ يعاد تشغيله عند كل تحديث للاعتمادات.
+- تسع حالات مرئية لـU1.2: HTTP `200`، أخطاء console/page تساوي `0`، وoverflow أفقي يساوي `0`.
+- npm audit: **0 vulnerabilities**.
+- بوابة U1/U1.1 على آخر إنتاج Vercel: **22/22**؛ يضاف تحقق U1.2 بعد النشر الحالي.
 
-تفاصيل التحقق والأدلة: [U1.1 Responsive Verification](docs/04-delivery/U1-1-RESPONSIVE-VERIFICATION.md).
+تفاصيل U1.2 والأدلة: [U1.2 Motion & Feedback Verification](docs/04-delivery/U1-2-MOTION-VERIFICATION.md). baseline السابق: [U1.1 Responsive Verification](docs/04-delivery/U1-1-RESPONSIVE-VERIFICATION.md).
 
 ## الهيكلة
 
 ```text
 nasaq-ai/
 ├── apps/web/
-│   ├── components/universal/       ← Universal Experience U1
+│   ├── components/universal/       ← التجربة + feedback primitives
 │   ├── components/app-shell/       ← التنقل المتكيف الجديد
 │   ├── lib/universal-content.ts    ← خدمات ومحتوى عربي/إنجليزي
 │   ├── app/universal.css           ← entrypoint مرتب لنظام الواجهة
-│   └── app/styles/universal/       ← وحدات Luminous Adaptive System
+│   └── app/styles/universal/       ← Luminous System + motion layer
 ├── packages/
 │   ├── contracts/
 │   ├── i18n/
@@ -118,9 +130,10 @@ nasaq-ai/
     ├── 01-product/
     ├── 02-design/
     ├── 03-architecture/
-    └── 04-delivery/
+    ├── 04-delivery/
+    └── 05-agent-context/
 ```
 
 ## المرحلة التالية
 
-**U1.2 Motion & Feedback Language** هي الخطوة التالية المعتمدة: لغة حركة وظيفية، انتقالات وحالات loading/success/error متسقة، مع بقاء reduced motion مسارًا كاملًا. لا تبدأ U2 قبل إغلاق U1.2. بعد ذلك تعمّق U2 كل خدمة: تشخيص ومستويات للتعلّم، خطة ومصادر للبحث، محرر للصناعة، ملفات ومعاينة للبرمجة، جداول ورسوم للتحليل، وخرائط معرفة للاستكشاف.
+إغلاق U1.2 إنتاجيًا هو الخطوة الفورية: commit، push إلى `main`، انتظار Vercel `READY`، ثم smoke مباشر على alias الإنتاج. بعد ذلك تبدأ **U2 Service Depth** لتطوير كل خدمة: تشخيص ومستويات للتعلّم، خطة ومصادر للبحث، محرر للصناعة، ملفات ومعاينة للبرمجة، جداول ورسوم للتحليل، وخرائط معرفة للاستكشاف.

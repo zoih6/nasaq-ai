@@ -15,6 +15,7 @@ import {
   FileText,
   GraduationCap,
   Image as ImageIcon,
+  LoaderCircle,
   MessageCircle,
   Mic,
   Palette,
@@ -23,10 +24,10 @@ import {
   SearchCheck,
   SlidersHorizontal,
   Sparkles,
-  WandSparkles,
   X,
 } from "lucide-react";
 import type { Locale } from "@nasaq/contracts";
+import { ActivityFeedback, FeedbackToast } from "@/components/universal/activity-feedback";
 import { universalServices, type UniversalServiceId } from "@/lib/universal-content";
 
 const serviceIcons = {
@@ -46,11 +47,13 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
   const isArabic = locale === "ar";
   const [activeId, setActiveId] = useState<UniversalServiceId>("ask");
   const [prompt, setPrompt] = useState("");
-  const [runState, setRunState] = useState<"idle" | "thinking" | "ready">("idle");
+  const [runState, setRunState] = useState<"idle" | "thinking" | "ready" | "error">("idle");
+  const [toast, setToast] = useState("");
   const [goals, setGoals] = useState<UniversalServiceId[]>(defaultGoals);
   const [draftGoals, setDraftGoals] = useState<UniversalServiceId[]>(defaultGoals);
   const [personalizeOpen, setPersonalizeOpen] = useState(false);
   const timerRef = useRef<number | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const active = services.find((service) => service.id === activeId) ?? services[0]!;
   const ActiveIcon = serviceIcons[active.id];
 
@@ -66,6 +69,13 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
         attach: "إرفاق ملف",
         voice: "تحدث",
         preparing: "نَسَق يحدد أفضل مسار…",
+        preparingShort: "جارٍ التهيئة",
+        simulation: "محاكاة واضحة",
+        progress: "تهيئة مساحة المهمة",
+        validationLabel: "الطلب يحتاج توضيحًا",
+        validationTitle: "اكتب ما تريد إنجازه أولًا",
+        validationBody: "اكتب طلبًا قصيرًا أو اختر واحدة من البدايات المقترحة، ثم حاول مجددًا.",
+        returnToPrompt: "اكتب الطلب",
         understood: "تم فهم مقصدك",
         open: "افتح المساحة",
         clear: "ابدأ فكرة أخرى",
@@ -87,6 +97,8 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
         save: "احفظ تجربتي",
         personal: "مساحة شخصية",
         privacy: "تفضيلاتك محلية في هذا النموذج ولا تُرسل لأي مزود.",
+        goalsSaved: "تم تحديث أهدافك محليًا وترتيب المساحات وفقها.",
+        dismissFeedback: "إغلاق رسالة التأكيد",
       }
     : {
         eyebrow: "Your space today",
@@ -99,6 +111,13 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
         attach: "Attach a file",
         voice: "Talk",
         preparing: "Nasaq is finding the best path…",
+        preparingShort: "Preparing",
+        simulation: "Explicit simulation",
+        progress: "Preparing the task space",
+        validationLabel: "Your request needs a little more detail",
+        validationTitle: "Write what you want to accomplish first",
+        validationBody: "Enter a short request or choose a suggested starting point, then try again.",
+        returnToPrompt: "Write my request",
         understood: "Intent understood",
         open: "Open the space",
         clear: "Start another idea",
@@ -120,6 +139,8 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
         save: "Save my experience",
         personal: "Personal space",
         privacy: "Your choices stay local in this prototype and are not sent to a provider.",
+        goalsSaved: "Your goals were updated locally and the spaces were reordered around them.",
+        dismissFeedback: "Dismiss confirmation",
       };
 
   useEffect(() => {
@@ -143,16 +164,32 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
     if (timerRef.current !== null) window.clearTimeout(timerRef.current);
   }, []);
 
+  function cancelPendingRun() {
+    if (timerRef.current !== null) {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }
+
   function chooseService(id: UniversalServiceId) {
+    cancelPendingRun();
     setActiveId(id);
     setPrompt("");
     setRunState("idle");
   }
 
   function startTask() {
-    if (timerRef.current !== null) window.clearTimeout(timerRef.current);
+    cancelPendingRun();
+    if (!prompt.trim()) {
+      setRunState("error");
+      window.requestAnimationFrame(() => textareaRef.current?.focus());
+      return;
+    }
     setRunState("thinking");
-    timerRef.current = window.setTimeout(() => setRunState("ready"), 650);
+    timerRef.current = window.setTimeout(() => {
+      timerRef.current = null;
+      setRunState("ready");
+    }, 760);
   }
 
   function toggleDraftGoal(id: UniversalServiceId) {
@@ -164,6 +201,7 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
     setGoals(next);
     window.localStorage.setItem("nasaq.universal.goals", JSON.stringify(next));
     setPersonalizeOpen(false);
+    setToast(copy.goalsSaved);
   }
 
   const goalServices = goals.map((id) => services.find((service) => service.id === id)).filter((service): service is NonNullable<typeof service> => Boolean(service));
@@ -210,23 +248,27 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
             </div>
             <div className="adaptive-task-composer">
               <div className="adaptive-task-composer__icon"><ActiveIcon size={22} /></div>
-              <textarea rows={3} value={prompt} onChange={(event) => { setPrompt(event.target.value); setRunState("idle"); }} placeholder={active.prompt} aria-label={active.prompt} />
+              <textarea ref={textareaRef} rows={3} value={prompt} onChange={(event) => { cancelPendingRun(); setPrompt(event.target.value); setRunState("idle"); }} placeholder={active.prompt} aria-label={active.prompt} aria-invalid={runState === "error"} aria-describedby={runState === "error" ? "adaptive-task-error" : undefined} />
               <div className="adaptive-task-composer__actions">
                 <div><button type="button" title={copy.attach} aria-label={copy.attach}><Paperclip size={18} /></button><button type="button" title={copy.voice} aria-label={copy.voice}><Mic size={18} /></button><span>{active.eyebrow}</span></div>
-                <button type="button" className="adaptive-task-submit" onClick={startTask}><span>{copy.start}</span><ArrowUp size={18} /></button>
+                <button type="button" className="adaptive-task-submit" onClick={startTask} disabled={runState === "thinking"} data-loading={runState === "thinking"}><span>{runState === "thinking" ? copy.preparingShort : copy.start}</span>{runState === "thinking" ? <LoaderCircle size={18} /> : <ArrowUp size={18} />}</button>
               </div>
             </div>
-            {runState === "thinking" ? <div className="adaptive-thinking" role="status"><span><i /><i /><i /></span>{copy.preparing}</div> : null}
+            {runState === "thinking" ? <ActivityFeedback state="working" className="adaptive-thinking" label={copy.simulation} title={copy.preparing} description={active.eyebrow} progressLabel={copy.progress} /> : null}
             {runState === "ready" ? (
-              <div className="adaptive-ready" role="status">
-                <span className="adaptive-ready__icon"><WandSparkles size={19} /></span>
-                <div><small>{copy.understood} · {active.eyebrow}</small><strong>{active.outputTitle}</strong><p>{active.outputBody}</p></div>
-                <div><Link href={`/${locale}/app/${active.slug}`}>{copy.open}<ArrowLeft size={15} /></Link><button type="button" onClick={() => { setPrompt(""); setRunState("idle"); }}>{copy.clear}</button></div>
-              </div>
+              <ActivityFeedback
+                state="success"
+                className="adaptive-ready"
+                label={`${copy.understood} · ${active.eyebrow}`}
+                title={active.outputTitle}
+                description={active.outputBody}
+                action={<><Link href={`/${locale}/app/${active.slug}`}>{copy.open}<ArrowLeft size={15} /></Link><button type="button" onClick={() => { cancelPendingRun(); setPrompt(""); setRunState("idle"); }}>{copy.clear}</button></>}
+              />
             ) : null}
+            {runState === "error" ? <ActivityFeedback id="adaptive-task-error" state="error" label={copy.validationLabel} title={copy.validationTitle} description={copy.validationBody} action={<button type="button" onClick={() => textareaRef.current?.focus()}>{copy.returnToPrompt}</button>} /> : null}
             {runState === "idle" ? (
               <div className="adaptive-starters">
-                {active.starters.map((starter) => <button type="button" onClick={() => setPrompt(starter)} key={starter}>{starter}<ArrowLeft size={13} /></button>)}
+                {active.starters.map((starter) => <button type="button" onClick={() => { setPrompt(starter); setRunState("idle"); }} key={starter}>{starter}<ArrowLeft size={13} /></button>)}
               </div>
             ) : null}
           </div>
@@ -294,6 +336,7 @@ export function AdaptiveHome({ locale }: { locale: Locale }) {
           <div className="adaptive-dialog__actions"><Dialog.Close asChild><button type="button" className="adaptive-dialog__cancel">{copy.cancel}</button></Dialog.Close><button type="button" className="adaptive-dialog__save" onClick={saveGoals}>{copy.save}<ArrowLeft size={15} /></button></div>
         </Dialog.Content>
       </Dialog.Portal>
+      {toast ? <FeedbackToast message={toast} closeLabel={copy.dismissFeedback} onDismiss={() => setToast("")} /> : null}
     </Dialog.Root>
   );
 }

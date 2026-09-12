@@ -42,10 +42,8 @@
 .adaptive-starters { padding: 8px 3px 2px; display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
 .adaptive-starters button { min-height: 50px; padding: 9px 11px; display: flex; align-items: center; justify-content: space-between; gap: 6px; border: 1px solid transparent; border-radius: 9px; color: var(--u-muted); background: #f8f8fc; text-align: start; font-size: 14px; cursor: pointer; }
 .adaptive-starters button:hover { border-color: rgba(var(--service-rgb),.18); color: var(--service); background: var(--service-soft); }
-.adaptive-thinking { min-height: 52px; margin: 8px 3px 2px; padding-inline: 13px; display: flex; align-items: center; gap: 10px; border-radius: 12px; color: var(--service); background: var(--service-soft); font-size: 15px; font-weight: 650; }
-.adaptive-thinking > span { display: flex; gap: 3px; }.adaptive-thinking i { width: 5px; height: 5px; border-radius: 50%; background: var(--service); animation: adaptive-dot 800ms ease-in-out infinite alternate; }.adaptive-thinking i:nth-child(2) { animation-delay: 160ms; }.adaptive-thinking i:nth-child(3) { animation-delay: 320ms; }
-@keyframes adaptive-dot { to { opacity: .25; transform: translateY(-3px); } }
-.adaptive-ready { margin: 8px 3px 2px; padding: 12px; display: grid; grid-template-columns: 38px minmax(0,1fr) auto; align-items: center; gap: 10px; border: 1px solid rgba(var(--service-rgb),.18); border-radius: 13px; background: linear-gradient(135deg,var(--service-soft),white); animation: universal-result-in 240ms ease; }
+
+.adaptive-ready { margin: 8px 3px 2px; padding: 12px; display: grid; grid-template-columns: 38px minmax(0,1fr) auto; align-items: center; gap: 10px; border: 1px solid rgba(var(--service-rgb),.18); border-radius: 13px; background: linear-gradient(135deg,var(--service-soft),white); animation: universal-result-in var(--u-motion-duration-slow) var(--u-motion-ease-enter); }
 .adaptive-ready__icon { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 11px; color: var(--service); background: white; box-shadow: var(--u-shadow-sm); }
 .adaptive-ready small, .adaptive-ready strong { display: block; }.adaptive-ready small { color: var(--service); font-size: 14px; }.adaptive-ready strong { margin-block-start: 2px; font-size: 14px; }.adaptive-ready p { margin: 2px 0 0; color: var(--u-muted); font-size: 14px; }
 .adaptive-ready > div:last-child { display: grid; gap: 4px; }
@@ -58,7 +56,7 @@
 .adaptive-section__head p { margin: 5px 0 0; color: var(--u-muted); font-size: 15px; }
 .adaptive-section__head > a { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; color: var(--u-primary); text-decoration: none; font-size: 15px; font-weight: 650; }
 .adaptive-service-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
-.adaptive-service-tile { min-width: 0; min-height: 270px; padding: 20px; display: flex; flex-direction: column; border: 1px solid var(--u-line); border-radius: 18px; color: var(--u-ink); background: white; text-decoration: none; box-shadow: 0 3px 13px rgba(47,49,80,.03); transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.adaptive-service-tile { min-width: 0; min-height: 270px; padding: 20px; display: flex; flex-direction: column; border: 1px solid var(--u-line); border-radius: 18px; color: var(--u-ink); background: white; text-decoration: none; box-shadow: 0 3px 13px rgba(47,49,80,.03); transition: transform var(--u-motion-duration-moderate) var(--u-motion-ease-standard), box-shadow var(--u-motion-duration-moderate) var(--u-motion-ease-standard), border-color var(--u-motion-duration-moderate) var(--u-motion-ease-standard); }
 .adaptive-service-tile:hover { transform: translateY(-3px); border-color: rgba(var(--service-rgb),.24); box-shadow: 0 15px 34px rgba(var(--service-rgb),.09); }
 .adaptive-service-tile > div:first-child { display: flex; align-items: center; gap: 7px; }
 .adaptive-service-tile > div:first-child > span { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 12px; color: var(--service); background: var(--service-soft); }

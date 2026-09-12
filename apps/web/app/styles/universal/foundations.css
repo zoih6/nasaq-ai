@@ -35,9 +35,27 @@
   --u-text-sm: clamp(13px, .84rem, 14px);
   --u-text-md: clamp(15px, .96rem, 16px);
   --u-text-lg: clamp(17px, 1.12rem, 19px);
-  --u-ease: cubic-bezier(.2,.8,.2,1);
-  --u-fast: 140ms;
-  --u-normal: 200ms;
+  /* U1.2 motion contract: productive by default, expressive only for rare milestones. */
+  --u-motion-duration-instant: 80ms;
+  --u-motion-duration-fast: 120ms;
+  --u-motion-duration-moderate: 180ms;
+  --u-motion-duration-slow: 260ms;
+  --u-motion-duration-expressive: 420ms;
+  --u-motion-duration-progress: 760ms;
+  --u-motion-duration-activity-cycle: 900ms;
+  --u-motion-delay-stagger: 45ms;
+  --u-motion-ease-standard: cubic-bezier(.2,0,.38,.9);
+  --u-motion-ease-enter: cubic-bezier(0,0,.38,.9);
+  --u-motion-ease-exit: cubic-bezier(.2,0,1,.9);
+  --u-motion-ease-emphasized: cubic-bezier(.4,.14,.3,1);
+  --u-motion-distance-xs: 2px;
+  --u-motion-distance-sm: 4px;
+  --u-motion-distance-md: 8px;
+  --u-motion-distance-lg: 16px;
+  /* Compatibility aliases for pre-U1.2 Universal styles. */
+  --u-ease: var(--u-motion-ease-standard);
+  --u-fast: var(--u-motion-duration-fast);
+  --u-normal: var(--u-motion-duration-moderate);
 }
 
 [data-service="ask"] { --service: #5148dd; --service-rgb: 81, 72, 221; --service-soft: #efedff; --service-deep: #4036bf; }
@@ -70,7 +88,7 @@ html[lang="en"] :is(.universal-site, .universal-app-shell) { font-family: "IBM P
 :is(.universal-site, .universal-app-shell) textarea,
 :is(.universal-site, .universal-app-shell) select { font: inherit; }
 :is(.universal-site, .universal-app-shell) :is(button,a,input,textarea,select) { -webkit-tap-highlight-color: transparent; }
-:is(.universal-site, .universal-app-shell) button { touch-action: manipulation; transition: color var(--u-fast) ease, background var(--u-fast) ease, border-color var(--u-fast) ease, transform var(--u-fast) var(--u-ease), box-shadow var(--u-fast) ease; }
+:is(.universal-site, .universal-app-shell) button { touch-action: manipulation; transition: color var(--u-fast) var(--u-motion-ease-standard), background var(--u-fast) var(--u-motion-ease-standard), border-color var(--u-fast) var(--u-motion-ease-standard), transform var(--u-fast) var(--u-ease), box-shadow var(--u-fast) var(--u-motion-ease-standard); }
 :is(.universal-site, .universal-app-shell) button:active { filter: brightness(.98); }
 :is(.universal-site, .universal-app-shell) ::selection { color: var(--u-ink); background: #dcd9ff; }
 :is(.universal-site, .universal-app-shell) :is(button,a)[aria-disabled="true"],
@@ -81,7 +99,7 @@ html[dir="ltr"] :is(.universal-site, .universal-app-shell) .lucide-arrow-left { 
 .universal-container { width: min(1220px, calc(100% - (var(--u-page-gutter) * 2))); margin-inline: auto; }
 .luma-kicker { width: fit-content; display: inline-flex; align-items: center; gap: 8px; color: var(--u-primary); font-size: 13px; font-weight: 700; letter-spacing: .01em; }
 .luma-kicker svg { padding: 3px; border-radius: 6px; background: var(--u-primary-soft); box-sizing: content-box; }
-.luma-button { min-height: var(--u-touch); padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid transparent; border-radius: 13px; text-decoration: none; font-weight: 650; cursor: pointer; touch-action: manipulation; transition: transform var(--u-normal) var(--u-ease), box-shadow var(--u-normal) ease, background var(--u-fast) ease, border-color var(--u-fast) ease; }
+.luma-button { min-height: var(--u-touch); padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid transparent; border-radius: 13px; text-decoration: none; font-weight: 650; cursor: pointer; touch-action: manipulation; transition: transform var(--u-normal) var(--u-ease), box-shadow var(--u-normal) var(--u-motion-ease-standard), background var(--u-fast) var(--u-motion-ease-standard), border-color var(--u-fast) var(--u-motion-ease-standard); }
 @media (hover: hover) { .luma-button:hover { transform: translateY(-2px); } }
 .luma-button:active { transform: translateY(0) scale(.98); }
 .luma-button--small { min-height: var(--u-touch); padding-inline: 15px; border-radius: 11px; font-size: 13px; }

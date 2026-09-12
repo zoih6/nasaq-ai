@@ -4,6 +4,7 @@
 
 ## الموجود الآن
 
+- [إيصال U1.2 للحركة والتغذية الراجعة](U1-2-MOTION-VERIFICATION.md)
 - [إيصال U1.1 للعرض المتجاوب والتفاعل](U1-1-RESPONSIVE-VERIFICATION.md)
 - [إيصال تحقق Wave 1](WAVE-1-VERIFICATION.md)
 - [إيصال المعاينة الاحترافية](PROFESSIONAL-PREVIEW-VERIFICATION.md)

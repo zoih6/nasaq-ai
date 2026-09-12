@@ -38,9 +38,9 @@ import type { Locale } from "@nasaq/contracts";
 
 type ShellNavItem = { id: string; label: string; href: string; icon: LucideIcon };
 
-function ShellNavLink({ item, active, onNavigate }: { item: ShellNavItem; active: boolean; onNavigate: () => void }) {
+function ShellNavLink({ item, active, onNavigate, tabIndex }: { item: ShellNavItem; active: boolean; onNavigate: () => void; tabIndex?: number }) {
   const Icon = item.icon;
-  return <Link href={item.href} className={`universal-shell-link${active ? " is-active" : ""}`} title={item.label} aria-current={active ? "page" : undefined} onClick={onNavigate}><span><Icon size={18} strokeWidth={1.8} /></span><b>{item.label}</b>{item.id === "learn" ? <i /> : null}</Link>;
+  return <Link href={item.href} className={`universal-shell-link${active ? " is-active" : ""}`} title={item.label} aria-current={active ? "page" : undefined} onClick={onNavigate} tabIndex={tabIndex}><span><Icon size={18} strokeWidth={1.8} /></span><b>{item.label}</b>{item.id === "learn" ? <i /> : null}</Link>;
 }
 
 export function AppShell({ children, locale }: { children: ReactNode; locale: Locale; dictionary: Dictionary; workspaceName?: string }) {
@@ -208,8 +208,8 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
     <Dialog.Root open={commandOpen} onOpenChange={setCommandOpen}>
       <div className="universal-app-shell" data-collapsed={collapsed} data-mobile-open={mobileOpen}>
         <a className="skip-link" href="#main-content">{isArabic ? "انتقل إلى المحتوى" : "Skip to content"}</a>
-        {mobileOpen ? <button type="button" className="universal-shell-backdrop" onClick={() => setMobileOpen(false)} aria-label={labels.close} /> : null}
-        <aside className="universal-shell-sidebar" aria-label={isArabic ? "التنقل الرئيسي" : "Primary navigation"}>
+        <button type="button" className="universal-shell-backdrop" data-state={mobileOpen ? "open" : "closed"} onClick={() => setMobileOpen(false)} aria-label={labels.close} aria-hidden={!mobileOpen} tabIndex={mobileOpen ? 0 : -1} />
+        <aside id="universal-shell-sidebar" className="universal-shell-sidebar" aria-label={isArabic ? "التنقل الرئيسي" : "Primary navigation"}>
           <div className="universal-shell-brand-row">
             <Link href={`/${locale}/app/home`} className="universal-shell-brand"><span><NasaqMark size={34} /></span><b>{isArabic ? "نَسَق" : "Nasaq"}</b><Sparkles size={11} /></Link>
             <button type="button" className="universal-shell-close" onClick={() => setMobileOpen(false)} aria-label={labels.close}><X size={19} /></button>
@@ -220,8 +220,10 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
           <nav className="universal-shell-nav">
             <div className="universal-shell-nav__main">{primaryItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} onNavigate={closeTransient} key={item.id} />)}</div>
             <div className="universal-shell-nav__utility"><ShellNavLink item={utilityItems[0]} active={isActive(utilityItems[0].href)} onNavigate={closeTransient} />
-              <button type="button" className={`universal-shell-advanced${advancedOpen ? " is-open" : ""}`} onClick={() => setAdvancedOpen((value) => !value)} aria-expanded={advancedOpen} title={labels.advanced}><span><Sparkles size={17} /></span><b>{labels.advanced}</b><ChevronDown size={14} /></button>
-              {advancedOpen ? <div className="universal-shell-advanced-list">{advancedItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} onNavigate={closeTransient} key={item.id} />)}</div> : null}
+              <button type="button" className={`universal-shell-advanced${advancedOpen ? " is-open" : ""}`} onClick={() => setAdvancedOpen((value) => !value)} aria-expanded={advancedOpen} aria-controls="universal-advanced-nav" title={labels.advanced}><span><Sparkles size={17} /></span><b>{labels.advanced}</b><ChevronDown size={14} /></button>
+              <div id="universal-advanced-nav" className="universal-shell-advanced-region" data-state={advancedOpen ? "open" : "closed"} aria-hidden={!advancedOpen}>
+                <div className="universal-shell-advanced-list">{advancedItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} onNavigate={closeTransient} tabIndex={advancedOpen ? 0 : -1} key={item.id} />)}</div>
+              </div>
             </div>
           </nav>
 
@@ -233,14 +235,14 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
 
         <div className="universal-shell-main">
           <header className="universal-shell-topbar">
-            <div className="universal-shell-context"><button type="button" onClick={() => setMobileOpen(true)} aria-label={labels.more}><Menu size={20} /></button><span>{activeItem?.label ?? labels.forYou}</span>{activeItem?.id === "home" ? <small><Sparkles size={12} />{labels.adaptive}</small> : null}</div>
+            <div className="universal-shell-context"><button type="button" onClick={() => setMobileOpen(true)} aria-label={labels.more} aria-expanded={mobileOpen} aria-controls="universal-shell-sidebar"><Menu size={20} /></button><span>{activeItem?.label ?? labels.forYou}</span>{activeItem?.id === "home" ? <small><Sparkles size={12} />{labels.adaptive}</small> : null}</div>
             <Dialog.Trigger asChild><button type="button" className="universal-shell-search"><Search size={16} /><span>{labels.search}</span><kbd>⌘K</kbd></button></Dialog.Trigger>
-            <div className="universal-shell-actions"><span className="universal-shell-demo"><i />{labels.demo}</span><Link href={switchLocaleInPath(pathname, alternateLocale)} prefetch={false} aria-label={labels.languageLabel}>{alternateLocale.toUpperCase()}</Link><button type="button" onClick={() => setNotificationsOpen((value) => !value)} aria-expanded={notificationsOpen} aria-label={labels.notifications}><Bell size={18} /><i /></button><Link href={`${base}/settings`} className="universal-top-avatar">ن</Link></div>
+            <div className="universal-shell-actions"><span className="universal-shell-demo"><i />{labels.demo}</span><Link href={switchLocaleInPath(pathname, alternateLocale)} prefetch={false} aria-label={labels.languageLabel}>{alternateLocale.toUpperCase()}</Link><button type="button" onClick={() => setNotificationsOpen((value) => !value)} aria-expanded={notificationsOpen} aria-controls="universal-notifications" aria-label={labels.notifications}><Bell size={18} /><i /></button><Link href={`${base}/settings`} className="universal-top-avatar">ن</Link></div>
           </header>
 
-          {notificationsOpen ? <aside className="universal-notifications"><header><div><span>{labels.notifications}</span><small>2</small></div><button type="button" onClick={() => setNotificationsOpen(false)} aria-label={labels.close}><X size={17} /></button></header><Link href={`${base}/learn`} onClick={closeTransient}><span><GraduationCap size={17} /></span><div><strong>{labels.noticeTitle}</strong><p>{labels.noticeBody}</p></div></Link><Link href={`${base}/library`} onClick={closeTransient}><span><CheckCircle2 size={17} /></span><div><strong>{labels.savedTitle}</strong><p>{labels.savedBody}</p></div></Link></aside> : null}
+          <aside id="universal-notifications" className="universal-notifications" data-state={notificationsOpen ? "open" : "closed"} role="dialog" aria-label={labels.notifications} aria-hidden={!notificationsOpen}><header><div><span>{labels.notifications}</span><small>2</small></div><button type="button" tabIndex={notificationsOpen ? 0 : -1} onClick={() => setNotificationsOpen(false)} aria-label={labels.close}><X size={17} /></button></header><Link href={`${base}/learn`} tabIndex={notificationsOpen ? 0 : -1} onClick={closeTransient}><span><GraduationCap size={17} /></span><div><strong>{labels.noticeTitle}</strong><p>{labels.noticeBody}</p></div></Link><Link href={`${base}/library`} tabIndex={notificationsOpen ? 0 : -1} onClick={closeTransient}><span><CheckCircle2 size={17} /></span><div><strong>{labels.savedTitle}</strong><p>{labels.savedBody}</p></div></Link></aside>
 
-          <main id="main-content" className="universal-shell-content">{children}</main>
+          <main id="main-content" className="universal-shell-content"><div className="universal-route-frame" key={pathname}>{children}</div></main>
         </div>
 
         <nav className="universal-shell-mobile-nav" aria-label={isArabic ? "التنقل على الهاتف" : "Mobile navigation"}>

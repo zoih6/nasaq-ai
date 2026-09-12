@@ -37,6 +37,8 @@ export function UniversalLibrary({ locale }: { locale: Locale }) {
         results: "عناصر",
         empty: "لا توجد نتائج مطابقة",
         emptyBody: "جرّب كلمة أخرى أو أزل عامل التصفية.",
+        clear: "مسح البحث والتصفية",
+        filterLabel: "تصفية عناصر المكتبة",
         open: "فتح",
       }
     : {
@@ -49,6 +51,8 @@ export function UniversalLibrary({ locale }: { locale: Locale }) {
         results: "items",
         empty: "No matching results",
         emptyBody: "Try another term or clear the filter.",
+        clear: "Clear search and filters",
+        filterLabel: "Filter library items",
         open: "Open",
       };
   const items = isArabic
@@ -76,11 +80,11 @@ export function UniversalLibrary({ locale }: { locale: Locale }) {
       <header className="universal-library-header"><div><span><Sparkles size={14} />{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.body}</p></div><Link className="universal-library-new" href={`/${locale}/app/home`}><Plus size={16} />{copy.new}</Link></header>
       <div className="universal-library-toolbar">
         <label><Search size={17} /><input value={query} onInput={(event) => setQuery(event.currentTarget.value)} placeholder={copy.search} aria-label={copy.search} /></label>
-        <div className="universal-library-filters">{copy.filters.map(([id, label]) => <button type="button" className={filter === id ? "is-active" : ""} onClick={() => setFilter(id!)} key={id}>{label}</button>)}</div>
-        <span>{filtered.length} {copy.results}</span>
-        <div className="universal-library-view"><button type="button" className={view === "grid" ? "is-active" : ""} onClick={() => setView("grid")} aria-label="Grid"><Grid2X2 size={16} /></button><button type="button" className={view === "list" ? "is-active" : ""} onClick={() => setView("list")} aria-label="List"><List size={16} /></button></div>
+        <div className="universal-library-filters" role="group" aria-label={copy.filterLabel}>{copy.filters.map(([id, label]) => <button type="button" className={filter === id ? "is-active" : ""} aria-pressed={filter === id} onClick={() => setFilter(id!)} key={id}>{label}</button>)}</div>
+        <span role="status" aria-live="polite" aria-atomic="true">{filtered.length} {copy.results}</span>
+        <div className="universal-library-view"><button type="button" className={view === "grid" ? "is-active" : ""} aria-pressed={view === "grid"} onClick={() => setView("grid")} aria-label="Grid"><Grid2X2 size={16} /></button><button type="button" className={view === "list" ? "is-active" : ""} aria-pressed={view === "list"} onClick={() => setView("list")} aria-label="List"><List size={16} /></button></div>
       </div>
-      {filtered.length ? <div className={`universal-library-grid${view === "list" ? " is-list" : ""}`}>{filtered.map((item, index) => { const Icon = item.icon; return <Link href={`/${locale}/app/${item.href}`} data-type={item.type} className="universal-library-item" key={item.id}><div className={`universal-library-item__cover universal-library-item__cover--${(index % 4) + 1}`}><Icon size={29} /><span>{item.type === "code" ? <Code2 size={15} /> : item.type === "create" ? <ImageIcon size={15} /> : item.type === "learn" ? <BookOpenCheck size={15} /> : <FileText size={15} />}</span></div><div className="universal-library-item__body"><span>{item.label}</span><h2>{item.title}</h2><p>{item.body}</p><div><small>{item.meta}</small><b>{copy.open}<ArrowLeft size={13} /></b></div></div></Link>; })}</div> : <div className="universal-library-empty"><Search size={25} /><h2>{copy.empty}</h2><p>{copy.emptyBody}</p></div>}
+      {filtered.length ? <div className={`universal-library-grid${view === "list" ? " is-list" : ""}`}>{filtered.map((item, index) => { const Icon = item.icon; return <Link href={`/${locale}/app/${item.href}`} data-type={item.type} className="universal-library-item" key={item.id}><div className={`universal-library-item__cover universal-library-item__cover--${(index % 4) + 1}`}><Icon size={29} /><span>{item.type === "code" ? <Code2 size={15} /> : item.type === "create" ? <ImageIcon size={15} /> : item.type === "learn" ? <BookOpenCheck size={15} /> : <FileText size={15} />}</span></div><div className="universal-library-item__body"><span>{item.label}</span><h2>{item.title}</h2><p>{item.body}</p><div><small>{item.meta}</small><b>{copy.open}<ArrowLeft size={13} /></b></div></div></Link>; })}</div> : <div className="universal-library-empty" role="status" aria-live="polite"><Search size={25} /><h2>{copy.empty}</h2><p>{copy.emptyBody}</p><button type="button" onClick={() => { setQuery(""); setFilter("all"); }}>{copy.clear}</button></div>}
     </div>
   );
 }

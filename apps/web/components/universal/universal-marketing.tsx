@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowUp,
@@ -13,6 +13,7 @@ import {
   Compass,
   GraduationCap,
   Layers3,
+  LoaderCircle,
   Menu,
   MessageCircle,
   Mic,
@@ -26,6 +27,7 @@ import {
 } from "lucide-react";
 import { NasaqMark } from "@nasaq/ui";
 import type { Locale } from "@nasaq/contracts";
+import { ActivityFeedback } from "@/components/universal/activity-feedback";
 import { universalServices, type UniversalServiceId } from "@/lib/universal-content";
 
 const serviceIcons = {
@@ -42,8 +44,9 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
   const services = universalServices[locale];
   const [activeId, setActiveId] = useState<UniversalServiceId>("learn");
   const [prompt, setPrompt] = useState("");
-  const [showResult, setShowResult] = useState(false);
+  const [demoState, setDemoState] = useState<"idle" | "working" | "ready">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
+  const demoTimerRef = useRef<number | null>(null);
   const active = services.find((service) => service.id === activeId) ?? services[0]!;
   const ActiveIcon = serviceIcons[active.id];
   const isArabic = locale === "ar";
@@ -60,6 +63,7 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
     return () => {
       desktopQuery.removeEventListener("change", onViewportChange);
       window.removeEventListener("keydown", onKeyDown);
+      if (demoTimerRef.current !== null) window.clearTimeout(demoTimerRef.current);
     };
   }, []);
 
@@ -79,6 +83,10 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
         demoLabel: "جرّبها الآن",
         demoTitle: "ماذا تريد أن تنجز اليوم؟",
         send: "ابدأ",
+        preparing: "نَسَق يهيئ المسار الأنسب…",
+        preparingShort: "جارٍ التهيئة",
+        simulation: "محاكاة تفاعلية",
+        progress: "تهيئة المسار التجريبي",
         demoReady: "فهمت مقصدك",
         demoRoute: "المسار الأنسب لك",
         openSpace: "افتح المساحة",
@@ -123,6 +131,10 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
         demoLabel: "Try it now",
         demoTitle: "What do you want to accomplish today?",
         send: "Start",
+        preparing: "Nasaq is preparing the best path…",
+        preparingShort: "Preparing",
+        simulation: "Interactive simulation",
+        progress: "Preparing the demo path",
         demoReady: "Intent understood",
         demoRoute: "Your best path",
         openSpace: "Open the space",
@@ -153,14 +165,27 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
         prototype: "Interactive prototype · no external services execute yet",
       };
 
+  function cancelDemo() {
+    if (demoTimerRef.current !== null) {
+      window.clearTimeout(demoTimerRef.current);
+      demoTimerRef.current = null;
+    }
+  }
+
   function selectService(id: UniversalServiceId) {
+    cancelDemo();
     setActiveId(id);
     setPrompt("");
-    setShowResult(false);
+    setDemoState("idle");
   }
 
   function startDemo() {
-    setShowResult(true);
+    cancelDemo();
+    setDemoState("working");
+    demoTimerRef.current = window.setTimeout(() => {
+      demoTimerRef.current = null;
+      setDemoState("ready");
+    }, 680);
   }
 
   return (
@@ -184,14 +209,16 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
             <button className="universal-menu-button" type="button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="universal-mobile-menu" aria-label={menuOpen ? (isArabic ? "إغلاق القائمة" : "Close menu") : (isArabic ? "فتح القائمة" : "Open menu")}>{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
           </div>
         </div>
-        {menuOpen ? (
-          <nav id="universal-mobile-menu" className="universal-mobile-menu" aria-label={isArabic ? "قائمة الهاتف" : "Mobile menu"}>
-            <a href="#services" onClick={() => setMenuOpen(false)}>{copy.nav.services}</a>
-            <a href="#adaptive" onClick={() => setMenuOpen(false)}>{copy.nav.adaptive}</a>
-            <a href="#experience" onClick={() => setMenuOpen(false)}>{copy.nav.experience}</a>
-            <Link href={appHref}>{copy.open}</Link>
-          </nav>
-        ) : null}
+        <div className="universal-mobile-menu-region" data-state={menuOpen ? "open" : "closed"} aria-hidden={!menuOpen}>
+          <div>
+            <nav id="universal-mobile-menu" className="universal-mobile-menu" aria-label={isArabic ? "قائمة الهاتف" : "Mobile menu"}>
+              <a href="#services" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)}>{copy.nav.services}</a>
+              <a href="#adaptive" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)}>{copy.nav.adaptive}</a>
+              <a href="#experience" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)}>{copy.nav.experience}</a>
+              <Link href={appHref} tabIndex={menuOpen ? 0 : -1}>{copy.open}</Link>
+            </nav>
+          </div>
+        </div>
       </header>
 
       <main>
@@ -233,23 +260,19 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
                   })}
                 </div>
                 <div className="universal-composer">
-                  <textarea value={prompt} onChange={(event) => { setPrompt(event.target.value); setShowResult(false); }} placeholder={active.prompt} aria-label={active.prompt} rows={3} />
+                  <textarea value={prompt} onChange={(event) => { cancelDemo(); setPrompt(event.target.value); setDemoState("idle"); }} placeholder={active.prompt} aria-label={active.prompt} rows={3} />
                   <div className="universal-composer__bottom">
                     <div><button type="button" aria-label={isArabic ? "إرفاق ملف" : "Attach a file"}><Paperclip size={17} /></button><button type="button" aria-label={isArabic ? "إدخال صوتي" : "Voice input"}><Mic size={17} /></button><span>{active.eyebrow}</span></div>
-                    <button type="button" className="universal-send" onClick={startDemo} aria-label={copy.send}><ArrowUp size={18} /></button>
+                    <button type="button" className="universal-send" onClick={startDemo} aria-label={demoState === "working" ? copy.preparingShort : copy.send} disabled={demoState === "working"} data-loading={demoState === "working"}>{demoState === "working" ? <LoaderCircle size={18} /> : <ArrowUp size={18} />}</button>
                   </div>
                 </div>
-                {showResult ? (
-                  <div className="universal-demo-result" role="status">
-                    <span><WandSparkles size={17} /></span>
-                    <div><small>{copy.demoReady} · {copy.demoRoute}</small><strong>{active.outputTitle}</strong><p>{active.outputBody}</p></div>
-                    <Link href={`/${locale}/app/${active.slug}`}>{copy.openSpace}<ArrowLeft size={14} /></Link>
-                  </div>
-                ) : (
+                {demoState === "working" ? <ActivityFeedback state="working" className="universal-demo-result" label={copy.simulation} title={copy.preparing} description={active.eyebrow} progressLabel={copy.progress} /> : null}
+                {demoState === "ready" ? <ActivityFeedback state="success" className="universal-demo-result" label={`${copy.demoReady} · ${copy.demoRoute}`} title={active.outputTitle} description={active.outputBody} action={<Link href={`/${locale}/app/${active.slug}`}>{copy.openSpace}<ArrowLeft size={14} /></Link>} /> : null}
+                {demoState === "idle" ? (
                   <div className="universal-starters">
-                    {active.starters.slice(0, 2).map((starter) => <button type="button" key={starter} onClick={() => setPrompt(starter)}>{starter}<ArrowLeft size={13} /></button>)}
+                    {active.starters.slice(0, 2).map((starter) => <button type="button" key={starter} onClick={() => { cancelDemo(); setPrompt(starter); setDemoState("idle"); }}>{starter}<ArrowLeft size={13} /></button>)}
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
           </div>
