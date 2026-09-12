@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@nasaq/i18n";
-import { ServiceWorkspace } from "@/components/universal/service-workspace";
 import { UniversalLibrary } from "@/components/universal/universal-library";
-import { getUniversalService, type UniversalServiceId } from "@/lib/universal-content";
-import { getRegisteredServiceIds } from "@/features/service-workbench/service-registry";
+import type { ServiceId } from "@nasaq/contracts/services";
+import { getUniversalService } from "@/lib/universal-content";
+import { getRegisteredServiceIds, getServiceRegistryEntry } from "@/features/service-workbench/service-registry";
+import { renderServiceRoute } from "./service-route-renderers";
 
 /**
  * Service route composition.
  *
- * U2.0 keeps every registered service on the existing prototype workspace. The
- * explicit registry (`features/service-workbench/service-registry.ts`) is the
- * single place that flips a service to its domain composition in a later slice,
- * so routes stay stable and shippable while the foundation lands.
+ * Each registered service resolves through its registry entry: an implemented
+ * slice mounts its domain workspace, and every other service keeps the existing
+ * prototype workspace. The registry is the single place that records the flip,
+ * so routes stay stable while slices land one at a time.
  */
-const serviceMap = Object.fromEntries(getRegisteredServiceIds().map((serviceId) => [serviceId, serviceId])) as Record<string, UniversalServiceId>;
+const serviceMap = Object.fromEntries(getRegisteredServiceIds().map((serviceId) => [serviceId, serviceId])) as Record<string, ServiceId>;
 
 export function generateStaticParams() {
   return [...Object.keys(serviceMap), "library"].map((service) => ({ service }));
@@ -36,5 +37,5 @@ export default async function UniversalServicePage({ params }: { params: Promise
   if (slug === "library") return <UniversalLibrary locale={locale} />;
   const serviceId = serviceMap[slug];
   if (!serviceId) notFound();
-  return <ServiceWorkspace locale={locale} serviceId={serviceId} />;
+  return renderServiceRoute(getServiceRegistryEntry(serviceId), locale);
 }

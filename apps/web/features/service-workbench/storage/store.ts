@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   handoffBundleSchema,
+  learnSessionStateSchema,
   serviceArtifactSchema,
   serviceSessionSchema,
   serviceTimestampSchema,
@@ -24,6 +25,24 @@ export const demoStoreKey = "nasaq:u2:session:v1";
 export const demoStoreVersion = 1 as const;
 export const demoStoreMaxBytes = 256 * 1024;
 
+/**
+ * Domain blocks.
+ *
+ * The workbench never interprets these: a service slice owns its own state
+ * shape and the store only guarantees it is versioned, typed, and cleared with
+ * the rest of the demo data. Learn is the first block; every other service
+ * adds its own entry when its slice lands, which keeps the shared store from
+ * growing service-specific fields.
+ */
+export const demoStoreDomainBlockSchema = z.discriminatedUnion("serviceId", [
+  z.object({
+    serviceId: z.literal("learn"),
+    stateVersion: z.literal(1),
+    payload: learnSessionStateSchema,
+  }),
+]);
+export type ServiceDomainBlock = z.infer<typeof demoStoreDomainBlockSchema>;
+
 export const demoStoreSnapshotSchema = z.object({
   version: z.literal(demoStoreVersion),
   savedAt: serviceTimestampSchema,
@@ -31,6 +50,8 @@ export const demoStoreSnapshotSchema = z.object({
   artifacts: z.array(serviceArtifactSchema).max(24),
   receipts: z.array(simulationReceiptSchema).max(24),
   handoffs: z.array(handoffBundleSchema).max(12),
+  /** Optional so a snapshot written before U2.1 still parses. */
+  domains: z.array(demoStoreDomainBlockSchema).max(6).optional(),
 });
 export type DemoStoreSnapshot = z.infer<typeof demoStoreSnapshotSchema>;
 
@@ -147,6 +168,7 @@ export function buildDemoSnapshot(input: {
   artifacts: readonly ServiceArtifact[];
   receipts: readonly SimulationReceipt[];
   handoffs: readonly HandoffBundle[];
+  domains?: readonly ServiceDomainBlock[];
 }): DemoStoreSnapshot {
   return {
     version: demoStoreVersion,
@@ -155,6 +177,7 @@ export function buildDemoSnapshot(input: {
     artifacts: [...input.artifacts].slice(-24),
     receipts: [...input.receipts].slice(-24),
     handoffs: [...input.handoffs].slice(-12),
+    domains: [...(input.domains ?? [])].slice(-6),
   };
 }
 

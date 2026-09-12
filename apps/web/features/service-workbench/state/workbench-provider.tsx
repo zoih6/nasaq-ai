@@ -20,6 +20,8 @@ import {
 import { createLocalAnalytics } from "../analytics";
 import {
   buildDemoSnapshot,
+  type DemoStoreSnapshot,
+  type ServiceDomainBlock,
   createBrowserServiceSessionStore,
   snapshotTimestamp,
   type ServiceSessionStore,
@@ -50,6 +52,10 @@ export type ServiceWorkbenchActions = {
   provideInput(): void;
   saveDemo(): void;
   clearDemo(): void;
+  /** Stores one service slice's versioned state; the workbench never reads it. */
+  setDomainBlock(block: ServiceDomainBlock): void;
+  /** Applies one saved snapshot. The workbench does not interpret domain blocks. */
+  restoreSnapshot(snapshot: DemoStoreSnapshot, status: ServiceStoreStatus): void;
   openReceipt(open: boolean): void;
   openStorage(open: boolean): void;
   closeHandoff(): void;
@@ -103,6 +109,15 @@ export type ServiceWorkbenchProviderProps = {
   initialStorageStatus?: ServiceStoreStatus;
   /** Records restored from the tab-scoped demo store (resume path). */
   initialRecords?: ServiceWorkbenchSeed;
+  /**
+   * Read the tab-scoped demo store once, after mount.
+   *
+   * Storage is never read during render: the server has no storage, so reading
+   * it while rendering would produce markup the client cannot reproduce
+   * (hydration mismatch). Resuming after mount keeps SSR and the first client
+   * render identical.
+   */
+  resumeFromStorage?: boolean;
   children: ReactNode;
 };
 
@@ -115,6 +130,7 @@ export function ServiceWorkbenchProvider({
   store,
   initialStorageStatus,
   initialRecords,
+  resumeFromStorage = false,
   children,
 }: ServiceWorkbenchProviderProps) {
   const client = useMemo(() => createDeterministicMockServiceClient(), []);
@@ -123,6 +139,7 @@ export function ServiceWorkbenchProvider({
   const clock = useMemo(() => createTimerServiceClock(), []);
   const ids = useMemo(() => createServiceIdFactory(`${session.serviceId}_${scenarioId}_${locale}`), [session.serviceId, scenarioId, locale]);
 
+  const baseSession = session;
   const [state, dispatch] = useReducer(
     serviceWorkbenchReducer,
     createInitialWorkbenchState(session, stages, {
@@ -130,6 +147,7 @@ export function ServiceWorkbenchProvider({
       artifacts: initialRecords?.artifacts ?? [],
       receipts: initialRecords?.receipts ?? [],
       handoffs: initialRecords?.handoffs ?? [],
+      domains: initialRecords?.domains ?? [],
     }),
   );
 
@@ -244,6 +262,7 @@ export function ServiceWorkbenchProvider({
         artifacts: state.artifacts,
         receipts: state.receipts,
         handoffs: state.handoffs,
+        domains: state.domains,
       }));
       if (result.ok) {
         dispatchSafely({ type: "storage/status", status: resolvedStore.kind, savedAt });
@@ -259,6 +278,22 @@ export function ServiceWorkbenchProvider({
       dispatchSafely({ type: "storage/status", status: resolvedStore.kind, savedAt: null });
       dispatchSafely({ type: "notice/set", key: "cleared" });
       analytics.track("u2.storage.cleared", { serviceId: session.serviceId });
+    },
+    setDomainBlock(block) {
+      dispatchSafely({ type: "domain/replaced", block });
+    },
+    restoreSnapshot(snapshot: DemoStoreSnapshot, status: ServiceStoreStatus) {
+      const session = snapshot.sessions.find((candidate) => candidate.serviceId === baseSession.serviceId);
+      dispatchSafely({
+        type: "records/restored",
+        ...(session === undefined ? {} : { session }),
+        artifacts: snapshot.artifacts,
+        receipts: snapshot.receipts,
+        handoffs: snapshot.handoffs,
+        domains: snapshot.domains ?? [],
+        savedAt: snapshot.savedAt,
+        storageStatus: status,
+      });
     },
     openReceipt(open) {
       dispatchSafely({ type: "overlay/toggle", overlay: "receipt", value: open });
@@ -282,7 +317,32 @@ export function ServiceWorkbenchProvider({
     consumeHandoff(handoffId) {
       dispatchSafely({ type: "handoff/consumed", handoffId, at: snapshotTimestamp(clock.now()) });
     },
-  }), [analytics, clock, dispatchSafely, locale, resolvedStore, scenarioId, session, startRunner, state.artifacts, state.handoffs, state.receipts, state.run, state.session, stages]);
+  }), [analytics, baseSession.serviceId, clock, dispatchSafely, locale, resolvedStore, scenarioId, session, startRunner, state.artifacts, state.domains, state.handoffs, state.receipts, state.run, state.session, stages]);
+
+  // Mount-only resume: one read, one explicit restore, no render-time storage.
+  const resumedRef = useRef(false);
+  useEffect(() => {
+    if (!resumeFromStorage || resumedRef.current) {
+      return;
+    }
+    resumedRef.current = true;
+    const read = resolvedStore.read();
+    if (read.snapshot === null) {
+      return;
+    }
+    const stored = read.snapshot;
+    const storedSession = stored.sessions.find((candidate) => candidate.serviceId === baseSession.serviceId);
+    dispatchSafely({
+      type: "records/restored",
+      ...(storedSession === undefined ? {} : { session: storedSession }),
+      artifacts: stored.artifacts,
+      receipts: stored.receipts,
+      handoffs: stored.handoffs,
+      domains: stored.domains ?? [],
+      savedAt: stored.savedAt,
+      storageStatus: read.status,
+    });
+  }, [baseSession.serviceId, dispatchSafely, resolvedStore, resumeFromStorage]);
 
   const meta: ServiceWorkbenchMeta = useMemo(() => ({
     locale,
@@ -303,12 +363,13 @@ export function ServiceWorkbenchProvider({
         artifacts: state.artifacts,
         receipts: state.receipts,
         handoffs: state.handoffs,
+        domains: state.domains,
       }));
       return result.ok ? { ok: true, status: resolvedStore.kind } : { ok: false, status: result.status };
     },
     clear: () => resolvedStore.clear(),
     status: () => resolvedStore.kind,
-  }), [clock, resolvedStore, state.artifacts, state.handoffs, state.receipts]);
+  }), [clock, resolvedStore, state.artifacts, state.domains, state.handoffs, state.receipts]);
 
   const value = useMemo<ServiceWorkbenchContextValue>(() => ({ state, actions, meta, adapter }), [state, actions, meta, adapter]);
 

@@ -200,14 +200,16 @@
 
 | Requirement | المختصر | السطح | الاختبار | الدليل | الحالة |
 |---|---|---|---|---|---|
-| `U2-LRN-001` | Guided end-to-end | Learn stages/artifact | `E2E-LRN-001` | setup/lesson/check/save | `NOT STARTED` |
-| `U2-LRN-002` | Fast self-assessed | mode/brief/quick check | `IT-WB-003`, `E2E-LRN-002` | fast disclosure | `NOT STARTED` |
-| `U2-LRN-003` | deterministic scoring/path | Learn pure logic | `UT-LRN-001` | path rationale | `NOT STARTED` |
-| `U2-LRN-004` | editable path/no loss | path review/session state | `UT-LRN-001`, `E2E-LRN-001` | reordered path | `NOT STARTED` |
-| `U2-LRN-005` | feedback/hint/retry/skip | check/feedback | `UT-LRN-002`, `IT-LRN-001`, `E2E-LRN-001` | wrong/recovery | `NOT STARTED` |
-| `U2-LRN-006` | pause/resume/save | session/Library | `UT-STO-001`, `E2E-LRN-002`, `E2E-U2-002` | resumed checkpoint | `NOT STARTED` |
-| `U2-LRN-007` | edge fixtures | Learn scenario registry | `UT-FIX-001`, `E2E-LRN-003` | empty/error/dense/RTL | `NOT STARTED` |
-| `U2-LRN-008` | a11y/responsive/motion | Learn composition | A11Y/RSP/MOT + manual checks | AR mobile + EN desktop | `NOT STARTED` |
+| `U2-LRN-001` | Guided end-to-end | Learn stages/artifact | `E2E-LRN-001` | setup/lesson/check/save | `PASS` |
+| `U2-LRN-002` | Fast self-assessed | mode/brief/quick check | `IT-WB-003`, `E2E-LRN-002` | fast disclosure | `PASS` |
+| `U2-LRN-003` | deterministic scoring/path | Learn pure logic | `UT-LRN-001` | path rationale | `PASS` |
+| `U2-LRN-004` | editable path/no loss | path review/session state | `UT-LRN-001`, `E2E-LRN-001` | reordered path | `PASS` |
+| `U2-LRN-005` | feedback/hint/retry/skip | check/feedback | `UT-LRN-002`, `IT-LRN-001`, `E2E-LRN-001` | wrong/recovery | `PASS` |
+| `U2-LRN-006` | pause/resume/save | session/Library | `UT-STO-001`, `E2E-LRN-002`, `E2E-U2-002` | resumed checkpoint | `PASS` |
+| `U2-LRN-007` | edge fixtures | Learn scenario registry | `UT-FIX-001`, `E2E-LRN-003` | empty/error/dense/RTL | `PASS` |
+| `U2-LRN-008` | a11y/responsive/motion | Learn composition | A11Y/RSP/MOT + manual checks | AR mobile + EN desktop | `IN PROGRESS` |
+
+> الأدلة الفعلية لصفوف `U2.1 Learn`: 9 ملفات اختبار (87 اختبارًا، منها `u2-learn-state` و`u2-learn-integration`) + `service-learn.spec.ts` (12 اختبار E2E، كلها خضراء بعد آخر تغيير) + 7 لقطات في [`evidence/u2/u2-1-learn/`](evidence/u2/u2-1-learn/) مع `manifest.json`. `IN PROGRESS` في `U2-LRN-008` تعني: الفحوص الآلية (axe/reflow/reduced-motion/forced-colors عند 320–1280، AR/EN) مرّت مع لقطات، وتبقى مراجعة قارئ الشاشة البشرية (`MAN-SR-001`) `UNVERIFIED` كما تنص القاعدة في الملف.
 
 ---
 

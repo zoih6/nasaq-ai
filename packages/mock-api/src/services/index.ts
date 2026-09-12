@@ -13,3 +13,4 @@ export * from "./plans";
 export * from "./fixtures";
 export * from "./runner";
 export * from "./client";
+export * from "./learn";

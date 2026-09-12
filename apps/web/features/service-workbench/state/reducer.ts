@@ -9,7 +9,7 @@ import type {
   SimulationReceipt,
 } from "@nasaq/contracts/services";
 import { applyServiceEvent, consumeHandoff, type ServiceEventApplication } from "@nasaq/contracts/services";
-import type { ServiceStoreStatus } from "../storage/store";
+import type { ServiceDomainBlock, ServiceStoreStatus } from "../storage/store";
 
 /**
  * Domain-neutral workbench reducer.
@@ -35,6 +35,8 @@ export type ServiceWorkbenchState = {
   artifactVersions: ServiceArtifactVersion[];
   receipts: SimulationReceipt[];
   handoffs: HandoffBundle[];
+  /** Opaque, versioned domain state owned by each service slice. */
+  domains: ServiceDomainBlock[];
   lastSequence: number;
   lastOutcome: ServiceEventApplication["outcome"] | null;
   eventLog: ServiceEvent[];
@@ -50,6 +52,18 @@ export type ServiceWorkbenchAction =
   | { type: "run/started"; run: ServiceRun }
   | { type: "event/received"; event: ServiceEvent }
   | { type: "records/attached"; artifact?: ServiceArtifact; version?: ServiceArtifactVersion; receipt?: SimulationReceipt }
+  | { type: "domain/replaced"; block: ServiceDomainBlock }
+  | {
+      type: "records/restored";
+      session?: ServiceSession;
+      artifacts?: readonly ServiceArtifact[];
+      artifactVersions?: readonly ServiceArtifactVersion[];
+      receipts?: readonly SimulationReceipt[];
+      handoffs?: readonly HandoffBundle[];
+      domains?: readonly ServiceDomainBlock[];
+      savedAt: string;
+      storageStatus?: ServiceStoreStatus;
+    }
   | { type: "storage/status"; status: ServiceStoreStatus; savedAt?: string | null }
   | { type: "notice/set"; key: string | null }
   | { type: "validation/set"; key: string | null }
@@ -65,6 +79,7 @@ export type ServiceWorkbenchSeed = {
   artifactVersions?: readonly ServiceArtifactVersion[];
   receipts?: readonly SimulationReceipt[];
   handoffs?: readonly HandoffBundle[];
+  domains?: readonly ServiceDomainBlock[];
 };
 
 export function createInitialWorkbenchState(
@@ -80,6 +95,7 @@ export function createInitialWorkbenchState(
     artifactVersions: [...(options.artifactVersions ?? [])],
     receipts: [...(options.receipts ?? [])],
     handoffs: [...(options.handoffs ?? [])],
+    domains: [...(options.domains ?? [])],
     lastSequence: 0,
     lastOutcome: null,
     eventLog: [],
@@ -153,6 +169,25 @@ export function serviceWorkbenchReducer(state: ServiceWorkbenchState, action: Se
       return { ...state, artifacts, artifactVersions, receipts, run, session };
     }
 
+    case "records/restored": {
+      // A single, explicit restore so no surface re-derives saved data itself.
+      return {
+        ...state,
+        session: action.session ?? state.session,
+        artifacts: [...(action.artifacts ?? state.artifacts)],
+        artifactVersions: [...(action.artifactVersions ?? state.artifactVersions)],
+        receipts: [...(action.receipts ?? state.receipts)],
+        handoffs: [...(action.handoffs ?? state.handoffs)],
+        domains: [...(action.domains ?? state.domains)],
+        savedAt: action.savedAt,
+        storageStatus: action.storageStatus ?? state.storageStatus,
+      };
+    }
+
+    case "domain/replaced": {
+      const domains = [...state.domains.filter((block) => block.serviceId !== action.block.serviceId), action.block];
+      return { ...state, domains };
+    }
     case "storage/status":
       return { ...state, storageStatus: action.status, savedAt: action.savedAt === undefined ? state.savedAt : action.savedAt };
 

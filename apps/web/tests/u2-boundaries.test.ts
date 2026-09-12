@@ -120,6 +120,21 @@ describe("U2-CORE-001/002 — explicit registry, shared gateway", () => {
       expect(entry.route).toBe(`/app/${serviceId}`);
       expect(entry.screenId).toMatch(/^U2-[A-Z]{3}-001$/u);
       expect(entry.routeId).toMatch(/^R-U2-[A-Z]{3}-001$/u);
+    }
+  });
+
+  it("flips a service to `implemented` only when its slice landed, and keeps the rest on the foundation", () => {
+    // U2.1 Learn is the only implemented slice; the remaining services must
+    // still report `foundation` until their contract lands with evidence.
+    const implemented = getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented");
+    expect(implemented).toEqual(["learn"]);
+    for (const serviceId of getRegisteredServiceIds()) {
+      const entry = getServiceRegistryEntry(serviceId);
+      if (serviceId === "learn") {
+        expect(entry.renderer).toBe("domain_workspace");
+        continue;
+      }
+      expect(entry.renderer).toBe("prototype_service_workspace");
       expect(entry.status).toBe("foundation");
     }
   });

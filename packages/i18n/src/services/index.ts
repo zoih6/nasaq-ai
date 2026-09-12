@@ -9,6 +9,9 @@ import { serviceIds } from "@nasaq/contracts/services";
  * Service copy lives here, never inline in JSX.
  */
 
+import type { LearnCopy } from "./learn-content";
+import { learnContentAr, learnContentEn } from "./learn-content";
+
 export type ServiceEntry = {
   label: string;
   eyebrow: string;
@@ -16,6 +19,13 @@ export type ServiceEntry = {
   artifactKind: string;
   stages: Record<string, string>;
 };
+
+/**
+ * Learn owns extra copy in U2.1: topics, diagnostic questions, path rationale,
+ * feedback, edge states, and the UI strings of its stages. The foundation type
+ * stays untouched for the other five services.
+ */
+export type LearnServiceEntry = ServiceEntry & LearnCopy;
 
 export type ServiceDictionary = {
   workbench: {
@@ -95,7 +105,7 @@ export type ServiceDictionary = {
   runStatus: Record<ServiceRunStatus, string>;
   sessionStatus: Record<ServiceSessionStatus, string>;
   scenarios: Record<ServiceScenarioId, string>;
-  services: Record<ServiceId, ServiceEntry>;
+  services: Record<ServiceId, ServiceEntry> & { learn: LearnServiceEntry };
 };
 
 const ar: ServiceDictionary = {
@@ -228,6 +238,7 @@ const ar: ServiceDictionary = {
         lrn_checkpoint: "نقطة تقدّم",
         lrn_complete: "نهاية الوحدة",
       },
+      ...learnContentAr,
     },
     research: {
       label: "ابحث ووثّق",
@@ -439,6 +450,7 @@ const en: ServiceDictionary = {
         lrn_checkpoint: "Checkpoint",
         lrn_complete: "Unit complete",
       },
+      ...learnContentEn,
     },
     research: {
       label: "Research and document",

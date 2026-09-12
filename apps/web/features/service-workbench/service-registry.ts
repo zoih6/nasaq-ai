@@ -5,9 +5,9 @@ import { serviceIds } from "@nasaq/contracts/services";
  * Explicit service route registry.
  *
  * It exists so each service route resolves through one declared composition
- * instead of a conditional monolith. In U2.0 every entry reports
- * `status: "foundation"`, which keeps the existing prototype workspace on the
- * route until the matching slice replaces it deliberately.
+ * instead of a conditional monolith. A service reports `status: "implemented"`
+ * only when its slice landed and its receipt lists fresh evidence; every other
+ * entry stays on `foundation` and keeps the prototype workspace on its route.
  */
 export type ServiceWorkspaceStatus = "foundation" | "implemented";
 
@@ -25,7 +25,7 @@ export type ServiceRegistryEntry = {
 };
 
 export const serviceRegistry = {
-  learn: { serviceId: "learn", route: "/app/learn", screenId: "U2-LRN-001", routeId: "R-U2-LRN-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
+  learn: { serviceId: "learn", route: "/app/learn", screenId: "U2-LRN-001", routeId: "R-U2-LRN-001", renderer: "domain_workspace", status: "implemented", foundationSurface: "/preview/service-foundation" },
   research: { serviceId: "research", route: "/app/research", screenId: "U2-RSH-001", routeId: "R-U2-RSH-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
   create: { serviceId: "create", route: "/app/create", screenId: "U2-CRT-001", routeId: "R-U2-CRT-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
   code: { serviceId: "code", route: "/app/code", screenId: "U2-COD-001", routeId: "R-U2-COD-001", renderer: "prototype_service_workspace", status: "foundation", foundationSurface: "/preview/service-foundation" },
