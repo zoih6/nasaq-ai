@@ -38,9 +38,9 @@ import type { Locale } from "@nasaq/contracts";
 
 type ShellNavItem = { id: string; label: string; href: string; icon: LucideIcon };
 
-function ShellNavLink({ item, active, collapsed, onNavigate }: { item: ShellNavItem; active: boolean; collapsed: boolean; onNavigate: () => void }) {
+function ShellNavLink({ item, active, onNavigate }: { item: ShellNavItem; active: boolean; onNavigate: () => void }) {
   const Icon = item.icon;
-  return <Link href={item.href} className={`universal-shell-link${active ? " is-active" : ""}`} title={collapsed ? item.label : undefined} onClick={onNavigate}><span><Icon size={18} strokeWidth={1.8} /></span><b>{item.label}</b>{item.id === "learn" ? <i /> : null}</Link>;
+  return <Link href={item.href} className={`universal-shell-link${active ? " is-active" : ""}`} title={item.label} aria-current={active ? "page" : undefined} onClick={onNavigate}><span><Icon size={18} strokeWidth={1.8} /></span><b>{item.label}</b>{item.id === "learn" ? <i /> : null}</Link>;
 }
 
 export function AppShell({ children, locale }: { children: ReactNode; locale: Locale; dictionary: Dictionary; workspaceName?: string }) {
@@ -156,6 +156,10 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
   useEffect(() => {
     const stored = window.localStorage.getItem("nasaq.universal.sidebar");
     const restoreFrame = stored === "collapsed" ? window.requestAnimationFrame(() => setCollapsed(true)) : null;
+    const desktopQuery = window.matchMedia("(min-width: 821px)");
+    function onViewportChange(event: MediaQueryListEvent) {
+      if (event.matches) setMobileOpen(false);
+    }
     function onKeyDown(event: KeyboardEvent) {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
@@ -167,11 +171,20 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
       }
     }
     window.addEventListener("keydown", onKeyDown);
+    desktopQuery.addEventListener("change", onViewportChange);
     return () => {
       if (restoreFrame !== null) window.cancelAnimationFrame(restoreFrame);
       window.removeEventListener("keydown", onKeyDown);
+      desktopQuery.removeEventListener("change", onViewportChange);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [mobileOpen]);
 
   function isActive(href: string) {
     return pathname === href || pathname.startsWith(`${href}/`);
@@ -202,18 +215,18 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
             <button type="button" className="universal-shell-close" onClick={() => setMobileOpen(false)} aria-label={labels.close}><X size={19} /></button>
           </div>
 
-          <Link href={`${base}/home`} className="universal-shell-new" onClick={closeTransient}><span><Plus size={18} /></span><b>{labels.start}</b></Link>
+          <Link href={`${base}/home`} className="universal-shell-new" onClick={closeTransient} title={labels.start}><span><Plus size={18} /></span><b>{labels.start}</b></Link>
 
           <nav className="universal-shell-nav">
-            <div className="universal-shell-nav__main">{primaryItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} collapsed={collapsed} onNavigate={closeTransient} key={item.id} />)}</div>
-            <div className="universal-shell-nav__utility"><ShellNavLink item={utilityItems[0]} active={isActive(utilityItems[0].href)} collapsed={collapsed} onNavigate={closeTransient} />
-              <button type="button" className={`universal-shell-advanced${advancedOpen ? " is-open" : ""}`} onClick={() => setAdvancedOpen((value) => !value)} aria-expanded={advancedOpen}><span><Sparkles size={17} /></span><b>{labels.advanced}</b><ChevronDown size={14} /></button>
-              {advancedOpen ? <div className="universal-shell-advanced-list">{advancedItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} collapsed={collapsed} onNavigate={closeTransient} key={item.id} />)}</div> : null}
+            <div className="universal-shell-nav__main">{primaryItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} onNavigate={closeTransient} key={item.id} />)}</div>
+            <div className="universal-shell-nav__utility"><ShellNavLink item={utilityItems[0]} active={isActive(utilityItems[0].href)} onNavigate={closeTransient} />
+              <button type="button" className={`universal-shell-advanced${advancedOpen ? " is-open" : ""}`} onClick={() => setAdvancedOpen((value) => !value)} aria-expanded={advancedOpen} title={labels.advanced}><span><Sparkles size={17} /></span><b>{labels.advanced}</b><ChevronDown size={14} /></button>
+              {advancedOpen ? <div className="universal-shell-advanced-list">{advancedItems.map((item) => <ShellNavLink item={item} active={isActive(item.href)} onNavigate={closeTransient} key={item.id} />)}</div> : null}
             </div>
           </nav>
 
           <div className="universal-shell-profile">
-            <Link href={`${base}/settings`} onClick={closeTransient}><span className="universal-shell-avatar">ن</span><span><strong>{labels.personal}</strong><small>{labels.adaptive}</small></span><Settings size={15} /></Link>
+            <Link href={`${base}/settings`} onClick={closeTransient} title={labels.settings}><span className="universal-shell-avatar">ن</span><span><strong>{labels.personal}</strong><small>{labels.adaptive}</small></span><Settings size={15} /></Link>
             <button type="button" onClick={toggleCollapsed} aria-label={collapsed ? labels.expand : labels.collapse}><PanelLeftClose size={17} /><span>{collapsed ? labels.expand : labels.collapse}</span></button>
           </div>
         </aside>
@@ -222,7 +235,7 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
           <header className="universal-shell-topbar">
             <div className="universal-shell-context"><button type="button" onClick={() => setMobileOpen(true)} aria-label={labels.more}><Menu size={20} /></button><span>{activeItem?.label ?? labels.forYou}</span>{activeItem?.id === "home" ? <small><Sparkles size={12} />{labels.adaptive}</small> : null}</div>
             <Dialog.Trigger asChild><button type="button" className="universal-shell-search"><Search size={16} /><span>{labels.search}</span><kbd>⌘K</kbd></button></Dialog.Trigger>
-            <div className="universal-shell-actions"><span className="universal-shell-demo"><i />{labels.demo}</span><Link href={switchLocaleInPath(pathname, alternateLocale)} aria-label={labels.languageLabel}>{alternateLocale.toUpperCase()}</Link><button type="button" onClick={() => setNotificationsOpen((value) => !value)} aria-expanded={notificationsOpen} aria-label={labels.notifications}><Bell size={18} /><i /></button><Link href={`${base}/settings`} className="universal-top-avatar">ن</Link></div>
+            <div className="universal-shell-actions"><span className="universal-shell-demo"><i />{labels.demo}</span><Link href={switchLocaleInPath(pathname, alternateLocale)} prefetch={false} aria-label={labels.languageLabel}>{alternateLocale.toUpperCase()}</Link><button type="button" onClick={() => setNotificationsOpen((value) => !value)} aria-expanded={notificationsOpen} aria-label={labels.notifications}><Bell size={18} /><i /></button><Link href={`${base}/settings`} className="universal-top-avatar">ن</Link></div>
           </header>
 
           {notificationsOpen ? <aside className="universal-notifications"><header><div><span>{labels.notifications}</span><small>2</small></div><button type="button" onClick={() => setNotificationsOpen(false)} aria-label={labels.close}><X size={17} /></button></header><Link href={`${base}/learn`} onClick={closeTransient}><span><GraduationCap size={17} /></span><div><strong>{labels.noticeTitle}</strong><p>{labels.noticeBody}</p></div></Link><Link href={`${base}/library`} onClick={closeTransient}><span><CheckCircle2 size={17} /></span><div><strong>{labels.savedTitle}</strong><p>{labels.savedBody}</p></div></Link></aside> : null}
@@ -231,7 +244,7 @@ export function AppShell({ children, locale }: { children: ReactNode; locale: Lo
         </div>
 
         <nav className="universal-shell-mobile-nav" aria-label={isArabic ? "التنقل على الهاتف" : "Mobile navigation"}>
-          {[primaryItems[0], primaryItems[1], primaryItems[4], primaryItems[7], utilityItems[0]].map((item) => { const Icon = item.icon; return <Link href={item.href} className={isActive(item.href) ? "is-active" : ""} key={item.id}><Icon size={19} /><span>{item.label}</span></Link>; })}
+          {[primaryItems[0], primaryItems[1], primaryItems[4], primaryItems[7], utilityItems[0]].map((item) => { const Icon = item.icon; return <Link href={item.href} className={isActive(item.href) ? "is-active" : ""} aria-current={isActive(item.href) ? "page" : undefined} key={item.id}><Icon size={19} /><span>{item.label}</span></Link>; })}
         </nav>
       </div>
 

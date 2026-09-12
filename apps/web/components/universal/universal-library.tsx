@@ -75,7 +75,7 @@ export function UniversalLibrary({ locale }: { locale: Locale }) {
     <div className="universal-library-page">
       <header className="universal-library-header"><div><span><Sparkles size={14} />{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.body}</p></div><Link className="universal-library-new" href={`/${locale}/app/home`}><Plus size={16} />{copy.new}</Link></header>
       <div className="universal-library-toolbar">
-        <label><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={copy.search} aria-label={copy.search} /></label>
+        <label><Search size={17} /><input value={query} onInput={(event) => setQuery(event.currentTarget.value)} placeholder={copy.search} aria-label={copy.search} /></label>
         <div className="universal-library-filters">{copy.filters.map(([id, label]) => <button type="button" className={filter === id ? "is-active" : ""} onClick={() => setFilter(id!)} key={id}>{label}</button>)}</div>
         <span>{filtered.length} {copy.results}</span>
         <div className="universal-library-view"><button type="button" className={view === "grid" ? "is-active" : ""} onClick={() => setView("grid")} aria-label="Grid"><Grid2X2 size={16} /></button><button type="button" className={view === "list" ? "is-active" : ""} onClick={() => setView("list")} aria-label="List"><List size={16} /></button></div>

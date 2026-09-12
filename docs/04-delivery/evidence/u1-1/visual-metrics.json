@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-09-11T23:57:26.027Z",
+  "baseURL": "http://127.0.0.1:3000",
+  "engine": "Chromium",
+  "results": [
+    {
+      "name": "landing-phone-320-ar",
+      "url": "/ar",
+      "width": 320,
+      "height": 568,
+      "status": 200,
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "htmlWidth": 320,
+      "bodyWidth": 320,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    },
+    {
+      "name": "home-phone-390-ar",
+      "url": "/ar/app/home",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "htmlWidth": 390,
+      "bodyWidth": 390,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    },
+    {
+      "name": "home-phone-drawer-390-ar",
+      "url": "/ar/app/home",
+      "width": 390,
+      "height": 844,
+      "action": "drawer",
+      "status": 200,
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "htmlWidth": 390,
+      "bodyWidth": 390,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    },
+    {
+      "name": "research-tablet-768-ar",
+      "url": "/ar/app/research",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "viewportWidth": 768,
+      "viewportHeight": 1024,
+      "htmlWidth": 768,
+      "bodyWidth": 768,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    },
+    {
+      "name": "home-rail-1024-ar",
+      "url": "/ar/app/home",
+      "width": 1024,
+      "height": 768,
+      "status": 200,
+      "viewportWidth": 1024,
+      "viewportHeight": 768,
+      "htmlWidth": 1024,
+      "bodyWidth": 1024,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    },
+    {
+      "name": "library-desktop-1440-ar",
+      "url": "/ar/app/library",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "viewportWidth": 1440,
+      "viewportHeight": 900,
+      "htmlWidth": 1440,
+      "bodyWidth": 1440,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    },
+    {
+      "name": "home-wide-1920-en",
+      "url": "/en/app/home",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "htmlWidth": 1920,
+      "bodyWidth": 1920,
+      "horizontalOverflow": 0,
+      "browserErrors": []
+    }
+  ]
+}

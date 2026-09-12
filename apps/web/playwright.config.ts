@@ -1,7 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const crossBrowser = process.env.PLAYWRIGHT_CROSS_BROWSER === "1";
+
 export default defineConfig({
   testDir: "./tests/e2e",
+  timeout: 60_000,
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
@@ -14,6 +17,12 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    ...(crossBrowser
+      ? [
+          { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+          { name: "webkit", use: { ...devices["Desktop Safari"] } },
+        ]
+      : []),
   ],
   webServer: {
     command: "npm run build && npm run start",

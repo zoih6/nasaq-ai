@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowLeft,
   ArrowUp,
@@ -49,6 +49,19 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
   const isArabic = locale === "ar";
   const otherLocale = isArabic ? "en" : "ar";
   const appHref = `/${locale}/app/home`;
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1181px)");
+    function closeMenu() { setMenuOpen(false); }
+    function onViewportChange(event: MediaQueryListEvent) { if (event.matches) closeMenu(); }
+    function onKeyDown(event: KeyboardEvent) { if (event.key === "Escape") closeMenu(); }
+    desktopQuery.addEventListener("change", onViewportChange);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      desktopQuery.removeEventListener("change", onViewportChange);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
 
   const copy = isArabic
     ? {
@@ -166,13 +179,13 @@ export function UniversalMarketing({ locale }: { locale: Locale }) {
             <a href="#trust">{copy.nav.trust}</a>
           </nav>
           <div className="universal-nav__actions">
-            <Link className="luma-locale" href={`/${otherLocale}`} aria-label={isArabic ? "English" : "العربية"}>{otherLocale.toUpperCase()}</Link>
+            <Link className="luma-locale" href={`/${otherLocale}`} prefetch={false} aria-label={isArabic ? "English" : "العربية"}>{otherLocale.toUpperCase()}</Link>
             <Link className="luma-button luma-button--ink luma-button--small" href={appHref}>{copy.open}<ArrowLeft size={15} /></Link>
-            <button className="universal-menu-button" type="button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label={isArabic ? "فتح القائمة" : "Open menu"}>{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
+            <button className="universal-menu-button" type="button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="universal-mobile-menu" aria-label={menuOpen ? (isArabic ? "إغلاق القائمة" : "Close menu") : (isArabic ? "فتح القائمة" : "Open menu")}>{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
           </div>
         </div>
         {menuOpen ? (
-          <nav className="universal-mobile-menu" aria-label={isArabic ? "قائمة الهاتف" : "Mobile menu"}>
+          <nav id="universal-mobile-menu" className="universal-mobile-menu" aria-label={isArabic ? "قائمة الهاتف" : "Mobile menu"}>
             <a href="#services" onClick={() => setMenuOpen(false)}>{copy.nav.services}</a>
             <a href="#adaptive" onClick={() => setMenuOpen(false)}>{copy.nav.adaptive}</a>
             <a href="#experience" onClick={() => setMenuOpen(false)}>{copy.nav.experience}</a>

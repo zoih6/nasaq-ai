@@ -1,6 +1,6 @@
 # نَسَق — منصة ذكاء اصطناعي تتكيف معك
 
-> **الحالة:** Universal Experience U1 — واجهة جديدة متكيفة ومتحققة تقنيًا
+> **الحالة:** Universal Experience U1.1 — صقل responsive والتفاعل مكتمل ومتحقق عبر ثلاثة محركات
 >
 > **المنتج:** منصة عربية/إنجليزية للتعلّم والبحث والصناعة والبرمجة والتحليل والاستكشاف
 >
@@ -51,6 +51,17 @@
 - العربية RTL والإنجليزية LTR تعملان من نفس البنية.
 - كل المحاكاة موسومة بوضوح؛ لا ادعاء بوجود مزود أو بحث أو تنفيذ حقيقي.
 
+### صقل U1.1 للعرض والتفاعل
+
+- نظام fluid موحد للأحجام والمسافات والخطوط، مع حد أدنى عملي للمقروئية.
+- App Shell بثلاث حالات: Sidebar كامل، وIcon Rail بين `821–1180px`، وOverlay مع Bottom Navigation حتى `820px`.
+- أهداف لمس أساسية لا تقل عن `44×44px`، وحالات focus/pressed/disabled و`aria-current` واضحة.
+- دعم `100dvh` وsafe areas، وbottom sheets، وقِصر نافذة العرض عند ظهور لوحة مفاتيح الهاتف.
+- إعادة تدفق مكافئة لتكبير `200%`، ومنع overflow عند عشرة أحجام من `320×568` إلى `1920×1080`.
+- نمو تدريجي تلقائي لحقول النص مع fallback، وقوائم تغلق بـEscape وعند الانتقال بين breakpoints.
+- RTL/LTR كاملان، و`prefers-reduced-motion` وhigh contrast وforced colors.
+- CSS مقسم حسب المسؤولية إلى foundations وmarketing وshell وhome وworkspaces وlibrary وresponsive.
+
 ## التشغيل المحلي
 
 المتطلبات: Node.js `>=20.9.0` وnpm `11.6.4`.
@@ -64,21 +75,27 @@ npx -y npm@11.6.4 run dev
 
 ```bash
 npx -y npm@11.6.4 run check
-npx playwright install chromium
+npx playwright install chromium firefox webkit
 npx -y npm@11.6.4 run test:e2e
+npx -y npm@11.6.4 run test:e2e:responsive
+npx -y npm@11.6.4 run test:e2e:cross-browser
 npx -y npm@11.6.4 audit --audit-level=moderate
 ```
 
-نتيجة U1 الحالية:
+نتيجة U1.1 المحلية في 2026-09-12:
 
 - ESLint: ناجح دون warnings.
 - TypeScript strict عبر workspaces: ناجح.
 - Vitest: **4/4**.
-- Playwright: **23/23** تشمل التجربة العامة والقدرات المتقدمة.
+- Playwright الكامل على Chromium: **38/38**.
+- مصفوفة U1.1 وU1 الأساسية على Chromium وFirefox وWebKit: **66/66**.
 - Production build: ناجح؛ **57 static pages** مع detail routes الديناميكية.
-- فحص المتصفح الأساسي: بلا أخطاء console أو page errors.
-- Desktop وMobile: بلا document-level horizontal overflow في الأسطح الجديدة المختبرة.
-- npm audit: 0 vulnerabilities.
+- Axe WCAG 2.0/2.1/2.2 A/AA: بلا مخالفات serious أو critical في بوابة Chromium/Firefox.
+- عشرة أحجام أساسية، وإعادة تدفق مكافئة لتكبير `200%`: بلا document-level horizontal overflow.
+- سبع لقطات تسليم نهائية: HTTP `200`، أخطاء console/page تساوي `0`، وoverflow أفقي يساوي `0`.
+- npm audit: 0 vulnerabilities في آخر بوابة U1؛ يعاد تشغيله عند كل تحديث للاعتمادات.
+
+تفاصيل التحقق والأدلة: [U1.1 Responsive Verification](docs/04-delivery/U1-1-RESPONSIVE-VERIFICATION.md).
 
 ## الهيكلة
 
@@ -88,7 +105,8 @@ nasaq-ai/
 │   ├── components/universal/       ← Universal Experience U1
 │   ├── components/app-shell/       ← التنقل المتكيف الجديد
 │   ├── lib/universal-content.ts    ← خدمات ومحتوى عربي/إنجليزي
-│   └── app/universal.css           ← Luminous Adaptive System
+│   ├── app/universal.css           ← entrypoint مرتب لنظام الواجهة
+│   └── app/styles/universal/       ← وحدات Luminous Adaptive System
 ├── packages/
 │   ├── contracts/
 │   ├── i18n/
@@ -104,4 +122,4 @@ nasaq-ai/
 
 ## المرحلة التالية
 
-الموجة U2 تعمّق كل خدمة بدل إضافة بطاقات سطحية: تشخيص ومستويات للتعلّم، خطة ومصادر للبحث، محرر للصناعة، ملفات ومعاينة للبرمجة، جداول ورسوم للتحليل، وخرائط معرفة للاستكشاف. يلي ذلك Auth والحفظ والذاكرة الصريحة ورفع الملفات، ثم ربط المزودين وBYOK والرصيد والأدوات خلف حدود أمنية واضحة.
+**U1.2 Motion & Feedback Language** هي الخطوة التالية المعتمدة: لغة حركة وظيفية، انتقالات وحالات loading/success/error متسقة، مع بقاء reduced motion مسارًا كاملًا. لا تبدأ U2 قبل إغلاق U1.2. بعد ذلك تعمّق U2 كل خدمة: تشخيص ومستويات للتعلّم، خطة ومصادر للبحث، محرر للصناعة، ملفات ومعاينة للبرمجة، جداول ورسوم للتحليل، وخرائط معرفة للاستكشاف.

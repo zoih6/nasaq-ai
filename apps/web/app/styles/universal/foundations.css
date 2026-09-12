@@ -1,0 +1,96 @@
+/* Nasaq Universal Experience — luminous, adaptive, goal-first */
+
+:root {
+  --u-bg: #f8f9ff;
+  --u-surface: rgba(255, 255, 255, 0.92);
+  --u-surface-solid: #ffffff;
+  --u-ink: #17182d;
+  --u-ink-soft: #343751;
+  --u-muted: #62667e;
+  --u-faint: #696d84;
+  --u-line: #e7e8f2;
+  --u-line-strong: #d9dbea;
+  --u-primary: #554ce6;
+  --u-primary-strong: #473ed0;
+  --u-primary-soft: #eeecff;
+  --u-cyan: #16bfea;
+  --u-mint: #20bf8f;
+  --u-pink: #ec6aaa;
+  --u-amber: #e99b32;
+  --u-shadow-sm: 0 1px 2px rgba(31, 35, 67, 0.04), 0 8px 24px rgba(67, 70, 118, 0.07);
+  --u-shadow-md: 0 18px 60px rgba(62, 62, 112, 0.12), 0 2px 10px rgba(45, 47, 82, 0.04);
+  --u-shadow-lg: 0 30px 100px rgba(78, 74, 156, 0.17), 0 8px 28px rgba(40, 42, 75, 0.07);
+  --u-radius-sm: 12px;
+  --u-radius: 18px;
+  --u-radius-lg: 28px;
+  --u-sidebar: 248px;
+  --u-sidebar-collapsed: 76px;
+  --u-topbar: 64px;
+  --u-content-max: 1440px;
+  --u-reading-max: 780px;
+  --u-page-gutter: clamp(16px, 2.4vw, 38px);
+  --u-section-space: clamp(52px, 7vw, 108px);
+  --u-touch: 44px;
+  --u-text-xs: clamp(12px, .76rem, 13px);
+  --u-text-sm: clamp(13px, .84rem, 14px);
+  --u-text-md: clamp(15px, .96rem, 16px);
+  --u-text-lg: clamp(17px, 1.12rem, 19px);
+  --u-ease: cubic-bezier(.2,.8,.2,1);
+  --u-fast: 140ms;
+  --u-normal: 200ms;
+}
+
+[data-service="ask"] { --service: #5148dd; --service-rgb: 81, 72, 221; --service-soft: #efedff; --service-deep: #4036bf; }
+[data-service="learn"] { --service: #5940dc; --service-rgb: 89, 64, 220; --service-soft: #f0edff; --service-deep: #4932c1; }
+[data-service="research"] { --service: #08779d; --service-rgb: 8, 119, 157; --service-soft: #e5f7fd; --service-deep: #075f7e; }
+[data-service="create"] { --service: #bc397b; --service-rgb: 188, 57, 123; --service-soft: #ffebf5; --service-deep: #9d2864; }
+[data-service="code"] { --service: #3451ca; --service-rgb: 52, 81, 202; --service-soft: #eaf0ff; --service-deep: #263ea9; }
+[data-service="analyze"] { --service: #9a5608; --service-rgb: 154, 86, 8; --service-soft: #fff3df; --service-deep: #7d4304; }
+[data-service="explore"] { --service: #0c745b; --service-rgb: 12, 116, 91; --service-soft: #e4f8f2; --service-deep: #075f49; }
+
+.universal-site,
+.universal-app-shell {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+  color: var(--u-ink);
+  background: var(--u-bg);
+  font-family: "IBM Plex Sans Arabic", "IBM Plex Sans", Tahoma, sans-serif;
+  font-size: var(--u-text-md);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+html[lang="en"] :is(.universal-site, .universal-app-shell) { font-family: "IBM Plex Sans", "IBM Plex Sans Arabic", sans-serif; }
+:is(.universal-site, .universal-app-shell) :focus-visible { outline: 3px solid rgba(85, 76, 230, .32); outline-offset: 3px; }
+:is(.universal-site, .universal-app-shell) :is(h1,h2,h3,[id]) { scroll-margin-block-start: calc(var(--u-topbar) + 20px); }
+:is(.universal-site, .universal-app-shell) button,
+:is(.universal-site, .universal-app-shell) input,
+:is(.universal-site, .universal-app-shell) textarea,
+:is(.universal-site, .universal-app-shell) select { font: inherit; }
+:is(.universal-site, .universal-app-shell) :is(button,a,input,textarea,select) { -webkit-tap-highlight-color: transparent; }
+:is(.universal-site, .universal-app-shell) button { touch-action: manipulation; transition: color var(--u-fast) ease, background var(--u-fast) ease, border-color var(--u-fast) ease, transform var(--u-fast) var(--u-ease), box-shadow var(--u-fast) ease; }
+:is(.universal-site, .universal-app-shell) button:active { filter: brightness(.98); }
+:is(.universal-site, .universal-app-shell) ::selection { color: var(--u-ink); background: #dcd9ff; }
+:is(.universal-site, .universal-app-shell) :is(button,a)[aria-disabled="true"],
+:is(.universal-site, .universal-app-shell) :is(button,input,textarea,select):disabled { cursor: not-allowed; opacity: .55; pointer-events: none; }
+:is(.universal-site, .universal-app-shell) :is(input,textarea)::placeholder { color: #777b92; opacity: 1; }
+html[dir="ltr"] :is(.universal-site, .universal-app-shell) .lucide-arrow-left { transform: rotate(180deg); }
+
+.universal-container { width: min(1220px, calc(100% - (var(--u-page-gutter) * 2))); margin-inline: auto; }
+.luma-kicker { width: fit-content; display: inline-flex; align-items: center; gap: 8px; color: var(--u-primary); font-size: 13px; font-weight: 700; letter-spacing: .01em; }
+.luma-kicker svg { padding: 3px; border-radius: 6px; background: var(--u-primary-soft); box-sizing: content-box; }
+.luma-button { min-height: var(--u-touch); padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid transparent; border-radius: 13px; text-decoration: none; font-weight: 650; cursor: pointer; touch-action: manipulation; transition: transform var(--u-normal) var(--u-ease), box-shadow var(--u-normal) ease, background var(--u-fast) ease, border-color var(--u-fast) ease; }
+@media (hover: hover) { .luma-button:hover { transform: translateY(-2px); } }
+.luma-button:active { transform: translateY(0) scale(.98); }
+.luma-button--small { min-height: var(--u-touch); padding-inline: 15px; border-radius: 11px; font-size: 13px; }
+.luma-button--large { min-height: 53px; padding-inline: 23px; border-radius: 15px; font-size: 15px; }
+.luma-button--primary { color: white; background: linear-gradient(135deg, #7068ff, #5148e8); box-shadow: 0 10px 26px rgba(85, 75, 232, .25), inset 0 1px rgba(255,255,255,.28); }
+.luma-button--primary:hover { box-shadow: 0 16px 34px rgba(85, 75, 232, .32), inset 0 1px rgba(255,255,255,.28); }
+.luma-button--ink { color: white; background: var(--u-ink); box-shadow: 0 7px 18px rgba(24, 25, 45, .15); }
+.luma-button--ink:hover { background: #292b45; }
+.luma-button--ghost { color: var(--u-ink-soft); border-color: var(--u-line-strong); background: rgba(255,255,255,.7); box-shadow: 0 5px 16px rgba(44,47,82,.05); }
+.luma-button--ghost:hover { border-color: #c7c9dd; background: white; box-shadow: var(--u-shadow-sm); }
+.luma-text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--u-primary); text-decoration: none; font-weight: 650; }
+.luma-text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
