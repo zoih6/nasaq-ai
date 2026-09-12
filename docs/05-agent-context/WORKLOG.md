@@ -137,6 +137,13 @@
 - The report documents: what landed in `aed32cb` (28 files, 5,537 insertions, 8 deletions on base `eaeb731`), the honest verification gap (Vitest/Playwright not run, no evidence captured, matrix not updated), the production smoke results, and the next-session resume order (tests → evidence → matrix → receipt).
 - Updated the delivery index (`docs/04-delivery/README.md`) to reference the report. Docs-only change: no product code, contract, test, or instruction file was touched.
 
+## 2026-09-13 — Delivery report switched to Markdown-only on GitHub (user directive)
+
+- The user directed that the repo on GitHub must carry the U2.2 delivery report as Markdown only: the PDF and DOCX binaries are not wanted on the remote, though they stay on the local sandbox disk.
+- Added `docs/04-delivery/reports/U2.2-Research-Delivery-Report.md` — a faithful Markdown port of the same report content (executive summary, scope background, layer-by-layer inventory, pre-push gates, push/deploy record with production smoke table, pending-items list, risks, resume plan with exit gates, and the full 28-file appendix), wrapped in `<div dir="rtl">` so GitHub renders the Arabic layout and tables right-to-left.
+- Untracked the two binaries with `git rm --cached` (the files remain on disk in the sandbox) and listed them in `.git/info/exclude` — a local-only ignore path — so the shared `.gitignore` is untouched and the binaries cannot be re-staged accidentally.
+- Updated the `04-delivery` index README link from the PDF to the `.md` file. No product code, contract, test, or instruction file was touched; after the push, the remote `reports/` directory contains exactly one file: the Markdown report.
+
 ## Prior stable milestone — U1.1
 
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.
