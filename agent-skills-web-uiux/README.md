@@ -40,7 +40,7 @@ agent-skills-web-uiux/
 ## إعادة توليد HTML
 
 ```bash
-cd /home/user/research/agent-skills-web-uiux
+cd agent-skills-web-uiux
 python -m pip install -r tools/requirements.txt
 python tools/render-report.py
 ```
