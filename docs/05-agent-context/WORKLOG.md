@@ -149,3 +149,14 @@
 - Implemented responsive shell modes, touch sizing, safe areas, RTL/LTR behavior, reduced-motion and contrast handling, and WebKit corrections.
 - Local gates: check passed; Vitest 4/4; build 57 pages; Chromium 38/38; cross-browser 66/66; audit 0 vulnerabilities.
 - Production gate passed 22/22; final alias smoke passed 3/3.
+
+## 2026-09-13 — U2.2 Research locally verified; release closure held
+
+- Fast-forwarded local `main` from `eaeb731` to `f094faa` with `git pull --ff-only`; working tree was clean before verification.
+- Installed dependencies with `npm ci --ignore-scripts` and ran only the affected Research tests first: `u2-research-state.test.ts`, `u2-research-integration.test.ts`, and `u2-boundaries.test.ts`; result **3 files / 35 tests PASS**.
+- Ran the full workspace `npm run lint` and `npm run typecheck`; both passed across web, contracts, i18n, mock-api, and UI packages.
+- Ran `tools/run-research-e2e.sh` in five low-memory Chromium batches. The first attempt was blocked by a missing Playwright browser; Playwright CDN download timed out. Reused the system `/usr/bin/chromium` through a temporary path outside the repository. All five batches returned exit 0, but flaky retries were observed, so this is not a clean-stability result.
+- Added `tools/research-evidence.mjs` and generated `docs/04-delivery/evidence/u2/u2-2-research/manifest.json` plus five screenshots at commit `f094faa`. All records returned HTTP 200, zero document overflow, zero serious/critical Axe violations, and no console/page errors.
+- Updated `CURRENT-STATE.md`, `HANDOFF.md`, and `U2-TRACEABILITY-AND-QA.md`. Rows `U2-RSH-001..009` now have local PASS evidence; `U2-RSH-010` remains IN PROGRESS. U2.2 remains `VERIFIED LOCALLY / E2E FLAKY-RETRY OBSERVED`, not closed.
+- No Backend, live provider, MCP, n8n, Windmill integration, deletion, broad cleanup, or push was performed.
+- Next action: reproduce and reduce the E2E flakiness, then perform human keyboard/screen-reader review before considering a closure receipt.

@@ -95,3 +95,16 @@ U2 may proceed as Frontend-only deterministic simulation, but its `ServiceSessio
 ## D-024 — Transient artifacts never accumulate in the workspace
 
 The delivered repository stays small (~30 MB, under 500 tracked files); dependencies, browser binaries, and build/test output are transient tooling that must not pile up inside it. Playwright browsers live outside the workspace through `PLAYWRIGHT_BROWSERS_PATH` and are installed per gate (Chromium by default, Firefox/WebKit only for the cross-browser close-out). `tools/workspace-hygiene.sh status|clean` is the canonical way to measure and drop that weight, `clean --deps` before a long handoff, and no server, watcher, probe, or scratch file is left behind. **Every task ends `LIGHT`:** the closing action of any task or commit, documentation-only ones included, is `bash tools/workspace-hygiene.sh clean --all`, so no dependency tree, browser binary, build output, or test artifact survives a finished task. This is an operating rule, not a product change: it removes only git-ignored output and never touches tracked sources or evidence.
+
+
+## D-025 — Local evidence is not release closure when retries are observed
+
+A slice may move from `NOT STARTED` to local PASS rows when its listed tests and evidence manifest are fresh, but the milestone remains open when E2E needs retries or when manual accessibility review is outstanding. For U2.2 Research, `f094faa` has 35/35 affected Vitest tests, lint/typecheck PASS, five E2E batches with exit 0 after flaky retries, and five evidence records with HTTP 200/overflow 0/Axe serious-critical 0/0. The canonical status is therefore `VERIFIED LOCALLY / E2E FLAKY-RETRY OBSERVED`; do not call it closed until the instability is reproduced or explained and the human keyboard/screen-reader gate is recorded.
+
+## D-026 — Context Packet is the default handoff unit
+
+Future agents receive a small versioned packet containing objective, boundary, current state, verified evidence, open gates, next commands, file allowlist, risk/permission notes, and expiry. They do not receive full transcripts, all historical reports, or the entire repository documentation by default. Detailed evidence remains linked by manifest and is loaded only when the assigned gate requires it.
+
+## D-027 — Affected tests first; full suites are gated
+
+For a focused slice, run affected unit/integration tests first, then the slice E2E spec in low-memory batches, then lint/typecheck, and only run full regression/build/cross-browser suites at a release or when a shared boundary changes. A flaky retry is recorded as a stability signal, not silently converted into a clean PASS.

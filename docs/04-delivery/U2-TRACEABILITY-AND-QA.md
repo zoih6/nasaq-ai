@@ -217,16 +217,18 @@
 
 | Requirement | المختصر | السطح | الاختبار | الدليل | الحالة |
 |---|---|---|---|---|---|
-| `U2-RSH-001` | brief/clarify/plan modes | Research setup | `E2E-RSH-001` | plan review | `NOT STARTED` |
-| `U2-RSH-002` | plan approval/version gate | plan reducer/run command | `UT-RSH-001`, `E2E-RSH-001` | approved plan version | `NOT STARTED` |
-| `U2-RSH-003` | activity cancel/steer/no stale | simulator + Research adapter | `UT-SIM-002`, `E2E-RSH-003` | cancel/steer state | `NOT STARTED` |
-| `U2-RSH-004` | claim/citation/evidence contracts | contracts + matrix | `UT-RSH-002`, `IT-RSH-001` | claim matrix | `NOT STARTED` |
-| `U2-RSH-005` | unsupported/conflict/unavailable | warnings/recovery | `E2E-RSH-002` | three warning states | `NOT STARTED` |
-| `U2-RSH-006` | correct locator/excerpt/provenance | source inspector | `UT-RSH-002`, `E2E-RSH-001` | open citation drawer | `NOT STARTED` |
-| `U2-RSH-007` | editable report/version/limits/receipt | report artifact | `IT-RSH-001`, `E2E-RSH-001` | report + limitations | `NOT STARTED` |
-| `U2-RSH-008` | exclude source updates coverage | source/claim selectors | `UT-RSH-001..002`, `E2E-RSH-002` | affected claims | `NOT STARTED` |
-| `U2-RSH-009` | network/search truth | adapter/receipt | network assertion + `UT-RCP-001` | `networkCalls:0` | `NOT STARTED` |
-| `U2-RSH-010` | a11y/responsive/i18n/motion | Research composition | A11Y/RSP/MOT + manual | AR/EN mobile/desktop | `NOT STARTED` |
+| `U2-RSH-001` | brief/clarify/plan modes | Research setup | `u2-research-state`, `u2-research-integration`, `service-research.spec.ts` | `u2-2-01..02` | `PASS` |
+| `U2-RSH-002` | plan approval/version gate | plan reducer/run command | `u2-research-state`, `service-research.spec.ts` | `u2-2-02` | `PASS` |
+| `U2-RSH-003` | activity cancel/steer/no stale | simulator + Research adapter | `u2-research-state`, `service-research.spec.ts` | E2E batch 3 | `PASS` |
+| `U2-RSH-004` | claim/citation/evidence contracts | contracts + matrix | `u2-research-state`, `u2-research-integration`, `service-research.spec.ts` | `u2-2-03..04` | `PASS` |
+| `U2-RSH-005` | unsupported/conflict/unavailable | warnings/recovery | `service-research.spec.ts` | E2E batch 2 | `PASS` |
+| `U2-RSH-006` | correct locator/excerpt/provenance | source inspector | `u2-research-integration`, `service-research.spec.ts` | `u2-2-03` | `PASS` |
+| `U2-RSH-007` | editable report/version/limits/receipt | report artifact | `u2-research-integration`, `service-research.spec.ts` | `u2-2-05` + E2E batch 1 | `PASS` |
+| `U2-RSH-008` | exclude source updates coverage | source/claim selectors | `u2-research-state`, `service-research.spec.ts` | E2E batch 2 | `PASS` |
+| `U2-RSH-009` | network/search truth | adapter/receipt | `u2-research-integration`, `service-research.spec.ts` | receipt assertions + `u2-2-03..05` | `PASS` |
+| `U2-RSH-010` | a11y/responsive/i18n/motion | Research composition | E2E batch 4–5 + manual | `u2-2-01..05` | `IN PROGRESS` |
+
+> تحقق U2.2 المحلي على `f094faa`: `35/35` اختبار Vitest متأثر، و`npm run lint` و`npm run typecheck` نجحت. مشغل Research E2E أعاد `exit=0` لكل الدفعات الخمس بعد retries، مع flaky retries ظاهرة في بيئة Chromium؛ لذلك لا تُعد هذه نتيجة استقرار نظيفة. الدليل المرئي في [`evidence/u2/u2-2-research/`](evidence/u2/u2-2-research/) يحتوي 5 سجلات، HTTP 200، overflow=0، وAxe serious/critical=0/0. لا تُعلن U2.2 مغلقة حتى تثبيت سبب flakiness وإغلاق المراجعة البشرية لـ`MAN-SR-001`/keyboard.
 
 ---
 

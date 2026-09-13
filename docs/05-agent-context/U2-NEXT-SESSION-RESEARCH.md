@@ -1,13 +1,13 @@
-# تسليم الجلسة القادمة — U2.2 Research
+# تسليم الجلسة القادمة — U2.2 Research stability gate
 
 > اقرأ هذا الملف أولًا، ثم `docs/01-product/U2-SERVICE-DEPTH.md` §12 و`docs/04-delivery/U2-TRACEABILITY-AND-QA.md` (مصفوفة Research + §13.2/§13.3).
-> لا تبدأ أي شريحة جديدة بغير إذن صريح من المستخدم.
+> لا تبدأ أي شريحة جديدة بغير إذن صريح من المستخدم. Research موجودة الآن على `main@f094faa`، والتحقق المحلي مرّ، لكن الشريحة ليست مغلقة بسبب E2E flaky retries ومراجعة accessibility البشرية المفتوحة.
 
 ## 1. من أين نبدأ
 
-- `main @ e7ee7d8` (فيه `f3e3e31` = كود U2.1 Learn، و`e7ee7d8` = أدلته). النشر: Vercel `success`، والإنتاج `https://nasaq-ai.vercel.app` يخدم Learn فعلًا (`data-stage="lrn_brief"`).
+- `main @ f094faa` (فيه Research code/evidence metadata). الأدلة المحلية في `docs/04-delivery/evidence/u2/u2-2-research/manifest.json`؛ لا تخلطها مع دليل Backend أو بحث حي.
 - المصفوفة: `U2-LRN-001..007 = PASS`، `U2-LRN-008 = IN PROGRESS` (الآلي أخضر؛ تبقى مراجعة قارئ الشاشة البشرية `MAN-SR-001`). لا تعِد فتحها إلا إن طلب المستخدم.
-- الشريحة التالية في الترتيب: **U2.2 Research — ابحث ووثّق** (عقدها §12). بعدها Create، ثم Code، ثم Analyze، ثم Explore.
+- نقطة العمل الحالية: **تثبيت E2E flakiness وإغلاق المراجعة البشرية**. لا تنتقل إلى Create قبل إغلاق U2.2 بإيصال نهائي.
 
 ## 2. نطاق Research المطلوب
 
@@ -32,7 +32,7 @@
 5. الأسطح: brief/clarify/plan review/activity/source review/claim matrix/report edit/complete + `citation inspector` (drawer يعيد focus، روابط خارجية بمقصد واضح).
 6. تسجيل: `service-registry.ts` (research → `implemented` / `domain_workspace`) و`service-route-renderers.tsx`.
 7. الاختبارات بنفس التسمية الموجودة: وحدة للحتمية والبوابات، تكامل مع `ServiceWorkbenchProvider`/`records/restored`، ثم `apps/web/tests/e2e/service-research.spec.ts` (كامل المسار + a11y/RTL/reflow/محرك الحركة/forced-colors).
-8. الأدلة: انسخ `tools/u2-learn-evidence.mjs` → `tools/research-evidence.mjs` (متصفح لكل سجل + try/catch لكل سجل + `process.exitCode=1`)، والمخرج `docs/04-delivery/evidence/u2/u2-2-research/`، ثم حدّث صفوف Research في المصفوفة.
+8. الأدلة أُنشئت بالفعل عبر `tools/research-evidence.mjs` في `docs/04-delivery/evidence/u2/u2-2-research/`; لا تعِد توليدها إلا بعد تغيير ذي صلة، ثم حدّث manifest والمصفوفة معًا.
 
 ## 4. أوامر البيئة (Sandbox)
 
@@ -49,7 +49,7 @@ bash tools/run-learn-e2e.sh          # يعيد تشغيل الخادم تلقا
 cd apps/web && PLAYWRIGHT_LOW_MEMORY=1 PLAYWRIGHT_BROWSERS_PATH=/tmp/nasaq-playwright \
   npx playwright test tests/e2e/service-research.spec.ts --project=chromium --reporter=list --workers=1 --retries=1
 # الأدلة + hygiene في نهاية كل مهمة
-PLAYWRIGHT_BROWSERS_PATH=/tmp/nasaq-playwright U2_EVIDENCE_PORT=3000 node tools/u2-learn-evidence.mjs
+PLAYWRIGHT_EXECUTABLE_PATH=/usr/bin/chromium U2_EVIDENCE_PORT=3000 node tools/research-evidence.mjs
 bash tools/workspace-hygiene.sh clean --all
 ```
 

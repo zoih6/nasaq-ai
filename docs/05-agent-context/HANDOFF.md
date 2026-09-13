@@ -17,13 +17,13 @@
 
 ## Current handoff point
 
-**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. `U2.0` Foundation and `U2.1` Learn are implemented, verified, and deployed; the next slice is `U2.2` Research, and it needs an explicit go.** See [`U2-NEXT-SESSION-RESEARCH.md`](U2-NEXT-SESSION-RESEARCH.md) for the restart brief of that slice.
+**The product-agent architecture audit is complete; product-agent Backend is `NO-GO`. `U2.0` Foundation and `U2.1` Learn are implemented and verified. `U2.2` Research is implemented and locally verified on `f094faa`, but is not release-closed: the five E2E batches passed after retries, with flaky retries observed, and manual accessibility review remains open.** Evidence is in [`../04-delivery/evidence/u2/u2-2-research/`](../04-delivery/evidence/u2/u2-2-research/); the next agent must stabilize/reproduce the E2E behavior before changing product code or calling the slice closed.
 
 The current runtime still uses one generic `ServiceWorkspace` for the service routes and a timeout-driven generic result. Contracts and mock API do not yet contain the U2 service-session/artifact domain. Separately, the Agent/Run contracts are Prototype view/simulation shapes, and no Agent Backend, provider adapter, database, durable orchestrator, worker, tool executor, credential broker, persistent memory, telemetry exporter, prompt registry, or eval runner exists.
 
 There are now two explicit tracks:
 
-- **U2:** may implement Frontend-only Service Depth under the U2 prompt and mandatory boundary addendum.
+- **U2:** may implement Frontend-only Service Depth under the U2 prompt and mandatory boundary addendum. The current slice is Research verification/stability, not a new feature expansion.
 - **Product-agent architecture:** may close `PA-G0..PA-G10` readiness artifacts; it must not implement Backend until the gates and limited GO pass.
 
 The portable operating standard is now `AGENT-OPERATING-METHOD.md` v2.0, with `.agents/skills/evidence-led-agent-workflow/SKILL.md` v2.0.0 as its concise activation layer. The method integrates requirements, context/prompt engineering, architecture, decomposition, code organization, tests/evals, security, maintainability, and agent lifecycle without replacing project-specific authority. Its permanent verification receipt is [`../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md`](../04-delivery/AGENT-OPERATING-METHOD-V2-VERIFICATION.md). Integration commit `be3cccab0dda867dd5fa40d6e4a2def69e692c04` is on GitHub `main`; matching Vercel deployment `dpl_BtRLiGPnGFKHiuy9wE548MLyzSHE` is `READY`, source-matched, aliased to production, and HTTP-smoked on four Arabic/English routes.

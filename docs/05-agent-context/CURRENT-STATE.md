@@ -1,6 +1,16 @@
 # Current State
 
-Last updated: 2026-09-12 (Asia/Aden)
+Last updated: 2026-09-13 (Asia/Aden)
+
+## U2.2 Research — locally verified, not release-closed
+
+**Research موجودة كـFrontend-only deterministic simulation على `main@f094faa1d2c75d4004db60b0b6d92e5cd840119d`. التحقق المحلي مرّ، لكن لا يوجد Backend/live search، وE2E احتاج retries في بيئة Chromium النظامية؛ لذلك الحالة `VERIFIED LOCALLY / E2E FLAKY-RETRY OBSERVED` وليست `closed`.**
+
+- الاختبارات المتأثرة: `3` ملفات Vitest، `35/35` اختبارًا ناجحًا، ثم `npm run lint` و`npm run typecheck` نجحا.
+- E2E Research: دفعات المشغل الخمس عادت `exit=0` مع `1 passed` في معظم الدفعات و`flaky` retries؛ الفشل الأول كان بيئيًا لأن Playwright Chromium غير موجود، ثم استُخدم `/usr/bin/chromium` عبر رابط مؤقت خارج المستودع.
+- الأدلة: [`evidence/u2/u2-2-research/`](../04-delivery/evidence/u2/u2-2-research/) (5 لقطات + `manifest.json`)؛ كل سجل HTTP 200، و`documentOverflowPx=0`، وAxe `serious/critical=0/0`، ولا console/page errors.
+- الحقيقة التشغيلية: `networkCalls:0` و`productAgentRuntime:not_implemented` ما زالتا حدود المحاكاة؛ الأدلة تثبت الواجهة والحالة المحلية فقط ولا تثبت بحثًا حيًا أو مزودًا أو Runtime.
+- البوابة المفتوحة: تثبيت سبب flakiness وإعادة E2E بجلسة مستقرة، ثم مراجعة keyboard/screen-reader البشرية قبل إعلان U2.2 `closed`. لا يفتح هذا التحقق PA-G0..PA-G10 ولا يغير حالة Product-agent Backend `NO-GO`.
 
 ## U2 Service Depth — U2.0 Foundation (closed)
 
@@ -66,12 +76,12 @@ A context/receipt-only closure commit follows the content delivery; always inspe
 
 ## Milestone status
 
-**Two non-conflicting tracks remain: U2 Service Depth proceeds as explicit Frontend simulation (`U2.0` and `U2.1` closed, `U2.2` Research next), and product-agent architecture advances through documentation/readiness only. Product-agent Backend implementation has not started.**
+**Two non-conflicting tracks remain: U2 Service Depth proceeds as explicit Frontend simulation (`U2.0` and `U2.1` closed, `U2.2` Research locally verified but not release-closed), and product-agent architecture advances through documentation/readiness only. Product-agent Backend implementation has not started.**
 
 The completed planning package is:
 
 - [`docs/01-product/U2-SERVICE-DEPTH.md`](../01-product/U2-SERVICE-DEPTH.md) — canonical stage contract: scope, architecture, shared domain model, service-by-service workflows, states, truth/security boundaries, sequencing, risks, and acceptance criteria.
-- [`docs/04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — 79 requirement rows mapped to planned unit/integration/E2E/manual checks and evidence. `U2.0` rows now carry fresh evidence (`PASS`/`IN PROGRESS`); `U2.1`–`U2.7` rows remain `NOT STARTED`.
+- [`docs/04-delivery/U2-TRACEABILITY-AND-QA.md`](../04-delivery/U2-TRACEABILITY-AND-QA.md) — 79 requirement rows mapped to planned unit/integration/E2E/manual checks and evidence. `U2.0` and `U2.1` carry fresh evidence; `U2.2` carries local Research evidence while its release-close gate remains open because E2E retries were observed and manual accessibility review is not complete.
 - [`U2-IMPLEMENTATION-PROMPT.md`](U2-IMPLEMENTATION-PROMPT.md) — restart-ready request for a new implementation agent.
 - [`U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md`](U2-PRODUCT-AGENT-BOUNDARY-ADDENDUM.md) — mandatory separation of U2 Service contracts from future Product Agent Runtime.
 - [`docs/04-delivery/U2-PLANNING-VERIFICATION.md`](../04-delivery/U2-PLANNING-VERIFICATION.md) — local checks, checksums, GitHub commit, matching Vercel deployment, and production HTTP smoke.
