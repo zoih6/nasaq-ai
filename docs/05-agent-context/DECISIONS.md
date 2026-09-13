@@ -108,3 +108,8 @@ Future agents receive a small versioned packet containing objective, boundary, c
 ## D-027 — Affected tests first; full suites are gated
 
 For a focused slice, run affected unit/integration tests first, then the slice E2E spec in low-memory batches, then lint/typecheck, and only run full regression/build/cross-browser suites at a release or when a shared boundary changes. A flaky retry is recorded as a stability signal, not silently converted into a clean PASS.
+
+
+## D-028 — E2E runner owns an isolated server process group
+
+Research E2E must not reuse an unknown server on the default development port. The runner uses a dedicated port, passes `PLAYWRIGHT_BASE_URL` explicitly, starts Next in a separate process group, and cleans only the group it owns through `trap`. Broad process matching such as `pkill` is prohibited. A retry that passes after `browserContext.newPage: Target page, context or browser has been closed` remains a flaky environment signal until reproduced with a clean browser/process environment; it is not silently classified as a product PASS.

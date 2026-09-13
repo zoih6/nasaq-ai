@@ -160,3 +160,10 @@
 - Updated `CURRENT-STATE.md`, `HANDOFF.md`, and `U2-TRACEABILITY-AND-QA.md`. Rows `U2-RSH-001..009` now have local PASS evidence; `U2-RSH-010` remains IN PROGRESS. U2.2 remains `VERIFIED LOCALLY / E2E FLAKY-RETRY OBSERVED`, not closed.
 - No Backend, live provider, MCP, n8n, Windmill integration, deletion, broad cleanup, or push was performed.
 - Next action: reproduce and reduce the E2E flakiness, then perform human keyboard/screen-reader review before considering a closure receipt.
+
+## 2026-09-13 — E2E runner hardening and Context Packet template
+
+- Reproduced the operational failure: an orphaned Next dev process from an earlier run remained on port 3000 for about 52 minutes, while the direct Playwright command waited without useful output. The first retry failures were `browserContext.newPage: Target page, context or browser has been closed`; the retry passed, so this is currently classified as environment/browser-start instability, not a confirmed product defect.
+- Hardened `tools/run-research-e2e.sh`: it now uses a dedicated default port (`3010`), passes `PLAYWRIGHT_BASE_URL` explicitly, starts Next in its own process group, kills only the owned group, and cleans it through `trap`; it no longer uses broad Chromium `pkill`.
+- Re-ran the full five-batch runner after the hardening: all batches exited 0, with the same retry pattern still visible. The runner cleanup must be checked again after a fresh run; the old orphan from the pre-hardening run is not evidence against the new process-group logic.
+- Added `docs/05-agent-context/CONTEXT-PACKET-TEMPLATE.md`, a versioned task packet with objective, boundary, file allowlist, affected tests, evidence contract, permissions, output schema, expiry, and a U2.2 example. Added it to the durable context read order.

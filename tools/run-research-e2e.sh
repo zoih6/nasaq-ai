@@ -9,7 +9,7 @@ set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WEB="$ROOT/apps/web"
-PORT="${U2_E2E_PORT:-3000}"
+PORT="${U2_E2E_PORT:-3010}"
 BASE="http://127.0.0.1:$PORT"
 LOG_DIR="${U2_E2E_LOG_DIR:-/tmp}"
 BATCHES=(
@@ -21,6 +21,19 @@ BATCHES=(
 )
 
 dev_pid=""
+dev_owned="0"
+
+cleanup() {
+  if [ "$dev_owned" = "1" ] && [ -n "$dev_pid" ] && kill -0 "$dev_pid" 2>/dev/null; then
+    kill -- "-$dev_pid" 2>/dev/null || kill "$dev_pid" 2>/dev/null || true
+    for _ in $(seq 1 10); do
+      kill -0 "$dev_pid" 2>/dev/null || break
+      sleep 1
+    done
+    kill -9 -- "-$dev_pid" 2>/dev/null || kill -9 "$dev_pid" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT INT TERM
 
 server_up() {
   [ "$(curl -s -o /dev/null -w '%{http_code}' "$BASE/ar/app/research" 2>/dev/null)" = "200" ]
@@ -30,10 +43,17 @@ start_dev() {
   if server_up; then
     return 0
   fi
-  pkill -f "[c]hrome-headless" 2>/dev/null || true
-  ( cd "$WEB" && NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS="--max-old-space-size=560" \
-      nohup npx next dev -H 127.0.0.1 -p "$PORT" >"$LOG_DIR/u2-rsh-e2e-dev.log" 2>&1 & echo $! >"$LOG_DIR/u2-rsh-e2e-dev.pid" )
+  if [ -f "$LOG_DIR/u2-rsh-e2e-dev.pid" ]; then
+    old_pid="$(cat "$LOG_DIR/u2-rsh-e2e-dev.pid" 2>/dev/null || true)"
+    case "$old_pid" in
+      ''|*[!0-9]*) ;;
+      *) kill -- "-$old_pid" 2>/dev/null || kill "$old_pid" 2>/dev/null || true ;;
+    esac
+  fi
+  setsid bash -c 'cd "$1" && NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS="--max-old-space-size=560" exec npx next dev -H 127.0.0.1 -p "$2"' _ "$WEB" "$PORT" >"$LOG_DIR/u2-rsh-e2e-dev.log" 2>&1 &
+  echo $! >"$LOG_DIR/u2-rsh-e2e-dev.pid"
   dev_pid="$(cat "$LOG_DIR/u2-rsh-e2e-dev.pid")"
+  dev_owned="1"
   for _ in $(seq 1 40); do
     if server_up; then
       echo "[run-research-e2e] dev server ready (pid $dev_pid)"
@@ -51,7 +71,7 @@ for batch in "${BATCHES[@]}"; do
   start_dev || exit 2
   echo "[run-research-e2e] batch: $batch"
   log="$LOG_DIR/u2-rsh-e2e-${batch//|/_}.log"
-  ( cd "$WEB" && PLAYWRIGHT_LOW_MEMORY=1 PLAYWRIGHT_BROWSERS_PATH="${PLAYWRIGHT_BROWSERS_PATH:-/tmp/nasaq-playwright}" \
+  ( cd "$WEB" && PLAYWRIGHT_LOW_MEMORY=1 PLAYWRIGHT_BASE_URL="$BASE" PLAYWRIGHT_BROWSERS_PATH="${PLAYWRIGHT_BROWSERS_PATH:-/tmp/nasaq-playwright}" \
       npx playwright test tests/e2e/service-research.spec.ts --project=chromium \
       --reporter=list --workers=1 --retries=1 --grep "$batch" ) >"$log" 2>&1
   code=$?
@@ -62,7 +82,6 @@ for batch in "${BATCHES[@]}"; do
     sed -e 's/\x1b\[[0-9;]*m//g' "$log" | grep -E "Error:|✘|failed$" | head -20
   fi
   # Give the box a moment (and the reaper no reason) before the next batch.
-  pkill -f "[c]hrome-headless" 2>/dev/null || true
   sleep 2
 done
 
