@@ -82,7 +82,10 @@ test("layout reflows at the 200% zoom equivalent of a 1280px viewport", async ({
   await page.goto("/ar/app/research");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expectNoOverflow(page, "200% zoom service");
-  await expectInsideViewport(page.locator(".service-prompt-area"), "200% zoom prompt");
+  // Research now renders its own domain workspace; its brief surface is the
+  // composer this gate protects (the legacy .service-prompt-area only exists
+  // on the prototype services).
+  await expectInsideViewport(page.getByTestId("u2-research-brief"), "200% zoom brief");
 });
 
 test("shell switches between full sidebar, compact rail, and mobile navigation", async ({ page }) => {

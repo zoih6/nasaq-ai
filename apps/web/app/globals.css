@@ -1007,7 +1007,23 @@ html[dir="ltr"] .preview-policy dd { margin: 3px 0 0 20px; }
 .access-policy p { margin: 2px 0 0; color: var(--text-muted); font-size: 10px; }
 
 /* Builder shared */
-.builder-page, .flow-editor-page { width: calc(100% + 64px); margin: -34px -32px -72px; min-height: calc(100vh - 56px); background: #f6f5f0; }
+/* Builder/editor surfaces own their chrome inside the universal shell. The
+   old fixed negative-margin bleed guessed the route padding and escaped the
+   viewport by 2-8px whenever the shell gutter shrank; instead the shell
+   drops its route padding and content cap for these surfaces so the builder
+   fills the frame exactly at every breakpoint. Mobile keeps the bottom-nav
+   clearance. */
+.builder-page, .flow-editor-page { width: 100%; margin: 0; min-height: calc(100dvh - var(--u-topbar, 64px)); background: #f6f5f0; }
+.universal-shell-content:has(.builder-page),
+.universal-shell-content:has(.flow-editor-page) { width: 100%; padding: 0; }
+@media (max-width: 820px) {
+  .universal-shell-content:has(.builder-page),
+  .universal-shell-content:has(.flow-editor-page) { padding-block-end: calc(92px + env(safe-area-inset-bottom)); }
+}
+@media (max-height: 700px) and (max-width: 820px) {
+  .universal-shell-content:has(.builder-page),
+  .universal-shell-content:has(.flow-editor-page) { padding-block-end: calc(80px + env(safe-area-inset-bottom)); }
+}
 .builder-topbar { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 16px; border-block-end: 1px solid var(--border); background: var(--surface); }
 .builder-topbar__identity { min-width: 0; display: flex; align-items: center; gap: 10px; }
 .builder-topbar__identity > div:last-child { min-width: 0; }
@@ -1301,7 +1317,6 @@ html[dir="ltr"] .preview-policy dd { margin: 3px 0 0 20px; }
 }
 
 @media (max-width: 840px) {
-  .builder-page, .flow-editor-page { width: calc(100% + 36px); margin: -24px -18px -90px; }
   .ops-stats { grid-template-columns: repeat(2,1fr); }
   .ops-stats > div:nth-child(2) { border-inline-end: 0; }
   .ops-stats > div:nth-child(-n+2) { border-block-end: 1px solid var(--border); }
@@ -1603,7 +1618,12 @@ html[dir="ltr"] .preview-policy dd { margin: 3px 0 0 20px; }
 .review-warning p { margin: 0; font-size: 9px; }
 
 /* Usage and cost */
-.usage-header-actions { display: flex; align-items: center; gap: 7px; }
+/* The header keeps this action row on its natural width: the two controls
+   (period select + export button) hold flex 0 0 auto, so letting the row
+   itself shrink squeezed the button 15-31px past the viewport edge on
+   768-1023px screens. The copy column has min-width 0 and wraps, so it can
+   absorb the whole deficit at every width. */
+.usage-header-actions { flex: 0 0 auto; display: flex; align-items: center; gap: 7px; }
 .usage-header-actions select { height: 36px; padding-inline: 10px 30px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 10px; }
 .usage-overview-grid { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(250px,.62fr); gap: 11px; }
 .usage-chart-card, .credit-balance-card, .usage-breakdown-card, .usage-ledger-card { padding: 16px; border: 1px solid var(--border); background: var(--surface); }
