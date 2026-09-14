@@ -2,6 +2,7 @@ import type { ServiceId } from "@nasaq/contracts/services";
 import type { Locale } from "@nasaq/contracts/services";
 import { LearnRoute } from "@/features/learn/learn-route";
 import { ResearchRoute } from "@/features/research/research-route";
+import { CreateRoute } from "@/features/create/create-route";
 import type { ServiceRegistryEntry } from "@/features/service-workbench/service-registry";
 import { ServiceWorkspace } from "@/components/universal/service-workspace";
 import { getUniversalService, type UniversalServiceId } from "@/lib/universal-content";
@@ -21,6 +22,9 @@ export function renderDomainWorkspace(serviceId: ServiceId, locale: Locale) {
   }
   if (serviceId === "research") {
     return <ResearchRoute locale={locale} />;
+  }
+  if (serviceId === "create") {
+    return <CreateRoute locale={locale} />;
   }
   return null;
 }

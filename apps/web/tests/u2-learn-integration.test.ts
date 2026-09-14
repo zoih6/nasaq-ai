@@ -187,9 +187,10 @@ describe("IT-LRN-001 — the Learn slice runs inside the shared workbench withou
     expect(entry.screenId).toBe("U2-LRN-001");
     expect(entry.renderer).toBe("domain_workspace");
     expect(entry.status).toBe("implemented");
-    // U2.1 Learn landed first; U2.2 Research joined it. The remaining services
-    // stay on the foundation until their slices land with evidence.
-    expect(getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented")).toEqual(["learn", "research"]);
+    // U2.1 Learn landed first; U2.2 Research and U2.3 Create joined it. The
+    // remaining services stay on the foundation until their slices land with
+    // evidence.
+    expect(getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented")).toEqual(["learn", "research", "create"]);
 
     const route = readFileSync(join(repoRoot, "apps", "web", "features", "learn", "learn-route.tsx"), "utf8");
     // The route composes: it must not reach into storage internals or re-derive

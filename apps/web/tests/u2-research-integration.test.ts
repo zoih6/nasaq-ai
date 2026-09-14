@@ -192,7 +192,7 @@ describe("IT-RSH-001 — the Research slice runs inside the shared workbench wit
     expect(entry.screenId).toBe("U2-RSH-001");
     expect(entry.renderer).toBe("domain_workspace");
     expect(entry.status).toBe("implemented");
-    expect(getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented")).toEqual(["learn", "research"]);
+    expect(getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented")).toEqual(["learn", "research", "create"]);
 
     const route = readFileSync(join(repoRoot, "apps", "web", "features", "research", "research-route.tsx"), "utf8");
     // The route composes: it must not reach into storage internals or re-derive

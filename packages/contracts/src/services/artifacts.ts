@@ -37,9 +37,22 @@ export const learningPathContentSchema = z.object({
   steps: z.array(learningStepSchema).min(1).max(12),
 });
 
+/**
+ * Create content kinds (U2.3) carry the full editable draft so a restored
+ * version reproduces the working state exactly. New fields default so
+ * foundation-era fixtures and snapshots keep parsing.
+ */
+export const createOutlineEntrySchema = z.object({
+  id: z.string().min(3).max(40),
+  label: serviceLabelSchema,
+});
+export type CreateOutlineEntry = z.infer<typeof createOutlineEntrySchema>;
+
 export const creativeDocumentContentSchema = z.object({
   kind: z.literal("creative_document"),
   title: serviceLabelSchema,
+  /** Editable outline recorded with the version; mirrors the draft's outline. */
+  outline: z.array(createOutlineEntrySchema).max(12).default([]),
   blocks: z.array(z.object({
     id: z.string().min(3).max(40),
     type: z.enum(["heading", "paragraph", "list"]),
@@ -47,22 +60,32 @@ export const creativeDocumentContentSchema = z.object({
   })).min(1).max(24),
 });
 
+export const creativeDeckSlideContentSchema = z.object({
+  id: z.string().min(3).max(40),
+  title: serviceLabelSchema,
+  bullets: z.array(serviceProseSchema).max(6),
+  /** Speaker notes; empty until the user writes them. */
+  notes: z.string().max(4000).default(""),
+});
+export type CreateDeckSlideContent = z.infer<typeof creativeDeckSlideContentSchema>;
+
 export const creativeDeckContentSchema = z.object({
   kind: z.literal("creative_deck"),
   title: serviceLabelSchema,
-  slides: z.array(z.object({
-    id: z.string().min(3).max(40),
-    title: serviceLabelSchema,
-    bullets: z.array(serviceProseSchema).max(6),
-  })).min(1).max(16),
+  slides: z.array(creativeDeckSlideContentSchema).min(1).max(16),
 });
+
+export const visualConceptRatioSchema = z.enum(["ratio_1_1", "ratio_4_3", "ratio_16_9"]);
 
 export const visualConceptContentSchema = z.object({
   kind: z.literal("visual_concept"),
+  /** Identifies the selected demo variant; never a generated image. */
   conceptId: z.string().min(3).max(40),
   caption: serviceLabelSchema,
-  altText: serviceLabelSchema,
+  altText: z.string().max(600).default(""),
   palette: z.array(z.string().regex(/^#[0-9a-f]{6}$/u)).min(2).max(6),
+  /** Recorded so restore reproduces the chosen framing; demo data. */
+  ratio: visualConceptRatioSchema.default("ratio_16_9"),
 });
 
 export const codeProjectContentSchema = z.object({

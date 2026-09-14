@@ -124,14 +124,14 @@ describe("U2-CORE-001/002 — explicit registry, shared gateway", () => {
   });
 
   it("flips a service to `implemented` only when its slice landed, and keeps the rest on the foundation", () => {
-    // U2.1 Learn and U2.2 Research are the implemented slices; the remaining
-    // services must still report `foundation` until their contract lands with
-    // evidence.
+    // U2.1 Learn, U2.2 Research, and U2.3 Create are the implemented slices;
+    // the remaining services must still report `foundation` until their
+    // contract lands with evidence.
     const implemented = getRegisteredServiceIds().filter((serviceId) => getServiceRegistryEntry(serviceId).status === "implemented");
-    expect(implemented).toEqual(["learn", "research"]);
+    expect(implemented).toEqual(["learn", "research", "create"]);
     for (const serviceId of getRegisteredServiceIds()) {
       const entry = getServiceRegistryEntry(serviceId);
-      if (serviceId === "learn" || serviceId === "research") {
+      if (serviceId === "learn" || serviceId === "research" || serviceId === "create") {
         expect(entry.renderer).toBe("domain_workspace");
         continue;
       }

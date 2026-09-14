@@ -136,6 +136,10 @@ export function buildServiceArtifactContent(kind: ServiceArtifactKind, locale: L
       return {
         kind: "creative_document",
         title: text.artifactTitle,
+        outline: [
+          { id: `out_${suffix}_1`, label: locale === "ar" ? "النتيجة" : "Outcome" },
+          { id: `out_${suffix}_2`, label: locale === "ar" ? "التفاصيل" : "Details" },
+        ],
         blocks: [
           { id: `blk_${suffix}_1`, type: "heading", text: locale === "ar" ? "النتيجة" : "Outcome" },
           { id: `blk_${suffix}_2`, type: "paragraph", text: text.brief },
@@ -146,8 +150,8 @@ export function buildServiceArtifactContent(kind: ServiceArtifactKind, locale: L
         kind: "creative_deck",
         title: text.artifactTitle,
         slides: [
-          { id: `sld_${suffix}_1`, title: locale === "ar" ? "السياق" : "Context", bullets: [text.brief] },
-          { id: `sld_${suffix}_2`, title: locale === "ar" ? "الخطوة التالية" : "Next step", bullets: [text.changeRequest] },
+          { id: `sld_${suffix}_1`, title: locale === "ar" ? "السياق" : "Context", bullets: [text.brief], notes: "" },
+          { id: `sld_${suffix}_2`, title: locale === "ar" ? "الخطوة التالية" : "Next step", bullets: [text.changeRequest], notes: "" },
         ],
       };
     case "visual_concept":
@@ -157,6 +161,7 @@ export function buildServiceArtifactContent(kind: ServiceArtifactKind, locale: L
         caption: text.artifactTitle,
         altText: locale === "ar" ? "تصور نموذجي بأشكال هندسية بسيطة." : "Sample concept made of simple geometric shapes.",
         palette: ["#554ce6", "#16bfea"],
+        ratio: "ratio_16_9",
       };
     case "code_project":
       return {

@@ -133,6 +133,9 @@ export function createDeterministicMockServiceClient(): ServiceClient {
 
     buildReceipt({ session, run, scenarioId, locale, ids, storage }) {
       const at = toServiceTimestamp(Date.now());
+      // Create's disclosure names its own simulation surface: structure and
+      // variant proposals and demo drafts — never image generation or export.
+      const isCreate = session.serviceId === "create";
       return {
         id: ids.next("sim_"),
         runId: run.id,
@@ -141,14 +144,25 @@ export function createDeterministicMockServiceClient(): ServiceClient {
         fixtureIds: [`fx_${session.serviceId}_${scenarioId}_${locale}`],
         performedLocally: [
           locale === "ar" ? "تشغيل محاكي الأحداث الحتمي محليًا" : "Deterministic event simulator run locally",
+          ...(isCreate
+            ? [locale === "ar" ? "بناء البنية والبدائل ومسودات التحرير من بيانات محلية" : "Structure, variants, and editable drafts built from local data"]
+            : []),
         ],
         simulated: [
-          locale === "ar" ? "استرجاع المصادر وصياغة المخرج" : "Source discovery and outcome drafting",
+          isCreate
+            ? (locale === "ar" ? "اقتراح البنية والبدائل وصياغة مسودة تجريبية" : "Structure and variant proposals plus a demo draft")
+            : (locale === "ar" ? "استرجاع المصادر وصياغة المخرج" : "Source discovery and outcome drafting"),
         ],
         notPerformed: [
           locale === "ar" ? "الاتصال بالإنترنت أو أي مزود نموذج" : "Network access or any model provider",
           locale === "ar" ? "قراءة أو رفع ملفاتك" : "Reading or uploading your files",
           locale === "ar" ? "تنفيذ أي كود أو أمر" : "Executing any code or command",
+          ...(isCreate
+            ? [
+                locale === "ar" ? "توليد الصور أو معالجتها" : "Image generation or processing",
+                locale === "ar" ? "تصدير PDF أو PPTX أو صور" : "PDF, PPTX, or image export",
+              ]
+            : []),
         ],
         networkCalls: 0,
         persistentStorage: storage,

@@ -13,6 +13,8 @@ import type { LearnCopy } from "./learn-content";
 import { learnContentAr, learnContentEn } from "./learn-content";
 import type { ResearchCopy } from "./research-content";
 import { researchContentAr, researchContentEn } from "./research-content";
+import type { CreateCopy } from "./create-content";
+import { createContentAr, createContentEn } from "./create-content";
 
 export type ServiceEntry = {
   label: string;
@@ -34,6 +36,12 @@ export type LearnServiceEntry = ServiceEntry & LearnCopy;
  * sources, claims, activity, report, and the UI strings of its stages.
  */
 export type ResearchServiceEntry = ServiceEntry & ResearchCopy;
+
+/**
+ * Create owns extra copy in U2.3: document sections, deck slides, visual
+ * variant labels and differences, review suggestions, and stage UI strings.
+ */
+export type CreateServiceEntry = ServiceEntry & CreateCopy;
 
 export type ServiceDictionary = {
   workbench: {
@@ -113,7 +121,7 @@ export type ServiceDictionary = {
   runStatus: Record<ServiceRunStatus, string>;
   sessionStatus: Record<ServiceSessionStatus, string>;
   scenarios: Record<ServiceScenarioId, string>;
-  services: Record<ServiceId, ServiceEntry> & { learn: LearnServiceEntry; research: ResearchServiceEntry };
+  services: Record<ServiceId, ServiceEntry> & { learn: LearnServiceEntry; research: ResearchServiceEntry; create: CreateServiceEntry };
 };
 
 const ar: ServiceDictionary = {
@@ -280,6 +288,7 @@ const ar: ServiceDictionary = {
         crt_version: "الإصدار",
         crt_complete: "الحفظ والإيصال",
       },
+      ...createContentAr,
     },
     code: {
       label: "برمج وابنِ",
@@ -493,6 +502,7 @@ const en: ServiceDictionary = {
         crt_version: "Version",
         crt_complete: "Save and hand off",
       },
+      ...createContentEn,
     },
     code: {
       label: "Code and build",
