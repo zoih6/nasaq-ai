@@ -1612,7 +1612,7 @@ html[dir="ltr"] .preview-policy dd { margin: 3px 0 0 20px; }
 .usage-chart__plot { display: flex; align-items: flex-end; gap: clamp(4px,1vw,11px); border-block-end: 1px solid var(--border-strong); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='50'%3E%3Cpath d='M0 49.5H10' stroke='%23e0e4e1' stroke-width='1'/%3E%3C/svg%3E"); }
 .usage-chart__plot > span { flex: 1; min-width: 5px; max-width: 28px; background: var(--teal); opacity: .82; }
 .usage-chart__plot > span:hover { opacity: 1; }
-.usage-chart__legend { display: flex; justify-content: space-between; gap: 10px; color: var(--text-faint); font-size: 8px; }
+.usage-chart__legend { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--text-faint); font-size: 8px; }
 .usage-chart__legend span { display: flex; align-items: center; gap: 5px; }
 .usage-chart__legend i { width: 8px; height: 8px; background: var(--teal); }
 .credit-balance-card { border-block-start: 3px solid var(--teal); }
@@ -1874,8 +1874,8 @@ html[dir="ltr"] .preview-policy dd { margin: 3px 0 0 20px; }
   .settings-layout { grid-template-columns: 1fr; }
   .settings-nav { position: static; overflow-x: auto; padding: 6px; }
   .settings-nav > p { display: none; }
-  .settings-nav nav { width: max-content; display: flex; }
-  .settings-nav button { min-width: 145px; }
+  .settings-nav nav { width: max-content; display: flex; scroll-snap-type: x proximity; }
+  .settings-nav button { min-width: 145px; scroll-snap-align: start; }
   .settings-nav button > svg:last-child { display: none; }
 }
 
@@ -1906,6 +1906,23 @@ html[dir="ltr"] .preview-policy dd { margin: 3px 0 0 20px; }
   .usage-header-actions { margin-block-start: 14px; }
   .usage-header-actions > * { flex: 1; }
   .usage-header-actions select { width: 100%; }
+  /* Phone card mode for the wide ledgers: the 840px horizontal rail gives
+     way to stacked label/value cards. Labels are localized in the markup via
+     data-label (the same bilingual pattern source-table already uses). */
+  .usage-ledger { overflow-x: visible; }
+  .usage-ledger__head { display: none; }
+  .usage-ledger__row { min-width: 0; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 4px 12px; padding: 12px 12px 6px; }
+  .usage-ledger__row > span:first-child { grid-column: 1 / -1; }
+  .usage-ledger__row > span[data-label] { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 6px 0 5px; border-block-start: 1px solid var(--border); }
+  .usage-ledger__row > span[data-label]::before { content: attr(data-label); color: var(--text-faint); font-size: 7px; text-transform: uppercase; letter-spacing: .04em; }
+  .usage-ledger__row > svg { grid-column: 1 / -1; justify-self: end; }
+  .team-table-card { overflow-x: visible; }
+  .team-table-head { display: none; }
+  .team-member-row { min-width: 0; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 4px 12px; padding: 12px 12px 10px; }
+  .team-member-identity { grid-column: 1 / -1; }
+  .team-member-row > span[data-label] { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0 5px; border-block-start: 1px solid var(--border); }
+  .team-member-row > span[data-label]::before { content: attr(data-label); color: var(--text-faint); font-size: 7px; text-transform: uppercase; letter-spacing: .04em; }
+  .team-member-row > span:last-child { grid-column: 1 / -1; justify-self: end; }
   .credit-balance-card { display: block; }
   .breakdown-list > div { grid-template-columns: minmax(110px,1fr) 80px 32px; }
   .breakdown-list > div > strong { display: none; }
